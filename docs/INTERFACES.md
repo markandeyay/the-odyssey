@@ -46,3 +46,17 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Add `@export var character_visual_scene: PackedScene` to the SYSTEMS player visual host and assign `res://assets/characters/nau/nau_visual.tscn` in the player scene. Instantiate only through that exported field; do not hardcode the resource path in gameplay code.
 **Blocking:** no for WORLD M3 validation; yes for seeing Nau in the integrated player runtime
 **Status:** OPEN
+
+### [2026-07-16] FROM: WORLD TO: SYSTEMS
+**Request:** Instantiate the WORLD-owned Lanka streaming root in the SYSTEMS gameplay level host and assign the live player as its streaming target.
+**Why:** M4 provides `lanka.tscn` as a lightweight root with no preloaded terrain. Its threaded loader needs the player transform to select, load, and unload the 25 owned terrain chunks at runtime.
+**Proposed API:** Instantiate `res://scenes/levels/lanka/lanka.tscn` under the SYSTEMS level host, retain the returned `Node3D`, then call `lanka.set_streaming_target(player_node)` after the player enters the tree. Do not instantiate the individual chunk scenes from SYSTEMS code.
+**Blocking:** yes for integrated Lanka runtime traversal; no for WORLD M4 scene and streaming tests
+**Status:** OPEN
+
+### [2026-07-16] FROM: WORLD TO: SYSTEMS
+**Request:** Enable root-viewport 3D occlusion culling in the SYSTEMS-owned project settings.
+**Why:** M4 authors `OccluderInstance3D` coverage for the west, east, and north cliff bands and the persistent Spine, but Godot leaves root-viewport occlusion culling disabled by default.
+**Proposed API:** Set `rendering/occlusion_culling/use_occlusion_culling=true` in `project.godot`. Retain Godot's default BVH quality and ray count until an integrated 1080p profile justifies tuning them.
+**Blocking:** yes for M4 occluders to affect integrated runtime performance; no for distance LOD and chunk streaming
+**Status:** OPEN

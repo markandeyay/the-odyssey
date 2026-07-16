@@ -110,6 +110,14 @@ func _test_terrain_generation_and_sculpting() -> void:
 	_expect(terrain_mesh != null, "terrain uses ArrayMesh render geometry")
 	if terrain_mesh != null:
 		_expect(terrain_mesh.surface_get_name(0) == "mat_lanka_terrain_grip_solid", "terrain surface follows grip naming")
+		var arrays: Array = terrain_mesh.surface_get_arrays(0)
+		var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX] as PackedInt32Array
+		var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL] as PackedVector3Array
+		_expect(
+			indices.slice(0, 3) == PackedInt32Array([0, 1, 9]),
+			"terrain triangles use Godot clockwise front faces"
+		)
+		_expect(normals[0].y > 0.99, "terrain vertex normals point upward")
 	terrain.sculpt(Vector3.ZERO, 2.0, 1.0, "raise")
 	_expect(terrain.sample_height_local(0.0, 0.0) > 0.9, "terrain raise brush changes stored height")
 	var collision_body: StaticBody3D = terrain.get_node_or_null("TerrainCollisionBody") as StaticBody3D

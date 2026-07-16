@@ -161,8 +161,8 @@ func _build_mesh() -> ArrayMesh:
 			var bottom_left: int = top_left + grid_resolution
 			var bottom_right: int = bottom_left + 1
 			indices.append_array(PackedInt32Array([
-				top_left, bottom_left, top_right,
-				top_right, bottom_left, bottom_right,
+				top_left, top_right, bottom_left,
+				top_right, bottom_right, bottom_left,
 			]))
 	_calculate_normals(vertices, indices, normals)
 	var arrays: Array = []
@@ -193,8 +193,8 @@ func _build_lod_indices() -> Dictionary:
 				var bottom_left: int = (z + step) * grid_resolution + x
 				var bottom_right: int = bottom_left + step
 				lod_indices.append_array(PackedInt32Array([
-					top_left, bottom_left, top_right,
-					top_right, bottom_left, bottom_right,
+					top_left, top_right, bottom_left,
+					top_right, bottom_right, bottom_left,
 				]))
 		lods[base_distance * float(level)] = lod_indices
 	return lods
@@ -210,8 +210,8 @@ func _calculate_normals(
 		var a_index: int = indices[triangle_index]
 		var b_index: int = indices[triangle_index + 1]
 		var c_index: int = indices[triangle_index + 2]
-		var face_normal: Vector3 = (vertices[b_index] - vertices[a_index]).cross(
-			vertices[c_index] - vertices[a_index]
+		var face_normal: Vector3 = (vertices[c_index] - vertices[a_index]).cross(
+			vertices[b_index] - vertices[a_index]
 		).normalized()
 		normals[a_index] += face_normal
 		normals[b_index] += face_normal

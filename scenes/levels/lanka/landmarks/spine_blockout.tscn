@@ -26,29 +26,29 @@ radius = 19.0
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_vmb2l"]
 size = Vector3(34, 252, 34)
 
-[node name="SpineBlockout" type="Node3D" unique_id=1382813482]
+[node name="SpineBlockout" type="Node3D" unique_id=130519685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68, 430)
 metadata/budget_profile = "spine"
 metadata/persistent_landmark = true
 
-[node name="SpineTowerProxy" type="MeshInstance3D" parent="." unique_id=1626420756]
+[node name="SpineTowerProxy" type="MeshInstance3D" parent="." unique_id=2073208478]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 126, 0)
 mesh = SubResource("CylinderMesh_8auk6")
 
-[node name="SpineCrownProxy" type="MeshInstance3D" parent="." unique_id=867637939]
+[node name="SpineCrownProxy" type="MeshInstance3D" parent="." unique_id=1527947059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 264, 0)
 mesh = SubResource("CylinderMesh_xnmuv")
 
-[node name="SpineCollision" type="StaticBody3D" parent="." unique_id=1315779863]
+[node name="SpineCollision" type="StaticBody3D" parent="." unique_id=194383939]
 collision_mask = 0
 
-[node name="SpineCollisionShape" type="CollisionShape3D" parent="SpineCollision" unique_id=1210794471]
+[node name="SpineCollisionShape" type="CollisionShape3D" parent="SpineCollision" unique_id=552679553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 126, 0)
 shape = SubResource("CylinderShape3D_vta3x")
 
-[node name="SpineOccluder" type="OccluderInstance3D" parent="." unique_id=631276760]
+[node name="SpineOccluder" type="OccluderInstance3D" parent="." unique_id=1992724244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 126, 0)
 occluder = SubResource("BoxOccluder3D_vmb2l")
 
-[node name="SpineVisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="." unique_id=1393427802]
+[node name="SpineVisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="." unique_id=77629013]
 aabb = AABB(-24, 0, -24, 48, 276, 48)

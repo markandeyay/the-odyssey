@@ -3,43 +3,43 @@
 [ext_resource type="Script" path="res://scenes/levels/lanka/lanka_streaming_root.gd" id="1_qmgdg"]
 [ext_resource type="PackedScene" path="res://scenes/levels/lanka/landmarks/spine_blockout.tscn" id="2_j2x66"]
 
-[node name="Lanka" type="Node3D" unique_id=441608398]
+[node name="Lanka" type="Node3D" unique_id=1470876356]
 script = ExtResource("1_qmgdg")
 metadata/budget_profile = "default"
 metadata/playable_size_m = Vector2(1100, 1100)
 metadata/streaming_required = true
 
-[node name="StreamedChunks" type="Node3D" parent="." unique_id=1280235723]
+[node name="StreamedChunks" type="Node3D" parent="." unique_id=153718688]
 
-[node name="PersistentLandmarks" type="Node3D" parent="." unique_id=1917011411]
+[node name="PersistentLandmarks" type="Node3D" parent="." unique_id=792323438]
 
-[node name="SpineBlockout" type="Node3D" parent="PersistentLandmarks" unique_id=1382813482 instance=ExtResource("2_j2x66")]
+[node name="SpineBlockout" type="Node3D" parent="PersistentLandmarks" unique_id=130519685 instance=ExtResource("2_j2x66")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68, 430)
 metadata/budget_profile = "spine"
 metadata/persistent_landmark = true
 
-[node name="DistrictAnchors" type="Node3D" parent="." unique_id=902817000]
+[node name="DistrictAnchors" type="Node3D" parent="." unique_id=347790995]
 
-[node name="Shallows" type="Marker3D" parent="DistrictAnchors" unique_id=80908763]
+[node name="Shallows" type="Marker3D" parent="DistrictAnchors" unique_id=1773839690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -440)
 metadata/district_id = &"shallows"
 
-[node name="Terraces" type="Marker3D" parent="DistrictAnchors" unique_id=1021445208]
+[node name="Terraces" type="Marker3D" parent="DistrictAnchors" unique_id=1498085468]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -330, 50, 0)
 metadata/district_id = &"terraces"
 
-[node name="EmberQuarter" type="Marker3D" parent="DistrictAnchors" unique_id=1980788372]
+[node name="EmberQuarter" type="Marker3D" parent="DistrictAnchors" unique_id=868713090]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 54, 80)
 metadata/district_id = &"ember_quarter"
 
-[node name="Cistern" type="Marker3D" parent="DistrictAnchors" unique_id=1516894994]
+[node name="Cistern" type="Marker3D" parent="DistrictAnchors" unique_id=1977151507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 18, 80)
 metadata/district_id = &"cistern"
 
-[node name="Spine" type="Marker3D" parent="DistrictAnchors" unique_id=1572601579]
+[node name="Spine" type="Marker3D" parent="DistrictAnchors" unique_id=1650141377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68, 430)
 metadata/district_id = &"spine"
 
-[node name="Dark" type="Marker3D" parent="DistrictAnchors" unique_id=822326552]
+[node name="Dark" type="Marker3D" parent="DistrictAnchors" unique_id=204751026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 430)
 metadata/district_id = &"dark"
