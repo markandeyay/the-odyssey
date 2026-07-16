@@ -19,6 +19,8 @@ const SOCKET_NAMES: Array[StringName] = [
 @export var run_speed: float = 5.0
 @export var sprint_speed: float = 7.0
 @export var crouch_speed: float = 2.0
+## Two-handed carry slows everything (M4). Sprint is disabled while carrying.
+@export var carry_speed_multiplier: float = 0.6
 ## Below this fraction of run speed the animator reads "walk".
 @export var walk_threshold: float = 0.6
 
@@ -63,6 +65,8 @@ var _sockets: Dictionary = {}
 @onready var _animator: PlayerAnimator = $Animator
 @onready var _climb: ClimbController = $ClimbController
 @onready var _dust: CPUParticles3D = $GripDust
+@onready var _interactor: PlayerInteractor = $PlayerInteractor
+@onready var _prompt_label: InteractPromptLabel = $HUD/InteractPrompt
 
 
 func _ready() -> void:
@@ -71,7 +75,12 @@ func _ready() -> void:
 	_climb.attached.connect(_on_climb_attached)
 	_climb.detached.connect(_on_climb_detached)
 	_climb.handhold_failing.connect(_on_handhold_failing)
+	_interactor.target_changed.connect(_prompt_label.set_prompt)
 	_mount_mesh()
+
+
+func is_climbing() -> bool:
+	return _climb.active
 
 
 func _physics_process(delta: float) -> void:
@@ -203,11 +212,16 @@ func _update_animator() -> void:
 
 
 func _current_speed() -> float:
+	var speed: float
 	if is_crouching:
-		return crouch_speed
-	if Input.is_action_pressed(&"sprint"):
-		return sprint_speed
-	return run_speed
+		speed = crouch_speed
+	elif Input.is_action_pressed(&"sprint") and not is_carrying:
+		speed = sprint_speed
+	else:
+		speed = run_speed
+	if is_carrying:
+		speed *= carry_speed_multiplier
+	return speed
 
 
 func _is_ceiling_blocked() -> bool:
