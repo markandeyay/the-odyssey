@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://src/world/fire/brand.gd" id="1_brand"]
+[ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="2_flammable"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_brand"]
+size = Vector3(0.08, 0.55, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="Mat_brand"]
+resource_name = "mat_brand_wood"
+albedo_color = Color(0.35, 0.22, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_brand"]
+material = SubResource("Mat_brand")
+size = Vector3(0.08, 0.55, 0.08)
+
+[node name="Brand" type="RigidBody3D"]
+collision_layer = 1048
+collision_mask = 9
+mass = 2.0
+script = ExtResource("1_brand")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_brand")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_brand")
+
+[node name="Flammable" type="Node" parent="."]
+script = ExtResource("2_flammable")
+fuel = 180.0
+size = Vector3(0.2, 0.6, 0.2)
+mobile = true
+contact_damage = false
+pooled_vfx = false
+
+[node name="Flame" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0)
+visible = false
+emitting = false
+amount = 12
+lifetime = 0.5
+mesh = SubResource("BoxMesh_brand")
+scale_amount_min = 0.05
+scale_amount_max = 0.12
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 2, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.2
+color = Color(1, 0.45, 0.08, 1)
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+visible = false
+light_color = Color(1, 0.5, 0.15, 1)
+light_energy = 1.6
+omni_range = 8.0
