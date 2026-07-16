@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yawts"]
+resource_name = "mat_spine_blockout_grip_solid"
+albedo_color = Color(0.105, 0.115, 0.115, 1)
+roughness = 0.94
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8auk6"]
+material = SubResource("StandardMaterial3D_yawts")
+top_radius = 12.0
+bottom_radius = 19.0
+height = 252.0
+radial_segments = 16
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xnmuv"]
+material = SubResource("StandardMaterial3D_yawts")
+top_radius = 6.0
+bottom_radius = 13.0
+height = 24.0
+radial_segments = 12
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vta3x"]
+height = 252.0
+radius = 19.0
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_vmb2l"]
+size = Vector3(34, 252, 34)
+
+[node name="SpineBlockout" type="Node3D" unique_id=1382813482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68, 430)
+metadata/budget_profile = "spine"
+metadata/persistent_landmark = true
+
+[node name="SpineTowerProxy" type="MeshInstance3D" parent="." unique_id=1626420756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 126, 0)
+mesh = SubResource("CylinderMesh_8auk6")
+
+[node name="SpineCrownProxy" type="MeshInstance3D" parent="." unique_id=867637939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 264, 0)
+mesh = SubResource("CylinderMesh_xnmuv")
+
+[node name="SpineCollision" type="StaticBody3D" parent="." unique_id=1315779863]
+collision_mask = 0
+
+[node name="SpineCollisionShape" type="CollisionShape3D" parent="SpineCollision" unique_id=1210794471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 126, 0)
+shape = SubResource("CylinderShape3D_vta3x")
+
+[node name="SpineOccluder" type="OccluderInstance3D" parent="." unique_id=631276760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 126, 0)
+occluder = SubResource("BoxOccluder3D_vmb2l")
+
+[node name="SpineVisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="." unique_id=1393427802]
+aabb = AABB(-24, 0, -24, 48, 276, 48)
