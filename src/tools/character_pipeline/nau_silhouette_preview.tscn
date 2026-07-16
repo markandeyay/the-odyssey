@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://src/tools/character_pipeline/nau_silhouette_preview.gd" id="1_preview"]
+
+[sub_resource type="Environment" id="Environment_preview"]
+background_mode = 1
+background_color = Color(0.31, 0.32, 0.31, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.45, 0.46, 0.44, 1)
+ambient_light_energy = 0.55
+fog_enabled = true
+fog_light_color = Color(0.43, 0.44, 0.42, 1)
+fog_light_energy = 0.8
+fog_density = 0.004
+fog_aerial_perspective = 0.6
+
+[sub_resource type="StandardMaterial3D" id="Material_ground"]
+resource_name = "mat_silhouette_test_ground"
+albedo_color = Color(0.105, 0.095, 0.085, 1)
+roughness = 1.0
+
+[sub_resource type="PlaneMesh" id="Plane_ground"]
+material = SubResource("Material_ground")
+size = Vector2(500, 500)
+
+[node name="NauSilhouettePreview" type="Node3D"]
+script = ExtResource("1_preview")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_preview")
+
+[node name="KeyLight" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-38, -25, 0)
+light_color = Color(1, 0.76, 0.56, 1)
+light_energy = 1.5
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, -200)
+current = true
+fov = 22.5
+near = 0.1
+far = 500.0
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("Plane_ground")
