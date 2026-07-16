@@ -131,7 +131,7 @@ func test_save_data_round_trip() -> void:
 func test_hotbar_ui_builds_ten_slots() -> void:
 	var ui: HotbarUI = (preload("res://scenes/ui/hotbar.tscn") as PackedScene).instantiate()
 	add_child_autofree(ui)
-	assert_eq(ui.get_child_count(), 10)
+	assert_eq(ui.slot_count(), 10)
 
 
 func test_storage_panel_toggles_without_pausing() -> void:
