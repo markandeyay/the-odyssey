@@ -9,6 +9,7 @@ const CONTRACT_NODES: Array[String] = [
 	"Collider", "Visual", "Visual/FallbackCapsule", "Animator", "CeilingCheck",
 	"CameraRig", "CameraRig/Pitch", "CameraRig/Pitch/SpringArm3D",
 	"CameraRig/Pitch/SpringArm3D/Camera3D", "ClimbController", "GripDust",
+	"CarryController", "PlayerInteractor", "Visual/CarryHold", "HUD/InteractPrompt",
 ]
 
 
