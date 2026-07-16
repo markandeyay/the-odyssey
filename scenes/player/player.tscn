@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://src/player/camera_rig.gd" id="2_camrig"]
+[ext_resource type="Script" path="res://src/player/player_animator.gd" id="3_anim"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fallback"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ceiling"]
+radius = 0.3
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_player")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="FallbackCapsule" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_fallback")
+
+[node name="Animator" type="Node" parent="."]
+script = ExtResource("3_anim")
+
+[node name="CeilingCheck" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+enabled = false
+shape = SubResource("SphereShape3D_ceiling")
+target_position = Vector3(0, 0.6, 0)
+collision_mask = 13
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("2_camrig")
+
+[node name="Pitch" type="Node3D" parent="CameraRig"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRig/Pitch"]
+collision_mask = 1
+spring_length = 4.0
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig/Pitch/SpringArm3D"]
+current = true
