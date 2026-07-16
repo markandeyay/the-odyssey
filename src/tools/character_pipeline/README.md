@@ -48,8 +48,9 @@ The assembled visual must:
 - remain legible as a broad, heavy silhouette in the 200m Lanka fog test.
 
 Open `nau_silhouette_preview.tscn` to perform the fog test. Its camera defaults
-to 200m and the inspector can reduce the distance for diagnosis; acceptance is
-always judged at 200m.
+to 200m with an 8-degree telephoto inspection FOV and the inspector can reduce
+the distance for diagnosis; acceptance is always judged at 200m. Distances
+below 100m use a 22.5-degree FOV for close material and face-cover inspection.
 
 Run the source-independent contract tests with:
 

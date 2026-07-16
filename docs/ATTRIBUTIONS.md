@@ -79,3 +79,33 @@ use them.
 | Godot material | N/A; derived `AnimationLibrary` resource. |
 | Lanka usage | Canonical, mesh-independent Nau animation library used by the Lanka player visual. |
 <!-- /asset:mixamo:nau_m3_animation_library -->
+
+<!-- asset:mixamo:x_bot -->
+### X Bot
+
+| Field | Value |
+|---|---|
+| Provider ID | `mixamo:x_bot` |
+| Source | [Adobe Mixamo](https://www.mixamo.com/) |
+| Author | Adobe Mixamo |
+| License | [Mixamo FAQ and usage terms](https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html) |
+| Date pulled | 2026-07-16 |
+| Repository path | `res://assets/characters/nau/source/mixamo/base/` |
+| Godot material | Embedded X Bot source materials; replaced by named Nau materials in the derived visual. |
+| Lanka usage | Skinned T-pose source mesh and humanoid rig for Nau's replaceable Lanka placeholder. |
+<!-- /asset:mixamo:x_bot -->
+
+<!-- asset:mixamo:nau_m3_visual -->
+### Nau M3 Placeholder Visual
+
+| Field | Value |
+|---|---|
+| Provider ID | `mixamo:nau_m3_visual` |
+| Source | [Adobe Mixamo](https://www.mixamo.com/) |
+| Author | Adobe Mixamo; hood, mask, cloth, materials, sockets, and Godot assembly by The Odyssey project |
+| License | [Mixamo FAQ and usage terms](https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html) |
+| Date pulled | 2026-07-16 |
+| Repository path | `res://assets/characters/nau/nau_visual.tscn` |
+| Godot material | Embedded named materials: `mat_nau_body`, `mat_nau_cloth`, `mat_nau_hood`, and `mat_nau_mask`. |
+| Lanka usage | Replaceable Nau visual for all player traversal on Lanka. |
+<!-- /asset:mixamo:nau_m3_visual -->

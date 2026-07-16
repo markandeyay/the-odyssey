@@ -39,3 +39,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Add `res://addons/odyssey_world_tools/plugin.cfg` to `[editor_plugins] enabled=PackedStringArray(...)`. No autoloads, input actions, physics-layer changes, or runtime project settings are requested.
 **Blocking:** yes for editor UI use; headless validators remain usable
 **Status:** OPEN
+
+### [2026-07-16] FROM: WORLD TO: SYSTEMS
+**Request:** Expose and assign Nau's replaceable character visual scene on the SYSTEMS-owned player scene.
+**Why:** M3 now provides a validated humanoid visual, canonical animation library, and the four required `BoneAttachment3D` sockets without coupling gameplay to the X Bot placeholder mesh.
+**Proposed API:** Add `@export var character_visual_scene: PackedScene` to the SYSTEMS player visual host and assign `res://assets/characters/nau/nau_visual.tscn` in the player scene. Instantiate only through that exported field; do not hardcode the resource path in gameplay code.
+**Blocking:** no for WORLD M3 validation; yes for seeing Nau in the integrated player runtime
+**Status:** OPEN

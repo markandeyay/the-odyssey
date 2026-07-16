@@ -19,10 +19,7 @@ func _initialize() -> void:
 		"Mixamo right hand maps to the humanoid profile"
 	)
 	var sources: Array[String] = validator.validate_sources(manifest)
-	_expect(
-		sources.any(func(issue: String) -> bool: return "Missing Mixamo base FBX" in issue),
-		"source validation reports the intentionally absent base FBX"
-	)
+	_expect(sources.is_empty(), "all reviewed Mixamo sources pass strict validation: %s" % "; ".join(sources))
 	_test_canonical_library(manifest)
 	if _failures == 0:
 		print("PASS: Odyssey M3 character pipeline contract tests")

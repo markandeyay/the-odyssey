@@ -1,9 +1,15 @@
 extends SceneTree
 
 const ANIMATION_ROOT: String = "res://assets/characters/nau/source/mixamo/animations"
+const BASE_PATH: String = "res://assets/characters/nau/source/mixamo/base/nau_base.fbx"
+const VISUAL_PATH: String = "res://assets/characters/nau/nau_visual.tscn"
 
 
 func _initialize() -> void:
+	if ResourceLoader.exists(VISUAL_PATH, "PackedScene"):
+		_inspect_scene(VISUAL_PATH)
+	if ResourceLoader.exists(BASE_PATH, "PackedScene"):
+		_inspect_scene(BASE_PATH)
 	var filenames: PackedStringArray = DirAccess.get_files_at(ANIMATION_ROOT)
 	filenames.sort()
 	for filename: String in filenames:
@@ -31,6 +37,8 @@ func _inspect_scene(path: String) -> void:
 	print("  nodes=%d skeletons=%d meshes=%d players=%d bones=%d" % [
 		_count_nodes(root), skeletons.size(), meshes.size(), players.size(), bones.size()
 	])
+	var bounds: AABB = _collect_bounds(root, Transform3D.IDENTITY, AABB(), false)
+	print("  bounds_position=%s bounds_size=%s" % [bounds.position, bounds.size])
 	print("  bone_sample=%s" % ",".join(bones.slice(0, mini(8, bones.size()))))
 	for player_node: Node in players:
 		var player: AnimationPlayer = player_node as AnimationPlayer
@@ -72,3 +80,21 @@ func _count_nodes(node: Node) -> int:
 	for child: Node in node.get_children():
 		count += _count_nodes(child)
 	return count
+
+
+func _collect_bounds(node: Node, parent_transform: Transform3D, bounds: AABB, has_bounds: bool) -> AABB:
+	var current_transform: Transform3D = parent_transform
+	if node is Node3D:
+		current_transform = parent_transform * (node as Node3D).transform
+	if node is MeshInstance3D:
+		var mesh_instance: MeshInstance3D = node as MeshInstance3D
+		if mesh_instance.mesh != null:
+			var mesh_bounds: AABB = current_transform * mesh_instance.get_aabb()
+			bounds = bounds.merge(mesh_bounds) if has_bounds else mesh_bounds
+			has_bounds = true
+	for child: Node in node.get_children():
+		var child_bounds: AABB = _collect_bounds(child, current_transform, AABB(), false)
+		if child_bounds.size != Vector3.ZERO:
+			bounds = bounds.merge(child_bounds) if has_bounds else child_bounds
+			has_bounds = true
+	return bounds
