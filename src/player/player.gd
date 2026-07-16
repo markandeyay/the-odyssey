@@ -102,7 +102,8 @@ var _sockets: Dictionary = {}
 @onready var _climb: ClimbController = $ClimbController
 @onready var _dust: CPUParticles3D = $GripDust
 @onready var _interactor: PlayerInteractor = $PlayerInteractor
-@onready var _prompt_label: InteractPromptLabel = $HUD/InteractPrompt
+@onready var _hud: GameHUD = $HUD/GameHUD
+@onready var _heat_wisps: CPUParticles3D = $Visual/HeatWisps
 @onready var _carry: CarryController = $CarryController
 @onready var health: PlayerHealth = $Health
 
@@ -113,9 +114,10 @@ func _ready() -> void:
 	_climb.attached.connect(_on_climb_attached)
 	_climb.detached.connect(_on_climb_detached)
 	_climb.handhold_failing.connect(_on_handhold_failing)
-	_interactor.target_changed.connect(_prompt_label.set_prompt)
+	_interactor.target_changed.connect(_hud.set_interact_prompt)
 	health.died.connect(_on_died)
 	breath = breath_time
+	_hud.bind(self)
 	_mount_mesh()
 
 
@@ -183,6 +185,17 @@ func is_heat_resistant() -> bool:
 
 func heat_resistance_left() -> float:
 	return _heat_resistance_timer
+
+
+## The wisps burn steady while the buff holds, then gutter — on/off in
+## beats — through the final seconds so expiry never surprises. This is
+## the heat resistance indicator (M12); there is no HUD element for it.
+static func heat_wisps_lit(time_left: float, gutter_below: float = 10.0) -> bool:
+	if time_left <= 0.0:
+		return false
+	if time_left >= gutter_below:
+		return true
+	return fmod(time_left, 0.6) > 0.25
 
 
 ## Water volumes (M8) report themselves through these on enter/exit.
@@ -283,9 +296,12 @@ func set_crouching(value: bool) -> bool:
 
 ## Breath and heat resistance tick every frame regardless of movement
 ## state (M8). Drowning damage is continuous once breath runs out.
+## Heat resistance shows diegetically (M12): ember wisps rise off Nau
+## while the charwood buff holds, and gutter in the final seconds.
 func _update_survival(delta: float) -> void:
 	if _heat_resistance_timer > 0.0:
 		_heat_resistance_timer = maxf(0.0, _heat_resistance_timer - delta)
+	_heat_wisps.emitting = heat_wisps_lit(_heat_resistance_timer)
 	if is_submerged():
 		breath = maxf(0.0, breath - delta)
 		if breath <= 0.0:

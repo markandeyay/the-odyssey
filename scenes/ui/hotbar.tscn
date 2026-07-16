@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" path="res://src/ui/hotbar.gd" id="1_hotbar"]
 
-[node name="Hotbar" type="HBoxContainer"]
+[node name="Hotbar" type="VBoxContainer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -300.0
-offset_top = -70.0
+offset_top = -102.0
 offset_right = 300.0
-offset_bottom = -10.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 0
-alignment = 1
+alignment = 2
 script = ExtResource("1_hotbar")

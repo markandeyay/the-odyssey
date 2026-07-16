@@ -7,9 +7,7 @@
 [ext_resource type="Script" path="res://src/player/climb_controller.gd" id="4_climb"]
 [ext_resource type="Script" path="res://src/interaction/carry_controller.gd" id="5_carry"]
 [ext_resource type="Script" path="res://src/interaction/player_interactor.gd" id="6_interactor"]
-[ext_resource type="Script" path="res://src/ui/interact_prompt.gd" id="7_prompt"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hotbar.tscn" id="8_hotbar"]
-[ext_resource type="PackedScene" path="res://scenes/ui/storage_panel.tscn" id="9_storage"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="7_hud"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
 radius = 0.35
@@ -23,6 +21,18 @@ height = 1.8
 radius = 0.3
 
 [sub_resource type="SphereMesh" id="SphereMesh_dust"]
+radius = 0.02
+height = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wisp"]
+transparency = 1
+albedo_color = Color(0.95, 0.42, 0.08, 0.7)
+emission_enabled = true
+emission = Color(0.95, 0.42, 0.08, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wisp"]
+material = SubResource("StandardMaterial3D_wisp")
 radius = 0.02
 height = 0.04
 
@@ -47,6 +57,19 @@ mesh = SubResource("CapsuleMesh_fallback")
 [node name="CarryHold" type="Node3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.8)
 
+[node name="HeatWisps" type="CPUParticles3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+emitting = false
+amount = 20
+lifetime = 1.4
+mesh = SubResource("SphereMesh_wisp")
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.8, 0.3)
+gravity = Vector3(0, 1.2, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.4
+scale_amount_min = 0.6
+
 [node name="Animator" type="Node" parent="."]
 script = ExtResource("3_anim")
 
@@ -61,28 +84,7 @@ script = ExtResource("6_interactor")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="InteractPrompt" type="Label" parent="HUD"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.8
-anchor_right = 0.5
-anchor_bottom = 0.8
-offset_left = -250.0
-offset_top = -20.0
-offset_right = 250.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0.784314)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 22
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("7_prompt")
-
-[node name="Hotbar" parent="HUD" instance=ExtResource("8_hotbar")]
-
-[node name="StoragePanel" parent="HUD" instance=ExtResource("9_storage")]
+[node name="GameHUD" parent="HUD" instance=ExtResource("7_hud")]
 
 [node name="GripDust" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)

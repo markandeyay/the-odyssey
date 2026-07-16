@@ -13,7 +13,9 @@ var _key_label: Label = null
 
 
 func _ready() -> void:
+	add_theme_stylebox_override("panel", UIPalette.panel_style())
 	var root: VBoxContainer = VBoxContainer.new()
+	root.add_theme_constant_override("separation", 8)
 	add_child(root)
 	root.add_child(_header("Storage"))
 	root.add_child(_build_grid(Inventory.STORAGE_SIZE, _storage_buttons, Inventory.Area.STORAGE))
@@ -21,6 +23,7 @@ func _ready() -> void:
 	root.add_child(_build_grid(Inventory.HOTBAR_SIZE, _hotbar_buttons, Inventory.Area.HOTBAR))
 	_key_label = Label.new()
 	_key_label.add_theme_font_size_override("font_size", 12)
+	_key_label.add_theme_color_override("font_color", Color(UIPalette.ASH_GREY, 0.95))
 	root.add_child(_key_label)
 	Inventory.changed.connect(_refresh)
 	_refresh()
@@ -60,15 +63,26 @@ func _header(text: String) -> Label:
 	var label: Label = Label.new()
 	label.text = text
 	label.add_theme_font_size_override("font_size", 14)
+	label.add_theme_color_override("font_color", UIPalette.BONE_WHITE)
 	return label
 
 
 func _build_grid(count: int, into: Array[Button], area: Inventory.Area) -> GridContainer:
 	var grid: GridContainer = GridContainer.new()
 	grid.columns = 10
+	grid.add_theme_constant_override("h_separation", 4)
+	grid.add_theme_constant_override("v_separation", 4)
+	var normal: StyleBoxFlat = UIPalette.slot_style(false)
+	var hover: StyleBoxFlat = UIPalette.slot_style(true)
 	for i: int in count:
 		var button: Button = Button.new()
 		button.custom_minimum_size = Vector2(56, 56)
+		button.add_theme_stylebox_override("normal", normal)
+		button.add_theme_stylebox_override("hover", hover)
+		button.add_theme_stylebox_override("pressed", hover)
+		button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+		button.add_theme_font_size_override("font_size", 11)
+		button.add_theme_color_override("font_color", Color(UIPalette.BONE_WHITE, 0.9))
 		button.pressed.connect(_on_slot_pressed.bind(area, i))
 		grid.add_child(button)
 		into.append(button)
