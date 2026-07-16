@@ -13,6 +13,11 @@ const COLLISION_SHAPE_NAME: StringName = &"TerrainCollisionShape"
 @export var maximum_height_m: float = 80.0
 @export_storage var height_data: PackedFloat32Array = PackedFloat32Array()
 
+@export_category("Level of Detail")
+@export var generate_lods: bool = true
+@export_range(1, 4, 1) var lod_level_count: int = 2
+@export_range(0.1, 4.0, 0.05) var lod_distance_multiplier: float = 0.65
+
 @export_category("Terrain Layers")
 @export var low_albedo: Texture2D
 @export var high_albedo: Texture2D
@@ -58,6 +63,7 @@ func rebuild() -> Dictionary:
 		"ok": true,
 		"vertices": grid_resolution * grid_resolution,
 		"triangles": (grid_resolution - 1) * (grid_resolution - 1) * 2,
+		"lods": _build_lod_indices().size() if generate_lods else 0,
 	}
 
 
@@ -113,6 +119,10 @@ func _validate_configuration() -> String:
 		return "Altitude blend start cannot exceed its end"
 	if slope_blend_start > slope_blend_end:
 		return "Slope blend start cannot exceed its end"
+	if lod_level_count < 1:
+		return "LOD level count must be at least one"
+	if lod_distance_multiplier <= 0.0:
+		return "LOD distance multiplier must be greater than zero"
 	return ""
 
 
@@ -162,8 +172,32 @@ func _build_mesh() -> ArrayMesh:
 	arrays[Mesh.ARRAY_TEX_UV] = uvs
 	arrays[Mesh.ARRAY_INDEX] = indices
 	var generated_mesh: ArrayMesh = ArrayMesh.new()
-	generated_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	var lods: Dictionary = _build_lod_indices() if generate_lods else {}
+	generated_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays, [], lods)
+	generated_mesh.surface_set_name(0, "mat_lanka_terrain_grip_solid")
 	return generated_mesh
+
+
+func _build_lod_indices() -> Dictionary:
+	var lods: Dictionary = {}
+	var base_distance: float = maxf(size_m.x, size_m.y) * lod_distance_multiplier
+	for level: int in range(1, lod_level_count + 1):
+		var step: int = 1 << level
+		if (grid_resolution - 1) % step != 0:
+			continue
+		var lod_indices: PackedInt32Array = PackedInt32Array()
+		for z: int in range(0, grid_resolution - 1, step):
+			for x: int in range(0, grid_resolution - 1, step):
+				var top_left: int = z * grid_resolution + x
+				var top_right: int = top_left + step
+				var bottom_left: int = (z + step) * grid_resolution + x
+				var bottom_right: int = bottom_left + step
+				lod_indices.append_array(PackedInt32Array([
+					top_left, bottom_left, top_right,
+					top_right, bottom_left, bottom_right,
+				]))
+		lods[base_distance * float(level)] = lod_indices
+	return lods
 
 
 func _calculate_normals(

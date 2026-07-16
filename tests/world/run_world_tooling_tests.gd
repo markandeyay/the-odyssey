@@ -105,6 +105,11 @@ func _test_terrain_generation_and_sculpting() -> void:
 	_expect(bool(result.get("ok", false)), "terrain rebuild succeeds")
 	_expect(int(result.get("vertices", 0)) == 81, "terrain builds expected vertex grid")
 	_expect(int(result.get("triangles", 0)) == 128, "terrain builds expected triangle grid")
+	_expect(int(result.get("lods", 0)) == 2, "terrain builds two render LOD levels")
+	var terrain_mesh: ArrayMesh = terrain.mesh as ArrayMesh
+	_expect(terrain_mesh != null, "terrain uses ArrayMesh render geometry")
+	if terrain_mesh != null:
+		_expect(terrain_mesh.surface_get_name(0) == "mat_lanka_terrain_grip_solid", "terrain surface follows grip naming")
 	terrain.sculpt(Vector3.ZERO, 2.0, 1.0, "raise")
 	_expect(terrain.sample_height_local(0.0, 0.0) > 0.9, "terrain raise brush changes stored height")
 	var collision_body: StaticBody3D = terrain.get_node_or_null("TerrainCollisionBody") as StaticBody3D
