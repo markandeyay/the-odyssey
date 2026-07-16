@@ -31,4 +31,9 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 
 ## Log
 
-*(empty)*
+### [2026-07-16] FROM: SYSTEMS TO: WORLD
+**Request:** A placeholder rigged character scene for Nau, delivered under `assets/characters/nau/` (e.g. `assets/characters/nau/nau_placeholder.tscn`).
+**Why:** The M2 player controller mounts the character mesh through an exported `PackedScene` per the character contract (ARCHITECTURE §16). Until this exists the player is a capsule, which works but cannot exercise animation or sockets.
+**Proposed API:** A `PackedScene` whose root contains: a `Skeleton3D` conforming to `SkeletonProfileHumanoid`; `BoneAttachment3D` sockets named `Socket_RightHand`, `Socket_LeftHand`, `Socket_Back`, `Socket_Hip`; named material slots; an `AnimationPlayer` with any subset of clips named `idle`, `walk`, `run`, `sprint`, `jump`, `fall`, `land`, `crouch_idle`, `crouch_walk` (missing clips are safely ignored; loops for idle/walk/run/sprint/crouch_*). Root motion off. A Mixamo base + Mixamo clips retargeted to the humanoid profile satisfies all of this.
+**Blocking:** no
+**Status:** OPEN
