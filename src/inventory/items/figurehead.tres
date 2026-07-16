@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/inventory/item_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"figurehead"
+display_name = "Figurehead"
+category = 2
+stack_max = 1
+description = "Carved with a face you do not remember carving."

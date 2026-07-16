@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/inventory/item_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"blind_fish"
+display_name = "Blind Fish"
+category = 0
+stack_max = 20
+description = "Caught in the still water of the Cistern. Cooks only on real flame."

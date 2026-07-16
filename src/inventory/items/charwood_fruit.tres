@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/inventory/item_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"charwood_fruit"
+display_name = "Charwood Fruit"
+category = 0
+stack_max = 20
+description = "Grows inside the burn. Cooked, it lets you bear the heat."

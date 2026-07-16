@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/inventory/item_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"keel"
+display_name = "Keel"
+category = 2
+stack_max = 1
+description = "The spine of the boat, from the spine of the bridge."
