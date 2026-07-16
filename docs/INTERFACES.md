@@ -72,3 +72,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** As above; no scripting needed on your side.
 **Blocking:** no
 **Status:** OPEN
+
+### [2026-07-16] FROM: SYSTEMS TO: WORLD
+**Request:** Drowned placement (M11): instance `scenes/prefabs/gameplay/drowned.tscn` in The Dark ONLY — never on the surface, never anywhere else (ARCHITECTURE §10). Each instance leashes to its spawn position (`leash_radius` export, default 40m); size The Dark's rooms so leashes never reach an exit. They hunt light in the `burning` group with line-of-sight, so The Dark's geometry needs occluders to hide behind — sight is blocked by layer `world` geometry only. Tune `hunt_speed` (default 4.5, vs player run 5.0) per encounter if a chase must be escapable by sprinting.
+**Why:** The Dark is a stealth and panic sequence, Lanka's climax. The AI is built; the terror is placement, lighting, and room shape, which are yours.
+**Proposed API:** As above; also a placeholder drowned mesh under `assets/characters/drowned/` mounts via the exported `mesh_scene` (no skeleton contract needed — any Node3D scene).
+**Blocking:** no
+**Status:** OPEN
