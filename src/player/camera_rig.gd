@@ -23,7 +23,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed(&"ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif event is InputEventMouseButton and (event as InputEventMouseButton).pressed \
-			and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+			and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED \
+			and get_tree().get_first_node_in_group(&"modal_ui") == null:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_player"]
 [ext_resource type="Script" path="res://src/player/camera_rig.gd" id="2_camrig"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://src/interaction/carry_controller.gd" id="5_carry"]
 [ext_resource type="Script" path="res://src/interaction/player_interactor.gd" id="6_interactor"]
 [ext_resource type="Script" path="res://src/ui/interact_prompt.gd" id="7_prompt"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hotbar.tscn" id="8_hotbar"]
+[ext_resource type="PackedScene" path="res://scenes/ui/storage_panel.tscn" id="9_storage"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
 radius = 0.35
@@ -73,6 +75,10 @@ theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_prompt")
+
+[node name="Hotbar" parent="HUD" instance=ExtResource("8_hotbar")]
+
+[node name="StoragePanel" parent="HUD" instance=ExtResource("9_storage")]
 
 [node name="GripDust" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
