@@ -65,3 +65,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Also an addendum to the Nau placeholder clip list: `swim_idle` and `swim_move` (looping, any subset fine).
 **Blocking:** no
 **Status:** OPEN
+
+### [2026-07-16] FROM: SYSTEMS TO: WORLD
+**Request:** Campfire placement (M10): instance `scenes/prefabs/gameplay/campfire.tscn` wherever a cook/save point belongs, and set the exported `initial_flame` per placement — `LIT` (real flame, cooks everything), `EMBERS` (cooks everything except blind fish; the Cistern should have at most embers so fish must be carried up, §7), or `UNLIT` (the player lights it with a carried lit brand). Campfires autosave on every use; you never wire saving.
+**Why:** Campfires are cooking stations AND save points, one prefab, two jobs. Density guidance: at least one real-flame campfire reachable near each district mouth so autosave pacing holds, but placement is yours.
+**Proposed API:** As above; no scripting needed on your side.
+**Blocking:** no
+**Status:** OPEN
