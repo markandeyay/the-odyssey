@@ -49,3 +49,33 @@ use them.
 | Godot material | `res://assets/materials/library/poly_haven/aerial_rocks_04/mat_aerial_rocks_04_grip_solid.tres` |
 | Lanka usage | Lanka terrain rock material library; district placement to be determined during M4 and M5. |
 <!-- /asset:poly_haven:aerial_rocks_04 -->
+
+<!-- asset:mixamo:nau_m3_animation_set -->
+### Nau M3 Animation Set
+
+| Field | Value |
+|---|---|
+| Provider ID | `mixamo:nau_m3_animation_set` |
+| Source | [Adobe Mixamo](https://www.mixamo.com/) |
+| Author | Adobe Mixamo |
+| License | [Mixamo FAQ and usage terms](https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html) |
+| Date pulled | 2026-07-16 |
+| Repository path | `res://assets/characters/nau/source/mixamo/animations/` |
+| Godot material | N/A; animation-only FBX sources downloaded without skin. |
+| Lanka usage | Nau placeholder animation sources for idle, locomotion, jumping, climbing, carrying, gliding, and death on Lanka. |
+<!-- /asset:mixamo:nau_m3_animation_set -->
+
+<!-- asset:mixamo:nau_m3_animation_library -->
+### Nau M3 Animation Library
+
+| Field | Value |
+|---|---|
+| Provider ID | `mixamo:nau_m3_animation_library` |
+| Source | [Adobe Mixamo](https://www.mixamo.com/) |
+| Author | Adobe Mixamo; Godot retargeting and in-place processing by The Odyssey project |
+| License | [Mixamo FAQ and usage terms](https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html) |
+| Date pulled | 2026-07-16 |
+| Repository path | `res://assets/characters/nau/animations/` |
+| Godot material | N/A; derived `AnimationLibrary` resource. |
+| Lanka usage | Canonical, mesh-independent Nau animation library used by the Lanka player visual. |
+<!-- /asset:mixamo:nau_m3_animation_library -->

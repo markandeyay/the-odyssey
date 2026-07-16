@@ -45,6 +45,7 @@ func validate_manifest(manifest: Dictionary = {}) -> Array[String]:
 		issues.append("Mixamo animation download FPS must be 30")
 
 	var seen: Dictionary = {}
+	var source_files: Dictionary = {}
 	var animations: Array = resolved.get("animations", []) as Array
 	for animation_value: Variant in animations:
 		if not animation_value is Dictionary:
@@ -56,8 +57,9 @@ func validate_manifest(manifest: Dictionary = {}) -> Array[String]:
 		if animation_name.is_empty() or seen.has(animation_name):
 			issues.append("Animation names must be non-empty and unique: %s" % animation_name)
 		seen[animation_name] = true
-		if filename != "%s.fbx" % animation_name:
-			issues.append("Animation %s must use canonical filename %s.fbx" % [animation_name, animation_name])
+		if filename.get_extension().to_lower() != "fbx" or filename.get_file() != filename:
+			issues.append("Animation %s has an invalid source filename: %s" % [animation_name, filename])
+		source_files[filename] = true
 		if not bool(animation.get("in_place", false)):
 			issues.append("Animation %s must be downloaded In Place (root motion off)" % animation_name)
 	for expected: String in EXPECTED_ANIMATIONS:
@@ -65,6 +67,8 @@ func validate_manifest(manifest: Dictionary = {}) -> Array[String]:
 			issues.append("Missing required animation manifest entry: %s" % expected)
 	if seen.size() != EXPECTED_ANIMATIONS.size():
 		issues.append("Animation manifest must contain exactly %d clips" % EXPECTED_ANIMATIONS.size())
+	if source_files.size() != 16:
+		issues.append("The reviewed M3 set must reference exactly 16 unique source FBXs")
 
 	var mapping: Dictionary = resolved.get("bone_map", {}) as Dictionary
 	var bone_map: BoneMap = MixamoBoneMap.create(resolved)
@@ -73,7 +77,7 @@ func validate_manifest(manifest: Dictionary = {}) -> Array[String]:
 	for profile_bone: String in REQUIRED_PROFILE_BONES:
 		if str(mapping.get(profile_bone, "")).is_empty():
 			issues.append("Missing Mixamo bone mapping for %s" % profile_bone)
-		elif bone_map.get_skeleton_bone_name(profile_bone) != StringName(mapping[profile_bone]):
+		elif bone_map.get_skeleton_bone_name(profile_bone) != StringName(str(mapping[profile_bone]).replace(":", "_")):
 			issues.append("BoneMap did not preserve mapping for %s" % profile_bone)
 	return issues
 
@@ -99,6 +103,13 @@ func validate_sources(manifest: Dictionary = {}) -> Array[String]:
 			issues.append("Missing Mixamo animation FBX: %s" % path)
 		else:
 			_validate_fbx_source(path, true, issues)
+	var referenced: Dictionary = {}
+	for animation_value: Variant in resolved.get("animations", []) as Array:
+		if animation_value is Dictionary:
+			referenced[str((animation_value as Dictionary).get("file", ""))] = true
+	for filename: String in DirAccess.get_files_at(ANIMATION_ROOT):
+		if filename.get_extension().to_lower() == "fbx" and not referenced.has(filename):
+			issues.append("Unreferenced downloaded Mixamo FBX: %s" % ANIMATION_ROOT.path_join(filename))
 	return issues
 
 

@@ -11,7 +11,8 @@ static func create(manifest: Dictionary = {}) -> BoneMap:
 	bone_map.profile = SkeletonProfileHumanoid.new()
 	var mappings: Dictionary = resolved_manifest.get("bone_map", {}) as Dictionary
 	for profile_bone: String in mappings:
-		bone_map.set_skeleton_bone_name(profile_bone, str(mappings[profile_bone]))
+		var imported_bone: String = str(mappings[profile_bone]).replace(":", "_")
+		bone_map.set_skeleton_bone_name(profile_bone, imported_bone)
 	return bone_map
 
 
