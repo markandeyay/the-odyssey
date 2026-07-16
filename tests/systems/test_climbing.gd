@@ -77,7 +77,8 @@ func test_hot_wall_grips_and_damages() -> void:
 	assert_true(_climb.try_attach(Vector3.FORWARD), "HOT grips fine")
 	await wait_physics_frames(30)
 	assert_true(_climb.active, "HOT never drops you by itself")
-	assert_gt(_player.total_damage_taken, 0.0, "HOT deals contact damage per second")
+	assert_lt(_player.health.current_hearts, float(_player.health.containers),
+			"HOT deals contact damage per second")
 
 
 func test_burning_group_makes_solid_wall_hot() -> void:
@@ -86,7 +87,8 @@ func test_burning_group_makes_solid_wall_hot() -> void:
 	await wait_physics_frames(3)
 	assert_true(_climb.try_attach(Vector3.FORWARD))
 	await wait_physics_frames(30)
-	assert_gt(_player.total_damage_taken, 0.0, "a burning surface reports HOT and burns")
+	assert_lt(_player.health.current_hearts, float(_player.health.containers),
+			"a burning surface reports HOT and burns")
 
 
 func test_cannot_climb_while_carrying() -> void:
