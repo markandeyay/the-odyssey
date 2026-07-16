@@ -16,16 +16,17 @@ func test_registry_loads_item_defs() -> void:
 	assert_eq(ItemRegistry.get_def(&"figurehead").stack_max, 1, "key items never stack")
 
 
-func test_exactly_three_salvage_and_four_foods() -> void:
+func test_exactly_three_salvage_and_four_ingredients() -> void:
 	var salvage: int = 0
-	var food: int = 0
+	var raw_ingredients: int = 0
 	for def: ItemDef in ItemRegistry.all_defs():
 		if def.category == ItemDef.Category.SALVAGE:
 			salvage += 1
-		elif def.category == ItemDef.Category.FOOD:
-			food += 1
+		elif def is FoodDef and (def as FoodDef).cooked_id != &"":
+			raw_ingredients += 1
 	assert_eq(salvage, 3, "timber, iron, canvas — no more (ARCHITECTURE §9)")
-	assert_eq(food, 4, "exactly four ingredients (ARCHITECTURE §7)")
+	assert_eq(raw_ingredients, 4,
+			"exactly four ingredients (ARCHITECTURE §7); cooked variants are results, not ingredients")
 
 
 func test_stacking_caps_at_twenty() -> void:
