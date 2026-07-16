@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://src/drowned/drowned.gd" id="1_drowned"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.4
+height = 1.9
+
+[sub_resource type="StandardMaterial3D" id="Mat_drowned"]
+resource_name = "mat_drowned_placeholder"
+albedo_color = Color(0.05, 0.09, 0.1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_drowned"]
+material = SubResource("Mat_drowned")
+radius = 0.4
+height = 1.9
+
+[node name="Drowned" type="CharacterBody3D"]
+collision_layer = 256
+collision_mask = 3
+script = ExtResource("1_drowned")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="FallbackMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+mesh = SubResource("CapsuleMesh_drowned")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("CapsuleShape3D_body")
