@@ -159,6 +159,16 @@ func douse_area(position: Vector3, radius: float) -> void:
 			_heat.erase(cell)
 
 
+## Extinguishes one whole flammable and marks it doused. Water volumes
+## (M8) call this for burning bodies they swallow.
+func douse_flammable(flammable: Flammable) -> void:
+	if not flammable.is_burning():
+		return
+	for cell: Vector3i in flammable.burning_cells:
+		_burning.erase(cell)
+	flammable.on_extinguished(true)
+
+
 func register_flammable(flammable: Flammable) -> void:
 	if _flammables.has(flammable):
 		return

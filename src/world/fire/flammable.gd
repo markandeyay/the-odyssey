@@ -58,6 +58,14 @@ func _exit_tree() -> void:
 	_grid = null
 
 
+## The Flammable component of a body, if it has one (water dousing, M8).
+static func of(node: Node) -> Flammable:
+	for child: Node in node.get_children():
+		if child is Flammable:
+			return child as Flammable
+	return null
+
+
 func is_burning() -> bool:
 	return state == State.BURNING
 

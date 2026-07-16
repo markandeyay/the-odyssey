@@ -5,14 +5,18 @@ extends RefCounted
 ##   mat_<name>_grip_solid | crumbling | slick | hot
 ## WORLD authors material names; SYSTEMS reads them here. There is no
 ## per-node grip property, ever — that is the seam.
-## Fire overrides materials at runtime through scene groups, so this file
-## stays decoupled from the fire system (M7 maintains group membership):
-## a collider in "burning" reports HOT, in "charred" reports CRUMBLING.
+## Fire and water override materials at runtime through scene groups, so
+## this file stays decoupled from both systems (M7 fire and M8 water
+## maintain group membership): a collider in "burning" reports HOT, in
+## "charred" reports CRUMBLING, in "doused" reports SLICK — dousing a HOT
+## surface makes it climbable but slick, a tradeoff, not a solution (§5).
+## Priority: burning > charred > doused > material name.
 
 enum Class { SOLID, CRUMBLING, SLICK, HOT }
 
 const BURNING_GROUP: StringName = &"burning"
 const CHARRED_GROUP: StringName = &"charred"
+const DOUSED_GROUP: StringName = &"doused"
 const _GRIP_TOKEN: String = "_grip_"
 
 static var _warned_names: Dictionary = {}
@@ -25,6 +29,8 @@ static func class_from_collision(collider: Object) -> Class:
 			return Class.HOT
 		if node.is_in_group(CHARRED_GROUP):
 			return Class.CRUMBLING
+		if node.is_in_group(DOUSED_GROUP):
+			return Class.SLICK
 	return class_from_material_name(material_name_of(collider))
 
 
