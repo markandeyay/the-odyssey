@@ -67,3 +67,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Provide WORLD-placeable `PackedScene` prefabs under `res://scenes/prefabs/gameplay/` for `ocean_kill_volume`, `district_trigger`, `carryable_object`, `fire_source`, `heat_volume`, `updraft_volume`, `water_volume`, `water_current`, and `drowned_spawn`. Volume prefabs need exported `size_m: Vector3`; directional prefabs need exported `direction: Vector3` and `strength: float`; triggers/spawns need exported `district_id: StringName` or `spawn_id: StringName`. WORLD scenes expose matching `Marker3D` nodes under `GameplaySockets` with metadata keys `socket_type`, `socket_size_m`, `direction`, `strength`, `district_id`, and `spawn_id` as applicable. Once the prefabs exist, WORLD will instance them at those sockets without opening or editing the prefab files.
 **Blocking:** yes for functional M5 hazards and district events; no for WORLD-owned geometry, traversal, streaming, and scene validation
 **Status:** OPEN
+
+### [2026-07-16] FROM: WORLD TO: SYSTEMS
+**Request:** Integrate The Dark as a separate sublevel entered after the Spine rather than adding it to Lanka's open-world stream selector.
+**Why:** M5 provides `dark_district.tscn` as an enclosed terror sequence with drowned spawn and hiding sockets. The constitution requires it to be separately streamed, and player transfer plus drowned lifecycle are SYSTEMS-owned.
+**Proposed API:** When the SYSTEMS-owned trial flow opens The Dark, instance `res://scenes/levels/lanka/districts/dark/dark_district.tscn` through the level host, place Nau at `RouteMarkers/Entry`, and unload it when the sequence exits. Do not add this path to `LankaDistrictContract.OPEN_WORLD_DISTRICTS`; the WORLD validator deliberately rejects that coupling.
+**Blocking:** yes for entering and completing The Dark in the integrated build; no for WORLD M5 scene validation
+**Status:** OPEN

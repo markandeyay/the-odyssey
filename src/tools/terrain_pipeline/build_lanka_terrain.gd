@@ -4,10 +4,11 @@ const TerrainScript: Script = preload("res://addons/odyssey_world_tools/terrain_
 const LankaTerrainContract: Script = preload("res://scenes/levels/lanka/lanka_terrain_contract.gd")
 const LankaHeightGenerator: Script = preload("res://src/tools/terrain_pipeline/lanka_height_generator.gd")
 const StreamingScript: Script = preload("res://scenes/levels/lanka/lanka_streaming_root.gd")
+const LankaDistrictContract: Script = preload("res://scenes/levels/lanka/lanka_district_contract.gd")
 
 const CHUNK_ROOT: String = "res://scenes/levels/lanka/chunks"
 const LANDMARK_ROOT: String = "res://scenes/levels/lanka/landmarks"
-const SPINE_SCENE_PATH: String = "res://scenes/levels/lanka/landmarks/spine_blockout.tscn"
+const SPINE_BLOCKOUT_PATH: String = "res://scenes/levels/lanka/landmarks/spine_blockout.tscn"
 const LANKA_SCENE_PATH: String = "res://scenes/levels/lanka/lanka.tscn"
 const LOW_TEXTURE_PATH: String = "res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png"
 const HIGH_TEXTURE_PATH: String = "res://assets/materials/library/poly_haven/aerial_rocks_04/aerial_rocks_04_albedo.png"
@@ -17,6 +18,14 @@ var _height_generator: RefCounted
 
 func _initialize() -> void:
 	_height_generator = LankaHeightGenerator.new() as RefCounted
+	if "root_only" in OS.get_cmdline_user_args():
+		var root_only_error: Error = _build_lanka_root()
+		if root_only_error != OK:
+			_fail("Unable to rebuild Lanka streaming root: %s" % error_string(root_only_error))
+			return
+		print("Wrote Lanka streaming root")
+		quit(0)
+		return
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(CHUNK_ROOT))
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(LANDMARK_ROOT))
 	for coordinate: Vector2i in LankaTerrainContract.all_chunk_coordinates():
@@ -160,7 +169,7 @@ func _build_spine_landmark() -> Error:
 	notifier.aabb = AABB(Vector3(-24.0, 0.0, -24.0), Vector3(48.0, tower_height + 24.0, 48.0))
 	root.add_child(notifier)
 	_set_owner_recursive(root, root)
-	var save_error: Error = _save_scene(root, SPINE_SCENE_PATH)
+	var save_error: Error = _save_scene(root, SPINE_BLOCKOUT_PATH)
 	root.free()
 	return save_error
 
@@ -177,11 +186,20 @@ func _build_lanka_root() -> Error:
 	chunks.name = "StreamedChunks"
 	root.add_child(chunks)
 	chunks.owner = root
+	var districts: Node3D = Node3D.new()
+	districts.name = "StreamedDistricts"
+	root.add_child(districts)
+	districts.owner = root
 	var landmarks: Node3D = Node3D.new()
 	landmarks.name = "PersistentLandmarks"
 	root.add_child(landmarks)
 	landmarks.owner = root
-	var spine_packed: PackedScene = load(SPINE_SCENE_PATH) as PackedScene
+	var spine_path: String = (
+		LankaDistrictContract.SPINE_PATH
+		if FileAccess.file_exists(LankaDistrictContract.SPINE_PATH)
+		else SPINE_BLOCKOUT_PATH
+	)
+	var spine_packed: PackedScene = load(spine_path) as PackedScene
 	if spine_packed == null:
 		root.free()
 		return ERR_FILE_CANT_READ

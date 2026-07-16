@@ -8,8 +8,8 @@ const OPEN_WORLD_DISTRICTS: Dictionary = {
 	&"shallows": {
 		"path": DISTRICT_ROOT + "/shallows/shallows_district.tscn",
 		"center": Vector3(0.0, 3.0, -410.0),
-		"load_radius_m": 330.0,
-		"unload_radius_m": 430.0,
+		"load_radius_m": 290.0,
+		"unload_radius_m": 400.0,
 	},
 	&"terraces": {
 		"path": DISTRICT_ROOT + "/terraces/terraces_district.tscn",

@@ -2,8 +2,9 @@ extends RefCounted
 
 const TerrainScript: Script = preload("res://addons/odyssey_world_tools/terrain_3d.gd")
 const LankaTerrainContract: Script = preload("res://scenes/levels/lanka/lanka_terrain_contract.gd")
+const LankaDistrictContract: Script = preload("res://scenes/levels/lanka/lanka_district_contract.gd")
 const LANKA_SCENE_PATH: String = "res://scenes/levels/lanka/lanka.tscn"
-const SPINE_SCENE_PATH: String = "res://scenes/levels/lanka/landmarks/spine_blockout.tscn"
+const SPINE_BLOCKOUT_PATH: String = "res://scenes/levels/lanka/landmarks/spine_blockout.tscn"
 
 
 func validate_repository() -> Array[String]:
@@ -65,20 +66,20 @@ func _validate_chunks(issues: Array[String]) -> void:
 
 
 func _validate_spine(issues: Array[String]) -> void:
-	var spine: Node3D = _instantiate_node_3d(SPINE_SCENE_PATH, issues)
+	var spine_path: String = _persistent_spine_path()
+	var spine: Node3D = _instantiate_node_3d(spine_path, issues)
 	if spine == null:
 		return
 	if not spine.position.is_equal_approx(LankaTerrainContract.SPINE_BASE):
-		issues.append("%s: Spine base differs from the terrain contract" % SPINE_SCENE_PATH)
+		issues.append("%s: Spine base differs from the terrain contract" % spine_path)
 	if not bool(spine.get_meta(&"persistent_landmark", false)):
-		issues.append("%s: Spine is not marked persistent" % SPINE_SCENE_PATH)
+		issues.append("%s: Spine is not marked persistent" % spine_path)
 	if _count_nodes_of_type(spine, "VisibleOnScreenNotifier3D") < 1:
-		issues.append("%s: expensive landmark lacks a visibility notifier" % SPINE_SCENE_PATH)
+		issues.append("%s: expensive landmark lacks a visibility notifier" % spine_path)
 	if _count_nodes_of_type(spine, "OccluderInstance3D") < 1:
-		issues.append("%s: Spine lacks an occluder" % SPINE_SCENE_PATH)
-	var body: StaticBody3D = spine.get_node_or_null("SpineCollision") as StaticBody3D
-	if body == null or body.collision_layer != 1:
-		issues.append("%s: Spine collision is not on the world layer" % SPINE_SCENE_PATH)
+		issues.append("%s: Spine lacks an occluder" % spine_path)
+	if _count_world_bodies(spine) < 1:
+		issues.append("%s: Spine has no collision on the world layer" % spine_path)
 	spine.free()
 
 
@@ -93,8 +94,12 @@ func _validate_streaming_root(issues: Array[String]) -> void:
 	var chunks: Node = root.get_node_or_null("StreamedChunks")
 	if chunks == null or chunks.get_child_count() != 0:
 		issues.append("%s: runtime root must not preload terrain chunks" % LANKA_SCENE_PATH)
-	var spine: Node = root.get_node_or_null("PersistentLandmarks/SpineBlockout")
-	if spine == null or spine.scene_file_path != SPINE_SCENE_PATH:
+	var districts: Node = root.get_node_or_null("StreamedDistricts")
+	if districts == null or districts.get_child_count() != 0:
+		issues.append("%s: runtime root must not preload open-world districts" % LANKA_SCENE_PATH)
+	var landmarks: Node = root.get_node_or_null("PersistentLandmarks")
+	var spine: Node = landmarks.get_child(0) if landmarks != null and landmarks.get_child_count() == 1 else null
+	if spine == null or spine.scene_file_path != _persistent_spine_path():
 		issues.append("%s: persistent Spine must remain an external scene instance" % LANKA_SCENE_PATH)
 	if LankaTerrainContract.UNLOAD_RADIUS_M <= LankaTerrainContract.LOAD_RADIUS_M:
 		issues.append("Lanka stream radii do not provide unload hysteresis")
@@ -119,6 +124,17 @@ func _validate_streaming_root(issues: Array[String]) -> void:
 	if largest_set > 12:
 		issues.append("%s: stream selection can request %d chunks at once" % [LANKA_SCENE_PATH, largest_set])
 	root.free()
+
+
+func _persistent_spine_path() -> String:
+	return LankaDistrictContract.SPINE_PATH if FileAccess.file_exists(LankaDistrictContract.SPINE_PATH) else SPINE_BLOCKOUT_PATH
+
+
+func _count_world_bodies(root: Node) -> int:
+	var count: int = int(root is StaticBody3D and (root as StaticBody3D).collision_layer & 1 != 0)
+	for child: Node in root.get_children():
+		count += _count_world_bodies(child)
+	return count
 
 
 func _instantiate_node_3d(path: String, issues: Array[String]) -> Node3D:

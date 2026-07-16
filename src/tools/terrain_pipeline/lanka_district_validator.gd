@@ -18,9 +18,11 @@ func validate_districts(district_ids: PackedStringArray) -> Array[String]:
 
 
 func validate_all() -> Array[String]:
-	return validate_districts(PackedStringArray([
+	var issues: Array[String] = validate_districts(PackedStringArray([
 		"shallows", "terraces", "ember_quarter", "cistern", "spine", "dark",
 	]))
+	_validate_streaming_integration(issues)
+	return issues
 
 
 func _validate_district(district_id: StringName, issues: Array[String]) -> void:
@@ -143,6 +145,32 @@ func _validate_dark(root: Node3D, path: String, issues: Array[String]) -> void:
 		issues.append("%s: The Dark lacks required hiding coverage" % path)
 	if DistrictContract.desired_open_world_paths(root.position).has(path):
 		issues.append("%s: The Dark leaked into open-world district selection" % path)
+
+
+func _validate_streaming_integration(issues: Array[String]) -> void:
+	const LANKA_PATH: String = "res://scenes/levels/lanka/lanka.tscn"
+	var packed: PackedScene = load(LANKA_PATH) as PackedScene
+	if packed == null:
+		issues.append("%s: unable to load integrated Lanka root" % LANKA_PATH)
+		return
+	var root: Node3D = packed.instantiate() as Node3D
+	var districts: Node = root.get_node_or_null("StreamedDistricts")
+	if districts == null or districts.get_child_count() != 0:
+		issues.append("%s: open-world districts must begin unloaded" % LANKA_PATH)
+	var landmarks: Node = root.get_node_or_null("PersistentLandmarks")
+	var spine: Node = landmarks.get_child(0) if landmarks != null and landmarks.get_child_count() == 1 else null
+	if spine == null or spine.scene_file_path != DistrictContract.SPINE_PATH:
+		issues.append("%s: full M5 Spine is not the persistent landmark" % LANKA_PATH)
+	var largest_set: int = 0
+	for z: int in range(-550, 551, 55):
+		for x: int in range(-550, 551, 55):
+			var paths: PackedStringArray = root.call("desired_district_paths", Vector3(float(x), 0.0, float(z))) as PackedStringArray
+			largest_set = maxi(largest_set, paths.size())
+			if paths.has(DistrictContract.DARK_PATH):
+				issues.append("%s: The Dark appears in open-world stream selection" % LANKA_PATH)
+	if largest_set > 2:
+		issues.append("%s: district streamer requests %d large scenes at once" % [LANKA_PATH, largest_set])
+	root.free()
 
 
 func _path_for_id(district_id: StringName) -> String:

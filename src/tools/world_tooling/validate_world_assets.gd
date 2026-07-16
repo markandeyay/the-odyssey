@@ -4,6 +4,7 @@ const GripMaterialValidator: Script = preload("res://src/tools/world_tooling/gri
 const AttributionValidator: Script = preload("res://src/tools/world_tooling/attribution_validator.gd")
 const SceneBudgetChecker: Script = preload("res://src/tools/world_tooling/scene_budget_checker.gd")
 const LankaTerrainValidator: Script = preload("res://src/tools/terrain_pipeline/lanka_terrain_validator.gd")
+const LankaDistrictValidator: Script = preload("res://src/tools/terrain_pipeline/lanka_district_validator.gd")
 
 
 func _initialize() -> void:
@@ -16,8 +17,10 @@ func _initialize() -> void:
 	issues.append_array(budget_checker.validate_lanka_scenes())
 	var terrain_validator: RefCounted = LankaTerrainValidator.new() as RefCounted
 	issues.append_array(terrain_validator.validate_repository())
+	var district_validator: RefCounted = LankaDistrictValidator.new() as RefCounted
+	issues.append_array(district_validator.validate_all())
 	if issues.is_empty():
-		print("PASS: WORLD materials, attributions, scene budgets, and Lanka terrain are valid")
+		print("PASS: WORLD materials, attributions, budgets, Lanka terrain, and M5 districts are valid")
 		quit(0)
 		return
 	for issue: String in issues:
