@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ItemDef" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="FoodDef" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://src/inventory/item_def.gd" id="1"]
+[ext_resource type="Script" path="res://src/cooking/food_def.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
@@ -9,3 +9,5 @@ display_name = "Charwood Fruit"
 category = 0
 stack_max = 20
 description = "Grows inside the burn. Cooked, it lets you bear the heat."
+heal_hearts = 0.5
+cooked_id = &"charwood_fruit_cooked"

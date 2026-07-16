@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1")
-id = &"ashroot"
-display_name = "Ashroot"
+id = &"charwood_fruit_cooked"
+display_name = "Roasted Charwood Fruit"
 category = 0
 stack_max = 20
-description = "Dug from the ash beds of the Terraces."
-heal_hearts = 0.25
-cooked_id = &"ashroot_cooked"
+description = "The heat went in and stayed. Eat it and the burn cannot touch you for a while."
+heal_hearts = 1.0
+grants_heat_resistance = 90.0

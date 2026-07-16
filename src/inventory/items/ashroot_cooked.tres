@@ -4,10 +4,9 @@
 
 [resource]
 script = ExtResource("1")
-id = &"ashroot"
-display_name = "Ashroot"
+id = &"ashroot_cooked"
+display_name = "Baked Ashroot"
 category = 0
 stack_max = 20
-description = "Dug from the ash beds of the Terraces."
-heal_hearts = 0.25
-cooked_id = &"ashroot_cooked"
+description = "Soft and sweet under the char."
+heal_hearts = 1.5
