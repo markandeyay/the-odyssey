@@ -92,6 +92,7 @@ func _validate_shallows(root: Node3D, path: String, issues: Array[String]) -> vo
 func _validate_terraces(root: Node3D, path: String, issues: Array[String]) -> void:
 	_expect_count_prefix(root, "TerraceBed", 6, path, issues)
 	_expect_count_prefix(root, "RetainingWall", 6, path, issues)
+	_expect_count_prefix(root, "SafeRouteStep", 6, path, issues)
 	if _count_prefix(root, "IrrigationChannel") < 12:
 		issues.append("%s: dry irrigation network is incomplete" % path)
 	var grip_classes: Dictionary = _grip_classes(root)

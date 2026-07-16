@@ -147,6 +147,12 @@ func _build_terraces() -> Error:
 			geometry, "IrrigationChannelRight%02d" % tier, Vector3(tier_x, tier_y + 0.3, 55.0),
 			Vector3(48.0, 1.0, 4.0), _materials[&"wet_stone"], true
 		)
+		var safe_route_z: float = -92.0 + float(tier) * 34.0
+		_builder.add_static_box(
+			geometry, "SafeRouteStep%02d" % tier,
+			Vector3(tier_x - 27.0, tier_y + 2.0, safe_route_z),
+			Vector3(13.0, 3.0, 17.0), _materials[&"clean_stone"], true
+		)
 		_builder.add_marker(
 			routes, "TierLanding%02d" % tier, Vector3(tier_x, tier_y + 1.5, 0.0), &"route_anchor",
 			{&"route_id": StringName("terrace_tier_%02d" % tier), &"grip_lesson": grip_materials[tier].resource_name}
