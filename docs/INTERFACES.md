@@ -79,3 +79,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** As above; also a placeholder drowned mesh under `assets/characters/drowned/` mounts via the exported `mesh_scene` (no skeleton contract needed — any Node3D scene).
 **Blocking:** no
 **Status:** OPEN
+
+### [2026-07-16] FROM: SYSTEMS TO: WORLD
+**Request:** Crew memory fragments (M12, ARCHITECTURE §12): author the 20 fragment texts as `FragmentDef` resources (`.tres`, script `res://src/ui/fragment_def.gd`) under `assets/fragments/`, and place `scenes/prefabs/gameplay/fragment_pickup.tscn` instances across Lanka with the matching `fragment_id` export set. SYSTEMS reads `assets/fragments/` at runtime; a placed pickup whose id has no authored def still works, showing a "waterlogged" placeholder.
+**Why:** The fragment reader UI, save counting, and dedup are built. Interacting with the remains emits `fragment_found(fragment_id)` (first find counts; re-reads are free — the remains stay in the world, so returning to where he died is the journal). Content is text over geometry you already own: per def, `id` (stable, e.g. `&"frag_helmsman"`), `crew_name` ("Adaro, the helmsman"), `memento` ("a tin whistle, bent flat"), `lines` (one or two lines of what happened — keep it short).
+**Proposed API:** As above. Exactly 20 defs, 20 placements, ids stable across saves. Do not gate anything on fragments and do not emit `fragment_found` from anywhere else.
+**Blocking:** no
+**Status:** OPEN
