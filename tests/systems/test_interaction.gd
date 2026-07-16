@@ -68,8 +68,8 @@ func test_pickup_goes_to_inventory_and_frees() -> void:
 func test_add_item_stacks_to_twenty() -> void:
 	assert_eq(Inventory.add_item(&"ash", 25), 0, "everything fits")
 	assert_eq(Inventory.count_of(&"ash"), 25)
-	assert_eq(Inventory.hotbar[0]["count"], 20, "first stack tops out at STACK_MAX")
-	assert_eq(Inventory.hotbar[1]["count"], 5, "remainder starts a second stack")
+	assert_eq(Inventory.hotbar[0].count, 20, "first stack tops out at STACK_MAX")
+	assert_eq(Inventory.hotbar[1].count, 5, "remainder starts a second stack")
 
 
 func test_add_item_overflow_returns_leftover() -> void:
