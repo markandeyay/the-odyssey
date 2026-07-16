@@ -8,7 +8,7 @@ const PLAYER_SCENE: PackedScene = preload("res://scenes/player/player.tscn")
 const CONTRACT_NODES: Array[String] = [
 	"Collider", "Visual", "Visual/FallbackCapsule", "Animator", "CeilingCheck",
 	"CameraRig", "CameraRig/Pitch", "CameraRig/Pitch/SpringArm3D",
-	"CameraRig/Pitch/SpringArm3D/Camera3D",
+	"CameraRig/Pitch/SpringArm3D/Camera3D", "ClimbController", "GripDust",
 ]
 
 
