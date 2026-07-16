@@ -61,6 +61,16 @@ const SOCKET_NAMES: Array[StringName] = [
 ## Additional hearts per m/s above the threshold.
 @export var fall_damage_per_speed: float = 0.25
 
+@export_group("Noise")
+## Loudness is the radius in meters at which the drowned hear it (M11).
+## Crouch is quiet: crouched movement emits nothing at all.
+@export var walk_loudness: float = 6.0
+@export var run_loudness: float = 16.0
+@export var footstep_interval: float = 0.5
+## Landing above this speed makes a thud the drowned hear.
+@export var land_noise_min_speed: float = 4.0
+@export var land_loudness: float = 12.0
+
 @export_group("Character contract")
 ## The mounted character scene (ARCHITECTURE §16). Never a hardcoded path.
 @export var mesh_scene: PackedScene
@@ -74,6 +84,7 @@ var breath: float = 12.0
 var _gravity: float = float(ProjectSettings.get_setting("physics/3d/default_gravity"))
 var _water_volumes: Array[WaterVolume] = []
 var _heat_resistance_timer: float = 0.0
+var _footstep_accum: float = 0.0
 var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0
 var _airborne_velocity_y: float = 0.0
@@ -139,6 +150,7 @@ func _physics_process(delta: float) -> void:
 	_apply_horizontal_movement(direction, on_floor, delta)
 	move_and_slide()
 	_detect_landing()
+	_emit_movement_noise(delta)
 
 	_climb.passive_step(delta)
 	if direction != Vector3.ZERO and not is_crouching:
@@ -210,6 +222,15 @@ func breath_fraction() -> float:
 ## What the carry system holds right now, if anything (M4/M10).
 func carried_body() -> RigidBody3D:
 	return _carry.held
+
+
+## The drowned knock Nau's light out of his hands (M11). Returns what was
+## dropped so the caller can scatter it.
+func force_drop_carried() -> RigidBody3D:
+	var body: RigidBody3D = _carry.held
+	if body != null:
+		_carry.drop()
+	return body
 
 
 ## Eats the selected hotbar item if it is food (M10, §7). Heals; cooked
@@ -347,7 +368,24 @@ func _detect_landing() -> void:
 		var damage: float = fall_damage_hearts(impact_speed)
 		if damage > 0.0:
 			apply_damage(damage, &"fall")
+		if impact_speed > land_noise_min_speed:
+			EventBus.sound_emitted.emit(global_position, land_loudness)
 	_was_on_floor = on_floor
+
+
+## Footsteps (M11): crouch is quiet, walk is audible near, run is loud.
+## The drowned listen.
+func _emit_movement_noise(delta: float) -> void:
+	var flat_speed: float = Vector2(velocity.x, velocity.z).length()
+	if not is_on_floor() or is_crouching or flat_speed < 0.5:
+		_footstep_accum = 0.0
+		return
+	_footstep_accum += delta
+	if _footstep_accum < footstep_interval:
+		return
+	_footstep_accum = 0.0
+	var loudness: float = walk_loudness if flat_speed < run_speed * walk_threshold else run_loudness
+	EventBus.sound_emitted.emit(global_position, loudness)
 
 
 func _update_animator() -> void:
