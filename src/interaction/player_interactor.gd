@@ -33,7 +33,16 @@ func _refresh_target() -> void:
 	_target_carryable = null
 	var prompt: String = ""
 	if _carry.held != null:
-		prompt = "Drop"
+		# Carrying: hands are full, but some interactables still work —
+		# a campfire lights the brand you are holding (M10).
+		var hit: Dictionary = _raycast()
+		if not hit.is_empty():
+			var interactable: Interactable = _find_interactable(hit["collider"])
+			if interactable != null and interactable.enabled and interactable.usable_while_carrying:
+				_target_interactable = interactable
+				prompt = interactable.prompt
+		if _target_interactable == null:
+			prompt = "Drop"
 	elif not _player.is_climbing():
 		var hit: Dictionary = _raycast()
 		if not hit.is_empty():
@@ -57,12 +66,16 @@ func _handle_input() -> void:
 		return
 	if not Input.is_action_just_pressed(&"interact"):
 		return
-	if _carry.held != null:
-		_carry.drop()
-	elif _target_interactable != null:
+	if _target_interactable != null:
 		_target_interactable.interact(_player)
+	elif _carry.held != null:
+		_carry.drop()
 	elif _target_carryable != null:
 		_carry.pick_up(_target_carryable)
+	else:
+		# Nothing to interact with: interact with what you are holding.
+		# A selected food item gets eaten (M10).
+		_player.try_eat_selected()
 
 
 func _raycast() -> Dictionary:

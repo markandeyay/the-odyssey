@@ -207,6 +207,29 @@ func breath_fraction() -> float:
 	return clampf(breath / breath_time, 0.0, 1.0)
 
 
+## What the carry system holds right now, if anything (M4/M10).
+func carried_body() -> RigidBody3D:
+	return _carry.held
+
+
+## Eats the selected hotbar item if it is food (M10, §7). Heals; cooked
+## charwood fruit also grants heat resistance — grants extend, never
+## stack. Returns false if the selected item is not edible.
+func try_eat_selected() -> bool:
+	var stack: ItemStack = Inventory.selected_stack()
+	if stack == null:
+		return false
+	var def: FoodDef = ItemRegistry.get_def(stack.id) as FoodDef
+	if def == null:
+		return false
+	if Inventory.remove_item(stack.id, 1) != 1:
+		return false
+	health.heal(def.heal_hearts)
+	if def.grants_heat_resistance > 0.0:
+		grant_heat_resistance(def.grants_heat_resistance)
+	return true
+
+
 ## Landing speed to hearts. Below the threshold falls are free; above it
 ## the base cost grows linearly with excess speed.
 func fall_damage_hearts(impact_speed: float) -> float:

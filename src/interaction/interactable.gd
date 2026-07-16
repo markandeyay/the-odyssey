@@ -8,6 +8,9 @@ signal interacted(player: Player)
 
 @export var prompt: String = "Interact"
 @export var enabled: bool = true
+## Campfires set this: interacting with a brand in hand lights it (M10).
+## Everything else keeps interact-while-carrying meaning "drop".
+@export var usable_while_carrying: bool = false
 
 
 func interact(player: Player) -> void:
