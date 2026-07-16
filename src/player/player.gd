@@ -38,6 +38,14 @@ const SOCKET_NAMES: Array[StringName] = [
 @export var stand_height: float = 1.8
 @export var crouch_height: float = 1.2
 
+@export_group("Fall damage")
+## Landing at or above this speed hurts (M6). ~12 m/s is a 7m drop.
+@export var fall_damage_min_speed: float = 12.0
+## Hearts dealt when landing exactly at the threshold speed.
+@export var fall_damage_base: float = 0.5
+## Additional hearts per m/s above the threshold.
+@export var fall_damage_per_speed: float = 0.25
+
 @export_group("Character contract")
 ## The mounted character scene (ARCHITECTURE §16). Never a hardcoded path.
 @export var mesh_scene: PackedScene
@@ -45,8 +53,6 @@ const SOCKET_NAMES: Array[StringName] = [
 var is_crouching: bool = false
 ## Driven by the carry system (M4). Carrying blocks climbing and gliding.
 var is_carrying: bool = false
-## Stub accumulator until the hearts system lands (M6).
-var total_damage_taken: float = 0.0
 
 var _gravity: float = float(ProjectSettings.get_setting("physics/3d/default_gravity"))
 var _coyote_timer: float = 0.0
@@ -67,6 +73,8 @@ var _sockets: Dictionary = {}
 @onready var _dust: CPUParticles3D = $GripDust
 @onready var _interactor: PlayerInteractor = $PlayerInteractor
 @onready var _prompt_label: InteractPromptLabel = $HUD/InteractPrompt
+@onready var _carry: CarryController = $CarryController
+@onready var health: PlayerHealth = $Health
 
 
 func _ready() -> void:
@@ -76,6 +84,7 @@ func _ready() -> void:
 	_climb.detached.connect(_on_climb_detached)
 	_climb.handhold_failing.connect(_on_handhold_failing)
 	_interactor.target_changed.connect(_prompt_label.set_prompt)
+	health.died.connect(_on_died)
 	_mount_mesh()
 
 
@@ -116,10 +125,18 @@ func get_socket(socket_name: StringName) -> Node3D:
 	return _sockets.get(socket_name, null)
 
 
-## Damage entry point for fire, heat, falls, and the drowned. M6 replaces
-## the body with the hearts system; the signature is stable for callers.
-func apply_damage(amount: float, _source: StringName = &"") -> void:
-	total_damage_taken += amount
+## Damage entry point for fire, heat, falls, drowning, and the drowned.
+## Amounts are in hearts (M6).
+func apply_damage(amount: float, source: StringName = &"") -> void:
+	health.apply_damage(amount, source)
+
+
+## Landing speed to hearts. Below the threshold falls are free; above it
+## the base cost grows linearly with excess speed.
+func fall_damage_hearts(impact_speed: float) -> float:
+	if impact_speed < fall_damage_min_speed:
+		return 0.0
+	return fall_damage_base + (impact_speed - fall_damage_min_speed) * fall_damage_per_speed
 
 
 ## Smoothly turns the visual (never the body) toward a world direction.
@@ -185,8 +202,12 @@ func _apply_horizontal_movement(direction: Vector3, on_floor: bool, delta: float
 func _detect_landing() -> void:
 	var on_floor: bool = is_on_floor()
 	if on_floor and not _was_on_floor:
-		landed.emit(maxf(0.0, -_airborne_velocity_y))
+		var impact_speed: float = maxf(0.0, -_airborne_velocity_y)
+		landed.emit(impact_speed)
 		_animator.play_landed()
+		var damage: float = fall_damage_hearts(impact_speed)
+		if damage > 0.0:
+			apply_damage(damage, &"fall")
 	_was_on_floor = on_floor
 
 
@@ -222,6 +243,17 @@ func _current_speed() -> float:
 	if is_carrying:
 		speed *= carry_speed_multiplier
 	return speed
+
+
+## Death is a hard reset to the last autosave (M6); the SaveSystem hears
+## `player_died` and reloads. Here we only put the body in a loadable
+## state: off the wall, empty-handed, still.
+func _on_died() -> void:
+	velocity = Vector3.ZERO
+	if _climb.active:
+		_climb.release(&"died")
+	if is_carrying:
+		_carry.drop()
 
 
 func _is_ceiling_blocked() -> bool:

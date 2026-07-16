@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://src/player/player_health.gd" id="10_health"]
 [ext_resource type="Script" path="res://src/player/camera_rig.gd" id="2_camrig"]
 [ext_resource type="Script" path="res://src/player/player_animator.gd" id="3_anim"]
 [ext_resource type="Script" path="res://src/player/climb_controller.gd" id="4_climb"]
@@ -25,10 +26,13 @@ radius = 0.3
 radius = 0.02
 height = 0.04
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_player")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("10_health")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

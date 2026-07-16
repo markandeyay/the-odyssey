@@ -74,6 +74,12 @@ func try_attach(direction: Vector3) -> bool:
 	return true
 
 
+## Forced detach from outside the controller (death). No-op when off-wall.
+func release(reason: StringName = &"released") -> void:
+	if active or _mantling:
+		_detach(reason)
+
+
 ## Called by the player on frames spent not climbing.
 func passive_step(delta: float) -> void:
 	_cooldown = maxf(0.0, _cooldown - delta)
