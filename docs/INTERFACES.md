@@ -44,3 +44,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Clip names exactly as listed, looping.
 **Blocking:** no
 **Status:** OPEN
+
+### [2026-07-16] FROM: SYSTEMS TO: WORLD
+**Request:** When you build Cairn scenes and district volumes, emit the existing EventBus signals exactly once per event and nothing more: `cairn_completed(cairn_id)` on solve, `district_entered(district_id)` on entry, `trial_completed(trial_id)` / `component_acquired(component_id)` / `fragment_found(fragment_id)` as applicable. Do not grant heart pieces or request autosaves yourself.
+**Why:** M6 wires all of that on the SYSTEMS side: a new `cairn_completed` id grants the heart piece (4 = container, 8 Cairns = exactly 2 containers) and requests the autosave; first `district_entered` per district autosaves; `trial_completed` autosaves. Duplicate emissions with the same id are safely ignored, but the id must be stable per Cairn/district/trial.
+**Proposed API:** Stable `StringName` ids, e.g. `&"cairn_shallows_1"`, `&"the_terraces"`, `&"the_hold"`.
+**Blocking:** no
+**Status:** OPEN
