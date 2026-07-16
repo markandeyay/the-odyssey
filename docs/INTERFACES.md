@@ -58,3 +58,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** As above. Ignition sources: `FireGrid.ignite_at(position)` from level scripting is allowed; everything else spreads on its own.
 **Blocking:** no
 **Status:** OPEN
+
+### [2026-07-16] FROM: SYSTEMS TO: WORLD
+**Request:** Volume placement conventions for M8. Three prefabs in `scenes/prefabs/gameplay/`, all sized by overriding the instance's `CollisionShape3D` box: (1) `water_volume.tscn` — Cistern water only, the box top is the water surface; per-instance exports: `current` (Vector3 push for channels), `dry_time`. Never stretch it over the ocean. (2) `kill_volume.tscn` — the ocean. Ring the island; entering kills. Put your wave visuals on top, no behavior. (3) `heat_volume.tscn` — ambient heat; export `damage_per_second`; stack them vertically in the Ember Quarter (heat rises).
+**Why:** Both systems are placed by WORLD as volumes; SYSTEMS built the volumes and their behavior (M8). Water automatically: floats carryables, douses fire it touches, and flips overlapped climbable surfaces to SLICK while wet (`doused` group) — so routing water against a HOT wall is a level-design tool for the Spine route.
+**Proposed API:** Also an addendum to the Nau placeholder clip list: `swim_idle` and `swim_move` (looping, any subset fine).
+**Blocking:** no
+**Status:** OPEN
