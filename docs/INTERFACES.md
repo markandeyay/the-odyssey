@@ -60,3 +60,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Set `rendering/occlusion_culling/use_occlusion_culling=true` in `project.godot`. Retain Godot's default BVH quality and ray count until an integrated 1080p profile justifies tuning them.
 **Blocking:** yes for M4 occluders to affect integrated runtime performance; no for distance LOD and chunk streaming
 **Status:** OPEN
+
+### [2026-07-16] FROM: WORLD TO: SYSTEMS
+**Request:** Provide the gameplay prefabs required to replace WORLD-authored M5 district placement sockets.
+**Why:** The M5 district scenes can own traversal geometry and deterministic placement, but ocean death, district entry, carryables, fire, heat, updrafts, interactive water, and drowned behavior are SYSTEMS-owned and no gameplay prefabs are present on the WORLD branch.
+**Proposed API:** Provide WORLD-placeable `PackedScene` prefabs under `res://scenes/prefabs/gameplay/` for `ocean_kill_volume`, `district_trigger`, `carryable_object`, `fire_source`, `heat_volume`, `updraft_volume`, `water_volume`, `water_current`, and `drowned_spawn`. Volume prefabs need exported `size_m: Vector3`; directional prefabs need exported `direction: Vector3` and `strength: float`; triggers/spawns need exported `district_id: StringName` or `spawn_id: StringName`. WORLD scenes expose matching `Marker3D` nodes under `GameplaySockets` with metadata keys `socket_type`, `socket_size_m`, `direction`, `strength`, `district_id`, and `spawn_id` as applicable. Once the prefabs exist, WORLD will instance them at those sockets without opening or editing the prefab files.
+**Blocking:** yes for functional M5 hazards and district events; no for WORLD-owned geometry, traversal, streaming, and scene validation
+**Status:** OPEN
