@@ -38,6 +38,21 @@ const SOCKET_NAMES: Array[StringName] = [
 @export var stand_height: float = 1.8
 @export var crouch_height: float = 1.2
 
+@export_group("Swimming")
+@export var swim_speed: float = 3.0
+@export var swim_vertical_speed: float = 2.0
+## Water depth over the feet at which wading becomes swimming.
+@export var swim_depth: float = 1.2
+## Where the body settles relative to the surface while floating.
+@export var swim_float_height: float = 1.5
+@export var water_acceleration: float = 6.0
+@export var head_height: float = 1.6
+## Seconds of breath underwater before drowning damage starts.
+@export var breath_time: float = 12.0
+## Seconds to refill breath fully once surfaced.
+@export var breath_refill_time: float = 2.0
+@export var drowning_damage_per_second: float = 0.5
+
 @export_group("Fall damage")
 ## Landing at or above this speed hurts (M6). ~12 m/s is a 7m drop.
 @export var fall_damage_min_speed: float = 12.0
@@ -53,8 +68,12 @@ const SOCKET_NAMES: Array[StringName] = [
 var is_crouching: bool = false
 ## Driven by the carry system (M4). Carrying blocks climbing and gliding.
 var is_carrying: bool = false
+## Seconds of breath left (M8). Full at breath_time; drowning at zero.
+var breath: float = 12.0
 
 var _gravity: float = float(ProjectSettings.get_setting("physics/3d/default_gravity"))
+var _water_volumes: Array[WaterVolume] = []
+var _heat_resistance_timer: float = 0.0
 var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0
 var _airborne_velocity_y: float = 0.0
@@ -85,6 +104,7 @@ func _ready() -> void:
 	_climb.handhold_failing.connect(_on_handhold_failing)
 	_interactor.target_changed.connect(_prompt_label.set_prompt)
 	health.died.connect(_on_died)
+	breath = breath_time
 	_mount_mesh()
 
 
@@ -93,11 +113,17 @@ func is_climbing() -> bool:
 
 
 func _physics_process(delta: float) -> void:
+	_update_survival(delta)
 	var input: Vector2 = Input.get_vector(&"move_left", &"move_right", &"move_forward", &"move_back")
 	var direction: Vector3 = _camera_rig.yaw_basis() * Vector3(input.x, 0.0, input.y)
 
 	if _climb.active:
 		_climb.physics_step(input, delta)
+		_update_animator()
+		return
+
+	if is_swimming():
+		_swim_step(direction, delta)
 		_update_animator()
 		return
 
@@ -126,9 +152,59 @@ func get_socket(socket_name: StringName) -> Node3D:
 
 
 ## Damage entry point for fire, heat, falls, drowning, and the drowned.
-## Amounts are in hearts (M6).
+## Amounts are in hearts (M6). Heat resistance (cooked charwood fruit)
+## negates ambient heat and HOT-surface contact — that is what opens HOT
+## routes (§5) — but not open flame, falls, or water.
 func apply_damage(amount: float, source: StringName = &"") -> void:
+	if is_heat_resistant() and (source == &"heat" or source == &"hot_surface"):
+		return
 	health.apply_damage(amount, source)
+
+
+func grant_heat_resistance(duration: float) -> void:
+	_heat_resistance_timer = maxf(_heat_resistance_timer, duration)
+
+
+func is_heat_resistant() -> bool:
+	return _heat_resistance_timer > 0.0
+
+
+func heat_resistance_left() -> float:
+	return _heat_resistance_timer
+
+
+## Water volumes (M8) report themselves through these on enter/exit.
+func enter_water(volume: WaterVolume) -> void:
+	if not _water_volumes.has(volume):
+		_water_volumes.append(volume)
+
+
+func exit_water(volume: WaterVolume) -> void:
+	_water_volumes.erase(volume)
+
+
+func is_in_water() -> bool:
+	return not _water_volumes.is_empty()
+
+
+func water_surface_y() -> float:
+	var top: float = -INF
+	for volume: WaterVolume in _water_volumes:
+		top = maxf(top, volume.surface_height())
+	return top
+
+
+func is_swimming() -> bool:
+	return is_in_water() and water_surface_y() - global_position.y >= swim_depth
+
+
+func is_submerged() -> bool:
+	return is_in_water() and water_surface_y() > global_position.y + head_height
+
+
+## For the breath meter (M12): 1.0 full, 0.0 drowning.
+func breath_fraction() -> float:
+	return clampf(breath / breath_time, 0.0, 1.0)
 
 
 ## Landing speed to hearts. Below the threshold falls are free; above it
@@ -159,6 +235,46 @@ func set_crouching(value: bool) -> bool:
 	_collider.position.y = capsule.height * 0.5
 	crouch_changed.emit(is_crouching)
 	return true
+
+
+## Breath and heat resistance tick every frame regardless of movement
+## state (M8). Drowning damage is continuous once breath runs out.
+func _update_survival(delta: float) -> void:
+	if _heat_resistance_timer > 0.0:
+		_heat_resistance_timer = maxf(0.0, _heat_resistance_timer - delta)
+	if is_submerged():
+		breath = maxf(0.0, breath - delta)
+		if breath <= 0.0:
+			apply_damage(drowning_damage_per_second * delta, &"drowning")
+	else:
+		breath = minf(breath_time, breath + delta * breath_time / breath_refill_time)
+
+
+## Buoyant locomotion (M8): float to the surface, jump to rise, crouch to
+## dive, currents push. No gravity, no coyote time, no fall damage — the
+## water catches everything.
+func _swim_step(direction: Vector3, delta: float) -> void:
+	_airborne_velocity_y = 0.0
+	_was_on_floor = is_on_floor()
+	var push: Vector3 = Vector3.ZERO
+	for volume: WaterVolume in _water_volumes:
+		push += volume.current
+	var target: Vector3 = direction * swim_speed + Vector3(push.x, 0.0, push.z)
+	var flat: Vector3 = Vector3(velocity.x, 0.0, velocity.z)
+	flat = flat.lerp(target, 1.0 - exp(-water_acceleration * delta))
+	velocity.x = flat.x
+	velocity.z = flat.z
+	var vertical: float
+	if Input.is_action_pressed(&"jump"):
+		vertical = swim_vertical_speed
+	elif Input.is_action_pressed(&"crouch"):
+		vertical = -swim_vertical_speed
+	else:
+		var settle: float = water_surface_y() - (global_position.y + swim_float_height)
+		vertical = clampf(settle * 2.0, -swim_vertical_speed, swim_vertical_speed)
+	velocity.y = lerpf(velocity.y, vertical + push.y, 1.0 - exp(-water_acceleration * delta))
+	move_and_slide()
+	face_toward(direction, delta)
 
 
 func _update_timers(on_floor: bool, delta: float) -> void:
@@ -214,6 +330,10 @@ func _detect_landing() -> void:
 func _update_animator() -> void:
 	if _climb.active:
 		_animator.set_locomotion(&"climb_move" if velocity.length() > 0.3 else &"climb_idle")
+		return
+	if is_swimming():
+		var swim_flat: float = Vector2(velocity.x, velocity.z).length()
+		_animator.set_locomotion(&"swim_move" if swim_flat > 0.5 else &"swim_idle")
 		return
 	var flat_speed: float = Vector2(velocity.x, velocity.z).length()
 	var state: StringName
