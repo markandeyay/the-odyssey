@@ -20,4 +20,32 @@ use them.
 
 ## Third-party assets
 
-_No third-party assets have been added yet._
+<!-- asset:ambient_cg:Rock064 -->
+### Rock 064
+
+| Field | Value |
+|---|---|
+| Provider ID | `ambient_cg:Rock064` |
+| Source | [Asset page](https://ambientcg.com/a/Rock064) |
+| Author | ambientCG (Lennart Demes) |
+| License | [CC0 1.0](https://docs.ambientcg.com/license/) |
+| Date pulled | 2026-07-16 |
+| Repository path | `res://assets/materials/library/ambient_cg/rock064/` |
+| Godot material | `res://assets/materials/library/ambient_cg/rock064/mat_rock064_grip_slick.tres` |
+| Lanka usage | Cistern wet and moss-covered masonry library; district placement to be determined during M5. |
+<!-- /asset:ambient_cg:Rock064 -->
+
+<!-- asset:poly_haven:aerial_rocks_04 -->
+### Aerial Rocks 04
+
+| Field | Value |
+|---|---|
+| Provider ID | `poly_haven:aerial_rocks_04` |
+| Source | [Asset page](https://polyhaven.com/a/aerial_rocks_04) |
+| Author | Rob Tuytel |
+| License | [CC0 1.0](https://polyhaven.com/license) |
+| Date pulled | 2026-07-16 |
+| Repository path | `res://assets/materials/library/poly_haven/aerial_rocks_04/` |
+| Godot material | `res://assets/materials/library/poly_haven/aerial_rocks_04/mat_aerial_rocks_04_grip_solid.tres` |
+| Lanka usage | Lanka terrain rock material library; district placement to be determined during M4 and M5. |
+<!-- /asset:poly_haven:aerial_rocks_04 -->

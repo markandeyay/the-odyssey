@@ -1,0 +1,20 @@
+{
+	"ok": true,
+	"provider": "poly_haven",
+	"asset_id": "aerial_rocks_04",
+	"name": "Aerial Rocks 04",
+	"author": "Rob Tuytel",
+	"license": "CC0 1.0",
+	"license_url": "https://polyhaven.com/license",
+	"source_url": "https://polyhaven.com/a/aerial_rocks_04",
+	"resolution": "1k",
+	"installed_maps": {
+		"albedo": "res://assets/materials/library/poly_haven/aerial_rocks_04/aerial_rocks_04_albedo.png",
+		"roughness": "res://assets/materials/library/poly_haven/aerial_rocks_04/aerial_rocks_04_roughness.png",
+		"normal": "res://assets/materials/library/poly_haven/aerial_rocks_04/aerial_rocks_04_normal.png",
+		"ao": "res://assets/materials/library/poly_haven/aerial_rocks_04/aerial_rocks_04_ao.png",
+		"height": "res://assets/materials/library/poly_haven/aerial_rocks_04/aerial_rocks_04_height.png"
+	},
+	"material_path": "res://assets/materials/library/poly_haven/aerial_rocks_04/mat_aerial_rocks_04_grip_solid.tres",
+	"date_pulled": "2026-07-16"
+}

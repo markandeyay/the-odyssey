@@ -13,6 +13,7 @@ func _initialize() -> void:
 	_test_map_classification()
 	_test_grip_material_names()
 	_test_import_contract()
+	_test_installed_sample()
 	if _failures == 0:
 		print("PASS: Odyssey M1 asset pipeline tests")
 	else:
@@ -72,6 +73,19 @@ func _test_import_contract() -> void:
 	_expect(is_equal_approx(float(presets.get_value("contract", "nau_height_m", 0.0)), 1.9), "Nau scale reference is 1.9m")
 	_expect(bool(presets.get_value("scene", "meshes/generate_lods", false)), "scene LOD generation enabled")
 	_expect(bool(presets.get_value("texture", "mipmaps/generate", false)), "texture mipmaps enabled")
+
+
+func _test_installed_sample() -> void:
+	var samples: Dictionary = {
+		"res://assets/materials/library/ambient_cg/rock064/mat_rock064_grip_slick.tres": "mat_rock064_grip_slick",
+		"res://assets/materials/library/poly_haven/aerial_rocks_04/mat_aerial_rocks_04_grip_solid.tres": "mat_aerial_rocks_04_grip_solid",
+	}
+	for sample_path: String in samples:
+		_expect(ResourceLoader.exists(sample_path, "StandardMaterial3D"), "installed CC0 sample material exists")
+		var material: Resource = ResourceLoader.load(sample_path, "StandardMaterial3D")
+		_expect(material is StandardMaterial3D, "installed CC0 sample loads as StandardMaterial3D")
+		if material is StandardMaterial3D:
+			_expect(material.resource_name == str(samples[sample_path]), "installed sample preserves grip material name")
 
 
 func _expect(condition: bool, message: String) -> void:
