@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1_player"]
 
@@ -13,6 +13,31 @@ size = Vector3(20, 4, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wall"]
 size = Vector3(20, 4, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_panel"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_panel"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_grip_solid"]
+resource_name = "mat_test_stone_grip_solid"
+albedo_color = Color(0.6, 0.6, 0.62, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_grip_crumbling"]
+resource_name = "mat_test_char_grip_crumbling"
+albedo_color = Color(0.45, 0.3, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_grip_slick"]
+resource_name = "mat_test_soot_grip_slick"
+albedo_color = Color(0.12, 0.14, 0.18, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_grip_hot"]
+resource_name = "mat_test_ember_grip_hot"
+albedo_color = Color(0.9, 0.3, 0.05, 1)
+emission_enabled = true
+emission = Color(1, 0.25, 0, 1)
+emission_energy_multiplier = 1.5
 
 [node name="SystemsSandbox" type="Node3D"]
 
@@ -64,6 +89,50 @@ mesh = SubResource("BoxMesh_wall")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 0)
 shadow_enabled = true
+
+[node name="PanelSolid" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2, -9.2)
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PanelSolid"]
+shape = SubResource("BoxShape3D_panel")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PanelSolid"]
+mesh = SubResource("BoxMesh_panel")
+surface_material_override/0 = SubResource("Mat_grip_solid")
+
+[node name="PanelCrumbling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, -9.2)
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PanelCrumbling"]
+shape = SubResource("BoxShape3D_panel")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PanelCrumbling"]
+mesh = SubResource("BoxMesh_panel")
+surface_material_override/0 = SubResource("Mat_grip_crumbling")
+
+[node name="PanelSlick" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, -9.2)
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PanelSlick"]
+shape = SubResource("BoxShape3D_panel")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PanelSlick"]
+mesh = SubResource("BoxMesh_panel")
+surface_material_override/0 = SubResource("Mat_grip_slick")
+
+[node name="PanelHot" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2, -9.2)
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PanelHot"]
+shape = SubResource("BoxShape3D_panel")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PanelHot"]
+mesh = SubResource("BoxMesh_panel")
+surface_material_override/0 = SubResource("Mat_grip_hot")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
