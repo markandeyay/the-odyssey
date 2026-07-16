@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/world/heat/heat_volume.gd" id="1_heat"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_heat"]
+size = Vector3(4, 3, 4)
+
+[node name="HeatVolume" type="Area3D"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_heat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_heat")

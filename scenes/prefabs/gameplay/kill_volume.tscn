@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/world/water/kill_volume.gd" id="1_kill"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kill"]
+size = Vector3(50, 10, 50)
+
+[node name="KillVolume" type="Area3D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_kill")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kill")
