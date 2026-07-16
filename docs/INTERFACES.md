@@ -51,3 +51,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Stable `StringName` ids, e.g. `&"cairn_shallows_1"`, `&"the_terraces"`, `&"the_hold"`.
 **Blocking:** no
 **Status:** OPEN
+
+### [2026-07-16] FROM: SYSTEMS TO: WORLD
+**Request:** To make level geometry burnable (M7): instance `scenes/prefabs/gameplay/fire_grid.tscn` exactly once per streamed level scene, and give each burnable prop a `Flammable` child node (script `res://src/world/fire/flammable.gd`), with the prop's body on physics layer `flammable` (11). Do not script fire behavior yourself.
+**Why:** Fire is cell-based and grid-owned. The `Flammable` component self-registers with the grid; exports: `fuel` (cell-seconds of burn), `size` (world-space burnable extents around the prop origin; rotation ignored), `mobile` (single following cell, for carryable props). Burning/charred grip overrides (`HOT`/`CRUMBLING`) happen automatically through the existing group seam in `Grip`. Updraft volumes vent automatically above burns of 6+ cells. Placing a campfire is M10 and will be its own prefab.
+**Proposed API:** As above. Ignition sources: `FireGrid.ignite_at(position)` from level scripting is allowed; everything else spreads on its own.
+**Blocking:** no
+**Status:** OPEN
