@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FragmentDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/ui/fragment_def.gd" id="1_fragment"]
+
+[resource]
+script = ExtResource("1_fragment")
+id = &"crew_sena"
+crew_name = "Sena, the scout"
+memento = "a wooden token"
+lines = "Sena reached the crown. He saw the bridge breaking from above."

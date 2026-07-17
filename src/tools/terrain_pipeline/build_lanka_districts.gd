@@ -3,6 +3,24 @@ extends SceneTree
 const BuilderScript: Script = preload("res://src/tools/terrain_pipeline/district_scene_builder.gd")
 const DistrictContract: Script = preload("res://scenes/levels/lanka/lanka_district_contract.gd")
 const ContentContract: Script = preload("res://scenes/levels/lanka/lanka_content_contract.gd")
+const EmberRuntimeScript: Script = preload("res://scenes/levels/lanka/districts/ember_quarter/ember_quarter_runtime.gd")
+const FLAMMABLE_SCRIPT_PATH: String = "res://src/world/fire/flammable.gd"
+
+const PREFAB_PATHS: Dictionary = {
+	&"campfire": "res://scenes/prefabs/gameplay/campfire.tscn",
+	&"cairn_entrance": "res://scenes/prefabs/gameplay/cairn_entrance.tscn",
+	&"crew_fragment": "res://scenes/prefabs/gameplay/fragment_pickup.tscn",
+	&"district_trigger": "res://scenes/prefabs/gameplay/district_trigger.tscn",
+	&"drowned_spawn": "res://scenes/prefabs/gameplay/drowned.tscn",
+	&"heat_volume": "res://scenes/prefabs/gameplay/heat_volume.tscn",
+	&"water_current": "res://scenes/prefabs/gameplay/water_volume.tscn",
+	&"water_volume": "res://scenes/prefabs/gameplay/water_volume.tscn",
+}
+
+const FIRE_GRID_PATH: String = "res://scenes/prefabs/gameplay/fire_grid.tscn"
+const COMPONENT_PICKUP_PATH: String = "res://scenes/prefabs/gameplay/component_pickup.tscn"
+const FIGUREHEAD_PATH: String = "res://scenes/prefabs/gameplay/figurehead_carryable.tscn"
+const SETU_PATH: String = "res://scenes/prefabs/gameplay/setu.tscn"
 
 var _builder: RefCounted
 var _materials: Dictionary = {}
@@ -116,6 +134,7 @@ func _build_shallows() -> Error:
 	_builder.add_marker(routes, "InlandExit", Vector3(0.0, 10.0, 155.0), &"route_anchor", {&"route_id": &"inland"})
 	_builder.add_box_occluder(dressing, "KefferHullOccluder", Vector3(-135.0, 8.0, 68.0), Vector3(54.0, 15.0, 22.0))
 	_add_m6_content(root, &"shallows")
+	_add_m9_gameplay(root, &"shallows")
 	return _save_and_free(root, DistrictContract.district_path(&"shallows"))
 
 
@@ -191,6 +210,7 @@ func _build_terraces() -> Error:
 		)
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-180.0, -15.0, -125.0), Vector3(360.0, 55.0, 250.0)))
 	_add_m6_content(root, &"terraces")
+	_add_m9_gameplay(root, &"terraces")
 	return _save_and_free(root, DistrictContract.district_path(&"terraces"))
 
 
@@ -259,6 +279,8 @@ func _build_ember_quarter() -> Error:
 	_builder.add_box_occluder(geometry, "CityCoreOccluder", Vector3(15.0, 13.0, 0.0), Vector3(175.0, 26.0, 175.0))
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-165.0, -5.0, -135.0), Vector3(340.0, 75.0, 270.0)))
 	_add_m6_content(root, &"ember_quarter")
+	root.set_script(EmberRuntimeScript)
+	_add_m9_gameplay(root, &"ember_quarter")
 	return _save_and_free(root, DistrictContract.district_path(&"ember_quarter"))
 
 
@@ -343,6 +365,7 @@ func _build_cistern() -> Error:
 	_builder.add_box_occluder(geometry, "ReservoirOccluder", Vector3(0.0, 0.0, 0.0), Vector3(190.0, 60.0, 150.0))
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-100.0, -32.0, -80.0), Vector3(200.0, 100.0, 160.0)))
 	_add_m6_content(root, &"cistern")
+	_add_m9_gameplay(root, &"cistern")
 	return _save_and_free(root, DistrictContract.district_path(&"cistern"))
 
 
@@ -395,6 +418,7 @@ func _build_spine() -> Error:
 	_builder.add_box_occluder(geometry, "SpineOccluder", Vector3(0.0, 126.0, 0.0), Vector3(34.0, 252.0, 34.0))
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-45.0, 0.0, -45.0), Vector3(90.0, 280.0, 90.0)))
 	_add_m6_content(root, &"spine")
+	_add_m9_gameplay(root, &"spine")
 	return _save_and_free(root, DistrictContract.SPINE_PATH)
 
 
@@ -444,7 +468,173 @@ func _build_dark() -> Error:
 	_builder.add_box_occluder(geometry, "DarkCoreOccluder", Vector3(0.0, 12.0, 0.0), Vector3(190.0, 24.0, 160.0))
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-108.0, -5.0, -93.0), Vector3(216.0, 38.0, 186.0)))
 	_add_m6_content(root, &"dark")
+	_add_m9_gameplay(root, &"dark")
 	return _save_and_free(root, DistrictContract.DARK_PATH)
+
+
+func _add_m9_gameplay(root: Node3D, district_id: StringName) -> void:
+	var sockets: Node3D = root.get_node("GameplaySockets") as Node3D
+	for child: Node in sockets.get_children():
+		if not child is Marker3D:
+			continue
+		var socket: Marker3D = child as Marker3D
+		var socket_type: StringName = socket.get_meta(&"socket_type", &"") as StringName
+		if not PREFAB_PATHS.has(socket_type):
+			continue
+		var prefab_path: String = str(PREFAB_PATHS[socket_type])
+		if not ResourceLoader.exists(prefab_path):
+			socket.set_meta(&"m9_missing_prefab", prefab_path)
+			continue
+		var instance: Node3D = _instance_prefab(
+			root, socket, prefab_path, _m9_instance_name(socket_type)
+		)
+		match socket_type:
+			&"campfire":
+				_set_enum_property(
+					instance, &"initial_flame", "EMBERS" if district_id == &"cistern" else "LIT"
+				)
+				_set_optional_property(instance, &"checkpoint_id", socket.get_meta(&"checkpoint_id", &""))
+			&"cairn_entrance":
+				_set_required_property(instance, &"cairn_id", socket.get_meta(&"cairn_id", &""))
+				var target_path: String = str(socket.get_meta(&"target_scene_path", ""))
+				_set_required_property(instance, &"target_scene", load(target_path) as PackedScene)
+			&"crew_fragment":
+				_set_required_property(instance, &"fragment_id", socket.get_meta(&"fragment_id", &""))
+			&"district_trigger":
+				_set_required_property(instance, &"district_id", socket.get_meta(&"district_id", &""))
+				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
+			&"heat_volume":
+				_set_required_property(instance, &"damage_per_second", float(socket.get_meta(&"strength", 1.0)))
+				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
+			&"water_current":
+				var direction: Vector3 = socket.get_meta(&"direction", Vector3.ZERO) as Vector3
+				var strength: float = float(socket.get_meta(&"strength", 0.0))
+				_set_required_property(instance, &"current", direction * strength)
+				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
+			&"water_volume":
+				_set_required_property(instance, &"current", Vector3.ZERO)
+				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
+
+	match district_id:
+		&"shallows":
+			var build_site: Node3D = root.get_node("WorldGeometry/SetuBuildSite") as Node3D
+			var setu: Node3D = _instance_prefab(root, build_site, SETU_PATH, "Setu")
+			setu.position = Vector3(0.0, 4.0, 18.0)
+			_add_component_pickup(root, "RouteMarkers/HoldTrial", &"hull")
+		&"ember_quarter":
+			_instance_prefab(root, sockets, FIRE_GRID_PATH, "FireGrid")
+			_add_ember_flammables(root)
+			_add_component_pickup(root, "RouteMarkers/SmolderTrial", &"mast")
+		&"cistern":
+			_add_component_pickup(root, "RouteMarkers/CisternTrial", &"sail")
+		&"spine":
+			_add_component_pickup(root, "RouteMarkers/Summit", &"keel")
+		&"dark":
+			var figurehead_marker: Node3D = root.get_node("RouteMarkers/Figurehead") as Node3D
+			_instance_prefab(root, figurehead_marker, FIGUREHEAD_PATH, "FigureheadCarryable")
+
+
+func _m9_instance_name(socket_type: StringName) -> String:
+	match socket_type:
+		&"crew_fragment":
+			return "FragmentPickup"
+		&"drowned_spawn":
+			return "Drowned"
+		&"water_current", &"water_volume":
+			return "WaterVolume"
+		_:
+			return str(socket_type).to_pascal_case()
+
+
+func _instance_prefab(
+	root: Node3D, parent: Node, prefab_path: String, node_name: String
+) -> Node3D:
+	var packed: PackedScene = load(prefab_path) as PackedScene
+	assert(packed != null, "Missing M9 prefab: %s" % prefab_path)
+	var instance: Node3D = packed.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as Node3D
+	assert(instance != null, "M9 prefab root must be Node3D: %s" % prefab_path)
+	instance.name = node_name
+	instance.set_meta(&"m9_prefab_path", prefab_path)
+	parent.add_child(instance)
+	instance.owner = root
+	root.set_editable_instance(instance, true)
+	return instance
+
+
+func _add_component_pickup(root: Node3D, marker_path: String, component_id: StringName) -> void:
+	var marker: Node3D = root.get_node(marker_path) as Node3D
+	var pickup: Node3D = _instance_prefab(
+		root, marker, COMPONENT_PICKUP_PATH, "ComponentPickup_" + str(component_id).to_pascal_case()
+	)
+	_set_required_property(pickup, &"component_id", component_id)
+
+
+func _add_ember_flammables(root: Node3D) -> void:
+	var geometry: Node3D = root.get_node("WorldGeometry") as Node3D
+	for building_child: Node in geometry.get_children():
+		if not building_child.name.begins_with("BurntBuilding"):
+			continue
+		for prop_child: Node in building_child.get_children():
+			if not prop_child is StaticBody3D:
+				continue
+			var prop: StaticBody3D = prop_child as StaticBody3D
+			prop.collision_layer |= 1 << 10
+			var size: Vector3 = Vector3(2.0, 2.0, 2.0)
+			var collision: CollisionShape3D = prop.get_node_or_null("CollisionShape") as CollisionShape3D
+			if collision != null and collision.shape is BoxShape3D:
+				size = (collision.shape as BoxShape3D).size
+			var flammable: Node = Node.new()
+			flammable.name = "Flammable"
+			flammable.set_script(load(FLAMMABLE_SCRIPT_PATH) as Script)
+			flammable.set(&"fuel", 20.0 if prop.name == &"CollapsedRoof" else 12.0)
+			flammable.set(&"size", size)
+			flammable.set(&"mobile", false)
+			flammable.set_meta(&"m9_gameplay_type", &"flammable")
+			prop.add_child(flammable)
+
+
+func _resize_volume(instance: Node3D, size: Vector3) -> void:
+	var collision_nodes: Array[Node] = instance.find_children("*", "CollisionShape3D", true, false)
+	assert(not collision_nodes.is_empty(), "%s has no CollisionShape3D" % instance.scene_file_path)
+	var collision: CollisionShape3D = collision_nodes[0] as CollisionShape3D
+	assert(collision.shape is BoxShape3D, "%s volume collision must use BoxShape3D" % instance.scene_file_path)
+	var shape: BoxShape3D = (collision.shape as BoxShape3D).duplicate() as BoxShape3D
+	shape.size = size
+	collision.shape = shape
+
+
+func _set_required_property(node: Node, property_name: StringName, value: Variant) -> void:
+	assert(_has_property(node, property_name), "%s is missing exported %s" % [node.scene_file_path, property_name])
+	node.set(property_name, value)
+
+
+func _set_optional_property(node: Node, property_name: StringName, value: Variant) -> void:
+	if _has_property(node, property_name):
+		node.set(property_name, value)
+
+
+func _set_enum_property(node: Node, property_name: StringName, option_name: String) -> void:
+	for property: Dictionary in node.get_property_list():
+		if property.get(&"name", &"") != property_name:
+			continue
+		assert(int(property.get(&"hint", PROPERTY_HINT_NONE)) == PROPERTY_HINT_ENUM)
+		var options: PackedStringArray = str(property.get(&"hint_string", "")).split(",")
+		for option_index: int in options.size():
+			var option: String = options[option_index]
+			var fields: PackedStringArray = option.split(":")
+			if fields[0].strip_edges().to_upper() != option_name.to_upper():
+				continue
+			var value: int = int(fields[1]) if fields.size() > 1 else option_index
+			node.set(property_name, value)
+			return
+	assert(false, "%s enum has no %s option" % [property_name, option_name])
+
+
+func _has_property(node: Node, property_name: StringName) -> bool:
+	for property: Dictionary in node.get_property_list():
+		if property.get(&"name", &"") == property_name:
+			return true
+	return false
 
 
 func _make_materials() -> Dictionary:

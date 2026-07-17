@@ -83,3 +83,15 @@ Final 85 percent bilinear results on Intel Graphics using D3D12 Forward+, after 
 | Dark | 12.730 | 13.621 | 78.6 | 4 |
 
 Peak texture memory was 153,780,224 bytes against a 192 MiB cap. Peak video memory was 278,855,680 bytes against a 384 MiB cap. The unoptimized sustained Ember baseline was 24.287 ms, 41.2 FPS, and 652 draws.
+
+## M9 Shipped-Scene Integration
+
+The integration smoke test starts the real `lanka.tscn`, keeps its instanced Nau
+as the streaming target, visits each open-world district through normal runtime
+streaming, and loads the real separate Dark scene. It fails if any required
+gameplay prefab is absent or inactive, or if the 20 placed fragments do not have
+matching authored `FragmentDef` resources.
+
+```powershell
+godot --headless --path . --script res://src/tools/terrain_pipeline/tests/test_lanka_runtime.gd
+```

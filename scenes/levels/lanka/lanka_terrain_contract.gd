@@ -13,7 +13,7 @@ const SPINE_BASE: Vector3 = Vector3(0.0, 68.0, 430.0)
 const SPINE_TOP: Vector3 = Vector3(0.0, 320.0, 430.0)
 
 const DISTRICT_ANCHORS: Dictionary = {
-	&"shallows": Vector3(0.0, 3.0, -440.0),
+	&"shallows": Vector3(0.0, 5.0, -440.0),
 	&"terraces": Vector3(-330.0, 50.0, 0.0),
 	&"ember_quarter": Vector3(250.0, 54.0, 80.0),
 	&"cistern": Vector3(250.0, 18.0, 80.0),

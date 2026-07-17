@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FragmentDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/ui/fragment_def.gd" id="1_fragment"]
+
+[resource]
+script = ExtResource("1_fragment")
+id = &"crew_chaya"
+crew_name = "Chaya, the water keeper"
+memento = "a copper cup"
+lines = "Chaya saved the last fresh water for someone who never came back."

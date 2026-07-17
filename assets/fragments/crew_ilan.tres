@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FragmentDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/ui/fragment_def.gd" id="1_fragment"]
+
+[resource]
+script = ExtResource("1_fragment")
+id = &"crew_ilan"
+crew_name = "Ilan, the rescuer"
+memento = "a melted buckle"
+lines = "Ilan ran into the first fire because he heard someone calling."

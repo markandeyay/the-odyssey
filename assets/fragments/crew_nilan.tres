@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FragmentDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/ui/fragment_def.gd" id="1_fragment"]
+
+[resource]
+script = ExtResource("1_fragment")
+id = &"crew_nilan"
+crew_name = "Nilan, the fisher"
+memento = "a fish hook"
+lines = "Nilan found living fish below a city already dead."

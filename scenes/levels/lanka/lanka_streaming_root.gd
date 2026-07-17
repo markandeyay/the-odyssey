@@ -16,6 +16,9 @@ var _desired_district_paths: Dictionary = {}
 var _loaded_districts: Dictionary = {}
 var _pending_districts: Dictionary = {}
 var _last_stream_position: Vector3 = Vector3.INF
+var _initial_stream_guard_active: bool = false
+var _initial_target_physics_enabled: bool = false
+var _initial_target_transform: Transform3D = Transform3D.IDENTITY
 
 @onready var _chunk_container: Node3D = $StreamedChunks
 @onready var _district_container: Node3D = $StreamedDistricts
@@ -25,12 +28,14 @@ func _ready() -> void:
 	if unload_radius_m <= load_radius_m:
 		push_error("Lanka unload radius must be greater than its load radius")
 	if streaming_target != null:
+		_begin_initial_stream_guard()
 		_refresh_streaming(streaming_target.global_position)
 
 
 func _process(delta: float) -> void:
 	_poll_pending_chunks()
 	_poll_pending_districts()
+	_release_initial_stream_guard_if_ready()
 	if streaming_target == null:
 		return
 	_refresh_elapsed_s += delta
@@ -44,6 +49,34 @@ func set_streaming_target(target: Node3D) -> void:
 	streaming_target = target
 	if is_inside_tree() and streaming_target != null:
 		_refresh_streaming(streaming_target.global_position)
+
+
+func _begin_initial_stream_guard() -> void:
+	_initial_target_physics_enabled = streaming_target.is_physics_processing()
+	_initial_target_transform = streaming_target.global_transform
+	streaming_target.set_physics_process(false)
+	_initial_stream_guard_active = true
+
+
+func _release_initial_stream_guard_if_ready() -> void:
+	if not _initial_stream_guard_active:
+		return
+	if streaming_target == null:
+		_initial_stream_guard_active = false
+		return
+	if (
+		_pending_chunks.size() > 0
+		or _pending_districts.size() > 0
+		or _loaded_chunks.is_empty()
+		or _loaded_districts.is_empty()
+	):
+		return
+	# The streamed collision is now in the tree. Restore the authored spawn in
+	# case a child controller enabled itself during _ready(), then release Nau for
+	# the next physics tick.
+	streaming_target.global_transform = _initial_target_transform
+	streaming_target.set_physics_process(_initial_target_physics_enabled)
+	_initial_stream_guard_active = false
 
 
 func desired_chunk_paths(world_position: Vector3) -> PackedStringArray:
