@@ -1,0 +1,205 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pun1x"]
+resource_name = "mat_cairn_stone_grip_solid"
+albedo_color = Color(0.24, 0.26, 0.25, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="BoxMesh_xuwe2"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ij2a2"]
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ln32k"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h70ih"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j1ndh"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0jn38"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vfe3d"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7e8av"]
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n8sre"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oltc4"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tvrpi"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kleg2"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_agg1y"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qr673"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1yl5d"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(22, 3, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i6xgm"]
+size = Vector3(22, 3, 14)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_sm1h1"]
+size = Vector3(58, 20, 68)
+
+[node name="CairnShallowsHoldStack" type="Node3D" unique_id=1699192665]
+metadata/cairn_id = &"shallows_hold_stack"
+metadata/district_id = &"shallows"
+metadata/taught_mechanic = &"carry_stack"
+metadata/single_room = true
+metadata/heart_piece_reward = 1
+metadata/budget_profile = "cairn"
+
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=1551271726]
+
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=272454357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=660538764]
+mesh = SubResource("BoxMesh_xuwe2")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=253157650]
+shape = SubResource("BoxShape3D_ij2a2")
+
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=917405309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=283387782]
+mesh = SubResource("BoxMesh_ln32k")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=68727043]
+shape = SubResource("BoxShape3D_h70ih")
+
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=2016170922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=1278311789]
+mesh = SubResource("BoxMesh_j1ndh")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=252774705]
+shape = SubResource("BoxShape3D_0jn38")
+
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=193576067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=93050977]
+mesh = SubResource("BoxMesh_vfe3d")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1112267603]
+shape = SubResource("BoxShape3D_7e8av")
+
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=1311441407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=263038091]
+mesh = SubResource("BoxMesh_n8sre")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=546706918]
+shape = SubResource("BoxShape3D_oltc4")
+
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1739244026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=619804876]
+mesh = SubResource("BoxMesh_tvrpi")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=196250310]
+shape = SubResource("BoxShape3D_kleg2")
+
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=370280759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=1470883446]
+mesh = SubResource("BoxMesh_agg1y")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=30173897]
+shape = SubResource("BoxShape3D_qr673")
+
+[node name="HighShelf" type="StaticBody3D" parent="WorldGeometry" unique_id=489651335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -12)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/HighShelf" unique_id=1716021742]
+mesh = SubResource("BoxMesh_1yl5d")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/HighShelf" unique_id=704854048]
+shape = SubResource("BoxShape3D_i6xgm")
+
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=1412731926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+occluder = SubResource("BoxOccluder3D_sm1h1")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=1042364402]
+aabb = AABB(-32, -3, -38, 64, 30, 76)
+
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=867635339]
+
+[node name="StackObject00" type="Marker3D" parent="GameplaySockets" unique_id=909194675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 20)
+metadata/socket_type = &"carryable_object"
+metadata/spawn_id = &"cairn_stack_00"
+
+[node name="StackObject01" type="Marker3D" parent="GameplaySockets" unique_id=2114342830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 20)
+metadata/socket_type = &"carryable_object"
+metadata/spawn_id = &"cairn_stack_01"
+
+[node name="StackObject02" type="Marker3D" parent="GameplaySockets" unique_id=338064775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 20)
+metadata/socket_type = &"carryable_object"
+metadata/spawn_id = &"cairn_stack_02"
+
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=396564937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
+metadata/socket_type = &"heart_piece_reward"
+metadata/cairn_id = &"shallows_hold_stack"
+metadata/heart_piece_amount = 1
+
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1876252052]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=920057363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"entry"
+
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1562672191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"exit"

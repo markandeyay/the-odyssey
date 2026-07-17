@@ -74,3 +74,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** When the SYSTEMS-owned trial flow opens The Dark, instance `res://scenes/levels/lanka/districts/dark/dark_district.tscn` through the level host, place Nau at `RouteMarkers/Entry`, and unload it when the sequence exits. Do not add this path to `LankaDistrictContract.OPEN_WORLD_DISTRICTS`; the WORLD validator deliberately rejects that coupling.
 **Blocking:** yes for entering and completing The Dark in the integrated build; no for WORLD M5 scene validation
 **Status:** OPEN
+
+### [2026-07-16] FROM: WORLD TO: SYSTEMS
+**Request:** Provide the gameplay prefabs and sublevel transition needed to activate WORLD-authored M6 content sockets.
+**Why:** M6 owns exact placement for eight Cairns, twenty crew fragments, four ingredient kinds, three salvage kinds, campfires, heart-piece rewards, and Keffer, but collection, inventory, autosave, dialogue, cooldowns, rewards, and player transfer are SYSTEMS-owned and no gameplay prefab directory exists on the WORLD branch.
+**Proposed API:** Provide `PackedScene` prefabs under `res://scenes/prefabs/gameplay/` named `cairn_entrance`, `heart_piece_reward`, `crew_fragment`, `salvage_pickup`, `ingredient_pickup`, `campfire`, and `keffer_interaction`. Required exports: `cairn_id: StringName`, `target_scene: PackedScene`, `fragment_id: StringName`, `salvage_id: StringName`, `ingredient_id: StringName`, `checkpoint_id: StringName`, `dialogue_lines: Array[String]`, `handout_item_id: StringName`, and `handout_cooldown_s: float` where applicable. Cairn entry must load the target separate scene at `RouteMarkers/Entry`, and the reward prefab must emit the existing `EventBus.cairn_completed(cairn_id)` after granting exactly one heart piece. WORLD exposes matching `Marker3D` metadata on every placement and will instance these prefabs without editing them once available.
+**Blocking:** yes for functional M6 collection, Cairn rewards, campfire autosaves, and Keffer interaction; no for WORLD placement, geometry, count validation, and scene budgets
+**Status:** OPEN

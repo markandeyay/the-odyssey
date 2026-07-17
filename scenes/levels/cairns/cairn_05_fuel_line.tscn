@@ -1,0 +1,269 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pun1x"]
+resource_name = "mat_cairn_stone_grip_solid"
+albedo_color = Color(0.24, 0.26, 0.25, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="BoxMesh_e861l"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31rif"]
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jbw7p"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uuf0t"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nufoq"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efjme"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_78bo6"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xtx45"]
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ap27h"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_djmdd"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_02co0"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0r1h"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5vvqx"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8qwty"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_alanp"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_se1xr"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6bwvw"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bmi2"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vykj"]
+resource_name = "mat_cairn_ember_grip_hot"
+albedo_color = Color(0.68, 0.14, 0.025, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_dvwgn"]
+material = SubResource("StandardMaterial3D_2vykj")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b728w"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g8us2"]
+material = SubResource("StandardMaterial3D_2vykj")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdwhf"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_813xj"]
+size = Vector3(58, 20, 68)
+
+[node name="CairnEmberFuelLine" type="Node3D" unique_id=821450685]
+metadata/cairn_id = &"ember_fuel_line"
+metadata/district_id = &"ember_quarter"
+metadata/taught_mechanic = &"fire_fuel"
+metadata/single_room = true
+metadata/heart_piece_reward = 1
+metadata/budget_profile = "cairn"
+
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=762953944]
+
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=441405909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=129847307]
+mesh = SubResource("BoxMesh_e861l")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=345517416]
+shape = SubResource("BoxShape3D_31rif")
+
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1544643239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=1988776613]
+mesh = SubResource("BoxMesh_jbw7p")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=328518246]
+shape = SubResource("BoxShape3D_uuf0t")
+
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1226778374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=809942280]
+mesh = SubResource("BoxMesh_nufoq")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=13151216]
+shape = SubResource("BoxShape3D_efjme")
+
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=220045352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=1653880463]
+mesh = SubResource("BoxMesh_78bo6")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1358320173]
+shape = SubResource("BoxShape3D_xtx45")
+
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=1320672765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=181395513]
+mesh = SubResource("BoxMesh_ap27h")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=82482781]
+shape = SubResource("BoxShape3D_djmdd")
+
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1087570079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=1500553051]
+mesh = SubResource("BoxMesh_02co0")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1681382763]
+shape = SubResource("BoxShape3D_u0r1h")
+
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1382631925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=1450294242]
+mesh = SubResource("BoxMesh_5vvqx")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1685753806]
+shape = SubResource("BoxShape3D_8qwty")
+
+[node name="FuelPedestal00" type="StaticBody3D" parent="WorldGeometry" unique_id=2129534318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 14)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal00" unique_id=1950411431]
+mesh = SubResource("BoxMesh_alanp")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal00" unique_id=2129864418]
+shape = SubResource("BoxShape3D_se1xr")
+
+[node name="FuelPedestal01" type="StaticBody3D" parent="WorldGeometry" unique_id=1217479405]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal01" unique_id=994289562]
+mesh = SubResource("BoxMesh_6bwvw")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal01" unique_id=1509411192]
+shape = SubResource("BoxShape3D_2bmi2")
+
+[node name="FuelPedestal02" type="StaticBody3D" parent="WorldGeometry" unique_id=597355826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -4)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal02" unique_id=1961740816]
+mesh = SubResource("BoxMesh_dvwgn")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal02" unique_id=2086270481]
+shape = SubResource("BoxShape3D_b728w")
+
+[node name="FuelPedestal03" type="StaticBody3D" parent="WorldGeometry" unique_id=248358633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, -13)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal03" unique_id=873836733]
+mesh = SubResource("BoxMesh_g8us2")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal03" unique_id=234173203]
+shape = SubResource("BoxShape3D_sdwhf")
+
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=1557857042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+occluder = SubResource("BoxOccluder3D_813xj")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=1354315075]
+aabb = AABB(-32, -3, -38, 64, 30, 76)
+
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=537792951]
+
+[node name="FuelSource00" type="Marker3D" parent="GameplaySockets" unique_id=1525865505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, 14)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"cairn_fuel_00"
+
+[node name="FuelSource01" type="Marker3D" parent="GameplaySockets" unique_id=2067548204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 5)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"cairn_fuel_01"
+
+[node name="FuelSource02" type="Marker3D" parent="GameplaySockets" unique_id=314784725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, -4)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"cairn_fuel_02"
+
+[node name="FuelSource03" type="Marker3D" parent="GameplaySockets" unique_id=1013591558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3, -13)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"cairn_fuel_03"
+
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=718959918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
+metadata/socket_type = &"heart_piece_reward"
+metadata/cairn_id = &"ember_fuel_line"
+metadata/heart_piece_amount = 1
+
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=848935475]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=619249844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"entry"
+
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1383479468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"exit"

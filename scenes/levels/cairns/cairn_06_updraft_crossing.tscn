@@ -1,0 +1,215 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pun1x"]
+resource_name = "mat_cairn_stone_grip_solid"
+albedo_color = Color(0.24, 0.26, 0.25, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="BoxMesh_8wj66"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4teet"]
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rvn81"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iqmay"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fufbq"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1xgc"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2cxwf"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2utjj"]
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k0p2l"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cfe70"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hgr4r"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8n7j"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wsgyi"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1txla"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t2q57"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(20, 3, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dm3f4"]
+size = Vector3(20, 3, 14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wu4n3"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(20, 3, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_64rnk"]
+size = Vector3(20, 3, 14)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_y8sb5"]
+size = Vector3(58, 20, 68)
+
+[node name="CairnEmberUpdraftCrossing" type="Node3D" unique_id=626647526]
+metadata/cairn_id = &"ember_updraft_crossing"
+metadata/district_id = &"ember_quarter"
+metadata/taught_mechanic = &"updraft_glide"
+metadata/single_room = true
+metadata/heart_piece_reward = 1
+metadata/budget_profile = "cairn"
+
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=504670933]
+
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=683897380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=1119101742]
+mesh = SubResource("BoxMesh_8wj66")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=1871380914]
+shape = SubResource("BoxShape3D_4teet")
+
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1550931971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=1720898879]
+mesh = SubResource("BoxMesh_rvn81")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=458438742]
+shape = SubResource("BoxShape3D_iqmay")
+
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=2135327639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=1398286461]
+mesh = SubResource("BoxMesh_fufbq")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=1039911783]
+shape = SubResource("BoxShape3D_g1xgc")
+
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1100258809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=484181075]
+mesh = SubResource("BoxMesh_2cxwf")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1968911111]
+shape = SubResource("BoxShape3D_2utjj")
+
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=830629395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=771790952]
+mesh = SubResource("BoxMesh_k0p2l")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=210935145]
+shape = SubResource("BoxShape3D_cfe70")
+
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=2127705742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=72992850]
+mesh = SubResource("BoxMesh_hgr4r")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1981562327]
+shape = SubResource("BoxShape3D_p8n7j")
+
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=379606261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=1240192141]
+mesh = SubResource("BoxMesh_wsgyi")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1917801691]
+shape = SubResource("BoxShape3D_1txla")
+
+[node name="LaunchPlatform" type="StaticBody3D" parent="WorldGeometry" unique_id=1015057605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 18)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/LaunchPlatform" unique_id=96744973]
+mesh = SubResource("BoxMesh_t2q57")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/LaunchPlatform" unique_id=961829443]
+shape = SubResource("BoxShape3D_dm3f4")
+
+[node name="LandingPlatform" type="StaticBody3D" parent="WorldGeometry" unique_id=961876203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -18)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/LandingPlatform" unique_id=609822366]
+mesh = SubResource("BoxMesh_wu4n3")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/LandingPlatform" unique_id=593510299]
+shape = SubResource("BoxShape3D_64rnk")
+
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=471469443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+occluder = SubResource("BoxOccluder3D_y8sb5")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=312681853]
+aabb = AABB(-32, -3, -38, 64, 30, 76)
+
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=1164330117]
+
+[node name="Updraft" type="Marker3D" parent="GameplaySockets" unique_id=216992637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+metadata/socket_type = &"updraft_volume"
+metadata/socket_size_m = Vector3(16, 18, 16)
+metadata/direction = Vector3(0, 1, 0)
+metadata/strength = 16.0
+
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=1704633734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
+metadata/socket_type = &"heart_piece_reward"
+metadata/cairn_id = &"ember_updraft_crossing"
+metadata/heart_piece_amount = 1
+
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1375978821]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1925553549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"entry"
+
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1013235415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"exit"

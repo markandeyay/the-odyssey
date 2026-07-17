@@ -1,0 +1,200 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pun1x"]
+resource_name = "mat_cairn_stone_grip_solid"
+albedo_color = Color(0.24, 0.26, 0.25, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="BoxMesh_xuvum"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ww4hh"]
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0skqr"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0x1yo"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v4845"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oskfw"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_piegk"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dlv0x"]
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bk5ma"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_imhp4"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_82pyr"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0t74w"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vpmxa"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q65vh"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ov42q"]
+material = SubResource("StandardMaterial3D_pun1x")
+size = Vector3(10, 3, 56)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vts1f"]
+size = Vector3(10, 3, 56)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_c8jaa"]
+size = Vector3(58, 20, 68)
+
+[node name="CairnCisternFlameCrossing" type="Node3D" unique_id=1487373966]
+metadata/cairn_id = &"cistern_flame_crossing"
+metadata/district_id = &"cistern"
+metadata/taught_mechanic = &"carry_flame"
+metadata/single_room = true
+metadata/heart_piece_reward = 1
+metadata/budget_profile = "cairn"
+
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=90741515]
+
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=844743728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=530625556]
+mesh = SubResource("BoxMesh_xuvum")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=227141138]
+shape = SubResource("BoxShape3D_ww4hh")
+
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1329811677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=278214990]
+mesh = SubResource("BoxMesh_0skqr")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=1150920403]
+shape = SubResource("BoxShape3D_0x1yo")
+
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1336492947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=596997625]
+mesh = SubResource("BoxMesh_v4845")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=1856322694]
+shape = SubResource("BoxShape3D_oskfw")
+
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1733975858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=330777622]
+mesh = SubResource("BoxMesh_piegk")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=476695802]
+shape = SubResource("BoxShape3D_dlv0x")
+
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=1811691968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=573881997]
+mesh = SubResource("BoxMesh_bk5ma")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1806322103]
+shape = SubResource("BoxShape3D_imhp4")
+
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1568402098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=2091034369]
+mesh = SubResource("BoxMesh_82pyr")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=149199572]
+shape = SubResource("BoxShape3D_0t74w")
+
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1551523217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=553737577]
+mesh = SubResource("BoxMesh_vpmxa")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1534505961]
+shape = SubResource("BoxShape3D_q65vh")
+
+[node name="DryWalkway" type="StaticBody3D" parent="WorldGeometry" unique_id=1770968124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DryWalkway" unique_id=683938341]
+mesh = SubResource("BoxMesh_ov42q")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DryWalkway" unique_id=1780079938]
+shape = SubResource("BoxShape3D_vts1f")
+
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=2094923675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+occluder = SubResource("BoxOccluder3D_c8jaa")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=653592010]
+aabb = AABB(-32, -3, -38, 64, 30, 76)
+
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=800129839]
+
+[node name="FloodedChannel" type="Marker3D" parent="GameplaySockets" unique_id=620525968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0)
+metadata/socket_type = &"water_volume"
+metadata/socket_size_m = Vector3(30, 7, 56)
+
+[node name="CarriedFlame" type="Marker3D" parent="GameplaySockets" unique_id=830648573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 3, 25)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"cairn_carried_flame"
+
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=616202440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
+metadata/socket_type = &"heart_piece_reward"
+metadata/cairn_id = &"cistern_flame_crossing"
+metadata/heart_piece_amount = 1
+
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=180570673]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1806204086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"entry"
+
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1899832831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"exit"
