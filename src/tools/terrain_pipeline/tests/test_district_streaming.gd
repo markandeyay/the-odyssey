@@ -14,7 +14,7 @@ func _run() -> void:
 	var packed: PackedScene = load(LANKA_SCENE_PATH) as PackedScene
 	_expect(packed != null, "Lanka streaming root loads")
 	if packed == null:
-		quit(_failures)
+		_finish.call_deferred(_failures)
 		return
 	var lanka: Node3D = packed.instantiate() as Node3D
 	root.add_child(lanka)
@@ -42,7 +42,11 @@ func _run() -> void:
 		print("PASS: Odyssey M5 threaded district streaming")
 	else:
 		printerr("FAIL: %d Odyssey M5 district streaming assertion(s)" % _failures)
-	quit(_failures)
+	_finish.call_deferred(_failures)
+
+
+func _finish(exit_code: int) -> void:
+	quit(exit_code)
 
 
 func _move_and_expect(
