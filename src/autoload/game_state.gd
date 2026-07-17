@@ -6,6 +6,8 @@ extends Node
 ## `autosave_requested` (M6). Campfires request their own on use (M10).
 ## Every Cairn yields exactly one heart piece (ARCHITECTURE §13); that
 ## grant lives here so WORLD's cairn scenes only emit `cairn_completed`.
+## M14: also Setu's salvage stores — stowed at the boat, spent on nothing
+## (§9), persisted here so the Setu scene stays stateless.
 
 var current_district: StringName = &""
 var flags: Dictionary = {}
@@ -14,6 +16,7 @@ var cairns_completed: Array[StringName] = []
 var components_acquired: Array[StringName] = []
 var trials_completed: Array[StringName] = []
 var visited_districts: Array[StringName] = []
+var setu_salvage: Dictionary = {}
 
 
 func _ready() -> void:
@@ -36,6 +39,16 @@ func fragment_count() -> int:
 	return fragments_found.size()
 
 
+func add_setu_salvage(salvage_id: StringName, count: int) -> void:
+	if count <= 0:
+		return
+	setu_salvage[salvage_id] = setu_salvage_count(salvage_id) + count
+
+
+func setu_salvage_count(salvage_id: StringName) -> int:
+	return int(setu_salvage.get(salvage_id, 0))
+
+
 func reset() -> void:
 	current_district = &""
 	flags = {}
@@ -44,6 +57,7 @@ func reset() -> void:
 	components_acquired = []
 	trials_completed = []
 	visited_districts = []
+	setu_salvage = {}
 
 
 func get_save_data() -> Dictionary:
@@ -55,6 +69,7 @@ func get_save_data() -> Dictionary:
 		"components": _to_strings(components_acquired),
 		"trials": _to_strings(trials_completed),
 		"visited": _to_strings(visited_districts),
+		"setu_salvage": _salvage_to_save(),
 	}
 
 
@@ -67,6 +82,10 @@ func apply_save_data(data: Dictionary) -> void:
 	_from_strings(components_acquired, data.get("components", []))
 	_from_strings(trials_completed, data.get("trials", []))
 	_from_strings(visited_districts, data.get("visited", []))
+	var salvage: Variant = data.get("setu_salvage", {})
+	if salvage is Dictionary:
+		for key: Variant in (salvage as Dictionary):
+			add_setu_salvage(StringName(str(key)), int((salvage as Dictionary)[key]))
 
 
 func _on_district_entered(district_id: StringName) -> void:
@@ -96,15 +115,25 @@ func _on_fragment_found(fragment_id: StringName) -> void:
 		fragments_found.append(fragment_id)
 
 
+## Components are also unique key items (§8): whatever path emitted the
+## signal, the reserved key item area stays in sync.
 func _on_component_acquired(component_id: StringName) -> void:
 	if not components_acquired.has(component_id):
 		components_acquired.append(component_id)
+	Inventory.add_key_item(component_id)
 
 
 func _grant_heart_piece() -> void:
 	var player: Player = get_tree().get_first_node_in_group(&"player") as Player
 	if player != null:
 		player.health.add_heart_piece()
+
+
+func _salvage_to_save() -> Dictionary:
+	var out: Dictionary = {}
+	for id: StringName in setu_salvage:
+		out[String(id)] = int(setu_salvage[id])
+	return out
 
 
 static func _to_strings(ids: Array[StringName]) -> Array:

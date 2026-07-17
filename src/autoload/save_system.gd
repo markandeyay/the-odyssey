@@ -5,7 +5,7 @@ extends Node
 ## the death rule: death is a hard reset to the last autosave. Nothing
 ## lost, nothing dropped, no run-back penalty.
 
-const SAVE_VERSION: int = 2
+const SAVE_VERSION: int = 3
 
 ## A var, not a const, so tests can redirect to a scratch file.
 var save_path: String = "user://autosave.json"

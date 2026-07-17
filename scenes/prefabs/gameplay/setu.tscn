@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://src/world/setu/setu.gd" id="1_setu"]
+[ext_resource type="Script" path="res://src/interaction/interactable.gd" id="2_interactable"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_setu"]
+size = Vector3(6.4, 2, 2.4)
+
+[sub_resource type="StandardMaterial3D" id="Mat_setu_wood"]
+resource_name = "mat_setu_wood"
+albedo_color = Color(0.32, 0.24, 0.17, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="Mat_setu_canvas"]
+resource_name = "mat_setu_canvas"
+albedo_color = Color(0.85, 0.8, 0.68, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_frame"]
+material = SubResource("Mat_setu_wood")
+size = Vector3(6.4, 0.35, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hull"]
+material = SubResource("Mat_setu_wood")
+size = Vector3(5.6, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mast"]
+material = SubResource("Mat_setu_wood")
+size = Vector3(0.25, 4.5, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sail"]
+material = SubResource("Mat_setu_canvas")
+size = Vector3(0.08, 2.6, 2.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_keel"]
+material = SubResource("Mat_setu_wood")
+size = Vector3(6.6, 0.4, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_figurehead"]
+material = SubResource("Mat_setu_canvas")
+size = Vector3(0.45, 1.2, 0.45)
+
+[node name="Setu" type="StaticBody3D"]
+collision_layer = 17
+collision_mask = 0
+script = ExtResource("1_setu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_setu")
+
+[node name="Frame" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_frame")
+
+[node name="Mounts" type="Node3D" parent="."]
+
+[node name="Hull" type="MeshInstance3D" parent="Mounts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+visible = false
+mesh = SubResource("BoxMesh_hull")
+
+[node name="Mast" type="MeshInstance3D" parent="Mounts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 3.5, 0)
+visible = false
+mesh = SubResource("BoxMesh_mast")
+
+[node name="Sail" type="MeshInstance3D" parent="Mounts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 3.9, 0)
+visible = false
+mesh = SubResource("BoxMesh_sail")
+
+[node name="Keel" type="MeshInstance3D" parent="Mounts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+visible = false
+mesh = SubResource("BoxMesh_keel")
+
+[node name="Figurehead" type="MeshInstance3D" parent="Mounts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.6, 0)
+visible = false
+mesh = SubResource("BoxMesh_figurehead")
+
+[node name="SalvageTally" type="Label3D" parent="."]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 1, 1.25)
+pixel_size = 0.004
+modulate = Color(0.93, 0.9, 0.84, 1)
+outline_modulate = Color(0.07, 0.075, 0.085, 1)
+text = "timber  0
+iron  0
+canvas  0"
+font_size = 40
+outline_size = 8
+
+[node name="Interactable" type="Node" parent="."]
+script = ExtResource("2_interactable")
+prompt = "Setu"
