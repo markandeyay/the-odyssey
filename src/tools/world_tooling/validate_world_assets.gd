@@ -7,6 +7,7 @@ const LankaTerrainValidator: Script = preload("res://src/tools/terrain_pipeline/
 const LankaDistrictValidator: Script = preload("res://src/tools/terrain_pipeline/lanka_district_validator.gd")
 const LankaContentValidator: Script = preload("res://src/tools/terrain_pipeline/lanka_content_validator.gd")
 const LankaVisualValidator: Script = preload("res://src/tools/terrain_pipeline/lanka_visual_validator.gd")
+const LankaPerformanceValidator: Script = preload("res://src/tools/terrain_pipeline/lanka_performance_validator.gd")
 
 
 func _initialize() -> void:
@@ -25,8 +26,10 @@ func _initialize() -> void:
 	issues.append_array(content_validator.validate_repository())
 	var visual_validator: RefCounted = LankaVisualValidator.new() as RefCounted
 	issues.append_array(visual_validator.validate_repository())
+	var performance_validator: RefCounted = LankaPerformanceValidator.new() as RefCounted
+	issues.append_array(performance_validator.validate_repository())
 	if issues.is_empty():
-		print("PASS: WORLD materials, attributions, budgets, terrain, districts, M6 content, and M7 visuals are valid")
+		print("PASS: WORLD materials, attributions, Lanka content, visuals, and M8 performance budgets are valid")
 		quit(0)
 		return
 	for issue: String in issues:

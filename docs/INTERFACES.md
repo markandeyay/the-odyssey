@@ -81,3 +81,24 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Provide `PackedScene` prefabs under `res://scenes/prefabs/gameplay/` named `cairn_entrance`, `heart_piece_reward`, `crew_fragment`, `salvage_pickup`, `ingredient_pickup`, `campfire`, and `keffer_interaction`. Required exports: `cairn_id: StringName`, `target_scene: PackedScene`, `fragment_id: StringName`, `salvage_id: StringName`, `ingredient_id: StringName`, `checkpoint_id: StringName`, `dialogue_lines: Array[String]`, `handout_item_id: StringName`, and `handout_cooldown_s: float` where applicable. Cairn entry must load the target separate scene at `RouteMarkers/Entry`, and the reward prefab must emit the existing `EventBus.cairn_completed(cairn_id)` after granting exactly one heart piece. WORLD exposes matching `Marker3D` metadata on every placement and will instance these prefabs without editing them once available.
 **Blocking:** yes for functional M6 collection, Cairn rewards, campfire autosaves, and Keffer interaction; no for WORLD placement, geometry, count validation, and scene budgets
 **Status:** OPEN
+
+### [2026-07-17] FROM: WORLD TO: SYSTEMS
+**Request:** Enforce hard island-wide caps for SYSTEMS-owned dynamic fire simulation and particle emitters.
+**Why:** WORLD M8 caps authored shader-only fire visuals and profiles the worst streamed Lanka neighborhood, but dynamic spread can still create unbounded burning cells or particle emitters in SYSTEMS territory. ARCHITECTURE section 19 requires both limits.
+**Proposed API:** Define `MAX_ACTIVE_BURNING_CELLS = 48` and `MAX_ACTIVE_FIRE_EMITTERS = 16` in the SYSTEMS fire manager. Preserve gameplay fire state when the cell cap is reached by queueing propagation, and allocate visual emitters to the nearest active cells deterministically without spawning beyond the emitter cap. Expose read-only active counts for the integrated profiler.
+**Blocking:** yes for proving integrated dynamic-fire performance; no for WORLD-authored static visual and district budgets
+**Status:** OPEN
+
+### [2026-07-17] FROM: WORLD TO: SYSTEMS
+**Request:** Set the integrated root viewport to an 85 percent FSR 1.0 3D scale at a 1920 by 1080 output.
+**Why:** After WORLD M8 batching reduced Ember from 652 draws to 23, native full-volumetric sustained performance on the available Intel integrated GPU remained 53-59 FPS under consecutive load. The same authored scene at 85 percent internal scale and 1080p output sustained 65.7 FPS. The root viewport and project rendering settings are SYSTEMS-owned.
+**Proposed API:** Set `rendering/scaling_3d/mode=1` and `rendering/scaling_3d/scale=0.85` in `project.godot`, retaining the default FSR sharpness unless integrated captures show ringing. Keep the UI at full output resolution. A future settings menu may expose native scale as a higher-quality option.
+**Blocking:** yes for the measured integrated-GPU 60 FPS gate with full volumetric fog; no for WORLD scene construction, native mid-range target, or headless validation
+**Status:** OPEN
+
+### [2026-07-17] FROM: WORLD TO: SYSTEMS
+**Request:** Supersede the preceding FSR mode request with Godot's bilinear 3D scaler at 85 percent.
+**Why:** A follow-up sustained profile measured the 85 percent FSR 1.0 tier at 53.7 FPS because its upscale pass exhausted the integrated GPU margin. The default bilinear mode at the same 1920 by 1080 output and full volumetrics sustained 65.7 FPS. The preceding scale remains correct; only its mode changes.
+**Proposed API:** Set `rendering/scaling_3d/mode=0` and `rendering/scaling_3d/scale=0.85` in `project.godot`. Keep full-resolution UI. Treat this entry as the correction to the immediately preceding open request.
+**Blocking:** yes for the measured integrated-GPU 60 FPS gate with full volumetric fog; no for WORLD scene construction, native mid-range target, or headless validation
+**Status:** OPEN
