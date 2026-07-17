@@ -13,6 +13,12 @@ extends StaticBody3D
 
 
 func _ready() -> void:
+	if component_id == &"figurehead":
+		# M14 rework: the Figurehead is a carryable delivered to Setu
+		# (figurehead_carryable.tscn), never an interact pickup.
+		push_warning("ComponentPickup: use figurehead_carryable.tscn for the Figurehead")
+		queue_free()
+		return
 	if GameState.components_acquired.has(component_id):
 		queue_free()
 		return

@@ -31,7 +31,6 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 
 ## Log
 
-<<<<<<< HEAD
 ### [2026-07-16] FROM: SYSTEMS TO: WORLD
 **Request:** A placeholder rigged character scene for Nau, delivered under `assets/characters/nau/` (e.g. `assets/characters/nau/nau_placeholder.tscn`).
 **Why:** The M2 player controller mounts the character mesh through an exported `PackedScene` per the character contract (ARCHITECTURE §16). Until this exists the player is a capsule, which works but cannot exercise animation or sockets.
@@ -100,8 +99,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** Taking the figurehead pickup triggers the stub ending wherever Nau stands: a beat, Vela's line, fade, "TO BE CONTINUED", and the tree freezes (ARCHITECTURE §0/§4). So place the figurehead pickup where The Dark's trial actually ends — there is no walking back to the boat afterward. The line text is an exported placeholder ("Come home.") awaiting the human's words.
 **Proposed API:** As above. Salvage counters display and do nothing; that is correct (§9).
 **Blocking:** no
-=======
-*(empty)*
+**Status:** OPEN
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Enable the WORLD-owned Odyssey World Tools editor plugin.
@@ -157,21 +155,41 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** WORLD M8 caps authored shader-only fire visuals and profiles the worst streamed Lanka neighborhood, but dynamic spread can still create unbounded burning cells or particle emitters in SYSTEMS territory. ARCHITECTURE section 19 requires both limits.
 **Proposed API:** Define `MAX_ACTIVE_BURNING_CELLS = 48` and `MAX_ACTIVE_FIRE_EMITTERS = 16` in the SYSTEMS fire manager. Preserve gameplay fire state when the cell cap is reached by queueing propagation, and allocate visual emitters to the nearest active cells deterministically without spawning beyond the emitter cap. Expose read-only active counts for the integrated profiler.
 **Blocking:** yes for proving integrated dynamic-fire performance; no for WORLD-authored static visual and district budgets
-**Status:** OPEN
+**Status:** DONE
 
 ### [2026-07-17] FROM: WORLD TO: SYSTEMS
 **Request:** Set the integrated root viewport to an 85 percent FSR 1.0 3D scale at a 1920 by 1080 output.
 **Why:** After WORLD M8 batching reduced Ember from 652 draws to 23, native full-volumetric sustained performance on the available Intel integrated GPU remained 53-59 FPS under consecutive load. The same authored scene at 85 percent internal scale and 1080p output sustained 65.7 FPS. The root viewport and project rendering settings are SYSTEMS-owned.
 **Proposed API:** Set `rendering/scaling_3d/mode=1` and `rendering/scaling_3d/scale=0.85` in `project.godot`, retaining the default FSR sharpness unless integrated captures show ringing. Keep the UI at full output resolution. A future settings menu may expose native scale as a higher-quality option.
 **Blocking:** yes for the measured integrated-GPU 60 FPS gate with full volumetric fog; no for WORLD scene construction, native mid-range target, or headless validation
-**Status:** OPEN
+**Status:** REJECTED
 
 ### [2026-07-17] FROM: WORLD TO: SYSTEMS
 **Request:** Supersede the preceding FSR mode request with Godot's bilinear 3D scaler at 85 percent.
 **Why:** A follow-up sustained profile measured the 85 percent FSR 1.0 tier at 53.7 FPS because its upscale pass exhausted the integrated GPU margin. The default bilinear mode at the same 1920 by 1080 output and full volumetrics sustained 65.7 FPS. The preceding scale remains correct; only its mode changes.
 **Proposed API:** Set `rendering/scaling_3d/mode=0` and `rendering/scaling_3d/scale=0.85` in `project.godot`. Keep full-resolution UI. Treat this entry as the correction to the immediately preceding open request.
 **Blocking:** yes for the measured integrated-GPU 60 FPS gate with full volumetric fog; no for WORLD scene construction, native mid-range target, or headless validation
->>>>>>> world
+**Status:** REJECTED
+
+### [2026-07-17] FROM: WORLD (relayed by the human, not authored in this file) TO: SYSTEMS
+**Request:** Set `run/main_scene` in `project.godot` to Lanka's runnable scene, `res://scenes/levels/lanka/lanka.tscn`, so F5 enters the game.
+**Why:** F5 was blocked with no main scene configured.
+**Proposed API:** `run/main_scene="res://scenes/levels/lanka/lanka.tscn"` under `[application]`.
+**Blocking:** yes
+**Status:** DONE
+
+### [2026-07-17] FROM: SYSTEMS TO: WORLD
+**Request:** No action. Recording the human's resolution of the two REJECTED render-scale entries above: the 0.85 default is rejected. Internal 3D render scale is now a persisted user setting (`UserSettings` autoload, `user://settings.cfg`), defaulting to 1.0 (native, bilinear mode), applied to the root viewport at startup. Your measured 0.85 tier remains selectable by the user; it is not the default.
+**Why:** The human decided image quality at default settings wins over the integrated-GPU 60 FPS gate; the performance tier stays available as an opt-in.
+**Proposed API:** `UserSettings.set_render_scale(scale: float)` (clamped 0.5–1.0), `UserSettings.render_scale`. A future settings menu exposes it.
+**Blocking:** no
+**Status:** DONE
+
+### [2026-07-17] FROM: SYSTEMS TO: WORLD
+**Request:** Supersedes item (2) of the [2026-07-16] Setu/trial-rewards entry, for the Figurehead only (hull/mast/sail/keel pickups are unchanged). Do NOT place a `component_pickup.tscn` with `&"figurehead"` at the end of The Dark. Instead instance `scenes/prefabs/gameplay/figurehead_carryable.tscn` there. It is a carryable (M4 carry rules: blocks climbing and the glider, slows Nau). The ending no longer plays where the pickup is taken — it plays at Setu in the Shallows, when the player carries the Figurehead to the boat and mounts it there.
+**Why:** M14 rework per the human: taking the Figurehead is not the end; carrying it home is. The walk out of The Dark and across the island with full hands is the last beat of the build. Setu's interact prompt offers "Mount the Figurehead" while it is carried; mounting emits `component_acquired(&"figurehead")` exactly as before, so save wiring and mount visuals are unchanged. Vela's line file path is also unchanged (`assets/audio/vela/figurehead_line.ogg`); the line text is now authored: "Nau." — one word.
+**Proposed API:** As above. The carryable removes itself on load once the Figurehead is acquired. Note: like all carryables, its mid-carry position is not saved; a reload before mounting returns it to its authored spawn in The Dark.
+**Blocking:** no
 **Status:** OPEN
 
 ### [2026-07-17] FROM: WORLD TO: SYSTEMS
