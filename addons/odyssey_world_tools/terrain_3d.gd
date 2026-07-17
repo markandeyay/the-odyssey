@@ -28,6 +28,15 @@ const COLLISION_SHAPE_NAME: StringName = &"TerrainCollisionShape"
 @export_range(0.0, 1.0, 0.01) var slope_blend_start: float = 0.25
 @export_range(0.0, 1.0, 0.01) var slope_blend_end: float = 0.65
 @export_range(0.0, 1.0, 0.01) var roughness: float = 0.9
+@export var low_tint: Color = Color(0.10, 0.14, 0.13)
+@export var high_tint: Color = Color(0.42, 0.43, 0.40)
+@export var steep_tint: Color = Color(0.075, 0.085, 0.082)
+@export var ash_tint: Color = Color(0.58, 0.59, 0.55)
+@export_range(0.0, 1.0, 0.01) var detail_strength: float = 0.34
+@export_range(0.0, 1.0, 0.01) var macro_variation: float = 0.18
+@export_range(0.0, 1.0, 0.01) var ash_amount: float = 0.34
+@export_range(0.0, 1.0, 0.01) var wetness: float = 0.36
+@export var wet_height_m: float = 10.0
 
 
 func import_heightmap(texture_path: String) -> Dictionary:
@@ -233,6 +242,15 @@ func _build_material() -> ShaderMaterial:
 	terrain_material.set_shader_parameter("slope_blend_start", slope_blend_start)
 	terrain_material.set_shader_parameter("slope_blend_end", slope_blend_end)
 	terrain_material.set_shader_parameter("terrain_roughness", roughness)
+	terrain_material.set_shader_parameter("low_tint", low_tint)
+	terrain_material.set_shader_parameter("high_tint", high_tint)
+	terrain_material.set_shader_parameter("steep_tint", steep_tint)
+	terrain_material.set_shader_parameter("ash_tint", ash_tint)
+	terrain_material.set_shader_parameter("detail_strength", detail_strength)
+	terrain_material.set_shader_parameter("macro_variation", macro_variation)
+	terrain_material.set_shader_parameter("ash_amount", ash_amount)
+	terrain_material.set_shader_parameter("wetness", wetness)
+	terrain_material.set_shader_parameter("wet_height", wet_height_m)
 	return terrain_material
 
 

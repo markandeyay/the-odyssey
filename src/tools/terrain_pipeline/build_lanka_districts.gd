@@ -416,21 +416,21 @@ func _build_dark() -> Error:
 
 func _make_materials() -> Dictionary:
 	return {
-		&"clean_stone": _builder.make_material("mat_clean_stone_grip_solid", Color(0.29, 0.30, 0.28), 0.94),
-		&"cracked_stone": _builder.make_material("mat_fire_cracked_stone_grip_crumbling", Color(0.20, 0.19, 0.17), 0.96),
-		&"wet_stone": _builder.make_material("mat_wet_stone_grip_slick", Color(0.075, 0.105, 0.10), 0.62),
-		&"soot_stone": _builder.make_material("mat_soot_stone_grip_slick", Color(0.055, 0.052, 0.048), 0.9),
-		&"ember_stone": _builder.make_material("mat_ember_stone_grip_hot", Color(0.72, 0.16, 0.035), 0.78),
-		&"charred_timber": _builder.make_material("mat_charred_timber_grip_crumbling", Color(0.075, 0.055, 0.042), 0.92),
-		&"unburnt_timber": _builder.make_material("mat_unburnt_timber_grip_solid", Color(0.24, 0.15, 0.075), 0.86),
-		&"ash_earth": _builder.make_material("mat_ash_earth_grip_solid", Color(0.17, 0.17, 0.16), 0.98),
-		&"bone_canvas": _builder.make_material("mat_bone_canvas_grip_solid", Color(0.56, 0.54, 0.46), 0.9),
-		&"salvage_iron": _builder.make_material("mat_salvage_iron_grip_solid", Color(0.22, 0.25, 0.24), 0.5, 0.7),
-		&"shellfish": _builder.make_material("mat_shellfish_grip_solid", Color(0.46, 0.53, 0.49), 0.72),
-		&"ashroot": _builder.make_material("mat_ashroot_grip_solid", Color(0.28, 0.24, 0.18), 0.95),
-		&"charwood_fruit": _builder.make_material("mat_charwood_fruit_grip_solid", Color(0.62, 0.14, 0.025), 0.76),
-		&"blind_fish": _builder.make_material("mat_blind_fish_grip_solid", Color(0.43, 0.48, 0.46), 0.64),
-		&"keffer_cloth": _builder.make_material("mat_keffer_cloth_grip_solid", Color(0.14, 0.13, 0.12), 0.94),
+		&"clean_stone": _builder.make_stylized_material("mat_clean_stone_grip_solid", Color(0.31, 0.32, 0.30), 0.94, 0.0, 0.0, 0.08, 0.20),
+		&"cracked_stone": _builder.make_stylized_material("mat_fire_cracked_stone_grip_crumbling", Color(0.20, 0.20, 0.18), 0.97, 0.0, 0.0, 0.30, 0.18),
+		&"wet_stone": _builder.make_stylized_material("mat_wet_stone_grip_slick", Color(0.075, 0.115, 0.105), 0.62, 0.0, 0.82, 0.10, 0.08),
+		&"soot_stone": _builder.make_stylized_material("mat_soot_stone_grip_slick", Color(0.095, 0.095, 0.085), 0.90, 0.0, 0.10, 0.78, 0.10),
+		&"ember_stone": _builder.make_stylized_material("mat_ember_stone_grip_hot", Color(0.20, 0.055, 0.012), 0.78, 0.0, 0.0, 0.45, 0.05, 2.6),
+		&"charred_timber": _builder.make_stylized_material("mat_charred_timber_grip_crumbling", Color(0.075, 0.072, 0.062), 0.92, 0.0, 0.0, 0.86, 0.12),
+		&"unburnt_timber": _builder.make_stylized_material("mat_unburnt_timber_grip_solid", Color(0.17, 0.16, 0.12), 0.86, 0.0, 0.0, 0.22, 0.10),
+		&"ash_earth": _builder.make_stylized_material("mat_ash_earth_grip_solid", Color(0.16, 0.17, 0.16), 0.98, 0.0, 0.0, 0.08, 0.52),
+		&"bone_canvas": _builder.make_stylized_material("mat_bone_canvas_grip_solid", Color(0.58, 0.56, 0.48), 0.90, 0.0, 0.0, 0.18, 0.10),
+		&"salvage_iron": _builder.make_stylized_material("mat_salvage_iron_grip_solid", Color(0.19, 0.24, 0.23), 0.50, 0.70, 0.18, 0.18, 0.05),
+		&"shellfish": _builder.make_stylized_material("mat_shellfish_grip_solid", Color(0.40, 0.51, 0.47), 0.72, 0.0, 0.30, 0.0, 0.02),
+		&"ashroot": _builder.make_stylized_material("mat_ashroot_grip_solid", Color(0.24, 0.27, 0.21), 0.95, 0.0, 0.0, 0.16, 0.18),
+		&"charwood_fruit": _builder.make_stylized_material("mat_charwood_fruit_grip_solid", Color(0.34, 0.075, 0.012), 0.76, 0.0, 0.0, 0.18, 0.05, 0.65),
+		&"blind_fish": _builder.make_stylized_material("mat_blind_fish_grip_solid", Color(0.43, 0.50, 0.48), 0.64, 0.0, 0.28, 0.0, 0.03),
+		&"keffer_cloth": _builder.make_stylized_material("mat_keffer_cloth_grip_solid", Color(0.13, 0.14, 0.13), 0.94, 0.0, 0.0, 0.30, 0.14),
 	}
 
 

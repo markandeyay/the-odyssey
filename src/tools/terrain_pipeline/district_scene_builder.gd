@@ -2,6 +2,8 @@ extends RefCounted
 
 const WORLD_LAYER: int = 1
 const CLIMBABLE_LAYER: int = 1 << 2
+const STYLIZED_SURFACE_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader")
+const ROCK_DETAIL_TEXTURE: Texture2D = preload("res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png")
 
 
 func make_material(name: String, color: Color, roughness: float = 0.9, metallic: float = 0.0) -> StandardMaterial3D:
@@ -10,6 +12,39 @@ func make_material(name: String, color: Color, roughness: float = 0.9, metallic:
 	material.albedo_color = color
 	material.roughness = roughness
 	material.metallic = metallic
+	return material
+
+
+func make_stylized_material(
+	name: String,
+	base_tint: Color,
+	roughness: float = 0.9,
+	metallic: float = 0.0,
+	wetness: float = 0.0,
+	soot_amount: float = 0.0,
+	ash_amount: float = 0.0,
+	emission_energy: float = 0.0,
+	emission_tint: Color = Color(1.0, 0.20, 0.02),
+	detail_strength: float = 0.32,
+	accent_tint: Color = Color.TRANSPARENT
+) -> ShaderMaterial:
+	var material: ShaderMaterial = ShaderMaterial.new()
+	material.resource_name = name
+	material.shader = STYLIZED_SURFACE_SHADER
+	material.set_shader_parameter(&"detail_albedo", ROCK_DETAIL_TEXTURE)
+	material.set_shader_parameter(&"base_tint", base_tint)
+	material.set_shader_parameter(
+		&"accent_tint", base_tint.darkened(0.56) if accent_tint == Color.TRANSPARENT else accent_tint
+	)
+	material.set_shader_parameter(&"ash_tint", Color(0.59, 0.60, 0.56))
+	material.set_shader_parameter(&"surface_roughness", roughness)
+	material.set_shader_parameter(&"surface_metallic", metallic)
+	material.set_shader_parameter(&"wetness", wetness)
+	material.set_shader_parameter(&"soot_amount", soot_amount)
+	material.set_shader_parameter(&"ash_amount", ash_amount)
+	material.set_shader_parameter(&"emission_energy", emission_energy)
+	material.set_shader_parameter(&"emission_tint", emission_tint)
+	material.set_shader_parameter(&"detail_strength", detail_strength)
 	return material
 
 

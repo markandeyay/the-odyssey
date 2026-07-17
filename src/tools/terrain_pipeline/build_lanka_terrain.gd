@@ -69,6 +69,15 @@ func _build_chunk(coordinate: Vector2i) -> Error:
 	terrain.altitude_blend_end_m = 58.0
 	terrain.slope_blend_start = 0.22
 	terrain.slope_blend_end = 0.62
+	terrain.low_tint = Color(0.095, 0.145, 0.132)
+	terrain.high_tint = Color(0.43, 0.44, 0.41)
+	terrain.steep_tint = Color(0.068, 0.078, 0.075)
+	terrain.ash_tint = Color(0.60, 0.61, 0.57)
+	terrain.detail_strength = 0.30
+	terrain.macro_variation = 0.17
+	terrain.ash_amount = 0.38
+	terrain.wetness = 0.42
+	terrain.wet_height_m = 12.0
 	terrain.generate_lods = true
 	terrain.lod_level_count = 2
 	terrain.lod_distance_multiplier = 0.65

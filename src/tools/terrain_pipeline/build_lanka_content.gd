@@ -10,11 +10,11 @@ var _materials: Dictionary
 func _initialize() -> void:
 	_builder = BuilderScript.new() as RefCounted
 	_materials = {
-		&"solid": _builder.make_material("mat_cairn_stone_grip_solid", Color(0.24, 0.26, 0.25), 0.95),
-		&"crumbling": _builder.make_material("mat_cairn_cracked_grip_crumbling", Color(0.17, 0.16, 0.15), 0.97),
-		&"slick": _builder.make_material("mat_cairn_wet_grip_slick", Color(0.07, 0.10, 0.10), 0.62),
-		&"hot": _builder.make_material("mat_cairn_ember_grip_hot", Color(0.68, 0.14, 0.025), 0.8),
-		&"timber": _builder.make_material("mat_cairn_timber_grip_solid", Color(0.21, 0.13, 0.065), 0.9),
+		&"solid": _builder.make_stylized_material("mat_cairn_stone_grip_solid", Color(0.26, 0.29, 0.28), 0.95, 0.0, 0.0, 0.14, 0.30),
+		&"crumbling": _builder.make_stylized_material("mat_cairn_cracked_grip_crumbling", Color(0.17, 0.17, 0.16), 0.97, 0.0, 0.0, 0.35, 0.22),
+		&"slick": _builder.make_stylized_material("mat_cairn_wet_grip_slick", Color(0.065, 0.105, 0.10), 0.62, 0.0, 0.86, 0.06, 0.06),
+		&"hot": _builder.make_stylized_material("mat_cairn_ember_grip_hot", Color(0.20, 0.05, 0.01), 0.80, 0.0, 0.0, 0.36, 0.04, 2.4),
+		&"timber": _builder.make_stylized_material("mat_cairn_timber_grip_solid", Color(0.16, 0.15, 0.11), 0.90, 0.0, 0.0, 0.35, 0.12),
 	}
 	for cairn: Dictionary in ContentContract.CAIRNS:
 		var build_error: Error = _build_cairn(cairn)

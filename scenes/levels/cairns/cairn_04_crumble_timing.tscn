@@ -1,110 +1,141 @@
 [gd_scene format=3]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pun1x"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_ucxpm"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_aqoqk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h70ih"]
 resource_name = "mat_cairn_stone_grip_solid"
-albedo_color = Color(0.24, 0.26, 0.25, 1)
-roughness = 0.95
-
-[sub_resource type="BoxMesh" id="BoxMesh_guqm6"]
-material = SubResource("StandardMaterial3D_pun1x")
-size = Vector3(60, 3, 72)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_i86my"]
-size = Vector3(60, 3, 72)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ucxpm"]
-material = SubResource("StandardMaterial3D_pun1x")
-size = Vector3(4, 23, 72)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_aqoqk"]
-size = Vector3(4, 23, 72)
+render_priority = 0
+shader = ExtResource("1_ucxpm")
+shader_parameter/detail_albedo = ExtResource("2_aqoqk")
+shader_parameter/base_tint = Color(0.26, 0.29, 0.28, 1)
+shader_parameter/accent_tint = Color(0.11439999, 0.1276, 0.1232, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.14
+shader_parameter/ash_amount = 0.3
+shader_parameter/surface_roughness = 0.95
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ydmm"]
-material = SubResource("StandardMaterial3D_pun1x")
-size = Vector3(4, 23, 72)
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(60, 3, 72)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b03js"]
-size = Vector3(4, 23, 72)
+size = Vector3(60, 3, 72)
 
 [sub_resource type="BoxMesh" id="BoxMesh_47cvw"]
-material = SubResource("StandardMaterial3D_pun1x")
-size = Vector3(60, 23, 4)
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(4, 23, 72)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5smb4"]
-size = Vector3(60, 23, 4)
+size = Vector3(4, 23, 72)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ccgkd"]
-material = SubResource("StandardMaterial3D_pun1x")
-size = Vector3(24, 23, 4)
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(4, 23, 72)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ux5bf"]
-size = Vector3(24, 23, 4)
+size = Vector3(4, 23, 72)
 
 [sub_resource type="BoxMesh" id="BoxMesh_snkxn"]
-material = SubResource("StandardMaterial3D_pun1x")
-size = Vector3(24, 23, 4)
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(60, 23, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ecb1"]
-size = Vector3(24, 23, 4)
+size = Vector3(60, 23, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qsv0h"]
-material = SubResource("StandardMaterial3D_pun1x")
-size = Vector3(7, 2, 7)
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(24, 23, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w043r"]
-size = Vector3(7, 2, 7)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqxp4"]
-resource_name = "mat_cairn_cracked_grip_crumbling"
-albedo_color = Color(0.17, 0.16, 0.15, 1)
-roughness = 0.97
+size = Vector3(24, 23, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_e6lm7"]
-material = SubResource("StandardMaterial3D_mqxp4")
-size = Vector3(7, 2, 7)
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(24, 23, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k60fh"]
-size = Vector3(7, 2, 7)
+size = Vector3(24, 23, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8aqgn"]
-material = SubResource("StandardMaterial3D_mqxp4")
+material = SubResource("ShaderMaterial_h70ih")
 size = Vector3(7, 2, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lhela"]
 size = Vector3(7, 2, 7)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oauqs"]
+resource_name = "mat_cairn_cracked_grip_crumbling"
+render_priority = 0
+shader = ExtResource("1_ucxpm")
+shader_parameter/detail_albedo = ExtResource("2_aqoqk")
+shader_parameter/base_tint = Color(0.17, 0.17, 0.16, 1)
+shader_parameter/accent_tint = Color(0.0748, 0.0748, 0.0704, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.35
+shader_parameter/ash_amount = 0.22
+shader_parameter/surface_roughness = 0.97
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
 [sub_resource type="BoxMesh" id="BoxMesh_2mwy7"]
-material = SubResource("StandardMaterial3D_mqxp4")
+material = SubResource("ShaderMaterial_oauqs")
 size = Vector3(7, 2, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gje2q"]
 size = Vector3(7, 2, 7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ivjb1"]
-material = SubResource("StandardMaterial3D_mqxp4")
+material = SubResource("ShaderMaterial_oauqs")
 size = Vector3(7, 2, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhurf"]
 size = Vector3(7, 2, 7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_687uy"]
-material = SubResource("StandardMaterial3D_mqxp4")
+material = SubResource("ShaderMaterial_oauqs")
 size = Vector3(7, 2, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qaj3"]
 size = Vector3(7, 2, 7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8iivi"]
-material = SubResource("StandardMaterial3D_mqxp4")
+material = SubResource("ShaderMaterial_oauqs")
 size = Vector3(7, 2, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mv78g"]
 size = Vector3(7, 2, 7)
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_afnyv"]
+[sub_resource type="BoxMesh" id="BoxMesh_afnyv"]
+material = SubResource("ShaderMaterial_oauqs")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqh58"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_itest"]
+material = SubResource("ShaderMaterial_oauqs")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g70tp"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_1vu0s"]
 size = Vector3(58, 20, 68)
 
-[node name="CairnTerracesCrumbleTiming" type="Node3D" unique_id=95905370]
+[node name="CairnTerracesCrumbleTiming" type="Node3D" unique_id=1572965176]
 metadata/cairn_id = &"terraces_crumble_timing"
 metadata/district_id = &"terraces"
 metadata/taught_mechanic = &"crumbling_timing"
@@ -112,174 +143,174 @@ metadata/single_room = true
 metadata/heart_piece_reward = 1
 metadata/budget_profile = "cairn"
 
-[node name="WorldGeometry" type="Node3D" parent="." unique_id=236183180]
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=721767435]
 
-[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=1882625088]
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=726500550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=1091715336]
-mesh = SubResource("BoxMesh_guqm6")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=581706108]
+mesh = SubResource("BoxMesh_4ydmm")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=1440989026]
-shape = SubResource("BoxShape3D_i86my")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=442896926]
+shape = SubResource("BoxShape3D_b03js")
 
-[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1824066318]
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1096515071]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=558648637]
-mesh = SubResource("BoxMesh_ucxpm")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=1018638179]
+mesh = SubResource("BoxMesh_47cvw")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=1427678954]
-shape = SubResource("BoxShape3D_aqoqk")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=1751592590]
+shape = SubResource("BoxShape3D_5smb4")
 
-[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1266477615]
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1559874703]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=1244145532]
-mesh = SubResource("BoxMesh_4ydmm")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=936946175]
+mesh = SubResource("BoxMesh_ccgkd")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=2130998775]
-shape = SubResource("BoxShape3D_b03js")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=1148093303]
+shape = SubResource("BoxShape3D_ux5bf")
 
-[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=749370970]
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1816591978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=2136588662]
-mesh = SubResource("BoxMesh_47cvw")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=1078656481]
+mesh = SubResource("BoxMesh_snkxn")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=537330207]
-shape = SubResource("BoxShape3D_5smb4")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1525170768]
+shape = SubResource("BoxShape3D_8ecb1")
 
-[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=1619637616]
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=457589143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1767269162]
-mesh = SubResource("BoxMesh_ccgkd")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=403773236]
+mesh = SubResource("BoxMesh_qsv0h")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=577579629]
-shape = SubResource("BoxShape3D_ux5bf")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1080496583]
+shape = SubResource("BoxShape3D_w043r")
 
-[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=2141640306]
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1159752183]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=112198573]
-mesh = SubResource("BoxMesh_snkxn")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=712340121]
+mesh = SubResource("BoxMesh_e6lm7")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1954963199]
-shape = SubResource("BoxShape3D_8ecb1")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1214948192]
+shape = SubResource("BoxShape3D_k60fh")
 
-[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1875059204]
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1111382850]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=1417567430]
-mesh = SubResource("BoxMesh_qsv0h")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=692282686]
+mesh = SubResource("BoxMesh_8aqgn")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=420767490]
-shape = SubResource("BoxShape3D_w043r")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1974480762]
+shape = SubResource("BoxShape3D_lhela")
 
-[node name="CrumblingLedge00" type="StaticBody3D" parent="WorldGeometry" unique_id=338944583]
+[node name="CrumblingLedge00" type="StaticBody3D" parent="WorldGeometry" unique_id=858290809]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 18)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge00" unique_id=846524269]
-mesh = SubResource("BoxMesh_e6lm7")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge00" unique_id=2018065171]
+mesh = SubResource("BoxMesh_2mwy7")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge00" unique_id=1971955828]
-shape = SubResource("BoxShape3D_k60fh")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge00" unique_id=1494345672]
+shape = SubResource("BoxShape3D_gje2q")
 
-[node name="CrumblingLedge01" type="StaticBody3D" parent="WorldGeometry" unique_id=1149467433]
+[node name="CrumblingLedge01" type="StaticBody3D" parent="WorldGeometry" unique_id=1406444671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.2, 10)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge01" unique_id=351268371]
-mesh = SubResource("BoxMesh_8aqgn")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge01" unique_id=1313168763]
+mesh = SubResource("BoxMesh_ivjb1")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge01" unique_id=2111202612]
-shape = SubResource("BoxShape3D_lhela")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge01" unique_id=158153507]
+shape = SubResource("BoxShape3D_yhurf")
 
-[node name="CrumblingLedge02" type="StaticBody3D" parent="WorldGeometry" unique_id=1971714335]
+[node name="CrumblingLedge02" type="StaticBody3D" parent="WorldGeometry" unique_id=1234545116]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6.4, 2)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge02" unique_id=52885797]
-mesh = SubResource("BoxMesh_2mwy7")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge02" unique_id=732989705]
+mesh = SubResource("BoxMesh_687uy")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge02" unique_id=441159201]
-shape = SubResource("BoxShape3D_gje2q")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge02" unique_id=204327405]
+shape = SubResource("BoxShape3D_7qaj3")
 
-[node name="CrumblingLedge03" type="StaticBody3D" parent="WorldGeometry" unique_id=152095542]
+[node name="CrumblingLedge03" type="StaticBody3D" parent="WorldGeometry" unique_id=1271273991]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8.6, -6)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge03" unique_id=864515031]
-mesh = SubResource("BoxMesh_ivjb1")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge03" unique_id=2008176486]
+mesh = SubResource("BoxMesh_8iivi")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge03" unique_id=1906283]
-shape = SubResource("BoxShape3D_yhurf")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge03" unique_id=1285337184]
+shape = SubResource("BoxShape3D_mv78g")
 
-[node name="CrumblingLedge04" type="StaticBody3D" parent="WorldGeometry" unique_id=1435317400]
+[node name="CrumblingLedge04" type="StaticBody3D" parent="WorldGeometry" unique_id=1038991138]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10.8, -14)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge04" unique_id=265232813]
-mesh = SubResource("BoxMesh_687uy")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge04" unique_id=990544724]
+mesh = SubResource("BoxMesh_afnyv")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge04" unique_id=537485521]
-shape = SubResource("BoxShape3D_7qaj3")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge04" unique_id=273711237]
+shape = SubResource("BoxShape3D_rqh58")
 
-[node name="CrumblingLedge05" type="StaticBody3D" parent="WorldGeometry" unique_id=1505321954]
+[node name="CrumblingLedge05" type="StaticBody3D" parent="WorldGeometry" unique_id=1468297895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 13, -22)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge05" unique_id=847371867]
-mesh = SubResource("BoxMesh_8iivi")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge05" unique_id=374284945]
+mesh = SubResource("BoxMesh_itest")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge05" unique_id=158885]
-shape = SubResource("BoxShape3D_mv78g")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge05" unique_id=1964127826]
+shape = SubResource("BoxShape3D_g70tp")
 
-[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=872669296]
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=93802501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-occluder = SubResource("BoxOccluder3D_afnyv")
+occluder = SubResource("BoxOccluder3D_1vu0s")
 
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=1441603917]
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=840558522]
 aabb = AABB(-32, -3, -38, 64, 30, 76)
 
-[node name="GameplaySockets" type="Node3D" parent="." unique_id=1176961344]
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=416877719]
 
-[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=2129504939]
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=1390621420]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
 metadata/socket_type = &"heart_piece_reward"
 metadata/cairn_id = &"terraces_crumble_timing"
 metadata/heart_piece_amount = 1
 
-[node name="RouteMarkers" type="Node3D" parent="." unique_id=681703856]
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1276066140]
 
-[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=998508541]
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1125132758]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"entry"
 
-[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=214157198]
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=2021235041]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"exit"

@@ -18,6 +18,15 @@ shader_parameter/altitude_blend_end = 58.0
 shader_parameter/slope_blend_start = 0.22
 shader_parameter/slope_blend_end = 0.62
 shader_parameter/terrain_roughness = 0.9
+shader_parameter/low_tint = Color(0.095, 0.145, 0.132, 1)
+shader_parameter/high_tint = Color(0.43, 0.44, 0.41, 1)
+shader_parameter/steep_tint = Color(0.068, 0.078, 0.075, 1)
+shader_parameter/ash_tint = Color(0.6, 0.61, 0.57, 1)
+shader_parameter/detail_strength = 0.3
+shader_parameter/macro_variation = 0.17
+shader_parameter/ash_amount = 0.38
+shader_parameter/wetness = 0.42
+shader_parameter/wet_height = 12.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_p8nos"]
 _surfaces = [{
@@ -42,14 +51,14 @@ map_data = PackedFloat32Array(-9.56, -9.56, -9.450535, -5.154127, -4.5036454, 0.
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_6tu68"]
 size = Vector3(10, 70, 220)
 
-[node name="Chunk03" type="Node3D" unique_id=51987756]
+[node name="Chunk03" type="Node3D" unique_id=1177272276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -440, 0, 220)
 metadata/budget_profile = "terraces"
 metadata/chunk_grid_coordinate = Vector2i(0, 3)
 metadata/chunk_center_m = Vector2(-440, 220)
 metadata/streamed_terrain_chunk = true
 
-[node name="Terrain3D" type="MeshInstance3D" parent="." unique_id=1951354920]
+[node name="Terrain3D" type="MeshInstance3D" parent="." unique_id=688203752]
 material_override = SubResource("ShaderMaterial_bokjf")
 visibility_range_end = 650.0
 mesh = SubResource("ArrayMesh_p8nos")
@@ -66,14 +75,23 @@ altitude_blend_start_m = 8.0
 altitude_blend_end_m = 58.0
 slope_blend_start = 0.22
 slope_blend_end = 0.62
+low_tint = Color(0.095, 0.145, 0.132, 1)
+high_tint = Color(0.43, 0.44, 0.41, 1)
+steep_tint = Color(0.068, 0.078, 0.075, 1)
+ash_tint = Color(0.6, 0.61, 0.57, 1)
+detail_strength = 0.3
+macro_variation = 0.17
+ash_amount = 0.38
+wetness = 0.42
+wet_height_m = 12.0
 
-[node name="TerrainCollisionBody" type="StaticBody3D" parent="Terrain3D" unique_id=1967608214]
+[node name="TerrainCollisionBody" type="StaticBody3D" parent="Terrain3D" unique_id=1449758613]
 collision_mask = 0
 
-[node name="TerrainCollisionShape" type="CollisionShape3D" parent="Terrain3D/TerrainCollisionBody" unique_id=2012172368]
+[node name="TerrainCollisionShape" type="CollisionShape3D" parent="Terrain3D/TerrainCollisionBody" unique_id=642747605]
 transform = Transform3D(3.4375, 0, 0, 0, 1, 0, 0, 0, 3.4375, 0, 0, 0)
 shape = SubResource("HeightMapShape3D_eagna")
 
-[node name="WestCliffOccluder" type="OccluderInstance3D" parent="." unique_id=753844299]
+[node name="WestCliffOccluder" type="OccluderInstance3D" parent="." unique_id=1217645875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106, 27, 0)
 occluder = SubResource("BoxOccluder3D_6tu68")

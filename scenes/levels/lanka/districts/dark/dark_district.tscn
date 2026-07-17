@@ -1,356 +1,415 @@
 [gd_scene format=3]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uchtv"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_s5pvd"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_pdfbs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0b2i2"]
 resource_name = "mat_wet_stone_grip_slick"
-albedo_color = Color(0.075, 0.105, 0.1, 1)
-roughness = 0.62
-
-[sub_resource type="BoxMesh" id="BoxMesh_cwh2g"]
-material = SubResource("StandardMaterial3D_uchtv")
-size = Vector3(210, 4, 180)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cmsbw"]
-size = Vector3(210, 4, 180)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wu1h"]
-resource_name = "mat_soot_stone_grip_slick"
-albedo_color = Color(0.055, 0.052, 0.048, 1)
-roughness = 0.9
-
-[sub_resource type="BoxMesh" id="BoxMesh_s5pvd"]
-material = SubResource("StandardMaterial3D_2wu1h")
-size = Vector3(210, 5, 180)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pdfbs"]
-size = Vector3(210, 5, 180)
+render_priority = 0
+shader = ExtResource("1_s5pvd")
+shader_parameter/detail_albedo = ExtResource("2_pdfbs")
+shader_parameter/base_tint = Color(0.075, 0.115, 0.105, 1)
+shader_parameter/accent_tint = Color(0.033, 0.0506, 0.0462, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.82
+shader_parameter/soot_amount = 0.1
+shader_parameter/ash_amount = 0.08
+shader_parameter/surface_roughness = 0.62
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_q25i1"]
-material = SubResource("StandardMaterial3D_uchtv")
-size = Vector3(6, 30, 180)
+material = SubResource("ShaderMaterial_0b2i2")
+size = Vector3(210, 4, 180)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3vad"]
-size = Vector3(6, 30, 180)
+size = Vector3(210, 4, 180)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ja8xe"]
+resource_name = "mat_soot_stone_grip_slick"
+render_priority = 0
+shader = ExtResource("1_s5pvd")
+shader_parameter/detail_albedo = ExtResource("2_pdfbs")
+shader_parameter/base_tint = Color(0.095, 0.095, 0.085, 1)
+shader_parameter/accent_tint = Color(0.0418, 0.0418, 0.0374, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.1
+shader_parameter/soot_amount = 0.78
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_4edw4"]
-material = SubResource("StandardMaterial3D_uchtv")
-size = Vector3(6, 30, 180)
+material = SubResource("ShaderMaterial_ja8xe")
+size = Vector3(210, 5, 180)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h7x4x"]
-size = Vector3(6, 30, 180)
+size = Vector3(210, 5, 180)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nu6by"]
-material = SubResource("StandardMaterial3D_uchtv")
-size = Vector3(210, 30, 6)
+material = SubResource("ShaderMaterial_0b2i2")
+size = Vector3(6, 30, 180)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lhv2t"]
-size = Vector3(210, 30, 6)
+size = Vector3(6, 30, 180)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7ik26"]
-material = SubResource("StandardMaterial3D_uchtv")
-size = Vector3(210, 30, 6)
+material = SubResource("ShaderMaterial_0b2i2")
+size = Vector3(6, 30, 180)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cr6cl"]
-size = Vector3(210, 30, 6)
+size = Vector3(6, 30, 180)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nqfvv"]
-material = SubResource("StandardMaterial3D_uchtv")
-size = Vector3(6, 24, 88)
+material = SubResource("ShaderMaterial_0b2i2")
+size = Vector3(210, 30, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xftgh"]
-size = Vector3(6, 24, 88)
+size = Vector3(210, 30, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_iw250"]
-material = SubResource("StandardMaterial3D_uchtv")
-size = Vector3(6, 24, 96)
+material = SubResource("ShaderMaterial_0b2i2")
+size = Vector3(210, 30, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b481c"]
-size = Vector3(6, 24, 96)
+size = Vector3(210, 30, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lf8pj"]
-material = SubResource("StandardMaterial3D_uchtv")
-size = Vector3(68, 24, 6)
+material = SubResource("ShaderMaterial_0b2i2")
+size = Vector3(6, 24, 88)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4m65"]
-size = Vector3(68, 24, 6)
+size = Vector3(6, 24, 88)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ffo5i"]
-material = SubResource("StandardMaterial3D_uchtv")
-size = Vector3(64, 24, 6)
+material = SubResource("ShaderMaterial_0b2i2")
+size = Vector3(6, 24, 96)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ux58"]
-size = Vector3(64, 24, 6)
+size = Vector3(6, 24, 96)
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_7h1oo"]
-size = Vector3(190, 24, 160)
+[sub_resource type="BoxMesh" id="BoxMesh_7h1oo"]
+material = SubResource("ShaderMaterial_0b2i2")
+size = Vector3(68, 24, 6)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4pft"]
-resource_name = "mat_clean_stone_grip_solid"
-albedo_color = Color(0.29, 0.3, 0.28, 1)
-roughness = 0.94
-
-[sub_resource type="BoxMesh" id="BoxMesh_bqbyh"]
-material = SubResource("StandardMaterial3D_c4pft")
-size = Vector3(22, 4, 12)
+[sub_resource type="BoxShape3D" id="BoxShape3D_bqbyh"]
+size = Vector3(68, 24, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lddkx"]
-material = SubResource("StandardMaterial3D_c4pft")
-size = Vector3(22, 4, 12)
+material = SubResource("ShaderMaterial_0b2i2")
+size = Vector3(64, 24, 6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_h5275"]
-material = SubResource("StandardMaterial3D_c4pft")
-size = Vector3(22, 4, 12)
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5275"]
+size = Vector3(64, 24, 6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ksuq3"]
-material = SubResource("StandardMaterial3D_c4pft")
-size = Vector3(22, 4, 12)
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ksuq3"]
+size = Vector3(190, 24, 160)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mrjfs"]
+resource_name = "mat_clean_stone_grip_solid"
+render_priority = 0
+shader = ExtResource("1_s5pvd")
+shader_parameter/detail_albedo = ExtResource("2_pdfbs")
+shader_parameter/base_tint = Color(0.31, 0.32, 0.3, 1)
+shader_parameter/accent_tint = Color(0.1364, 0.1408, 0.132, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.08
+shader_parameter/ash_amount = 0.2
+shader_parameter/surface_roughness = 0.94
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_dhvub"]
-material = SubResource("StandardMaterial3D_c4pft")
+material = SubResource("ShaderMaterial_mrjfs")
 size = Vector3(22, 4, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ldm1q"]
-material = SubResource("StandardMaterial3D_c4pft")
+material = SubResource("ShaderMaterial_mrjfs")
 size = Vector3(22, 4, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7m0j5"]
-material = SubResource("StandardMaterial3D_c4pft")
+material = SubResource("ShaderMaterial_mrjfs")
 size = Vector3(22, 4, 12)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuth0"]
-resource_name = "mat_bone_canvas_grip_solid"
-albedo_color = Color(0.56, 0.54, 0.46, 1)
-roughness = 0.9
-
 [sub_resource type="BoxMesh" id="BoxMesh_f8cu6"]
-material = SubResource("StandardMaterial3D_nuth0")
-size = Vector3(1.4, 0.5, 0.6)
+material = SubResource("ShaderMaterial_mrjfs")
+size = Vector3(22, 4, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_etm0o"]
-material = SubResource("StandardMaterial3D_nuth0")
-size = Vector3(1.4, 0.5, 0.6)
+material = SubResource("ShaderMaterial_mrjfs")
+size = Vector3(22, 4, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_bg16r"]
-material = SubResource("StandardMaterial3D_nuth0")
+material = SubResource("ShaderMaterial_mrjfs")
+size = Vector3(22, 4, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kap3x"]
+material = SubResource("ShaderMaterial_mrjfs")
+size = Vector3(22, 4, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjska"]
+resource_name = "mat_bone_canvas_grip_solid"
+render_priority = 0
+shader = ExtResource("1_s5pvd")
+shader_parameter/detail_albedo = ExtResource("2_pdfbs")
+shader_parameter/base_tint = Color(0.58, 0.56, 0.48, 1)
+shader_parameter/accent_tint = Color(0.2552, 0.2464, 0.2112, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_jj2k5"]
+material = SubResource("ShaderMaterial_rjska")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lo6u2"]
+material = SubResource("ShaderMaterial_rjska")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oxhx3"]
+material = SubResource("ShaderMaterial_rjska")
 size = Vector3(2.6, 0.8, 1.4)
 
-[node name="DarkDistrict" type="Node3D" unique_id=1854240348]
+[node name="DarkDistrict" type="Node3D" unique_id=527695023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34, 430)
 metadata/district_id = &"dark"
 metadata/budget_profile = "dark"
 metadata/separate_streamed_area = true
 metadata/open_world_loaded = false
 
-[node name="WorldGeometry" type="Node3D" parent="." unique_id=1315185233]
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=1709850631]
 
-[node name="DarkFloor" type="StaticBody3D" parent="WorldGeometry" unique_id=146531095]
+[node name="DarkFloor" type="StaticBody3D" parent="WorldGeometry" unique_id=1706459727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkFloor" unique_id=1732983942]
-mesh = SubResource("BoxMesh_cwh2g")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkFloor" unique_id=614927480]
+mesh = SubResource("BoxMesh_q25i1")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkFloor" unique_id=287685432]
-shape = SubResource("BoxShape3D_cmsbw")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkFloor" unique_id=46854955]
+shape = SubResource("BoxShape3D_a3vad")
 
-[node name="DarkCeiling" type="StaticBody3D" parent="WorldGeometry" unique_id=2072328174]
+[node name="DarkCeiling" type="StaticBody3D" parent="WorldGeometry" unique_id=1854058489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkCeiling" unique_id=55868660]
-mesh = SubResource("BoxMesh_s5pvd")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkCeiling" unique_id=1705068890]
+mesh = SubResource("BoxMesh_4edw4")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkCeiling" unique_id=344229544]
-shape = SubResource("BoxShape3D_pdfbs")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkCeiling" unique_id=827883232]
+shape = SubResource("BoxShape3D_h7x4x")
 
-[node name="DarkWall00" type="StaticBody3D" parent="WorldGeometry" unique_id=1998363564]
+[node name="DarkWall00" type="StaticBody3D" parent="WorldGeometry" unique_id=490377842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 13, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall00" unique_id=2074675448]
-mesh = SubResource("BoxMesh_q25i1")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall00" unique_id=351739887]
+mesh = SubResource("BoxMesh_nu6by")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall00" unique_id=1649058798]
-shape = SubResource("BoxShape3D_a3vad")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall00" unique_id=1778856439]
+shape = SubResource("BoxShape3D_lhv2t")
 
-[node name="DarkWall01" type="StaticBody3D" parent="WorldGeometry" unique_id=1928130471]
+[node name="DarkWall01" type="StaticBody3D" parent="WorldGeometry" unique_id=171155239]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 13, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall01" unique_id=1129927321]
-mesh = SubResource("BoxMesh_4edw4")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall01" unique_id=1189139364]
+mesh = SubResource("BoxMesh_7ik26")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall01" unique_id=2136706357]
-shape = SubResource("BoxShape3D_h7x4x")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall01" unique_id=698405480]
+shape = SubResource("BoxShape3D_cr6cl")
 
-[node name="DarkWall02" type="StaticBody3D" parent="WorldGeometry" unique_id=311962397]
+[node name="DarkWall02" type="StaticBody3D" parent="WorldGeometry" unique_id=1877678486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -90)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall02" unique_id=1947778834]
-mesh = SubResource("BoxMesh_nu6by")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall02" unique_id=343072672]
+mesh = SubResource("BoxMesh_nqfvv")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall02" unique_id=1066421273]
-shape = SubResource("BoxShape3D_lhv2t")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall02" unique_id=1900976480]
+shape = SubResource("BoxShape3D_xftgh")
 
-[node name="DarkWall03" type="StaticBody3D" parent="WorldGeometry" unique_id=536035047]
+[node name="DarkWall03" type="StaticBody3D" parent="WorldGeometry" unique_id=1585842796]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 90)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall03" unique_id=474765728]
-mesh = SubResource("BoxMesh_7ik26")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall03" unique_id=1339514310]
+mesh = SubResource("BoxMesh_iw250")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall03" unique_id=96263735]
-shape = SubResource("BoxShape3D_cr6cl")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall03" unique_id=1286892573]
+shape = SubResource("BoxShape3D_b481c")
 
-[node name="DarkWall04" type="StaticBody3D" parent="WorldGeometry" unique_id=961915385]
+[node name="DarkWall04" type="StaticBody3D" parent="WorldGeometry" unique_id=1147313522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 10, -42)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall04" unique_id=294346941]
-mesh = SubResource("BoxMesh_nqfvv")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall04" unique_id=628013265]
+mesh = SubResource("BoxMesh_lf8pj")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall04" unique_id=94361860]
-shape = SubResource("BoxShape3D_xftgh")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall04" unique_id=1229947568]
+shape = SubResource("BoxShape3D_a4m65")
 
-[node name="DarkWall05" type="StaticBody3D" parent="WorldGeometry" unique_id=1983752207]
+[node name="DarkWall05" type="StaticBody3D" parent="WorldGeometry" unique_id=1956489612]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 10, 38)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall05" unique_id=261502372]
-mesh = SubResource("BoxMesh_iw250")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall05" unique_id=1040425175]
+mesh = SubResource("BoxMesh_ffo5i")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall05" unique_id=2126893478]
-shape = SubResource("BoxShape3D_b481c")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall05" unique_id=508227463]
+shape = SubResource("BoxShape3D_0ux58")
 
-[node name="DarkWall06" type="StaticBody3D" parent="WorldGeometry" unique_id=2062186626]
+[node name="DarkWall06" type="StaticBody3D" parent="WorldGeometry" unique_id=370888046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 10, -18)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall06" unique_id=24981657]
-mesh = SubResource("BoxMesh_lf8pj")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall06" unique_id=28755294]
+mesh = SubResource("BoxMesh_7h1oo")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall06" unique_id=496610599]
-shape = SubResource("BoxShape3D_a4m65")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall06" unique_id=318572518]
+shape = SubResource("BoxShape3D_bqbyh")
 
-[node name="DarkWall07" type="StaticBody3D" parent="WorldGeometry" unique_id=488017620]
+[node name="DarkWall07" type="StaticBody3D" parent="WorldGeometry" unique_id=1679129847]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 10, 26)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall07" unique_id=1509360233]
-mesh = SubResource("BoxMesh_ffo5i")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall07" unique_id=1235395056]
-shape = SubResource("BoxShape3D_0ux58")
-
-[node name="DarkCoreOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=1223885302]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
-occluder = SubResource("BoxOccluder3D_7h1oo")
-
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=327508609]
-aabb = AABB(-108, -5, -93, 216, 38, 186)
-
-[node name="Dressing" type="Node3D" parent="." unique_id=304297712]
-
-[node name="HidingAlcoveLintel00" type="MeshInstance3D" parent="Dressing" unique_id=1933456183]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, -65)
-mesh = SubResource("BoxMesh_bqbyh")
-
-[node name="HidingAlcoveLintel01" type="MeshInstance3D" parent="Dressing" unique_id=1662472099]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 15, -44)
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall07" unique_id=1506475659]
 mesh = SubResource("BoxMesh_lddkx")
 
-[node name="HidingAlcoveLintel02" type="MeshInstance3D" parent="Dressing" unique_id=2086713080]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 15, -23)
-mesh = SubResource("BoxMesh_h5275")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall07" unique_id=763105033]
+shape = SubResource("BoxShape3D_h5275")
 
-[node name="HidingAlcoveLintel03" type="MeshInstance3D" parent="Dressing" unique_id=368685373]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 15, -2)
-mesh = SubResource("BoxMesh_ksuq3")
+[node name="DarkCoreOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=1458496419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+occluder = SubResource("BoxOccluder3D_ksuq3")
 
-[node name="HidingAlcoveLintel04" type="MeshInstance3D" parent="Dressing" unique_id=889919383]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 15, 19)
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=2077605248]
+aabb = AABB(-108, -5, -93, 216, 38, 186)
+
+[node name="Dressing" type="Node3D" parent="." unique_id=422348488]
+
+[node name="HidingAlcoveLintel00" type="MeshInstance3D" parent="Dressing" unique_id=1304404161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, -65)
 mesh = SubResource("BoxMesh_dhvub")
 
-[node name="HidingAlcoveLintel05" type="MeshInstance3D" parent="Dressing" unique_id=947467250]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 15, 40)
+[node name="HidingAlcoveLintel01" type="MeshInstance3D" parent="Dressing" unique_id=1798049712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 15, -44)
 mesh = SubResource("BoxMesh_ldm1q")
 
-[node name="HidingAlcoveLintel06" type="MeshInstance3D" parent="Dressing" unique_id=1958246950]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, 61)
+[node name="HidingAlcoveLintel02" type="MeshInstance3D" parent="Dressing" unique_id=655662366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 15, -23)
 mesh = SubResource("BoxMesh_7m0j5")
 
-[node name="FragmentProxy_CrewTarin" type="MeshInstance3D" parent="Dressing" unique_id=786193138]
-transform = Transform3D(0.94573736, -0.06456008, 0.3184537, 0.13613184, 0.96862835, -0.2079117, -0.2950405, 0.23998156, 0.9248567, -54, 1.35, 18)
+[node name="HidingAlcoveLintel03" type="MeshInstance3D" parent="Dressing" unique_id=7263146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 15, -2)
 mesh = SubResource("BoxMesh_f8cu6")
 
-[node name="FragmentProxy_CrewVasu" type="MeshInstance3D" parent="Dressing" unique_id=1454209641]
-transform = Transform3D(-0.69223875, 0.2431348, 0.6794785, 0.13613184, 0.96862835, -0.2079117, -0.7087127, -0.051425867, -0.70362043, 48, 1.35, 64)
+[node name="HidingAlcoveLintel04" type="MeshInstance3D" parent="Dressing" unique_id=437238826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 15, 19)
 mesh = SubResource("BoxMesh_etm0o")
 
-[node name="SalvageProxy_SalvageCanvas05" type="MeshInstance3D" parent="Dressing" unique_id=829551459]
-transform = Transform3D(-0.83867055, 0, 0.54463905, 0, 1, 0, -0.54463905, 0, -0.83867055, -78, 1.5, -56)
+[node name="HidingAlcoveLintel05" type="MeshInstance3D" parent="Dressing" unique_id=1131308960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 15, 40)
 mesh = SubResource("BoxMesh_bg16r")
 
-[node name="GameplaySockets" type="Node3D" parent="." unique_id=1976815915]
+[node name="HidingAlcoveLintel06" type="MeshInstance3D" parent="Dressing" unique_id=1892576511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, 61)
+mesh = SubResource("BoxMesh_kap3x")
 
-[node name="DrownedSpawn00" type="Marker3D" parent="GameplaySockets" unique_id=1906306541]
+[node name="FragmentProxy_CrewTarin" type="MeshInstance3D" parent="Dressing" unique_id=1565096324]
+transform = Transform3D(0.94573736, -0.06456008, 0.3184537, 0.13613184, 0.96862835, -0.2079117, -0.2950405, 0.23998156, 0.9248567, -54, 1.35, 18)
+mesh = SubResource("BoxMesh_jj2k5")
+
+[node name="FragmentProxy_CrewVasu" type="MeshInstance3D" parent="Dressing" unique_id=565749942]
+transform = Transform3D(-0.69223875, 0.2431348, 0.6794785, 0.13613184, 0.96862835, -0.2079117, -0.7087127, -0.051425867, -0.70362043, 48, 1.35, 64)
+mesh = SubResource("BoxMesh_lo6u2")
+
+[node name="SalvageProxy_SalvageCanvas05" type="MeshInstance3D" parent="Dressing" unique_id=1778965623]
+transform = Transform3D(-0.83867055, 0, 0.54463905, 0, 1, 0, -0.54463905, 0, -0.83867055, -78, 1.5, -56)
+mesh = SubResource("BoxMesh_oxhx3")
+
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=650888101]
+
+[node name="DrownedSpawn00" type="Marker3D" parent="GameplaySockets" unique_id=297850004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 0, -58)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_00"
 metadata/district_id = &"dark"
 
-[node name="DrownedSpawn01" type="Marker3D" parent="GameplaySockets" unique_id=1572679863]
+[node name="DrownedSpawn01" type="Marker3D" parent="GameplaySockets" unique_id=2129966722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, -48)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_01"
 metadata/district_id = &"dark"
 
-[node name="DrownedSpawn02" type="Marker3D" parent="GameplaySockets" unique_id=599432580]
+[node name="DrownedSpawn02" type="Marker3D" parent="GameplaySockets" unique_id=194987239]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_02"
 metadata/district_id = &"dark"
 
-[node name="DrownedSpawn03" type="Marker3D" parent="GameplaySockets" unique_id=1325479589]
+[node name="DrownedSpawn03" type="Marker3D" parent="GameplaySockets" unique_id=307581655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 46)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_03"
 metadata/district_id = &"dark"
 
-[node name="DrownedSpawn04" type="Marker3D" parent="GameplaySockets" unique_id=54877845]
+[node name="DrownedSpawn04" type="Marker3D" parent="GameplaySockets" unique_id=2142512813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 0, 62)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_04"
 metadata/district_id = &"dark"
 
-[node name="DrownedSpawn05" type="Marker3D" parent="GameplaySockets" unique_id=731805429]
+[node name="DrownedSpawn05" type="Marker3D" parent="GameplaySockets" unique_id=304490087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 74)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_05"
 metadata/district_id = &"dark"
 
-[node name="CarriedLightStart" type="Marker3D" parent="GameplaySockets" unique_id=762009990]
+[node name="CarriedLightStart" type="Marker3D" parent="GameplaySockets" unique_id=1924315896]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -72)
 metadata/socket_type = &"fire_source"
 metadata/spawn_id = &"dark_carried_light"
 
-[node name="DistrictTrigger" type="Marker3D" parent="GameplaySockets" unique_id=2087206892]
+[node name="DistrictTrigger" type="Marker3D" parent="GameplaySockets" unique_id=1675577936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -82)
 metadata/socket_type = &"district_trigger"
 metadata/socket_size_m = Vector3(50, 20, 18)
 metadata/district_id = &"dark"
 
-[node name="CrewFragment_CrewTarin" type="Marker3D" parent="GameplaySockets" unique_id=1470182305]
+[node name="CrewFragment_CrewTarin" type="Marker3D" parent="GameplaySockets" unique_id=834214163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 1, 18)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_tarin"
@@ -358,7 +417,7 @@ metadata/memory_object = "rusted whistle"
 metadata/memory_text = "Tarin whistled in the dark. Something answered in his own voice."
 metadata/district_id = &"dark"
 
-[node name="CrewFragment_CrewVasu" type="Marker3D" parent="GameplaySockets" unique_id=2043319775]
+[node name="CrewFragment_CrewVasu" type="Marker3D" parent="GameplaySockets" unique_id=1436339684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 1, 64)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_vasu"
@@ -366,61 +425,61 @@ metadata/memory_object = "carved face"
 metadata/memory_text = "Vasu guarded the figurehead. He knew who had carved it."
 metadata/district_id = &"dark"
 
-[node name="Salvage_SalvageCanvas05" type="Marker3D" parent="GameplaySockets" unique_id=1530573283]
+[node name="Salvage_SalvageCanvas05" type="Marker3D" parent="GameplaySockets" unique_id=1475677225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 1, -56)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_canvas_05"
 metadata/salvage_id = &"canvas"
 metadata/district_id = &"dark"
 
-[node name="RouteMarkers" type="Node3D" parent="." unique_id=470428223]
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1107627206]
 
-[node name="HidingAlcove00" type="Marker3D" parent="RouteMarkers" unique_id=1725809590]
+[node name="HidingAlcove00" type="Marker3D" parent="RouteMarkers" unique_id=927025718]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 7, -65)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_00"
 
-[node name="HidingAlcove01" type="Marker3D" parent="RouteMarkers" unique_id=411610777]
+[node name="HidingAlcove01" type="Marker3D" parent="RouteMarkers" unique_id=112440261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 7, -44)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_01"
 
-[node name="HidingAlcove02" type="Marker3D" parent="RouteMarkers" unique_id=1190001111]
+[node name="HidingAlcove02" type="Marker3D" parent="RouteMarkers" unique_id=1152693048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 7, -23)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_02"
 
-[node name="HidingAlcove03" type="Marker3D" parent="RouteMarkers" unique_id=1039247361]
+[node name="HidingAlcove03" type="Marker3D" parent="RouteMarkers" unique_id=983903049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 7, -2)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_03"
 
-[node name="HidingAlcove04" type="Marker3D" parent="RouteMarkers" unique_id=785540858]
+[node name="HidingAlcove04" type="Marker3D" parent="RouteMarkers" unique_id=116429395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 7, 19)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_04"
 
-[node name="HidingAlcove05" type="Marker3D" parent="RouteMarkers" unique_id=699878262]
+[node name="HidingAlcove05" type="Marker3D" parent="RouteMarkers" unique_id=1074155037]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 7, 40)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_05"
 
-[node name="HidingAlcove06" type="Marker3D" parent="RouteMarkers" unique_id=798077421]
+[node name="HidingAlcove06" type="Marker3D" parent="RouteMarkers" unique_id=133002573]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 7, 61)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_06"
 
-[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=265718600]
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1658715367]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -78)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"entry"
 
-[node name="Figurehead" type="Marker3D" parent="RouteMarkers" unique_id=872956390]
+[node name="Figurehead" type="Marker3D" parent="RouteMarkers" unique_id=244572146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 72)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"figurehead"
 
-[node name="EmergencyHide" type="Marker3D" parent="RouteMarkers" unique_id=2127828034]
+[node name="EmergencyHide" type="Marker3D" parent="RouteMarkers" unique_id=528246717]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88, 1, 70)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"final_hide"
