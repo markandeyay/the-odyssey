@@ -197,4 +197,4 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** `project.godot` has no `run/main_scene`, so F5 cannot enter the now-runnable Lanka scene even though direct scene execution works.
 **Proposed API:** Add `run/main_scene="res://scenes/levels/lanka/lanka.tscn"` under `[application]` in SYSTEMS-owned `project.godot`.
 **Blocking:** yes for F5 project launch; no for F6/direct Lanka scene launch
-**Status:** OPEN
+**Status:** DONE
