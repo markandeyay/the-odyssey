@@ -1,11 +1,17 @@
 class_name UpdraftVolume
 extends Area3D
-## Updraft above a sufficiently large burn (M7). Created and pooled by the
-## FireGrid; sits on physics layer `updraft` (12). Inert until the glider
-## (M13) reads overlapping volumes and applies `lift_strength`. Do not
-## build flight here.
+## Updraft the glider (M13) rides. Two lives: pooled volumes the FireGrid
+## creates above a sufficiently large burn (M7), inert until configured;
+## and standing vents WORLD places where the streets crack (`standing`
+## on, sized by the exports, column rising from the node's origin). Sits
+## on physics layer `updraft` (12). Do not build flight here.
 
 @export var lift_strength: float = 12.0
+## Placed vents activate themselves on ready; pooled fire updrafts leave
+## this off and wait for the FireGrid.
+@export var standing: bool = false
+@export var radius: float = 2.0
+@export var height: float = 12.0
 
 var _cylinder: CylinderShape3D = CylinderShape3D.new()
 var _shape_node: CollisionShape3D = CollisionShape3D.new()
@@ -18,13 +24,21 @@ func _ready() -> void:
 	monitorable = true
 	_shape_node.shape = _cylinder
 	add_child(_shape_node)
-	deactivate()
+	if standing:
+		_cylinder.radius = radius
+		_cylinder.height = height
+		_shape_node.position = Vector3.UP * height * 0.5
+		_shape_node.disabled = false
+		visible = true
+	else:
+		deactivate()
 
 
-func configure(center: Vector3, radius: float, height: float) -> void:
+func configure(center: Vector3, radius_: float, height_: float) -> void:
 	global_position = center
-	_cylinder.radius = radius
-	_cylinder.height = height
+	_cylinder.radius = radius_
+	_cylinder.height = height_
+	_shape_node.position = Vector3.ZERO
 	_shape_node.disabled = false
 	visible = true
 

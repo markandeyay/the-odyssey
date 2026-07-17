@@ -5,8 +5,8 @@ extends Node
 ## clips on its AnimationPlayer and plays nothing that does not exist, so the
 ## capsule fallback runs the exact same code path as a real rigged mesh.
 ## Expected clip names (any subset): idle, walk, run, sprint, jump, fall,
-## land, crouch_idle, crouch_walk, climb_idle, climb_move. Root motion is
-## never used.
+## land, crouch_idle, crouch_walk, climb_idle, climb_move, swim_idle,
+## swim_move, glide. Root motion is never used.
 
 const BLEND_TIME: float = 0.2
 const LAND_CLIP: StringName = &"land"

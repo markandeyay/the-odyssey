@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_player"]
 [ext_resource type="Script" path="res://src/player/player_health.gd" id="10_health"]
+[ext_resource type="Script" path="res://src/player/glider_controller.gd" id="11_glider"]
 [ext_resource type="Script" path="res://src/player/camera_rig.gd" id="2_camrig"]
 [ext_resource type="Script" path="res://src/player/player_animator.gd" id="3_anim"]
 [ext_resource type="Script" path="res://src/player/climb_controller.gd" id="4_climb"]
@@ -36,6 +37,17 @@ material = SubResource("StandardMaterial3D_wisp")
 radius = 0.02
 height = 0.04
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_canvas"]
+albedo_color = Color(0.85, 0.8, 0.68, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_canvas"]
+material = SubResource("StandardMaterial3D_canvas")
+size = Vector3(2.2, 0.06, 1.3)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_updraft"]
+radius = 0.6
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 13
@@ -56,6 +68,11 @@ mesh = SubResource("CapsuleMesh_fallback")
 
 [node name="CarryHold" type="Node3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.8)
+
+[node name="GliderCanvas" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15, 0)
+visible = false
+mesh = SubResource("BoxMesh_canvas")
 
 [node name="HeatWisps" type="CPUParticles3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -81,6 +98,18 @@ script = ExtResource("5_carry")
 
 [node name="PlayerInteractor" type="Node" parent="."]
 script = ExtResource("6_interactor")
+
+[node name="GliderController" type="Node" parent="."]
+script = ExtResource("11_glider")
+
+[node name="UpdraftSensor" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2048
+monitorable = false
+
+[node name="SensorShape" type="CollisionShape3D" parent="UpdraftSensor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_updraft")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

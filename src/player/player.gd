@@ -105,6 +105,8 @@ var _sockets: Dictionary = {}
 @onready var _hud: GameHUD = $HUD/GameHUD
 @onready var _heat_wisps: CPUParticles3D = $Visual/HeatWisps
 @onready var _carry: CarryController = $CarryController
+@onready var _glider: GliderController = $GliderController
+@onready var _glider_canvas: MeshInstance3D = $Visual/GliderCanvas
 @onready var health: PlayerHealth = $Health
 
 
@@ -114,6 +116,8 @@ func _ready() -> void:
 	_climb.attached.connect(_on_climb_attached)
 	_climb.detached.connect(_on_climb_detached)
 	_climb.handhold_failing.connect(_on_handhold_failing)
+	_glider.deployed.connect(_on_glider_deployed)
+	_glider.stowed.connect(_on_glider_stowed)
 	_interactor.target_changed.connect(_hud.set_interact_prompt)
 	health.died.connect(_on_died)
 	breath = breath_time
@@ -123,6 +127,10 @@ func _ready() -> void:
 
 func is_climbing() -> bool:
 	return _climb.active
+
+
+func is_gliding() -> bool:
+	return _glider.active
 
 
 func _physics_process(delta: float) -> void:
@@ -145,7 +153,10 @@ func _physics_process(delta: float) -> void:
 	_handle_crouch_input()
 
 	if not on_floor:
-		velocity.y -= _gravity * delta
+		_handle_glide_input()
+		_glider.airborne_step(delta)
+		if not _glider.active:
+			velocity.y -= _gravity * delta
 		_airborne_velocity_y = velocity.y
 
 	_handle_jump(on_floor)
@@ -314,6 +325,7 @@ func _update_survival(delta: float) -> void:
 ## dive, currents push. No gravity, no coyote time, no fall damage — the
 ## water catches everything.
 func _swim_step(direction: Vector3, delta: float) -> void:
+	_glider.stow(&"water")
 	_airborne_velocity_y = 0.0
 	_was_on_floor = is_on_floor()
 	var push: Vector3 = Vector3.ZERO
@@ -353,6 +365,17 @@ func _handle_crouch_input() -> void:
 		set_crouching(not is_crouching)
 
 
+## Glide shares Space with jump: the second press in the air deploys, the
+## next stows. A press inside the coyote window stays a jump (M13).
+func _handle_glide_input() -> void:
+	if not Input.is_action_just_pressed(&"glide"):
+		return
+	if _glider.active:
+		_glider.stow(&"toggled")
+	elif _coyote_timer <= 0.0:
+		_glider.try_deploy()
+
+
 func _handle_jump(on_floor: bool) -> void:
 	if _jump_buffer_timer <= 0.0:
 		return
@@ -367,7 +390,13 @@ func _handle_jump(on_floor: bool) -> void:
 
 func _apply_horizontal_movement(direction: Vector3, on_floor: bool, delta: float) -> void:
 	var target: Vector3 = direction * _current_speed()
-	var acceleration: float = ground_acceleration if on_floor else air_acceleration
+	var acceleration: float
+	if on_floor:
+		acceleration = ground_acceleration
+	elif _glider.active:
+		acceleration = _glider.glide_acceleration
+	else:
+		acceleration = air_acceleration
 	var flat: Vector3 = Vector3(velocity.x, 0.0, velocity.z)
 	flat = flat.lerp(target, 1.0 - exp(-acceleration * delta))
 	velocity.x = flat.x
@@ -378,6 +407,7 @@ func _apply_horizontal_movement(direction: Vector3, on_floor: bool, delta: float
 func _detect_landing() -> void:
 	var on_floor: bool = is_on_floor()
 	if on_floor and not _was_on_floor:
+		_glider.stow(&"landed")
 		var impact_speed: float = maxf(0.0, -_airborne_velocity_y)
 		landed.emit(impact_speed)
 		_animator.play_landed()
@@ -415,7 +445,10 @@ func _update_animator() -> void:
 	var flat_speed: float = Vector2(velocity.x, velocity.z).length()
 	var state: StringName
 	if not is_on_floor():
-		state = &"jump" if velocity.y > 0.0 else &"fall"
+		if _glider.active:
+			state = &"glide"
+		else:
+			state = &"jump" if velocity.y > 0.0 else &"fall"
 	elif is_crouching:
 		state = &"crouch_walk" if flat_speed > 0.5 else &"crouch_idle"
 	elif flat_speed <= 0.5:
@@ -430,6 +463,8 @@ func _update_animator() -> void:
 
 
 func _current_speed() -> float:
+	if _glider.active:
+		return _glider.glide_speed
 	var speed: float
 	if is_crouching:
 		speed = crouch_speed
@@ -451,6 +486,7 @@ func _on_died() -> void:
 		_climb.release(&"died")
 	if is_carrying:
 		_carry.drop()
+	_glider.stow(&"died")
 
 
 func _is_ceiling_blocked() -> bool:
@@ -459,6 +495,7 @@ func _is_ceiling_blocked() -> bool:
 
 
 func _on_climb_attached() -> void:
+	_glider.stow(&"climbing")
 	_handhold_telegraphed = false
 	_visual.position = Vector3.ZERO
 
@@ -471,6 +508,15 @@ func _on_climb_detached(reason: StringName) -> void:
 	_coyote_timer = 0.0
 	if reason == &"handhold_failed":
 		_dust.restart()
+
+
+## The canvas is the glide indicator (M12/M13): diegetic, no HUD element.
+func _on_glider_deployed() -> void:
+	_glider_canvas.visible = true
+
+
+func _on_glider_stowed(_reason: StringName) -> void:
+	_glider_canvas.visible = false
 
 
 ## Telegraphs a failing CRUMBLING handhold: hand-slip jitter plus dust.
