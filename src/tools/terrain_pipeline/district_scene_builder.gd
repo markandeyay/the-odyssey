@@ -439,4 +439,6 @@ func _safe_node_suffix(value: String) -> String:
 func _set_owner_recursive(node: Node, scene_owner: Node) -> void:
 	for child: Node in node.get_children():
 		child.owner = scene_owner
+		if not child.scene_file_path.is_empty():
+			continue
 		_set_owner_recursive(child, scene_owner)
