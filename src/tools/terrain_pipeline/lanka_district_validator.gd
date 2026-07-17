@@ -7,6 +7,8 @@ const KNOWN_SOCKET_TYPES: PackedStringArray = [
 	"heat_volume", "updraft_volume", "water_volume", "water_current",
 	"water_douse_target", "drowned_spawn", "ingredient_habitat", "route_anchor",
 	"hiding_place",
+	"cairn_entrance", "crew_fragment", "salvage_pickup", "ingredient_pickup",
+	"campfire", "heart_piece_reward", "keffer_interaction",
 ]
 
 

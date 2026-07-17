@@ -2,6 +2,7 @@ extends SceneTree
 
 const BuilderScript: Script = preload("res://src/tools/terrain_pipeline/district_scene_builder.gd")
 const DistrictContract: Script = preload("res://scenes/levels/lanka/lanka_district_contract.gd")
+const ContentContract: Script = preload("res://scenes/levels/lanka/lanka_content_contract.gd")
 
 var _builder: RefCounted
 var _materials: Dictionary = {}
@@ -114,6 +115,7 @@ func _build_shallows() -> Error:
 	_builder.add_marker(routes, "KefferShelter", Vector3(-135.0, 5.0, 68.0), &"route_anchor", {&"route_id": &"keffer"})
 	_builder.add_marker(routes, "InlandExit", Vector3(0.0, 10.0, 155.0), &"route_anchor", {&"route_id": &"inland"})
 	_builder.add_box_occluder(dressing, "KefferHullOccluder", Vector3(-135.0, 8.0, 68.0), Vector3(54.0, 15.0, 22.0))
+	_add_m6_content(root, &"shallows")
 	return _save_and_free(root, DistrictContract.district_path(&"shallows"))
 
 
@@ -181,6 +183,7 @@ func _build_terraces() -> Error:
 	_builder.add_marker(routes, "SouthEntry", Vector3(110.0, 2.0, -110.0), &"route_anchor", {&"route_id": &"south_entry"})
 	_builder.add_marker(routes, "MesaExit", Vector3(150.0, 10.0, 95.0), &"route_anchor", {&"route_id": &"mesa_exit"})
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-180.0, -15.0, -125.0), Vector3(360.0, 55.0, 250.0)))
+	_add_m6_content(root, &"terraces")
 	return _save_and_free(root, DistrictContract.district_path(&"terraces"))
 
 
@@ -247,6 +250,7 @@ func _build_ember_quarter() -> Error:
 	_builder.add_marker(routes, "CisternEntrance", Vector3(105.0, 2.0, 96.0), &"route_anchor", {&"route_id": &"cistern_entrance"})
 	_builder.add_box_occluder(geometry, "CityCoreOccluder", Vector3(15.0, 13.0, 0.0), Vector3(175.0, 26.0, 175.0))
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-165.0, -5.0, -135.0), Vector3(340.0, 75.0, 270.0)))
+	_add_m6_content(root, &"ember_quarter")
 	return _save_and_free(root, DistrictContract.district_path(&"ember_quarter"))
 
 
@@ -306,6 +310,7 @@ func _build_cistern() -> Error:
 	_builder.add_marker(routes, "CisternTrial", Vector3(0.0, -15.0, 52.0), &"route_anchor", {&"route_id": &"cistern_trial"})
 	_builder.add_box_occluder(geometry, "ReservoirOccluder", Vector3(0.0, 0.0, 0.0), Vector3(190.0, 60.0, 150.0))
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-100.0, -32.0, -80.0), Vector3(200.0, 100.0, 160.0)))
+	_add_m6_content(root, &"cistern")
 	return _save_and_free(root, DistrictContract.district_path(&"cistern"))
 
 
@@ -357,6 +362,7 @@ func _build_spine() -> Error:
 	_builder.add_marker(routes, "Summit", Vector3(0.0, 256.0, 0.0), &"route_anchor", {&"route_id": &"summit"})
 	_builder.add_box_occluder(geometry, "SpineOccluder", Vector3(0.0, 126.0, 0.0), Vector3(34.0, 252.0, 34.0))
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-45.0, 0.0, -45.0), Vector3(90.0, 280.0, 90.0)))
+	_add_m6_content(root, &"spine")
 	return _save_and_free(root, DistrictContract.SPINE_PATH)
 
 
@@ -404,6 +410,7 @@ func _build_dark() -> Error:
 	_builder.add_marker(routes, "EmergencyHide", Vector3(-88.0, 1.0, 70.0), &"hiding_place", {&"route_id": &"final_hide"})
 	_builder.add_box_occluder(geometry, "DarkCoreOccluder", Vector3(0.0, 12.0, 0.0), Vector3(190.0, 24.0, 160.0))
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-108.0, -5.0, -93.0), Vector3(216.0, 38.0, 186.0)))
+	_add_m6_content(root, &"dark")
 	return _save_and_free(root, DistrictContract.DARK_PATH)
 
 
@@ -418,7 +425,101 @@ func _make_materials() -> Dictionary:
 		&"unburnt_timber": _builder.make_material("mat_unburnt_timber_grip_solid", Color(0.24, 0.15, 0.075), 0.86),
 		&"ash_earth": _builder.make_material("mat_ash_earth_grip_solid", Color(0.17, 0.17, 0.16), 0.98),
 		&"bone_canvas": _builder.make_material("mat_bone_canvas_grip_solid", Color(0.56, 0.54, 0.46), 0.9),
+		&"salvage_iron": _builder.make_material("mat_salvage_iron_grip_solid", Color(0.22, 0.25, 0.24), 0.5, 0.7),
+		&"shellfish": _builder.make_material("mat_shellfish_grip_solid", Color(0.46, 0.53, 0.49), 0.72),
+		&"ashroot": _builder.make_material("mat_ashroot_grip_solid", Color(0.28, 0.24, 0.18), 0.95),
+		&"charwood_fruit": _builder.make_material("mat_charwood_fruit_grip_solid", Color(0.62, 0.14, 0.025), 0.76),
+		&"blind_fish": _builder.make_material("mat_blind_fish_grip_solid", Color(0.43, 0.48, 0.46), 0.64),
+		&"keffer_cloth": _builder.make_material("mat_keffer_cloth_grip_solid", Color(0.14, 0.13, 0.12), 0.94),
 	}
+
+
+func _add_m6_content(root: Node3D, district_id: StringName) -> void:
+	var geometry: Node3D = root.get_node("WorldGeometry") as Node3D
+	var dressing: Node3D = root.get_node("Dressing") as Node3D
+	var sockets: Node3D = root.get_node("GameplaySockets") as Node3D
+	for cairn: Dictionary in ContentContract.entries_for_district(ContentContract.CAIRNS, district_id):
+		var cairn_id: StringName = cairn["id"] as StringName
+		var position: Vector3 = cairn["position"] as Vector3
+		_builder.add_marker(
+			sockets, "CairnEntrance_" + str(cairn_id).to_pascal_case(), position, &"cairn_entrance",
+			{&"cairn_id": cairn_id, &"target_scene_path": str(cairn["path"]), &"district_id": district_id}
+		)
+		var entrance: Node3D = Node3D.new()
+		entrance.name = "CairnDoor_" + str(cairn_id).to_pascal_case()
+		entrance.position = position
+		geometry.add_child(entrance)
+		_builder.add_static_box(entrance, "LeftPillar", Vector3(-3.2, 3.5, 0.0), Vector3(2.2, 7.0, 2.2), _materials[&"clean_stone"], true)
+		_builder.add_static_box(entrance, "RightPillar", Vector3(3.2, 3.5, 0.0), Vector3(2.2, 7.0, 2.2), _materials[&"clean_stone"], true)
+		_builder.add_static_box(entrance, "Lintel", Vector3(0.0, 7.2, 0.0), Vector3(8.6, 2.0, 2.2), _materials[&"cracked_stone"], true)
+	for fragment: Dictionary in ContentContract.entries_for_district(ContentContract.CREW_FRAGMENTS, district_id):
+		var fragment_id: StringName = fragment["id"] as StringName
+		var position: Vector3 = fragment["position"] as Vector3
+		_builder.add_marker(
+			sockets, "CrewFragment_" + str(fragment_id).to_pascal_case(), position, &"crew_fragment",
+			{&"fragment_id": fragment_id, &"memory_object": str(fragment["object"]), &"memory_text": str(fragment["text"]), &"district_id": district_id}
+		)
+		_builder.add_visual_box(dressing, "FragmentProxy_" + str(fragment_id).to_pascal_case(), position + Vector3(0.0, 0.35, 0.0), Vector3(1.4, 0.5, 0.6), _materials[&"bone_canvas"], Vector3(12.0, float(fragment_id.hash() % 180), 8.0))
+	for salvage: Dictionary in ContentContract.entries_for_district(ContentContract.SALVAGE, district_id):
+		var placement_id: StringName = salvage["id"] as StringName
+		var salvage_id: StringName = salvage["salvage_id"] as StringName
+		var position: Vector3 = salvage["position"] as Vector3
+		_builder.add_marker(
+			sockets, "Salvage_" + str(placement_id).to_pascal_case(), position, &"salvage_pickup",
+			{&"placement_id": placement_id, &"salvage_id": salvage_id, &"district_id": district_id}
+		)
+		var material: Material = _materials[&"salvage_iron"] if salvage_id == &"iron" else (_materials[&"bone_canvas"] if salvage_id == &"canvas" else _materials[&"unburnt_timber"])
+		_builder.add_visual_box(dressing, "SalvageProxy_" + str(placement_id).to_pascal_case(), position + Vector3(0.0, 0.5, 0.0), Vector3(2.6, 0.8, 1.4), material, Vector3(0.0, float(placement_id.hash() % 180), 0.0))
+	for ingredient: Dictionary in ContentContract.entries_for_district(ContentContract.INGREDIENTS, district_id):
+		var placement_id: StringName = ingredient["id"] as StringName
+		var ingredient_id: StringName = ingredient["ingredient_id"] as StringName
+		var position: Vector3 = ingredient["position"] as Vector3
+		_builder.add_marker(
+			sockets, "Ingredient_" + str(placement_id).to_pascal_case(), position, &"ingredient_pickup",
+			{&"placement_id": placement_id, &"ingredient_id": ingredient_id, &"district_id": district_id}
+		)
+		var material_key: StringName = &"shellfish"
+		if ingredient_id == &"ashroot":
+			material_key = &"ashroot"
+		elif ingredient_id == &"charwood_fruit":
+			material_key = &"charwood_fruit"
+		elif ingredient_id == &"blind_fish":
+			material_key = &"blind_fish"
+		_builder.add_visual_box(dressing, "IngredientProxy_" + str(placement_id).to_pascal_case(), position + Vector3(0.0, 0.3, 0.0), Vector3(0.7, 0.5, 0.7), _materials[material_key], Vector3(0.0, float(placement_id.hash() % 180), 0.0))
+	for campfire: Dictionary in ContentContract.entries_for_district(ContentContract.CAMPFIRES, district_id):
+		var checkpoint_id: StringName = campfire["id"] as StringName
+		var position: Vector3 = campfire["position"] as Vector3
+		_builder.add_marker(
+			sockets, "Campfire_" + str(checkpoint_id).to_pascal_case(), position, &"campfire",
+			{&"checkpoint_id": checkpoint_id, &"district_id": district_id}
+		)
+		var proxy: Node3D = Node3D.new()
+		proxy.name = "CampfireProxy_" + str(checkpoint_id).to_pascal_case()
+		proxy.position = position
+		dressing.add_child(proxy)
+		_builder.add_visual_box(proxy, "LogA", Vector3(0.0, 0.3, 0.0), Vector3(3.0, 0.55, 0.55), _materials[&"charred_timber"], Vector3(0.0, 35.0, 0.0))
+		_builder.add_visual_box(proxy, "LogB", Vector3(0.0, 0.3, 0.0), Vector3(3.0, 0.55, 0.55), _materials[&"charred_timber"], Vector3(0.0, -35.0, 0.0))
+		_builder.add_visual_box(proxy, "EmberBed", Vector3(0.0, 0.22, 0.0), Vector3(1.4, 0.3, 1.4), _materials[&"ember_stone"])
+	if district_id == &"shallows":
+		_add_keffer(dressing, sockets)
+
+
+func _add_keffer(dressing: Node3D, sockets: Node3D) -> void:
+	var keffer: Node3D = Node3D.new()
+	keffer.name = "Keffer"
+	keffer.position = Vector3(-135.0, 5.0, 68.0)
+	keffer.set_meta(&"is_merchant", false)
+	keffer.set_meta(&"dialogue_lines", ContentContract.KEFFER_DIALOGUE)
+	keffer.set_meta(&"handout_item_id", &"tidepool_shellfish")
+	keffer.set_meta(&"handout_cooldown_s", 120.0)
+	dressing.add_child(keffer)
+	_builder.add_visual_box(keffer, "Body", Vector3(0.0, 0.95, 0.0), Vector3(1.25, 1.8, 0.85), _materials[&"keffer_cloth"])
+	_builder.add_visual_box(keffer, "Hood", Vector3(0.0, 2.15, 0.0), Vector3(1.05, 0.9, 0.9), _materials[&"keffer_cloth"], Vector3(0.0, 8.0, 0.0))
+	_builder.add_visual_box(keffer, "Pack", Vector3(0.0, 1.0, 0.62), Vector3(0.95, 1.2, 0.5), _materials[&"bone_canvas"])
+	_builder.add_marker(
+		sockets, "KefferInteraction", keffer.position, &"keffer_interaction",
+		{&"dialogue_lines": ContentContract.KEFFER_DIALOGUE, &"handout_item_id": &"tidepool_shellfish", &"handout_cooldown_s": 120.0, &"is_merchant": false}
+	)
 
 
 func _make_open_world_root(district_id: StringName) -> Node3D:

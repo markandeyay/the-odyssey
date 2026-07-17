@@ -33,3 +33,15 @@ The four open-world district scenes stream separately from terrain. The full Spi
 godot --headless --path . --script res://src/tools/terrain_pipeline/validate_lanka_districts.gd
 godot --headless --path . --script res://src/tools/terrain_pipeline/tests/test_district_streaming.gd
 ```
+
+## M6 Content
+
+M6 placement is generated into the six district scenes from one exact-count contract. Cairns remain separate scenes under `res://scenes/levels/cairns/`.
+
+```powershell
+godot --headless --path . --script res://src/tools/terrain_pipeline/build_lanka_districts.gd
+godot --headless --path . --script res://src/tools/terrain_pipeline/build_lanka_content.gd
+godot --headless --path . --script res://src/tools/terrain_pipeline/validate_lanka_content.gd
+```
+
+The content validator rejects extra Cairn scenes, incorrect heart-piece math, duplicate crew IDs, uncontracted ingredient or salvage types, and invalid Keffer merchant/dialogue state.
