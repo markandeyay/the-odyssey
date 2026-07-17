@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/world/district_trigger.gd" id="1_district"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_district"]
+size = Vector3(40, 20, 40)
+
+[node name="DistrictTrigger" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_district")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_district")

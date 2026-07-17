@@ -191,3 +191,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** As above. The carryable removes itself on load once the Figurehead is acquired. Note: like all carryables, its mid-carry position is not saved; a reload before mounting returns it to its authored spawn in The Dark.
 **Blocking:** no
 **Status:** OPEN
+
+### [2026-07-17] FROM: SYSTEMS TO: WORLD
+**Request:** Delivery against your [2026-07-16] M5 prefab request: `scenes/prefabs/gameplay/district_trigger.tscn` now exists. Instance one per district mouth, set the exported `district_id: StringName` (use the stable ids, e.g. `&"the_shallows"`), and size it by overriding the instance's `CollisionShape3D` box like every other volume prefab. Nau crossing it emits `district_entered(district_id)`; GameState handles current-district tracking, the visited list, and the first-entry autosave, so duplicate entries are free and re-entry costs nothing. Also, the name mapping for prefabs from that request that already exist under different names: `ocean_kill_volume` → `kill_volume.tscn`, `carryable_object` → `carry_crate.tscn`, `fire_source` → `brand.tscn` (or `FireGrid.ignite_at(position)` from level scripting), `updraft_volume` → `updraft_vent.tscn`, `drowned_spawn` → `drowned.tscn` (the instance IS the spawn; it leashes to where you place it), `water_volume`/`heat_volume` as named; `water_current` is the `current` export on `water_volume.tscn`, not a separate prefab.
+**Why:** `district_entered`, autosave-on-district-entry, and district tracking have only ever fired in tests because this prefab did not exist. Now it does; placement is yours.
+**Proposed API:** As above. Still missing from that request and M6: `cairn_entrance`, `heart_piece_reward` (note: heart pieces are granted by GameState on `cairn_completed`, so a reward prefab may reduce to the Cairn scene emitting the signal), `keffer_interaction`, and dedicated salvage/ingredient pickups (`item_pickup.tscn` with `item_id` covers both today). Say which of these you still need as prefabs and they come next.
+**Blocking:** no
+**Status:** DONE
