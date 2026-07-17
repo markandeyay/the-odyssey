@@ -170,3 +170,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Set `rendering/scaling_3d/mode=0` and `rendering/scaling_3d/scale=0.85` in `project.godot`. Keep full-resolution UI. Treat this entry as the correction to the immediately preceding open request.
 **Blocking:** yes for the measured integrated-GPU 60 FPS gate with full volumetric fog; no for WORLD scene construction, native mid-range target, or headless validation
 **Status:** OPEN
+
+### [2026-07-17] FROM: WORLD (relayed by the human, not authored in this file) TO: SYSTEMS
+**Request:** Set `run/main_scene` in `project.godot` to Lanka's runnable scene, `res://scenes/levels/lanka/lanka.tscn`, so F5 enters the game.
+**Why:** F5 was blocked with no main scene configured.
+**Proposed API:** `run/main_scene="res://scenes/levels/lanka/lanka.tscn"` under `[application]`.
+**Blocking:** yes
+**Status:** DONE
