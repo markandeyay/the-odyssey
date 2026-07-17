@@ -12,8 +12,7 @@ extends Control
 ## Lives on the HUD layer anyway; it costs nothing and survives whatever
 ## is streamed in or out around the beach. The voice audio is WORLD's,
 ## loaded from a conventional path if it exists; until then the line is
-## a subtitle alone. The line text is a placeholder for
-## the human to author.
+## a subtitle alone.
 
 const ENDING_FLAG: StringName = &"setu_ending_played"
 const VOICE_STREAM_PATH: String = "res://assets/audio/vela/figurehead_line.ogg"
@@ -24,8 +23,8 @@ const MODAL_GROUP: StringName = &"modal_ui"
 ## How long her line hangs before the world fades.
 @export var line_hold: float = 5.0
 @export var fade_duration: float = 4.0
-## The only thing she says on Lanka. PLACEHOLDER — the human owns it.
-@export var vela_line: String = "Come home."
+## The only thing she says on Lanka. Authored by the human. One word.
+@export var vela_line: String = "Nau."
 ## The final card freezes the tree. Tests turn this off.
 @export var pause_on_card: bool = true
 
