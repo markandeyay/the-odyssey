@@ -520,7 +520,10 @@ signal sound_emitted(position: Vector3, loudness: float)
 
 ### Performance targets
 
-- 60 FPS at 1080p on mid-range hardware.
+- Reference hardware: NVIDIA RTX 3060 or equivalent discrete GPU.
+- Target: 60 FPS average, 1% lows above 45, at native 1080p, render scale 1.0.
+- Dev machine floor (Intel Iris Xe iGPU): 30 FPS average, no frame above 33ms. The game must be playable on the machine it is built on.
+- Render scale stays a user setting defaulting to 1.0. It is never used to meet a target.
 - Lanka is 1.2km². **Streaming is mandatory.** Do not build it as one scene.
 - Terrain LOD, mesh LOD, occlusion culling, `VisibleOnScreenNotifier3D` on expensive props.
 - Fire is the perf risk. Budget it: hard cap on simultaneously burning cells, hard cap on fire particle emitters.
@@ -574,7 +577,7 @@ The build is complete when:
 - [ ] Keffer exists and is afraid.
 - [ ] The Dark: the drowned hunt by sound and light, cannot be hurt, and cannot be escaped except by hiding.
 - [ ] Setu assembles from five components. Figurehead speaks once. "TO BE CONTINUED."
-- [ ] 60 FPS at 1080p.
+- [ ] The §19 performance targets: 60 FPS average / 1% lows above 45 at native 1080p on the reference GPU, and the 30 FPS / 33ms dev-machine floor.
 - [ ] `ATTRIBUTIONS.md` is complete and every asset is legal.
 
 **Then stop and request the next island document.**
