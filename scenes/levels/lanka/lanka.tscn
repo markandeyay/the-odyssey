@@ -3,9 +3,11 @@
 [ext_resource type="Script" path="res://scenes/levels/lanka/lanka_streaming_root.gd" id="1_j2x66"]
 [ext_resource type="PackedScene" path="res://scenes/levels/lanka/look/lanka_look.tscn" id="2_jo46y"]
 [ext_resource type="PackedScene" path="res://scenes/levels/lanka/districts/spine/spine_district.tscn" id="3_1unc5"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="4_player"]
 
-[node name="Lanka" type="Node3D" unique_id=1217824075]
+[node name="Lanka" type="Node3D" node_paths=PackedStringArray("streaming_target") unique_id=1217824075]
 script = ExtResource("1_j2x66")
+streaming_target = NodePath("DistrictAnchors/Shallows/Player")
 metadata/budget_profile = "default"
 metadata/playable_size_m = Vector2(1100, 1100)
 metadata/streaming_required = true
@@ -34,6 +36,8 @@ metadata/convergence_requirements = PackedStringArray("hold", "smolder", "cister
 [node name="Shallows" type="Marker3D" parent="DistrictAnchors" unique_id=1084160450]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -440)
 metadata/district_id = &"shallows"
+
+[node name="Player" parent="DistrictAnchors/Shallows" instance=ExtResource("4_player")]
 
 [node name="Terraces" type="Marker3D" parent="DistrictAnchors" unique_id=319563149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -330, 50, 0)
