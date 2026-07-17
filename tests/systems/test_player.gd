@@ -10,7 +10,8 @@ const CONTRACT_NODES: Array[String] = [
 	"CameraRig", "CameraRig/Pitch", "CameraRig/Pitch/SpringArm3D",
 	"CameraRig/Pitch/SpringArm3D/Camera3D", "ClimbController", "GripDust",
 	"CarryController", "PlayerInteractor", "Visual/CarryHold", "HUD/GameHUD",
-	"Visual/HeatWisps", "Health",
+	"Visual/HeatWisps", "Health", "GliderController", "UpdraftSensor",
+	"Visual/GliderCanvas",
 ]
 
 
