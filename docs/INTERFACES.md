@@ -198,3 +198,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** Add `run/main_scene="res://scenes/levels/lanka/lanka.tscn"` under `[application]` in SYSTEMS-owned `project.godot`.
 **Blocking:** yes for F5 project launch; no for F6/direct Lanka scene launch
 **Status:** DONE
+
+### [2026-07-17] FROM: WORLD TO: SYSTEMS
+**Request:** Land the two remaining M9 placement prefabs: `res://scenes/prefabs/gameplay/district_trigger.tscn` and `res://scenes/prefabs/gameplay/cairn_entrance.tscn`.
+**Why:** The real shipped-scene smoke test now observes every other integration-gate family at runtime, but main contains neither of these files. The six district-trigger sockets and eight Cairn entrance sockets therefore remain explicit `m9_missing_prefab` failures; WORLD cannot implement SYSTEMS behavior or flatten substitute nodes across the prefab seam.
+**Proposed API:** `district_trigger.tscn` has a `Node3D` root, exported `district_id: StringName`, and a descendant `CollisionShape3D` with a `BoxShape3D` that WORLD sizes per socket. `cairn_entrance.tscn` has a `Node3D` root and exported `cairn_id: StringName` and `target_scene: PackedScene`; it transfers Nau to that scene's `RouteMarkers/Entry`. WORLD's deterministic builder already detects these exact paths, instances them without opening them, and applies those exports.
+**Blocking:** yes; these are the only absent prefab families in the ARCHITECTURE section 21 shipped-scene integration gate
+**Status:** OPEN
