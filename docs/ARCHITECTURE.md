@@ -533,11 +533,28 @@ signal sound_emitted(position: Vector3, loudness: float)
 - SYSTEMS writes tests for: inventory math, cooking state machine, grip class derivation, fire spread rules, save round-trip, heart/heart-piece math.
 - WORLD writes tests for: material naming validation (every climbable material matches the convention), attribution completeness (every asset has an entry), scene budget checks.
 - **Both agents write a test scene they can run headless.** Do not build a system you cannot test without the human.
+- Every system must have at least one test against the shipped scene, not a
+  synthetic one. A system that only passes against a mock is not built.
 - The human playtests. Agents do not get to declare something feels good.
 
 ---
 
 ## 21. DEFINITION OF DONE FOR LANKA
+
+### THE INTEGRATION GATE (blocks every other checkbox)
+
+- [ ] scenes/levels/lanka/lanka.tscn runs on F5 with no errors.
+- [ ] Nau spawns, the HUD renders, the player can walk.
+- [ ] Every gameplay prefab SYSTEMS built is instanced in a shipped scene:
+      player, HUD, campfires, fire grids, flammable props, water volumes,
+      heat volumes, district triggers, drowned, Setu, component pickups,
+      fragments, Cairn entrances.
+- [ ] A shipped-scene smoke test exists that loads the real lanka.tscn with no
+      mocks and no synthetic targets, and asserts each of the above is present
+      and live at runtime. It runs in CI. No milestone closes while it fails.
+
+**A unit test that builds its own world proves the unit works. It does not
+prove the game exists. Any system tested only against a mock is unbuilt.**
 
 The build is complete when:
 
