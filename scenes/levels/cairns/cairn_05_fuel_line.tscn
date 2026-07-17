@@ -1,13 +1,16 @@
 [gd_scene format=3]
 
-[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_jbw7p"]
-[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_uuf0t"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_efjme"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_78bo6"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_fire.gdshader" id="3_xtx45"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_smoke.gdshader" id="4_ap27h"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_heat_haze.gdshader" id="5_djmdd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h70ih"]
 resource_name = "mat_cairn_stone_grip_solid"
 render_priority = 0
-shader = ExtResource("1_jbw7p")
-shader_parameter/detail_albedo = ExtResource("2_uuf0t")
+shader = ExtResource("1_efjme")
+shader_parameter/detail_albedo = ExtResource("2_78bo6")
 shader_parameter/base_tint = Color(0.26, 0.29, 0.28, 1)
 shader_parameter/accent_tint = Color(0.11439999, 0.1276, 0.1232, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -22,74 +25,74 @@ shader_parameter/surface_roughness = 0.95
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_nufoq"]
-material = SubResource("ShaderMaterial_h70ih")
-size = Vector3(60, 3, 72)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_efjme"]
-size = Vector3(60, 3, 72)
-
-[sub_resource type="BoxMesh" id="BoxMesh_78bo6"]
-material = SubResource("ShaderMaterial_h70ih")
-size = Vector3(4, 23, 72)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xtx45"]
-size = Vector3(4, 23, 72)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ap27h"]
-material = SubResource("ShaderMaterial_h70ih")
-size = Vector3(4, 23, 72)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_djmdd"]
-size = Vector3(4, 23, 72)
-
 [sub_resource type="BoxMesh" id="BoxMesh_02co0"]
 material = SubResource("ShaderMaterial_h70ih")
-size = Vector3(60, 23, 4)
+size = Vector3(60, 3, 72)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0r1h"]
-size = Vector3(60, 23, 4)
+size = Vector3(60, 3, 72)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5vvqx"]
 material = SubResource("ShaderMaterial_h70ih")
-size = Vector3(24, 23, 4)
+size = Vector3(4, 23, 72)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8qwty"]
-size = Vector3(24, 23, 4)
+size = Vector3(4, 23, 72)
 
 [sub_resource type="BoxMesh" id="BoxMesh_alanp"]
 material = SubResource("ShaderMaterial_h70ih")
-size = Vector3(24, 23, 4)
+size = Vector3(4, 23, 72)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_se1xr"]
-size = Vector3(24, 23, 4)
+size = Vector3(4, 23, 72)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6bwvw"]
 material = SubResource("ShaderMaterial_h70ih")
-size = Vector3(7, 2, 7)
+size = Vector3(60, 23, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bmi2"]
-size = Vector3(7, 2, 7)
+size = Vector3(60, 23, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2vykj"]
 material = SubResource("ShaderMaterial_h70ih")
-size = Vector3(7, 2, 7)
+size = Vector3(24, 23, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dvwgn"]
-size = Vector3(7, 2, 7)
+size = Vector3(24, 23, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_b728w"]
 material = SubResource("ShaderMaterial_h70ih")
-size = Vector3(7, 2, 7)
+size = Vector3(24, 23, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g8us2"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sdwhf"]
+material = SubResource("ShaderMaterial_h70ih")
 size = Vector3(7, 2, 7)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdwhf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_813xj"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pgedx"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_di0c5"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0hmnq"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_owp58"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxp53"]
 resource_name = "mat_cairn_ember_grip_hot"
 render_priority = 0
-shader = ExtResource("1_jbw7p")
-shader_parameter/detail_albedo = ExtResource("2_uuf0t")
+shader = ExtResource("1_efjme")
+shader_parameter/detail_albedo = ExtResource("2_78bo6")
 shader_parameter/base_tint = Color(0.2, 0.05, 0.01, 1)
 shader_parameter/accent_tint = Color(0.088, 0.022, 0.0044, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -104,24 +107,138 @@ shader_parameter/surface_roughness = 0.8
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 2.4
 
-[sub_resource type="BoxMesh" id="BoxMesh_813xj"]
-material = SubResource("ShaderMaterial_sdwhf")
+[sub_resource type="BoxMesh" id="BoxMesh_0fcsa"]
+material = SubResource("ShaderMaterial_uxp53")
 size = Vector3(7, 2, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pgedx"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4locc"]
 size = Vector3(7, 2, 7)
 
-[sub_resource type="BoxMesh" id="BoxMesh_di0c5"]
-material = SubResource("ShaderMaterial_sdwhf")
+[sub_resource type="BoxMesh" id="BoxMesh_txc8k"]
+material = SubResource("ShaderMaterial_uxp53")
 size = Vector3(7, 2, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0hmnq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_38x2m"]
 size = Vector3(7, 2, 7)
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_owp58"]
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_rtxl7"]
 size = Vector3(58, 20, 68)
 
-[node name="CairnEmberFuelLine" type="Node3D" unique_id=622804670]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7myoc"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_xtx45")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_v5hw0"]
+material = SubResource("ShaderMaterial_7myoc")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qhiu"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_xtx45")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_gsimj"]
+material = SubResource("ShaderMaterial_1qhiu")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7c438"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_ap27h")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_7uglc"]
+material = SubResource("ShaderMaterial_7c438")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1eobr"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_ap27h")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_u2q35"]
+material = SubResource("ShaderMaterial_1eobr")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ylemm"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_djmdd")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_n86qy"]
+material = SubResource("ShaderMaterial_ylemm")
+size = Vector2(5, 5.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kp3se"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_xtx45")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_s8x7v"]
+material = SubResource("ShaderMaterial_kp3se")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wo30j"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_xtx45")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_2cabd"]
+material = SubResource("ShaderMaterial_wo30j")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iu21h"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_ap27h")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_0no6w"]
+material = SubResource("ShaderMaterial_iu21h")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pc883"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_ap27h")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_i8mni"]
+material = SubResource("ShaderMaterial_pc883")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dknl8"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_djmdd")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_6mt8b"]
+material = SubResource("ShaderMaterial_dknl8")
+size = Vector2(5, 5.2)
+
+[node name="CairnEmberFuelLine" type="Node3D" unique_id=790202319]
 metadata/cairn_id = &"ember_fuel_line"
 metadata/district_id = &"ember_quarter"
 metadata/taught_mechanic = &"fire_fuel"
@@ -129,172 +246,264 @@ metadata/single_room = true
 metadata/heart_piece_reward = 1
 metadata/budget_profile = "cairn"
 
-[node name="WorldGeometry" type="Node3D" parent="." unique_id=1154989300]
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=1829769475]
 
-[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=1862218274]
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=2020079700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=2112042268]
-mesh = SubResource("BoxMesh_nufoq")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=670295693]
+mesh = SubResource("BoxMesh_02co0")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=1720864017]
-shape = SubResource("BoxShape3D_efjme")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=1998602436]
+shape = SubResource("BoxShape3D_u0r1h")
 
-[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=2138644479]
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=731208395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=804506816]
-mesh = SubResource("BoxMesh_78bo6")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=416263311]
+mesh = SubResource("BoxMesh_5vvqx")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=2103615723]
-shape = SubResource("BoxShape3D_xtx45")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=1675749299]
+shape = SubResource("BoxShape3D_8qwty")
 
-[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=268656245]
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1628049561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=756059125]
-mesh = SubResource("BoxMesh_ap27h")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=1546045801]
+mesh = SubResource("BoxMesh_alanp")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=593731345]
-shape = SubResource("BoxShape3D_djmdd")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=791785183]
+shape = SubResource("BoxShape3D_se1xr")
 
-[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=741457849]
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=855771505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=1242175938]
-mesh = SubResource("BoxMesh_02co0")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=844976646]
+mesh = SubResource("BoxMesh_6bwvw")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1349237330]
-shape = SubResource("BoxShape3D_u0r1h")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1379373254]
+shape = SubResource("BoxShape3D_2bmi2")
 
-[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=1236221811]
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=1353960294]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=190271002]
-mesh = SubResource("BoxMesh_5vvqx")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1093380780]
+mesh = SubResource("BoxMesh_2vykj")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1434383273]
-shape = SubResource("BoxShape3D_8qwty")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1061039289]
+shape = SubResource("BoxShape3D_dvwgn")
 
-[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=783855476]
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=874366322]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=1148319851]
-mesh = SubResource("BoxMesh_alanp")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=52314308]
+mesh = SubResource("BoxMesh_b728w")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1423352382]
-shape = SubResource("BoxShape3D_se1xr")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=428293750]
+shape = SubResource("BoxShape3D_g8us2")
 
-[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=388798273]
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1879982236]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=1628522615]
-mesh = SubResource("BoxMesh_6bwvw")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=1673219540]
+mesh = SubResource("BoxMesh_sdwhf")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1961740385]
-shape = SubResource("BoxShape3D_2bmi2")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1705905139]
+shape = SubResource("BoxShape3D_813xj")
 
-[node name="FuelPedestal00" type="StaticBody3D" parent="WorldGeometry" unique_id=504101285]
+[node name="FuelPedestal00" type="StaticBody3D" parent="WorldGeometry" unique_id=80887462]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 14)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal00" unique_id=2086220581]
-mesh = SubResource("BoxMesh_2vykj")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal00" unique_id=1939214903]
+mesh = SubResource("BoxMesh_pgedx")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal00" unique_id=788369571]
-shape = SubResource("BoxShape3D_dvwgn")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal00" unique_id=861658222]
+shape = SubResource("BoxShape3D_di0c5")
 
-[node name="FuelPedestal01" type="StaticBody3D" parent="WorldGeometry" unique_id=1169564200]
+[node name="FuelPedestal01" type="StaticBody3D" parent="WorldGeometry" unique_id=1477917271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 5)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal01" unique_id=48009019]
-mesh = SubResource("BoxMesh_b728w")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal01" unique_id=1782736913]
+mesh = SubResource("BoxMesh_0hmnq")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal01" unique_id=895087839]
-shape = SubResource("BoxShape3D_g8us2")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal01" unique_id=800297033]
+shape = SubResource("BoxShape3D_owp58")
 
-[node name="FuelPedestal02" type="StaticBody3D" parent="WorldGeometry" unique_id=1606567623]
+[node name="FuelPedestal02" type="StaticBody3D" parent="WorldGeometry" unique_id=1504634187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -4)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal02" unique_id=1986210995]
-mesh = SubResource("BoxMesh_813xj")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal02" unique_id=937428991]
+mesh = SubResource("BoxMesh_0fcsa")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal02" unique_id=766759159]
-shape = SubResource("BoxShape3D_pgedx")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal02" unique_id=313398736]
+shape = SubResource("BoxShape3D_4locc")
 
-[node name="FuelPedestal03" type="StaticBody3D" parent="WorldGeometry" unique_id=1504631457]
+[node name="FuelPedestal03" type="StaticBody3D" parent="WorldGeometry" unique_id=1825418647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, -13)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal03" unique_id=754724217]
-mesh = SubResource("BoxMesh_di0c5")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/FuelPedestal03" unique_id=131329074]
+mesh = SubResource("BoxMesh_txc8k")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal03" unique_id=1532415941]
-shape = SubResource("BoxShape3D_0hmnq")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/FuelPedestal03" unique_id=77149699]
+shape = SubResource("BoxShape3D_38x2m")
 
-[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=1050430880]
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=946034713]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-occluder = SubResource("BoxOccluder3D_owp58")
+occluder = SubResource("BoxOccluder3D_rtxl7")
 
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=887819257]
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=2119587515]
 aabb = AABB(-32, -3, -38, 64, 30, 76)
 
-[node name="GameplaySockets" type="Node3D" parent="." unique_id=1244807094]
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=389005908]
 
-[node name="FuelSource00" type="Marker3D" parent="GameplaySockets" unique_id=546236942]
+[node name="FuelSource00" type="Marker3D" parent="GameplaySockets" unique_id=1519916326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, 14)
 metadata/socket_type = &"fire_source"
 metadata/spawn_id = &"cairn_fuel_00"
 
-[node name="FuelSource01" type="Marker3D" parent="GameplaySockets" unique_id=1002844446]
+[node name="FuelSource01" type="Marker3D" parent="GameplaySockets" unique_id=969800867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 5)
 metadata/socket_type = &"fire_source"
 metadata/spawn_id = &"cairn_fuel_01"
 
-[node name="FuelSource02" type="Marker3D" parent="GameplaySockets" unique_id=1400280665]
+[node name="FuelSource02" type="Marker3D" parent="GameplaySockets" unique_id=1029154723]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, -4)
 metadata/socket_type = &"fire_source"
 metadata/spawn_id = &"cairn_fuel_02"
 
-[node name="FuelSource03" type="Marker3D" parent="GameplaySockets" unique_id=19416316]
+[node name="FuelSource03" type="Marker3D" parent="GameplaySockets" unique_id=1701534983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3, -13)
 metadata/socket_type = &"fire_source"
 metadata/spawn_id = &"cairn_fuel_03"
 
-[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=1080383037]
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=147484689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
 metadata/socket_type = &"heart_piece_reward"
 metadata/cairn_id = &"ember_fuel_line"
 metadata/heart_piece_amount = 1
 
-[node name="RouteMarkers" type="Node3D" parent="." unique_id=1959518265]
+[node name="Dressing" type="Node3D" parent="." unique_id=1872704408]
 
-[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=833674349]
+[node name="FuelFireVisual02" type="Node3D" parent="Dressing" unique_id=679611065]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 6, 2.5, -4)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/FuelFireVisual02" unique_id=1551611967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_v5hw0")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/FuelFireVisual02" unique_id=856337737]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_gsimj")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/FuelFireVisual02" unique_id=2017679382]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_7uglc")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/FuelFireVisual02" unique_id=341307315]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_u2q35")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/FuelFireVisual02" unique_id=2058971705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_n86qy")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/FuelFireVisual02" unique_id=854008826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/FuelFireVisual02" unique_id=1672925268]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="FuelFireVisual03" type="Node3D" parent="Dressing" unique_id=1510502357]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 18, 2.5, -13)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/FuelFireVisual03" unique_id=2095888220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_s8x7v")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/FuelFireVisual03" unique_id=539637443]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_2cabd")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/FuelFireVisual03" unique_id=1764131348]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_0no6w")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/FuelFireVisual03" unique_id=1416880667]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_i8mni")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/FuelFireVisual03" unique_id=981217934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_6mt8b")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/FuelFireVisual03" unique_id=420204009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/FuelFireVisual03" unique_id=1561633171]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=900599481]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1003571396]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"entry"
 
-[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=443205364]
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1157688415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"exit"

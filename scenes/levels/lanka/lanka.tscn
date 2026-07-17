@@ -1,49 +1,56 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scenes/levels/lanka/lanka_streaming_root.gd" id="1_qmgdg"]
-[ext_resource type="PackedScene" path="res://scenes/levels/lanka/districts/spine/spine_district.tscn" id="2_j2x66"]
+[ext_resource type="Script" path="res://scenes/levels/lanka/lanka_streaming_root.gd" id="1_j2x66"]
+[ext_resource type="PackedScene" path="res://scenes/levels/lanka/look/lanka_look.tscn" id="2_jo46y"]
+[ext_resource type="PackedScene" path="res://scenes/levels/lanka/districts/spine/spine_district.tscn" id="3_1unc5"]
 
-[node name="Lanka" type="Node3D" unique_id=1851378947]
-script = ExtResource("1_qmgdg")
+[node name="Lanka" type="Node3D" unique_id=1217824075]
+script = ExtResource("1_j2x66")
 metadata/budget_profile = "default"
 metadata/playable_size_m = Vector2(1100, 1100)
 metadata/streaming_required = true
+metadata/m7_visual_system = true
 
-[node name="StreamedChunks" type="Node3D" parent="." unique_id=943042991]
+[node name="PersistentLook" type="Node3D" parent="." unique_id=1280545134 instance=ExtResource("2_jo46y")]
+metadata/m7_visual_system = true
+metadata/budget_profile = "default"
+metadata/palette = PackedStringArray("ash_grey", "wet_black", "bone_white", "ember_orange", "sea_green")
 
-[node name="StreamedDistricts" type="Node3D" parent="." unique_id=1574076609]
+[node name="StreamedChunks" type="Node3D" parent="." unique_id=1753355654]
 
-[node name="PersistentLandmarks" type="Node3D" parent="." unique_id=368245730]
+[node name="StreamedDistricts" type="Node3D" parent="." unique_id=41944555]
 
-[node name="SpineDistrict" type="Node3D" parent="PersistentLandmarks" unique_id=392007664 instance=ExtResource("2_j2x66")]
+[node name="PersistentLandmarks" type="Node3D" parent="." unique_id=1716295140]
+
+[node name="SpineDistrict" type="Node3D" parent="PersistentLandmarks" unique_id=1073382415 instance=ExtResource("3_1unc5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68, 430)
 metadata/district_id = &"spine"
 metadata/budget_profile = "spine"
 metadata/persistent_landmark = true
 metadata/convergence_requirements = PackedStringArray("hold", "smolder", "cistern")
 
-[node name="DistrictAnchors" type="Node3D" parent="." unique_id=2046690308]
+[node name="DistrictAnchors" type="Node3D" parent="." unique_id=775969218]
 
-[node name="Shallows" type="Marker3D" parent="DistrictAnchors" unique_id=1310595825]
+[node name="Shallows" type="Marker3D" parent="DistrictAnchors" unique_id=1084160450]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -440)
 metadata/district_id = &"shallows"
 
-[node name="Terraces" type="Marker3D" parent="DistrictAnchors" unique_id=1457060928]
+[node name="Terraces" type="Marker3D" parent="DistrictAnchors" unique_id=319563149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -330, 50, 0)
 metadata/district_id = &"terraces"
 
-[node name="EmberQuarter" type="Marker3D" parent="DistrictAnchors" unique_id=840813572]
+[node name="EmberQuarter" type="Marker3D" parent="DistrictAnchors" unique_id=63310325]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 54, 80)
 metadata/district_id = &"ember_quarter"
 
-[node name="Cistern" type="Marker3D" parent="DistrictAnchors" unique_id=1341903977]
+[node name="Cistern" type="Marker3D" parent="DistrictAnchors" unique_id=917147395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 18, 80)
 metadata/district_id = &"cistern"
 
-[node name="Spine" type="Marker3D" parent="DistrictAnchors" unique_id=1131668931]
+[node name="Spine" type="Marker3D" parent="DistrictAnchors" unique_id=44652309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68, 430)
 metadata/district_id = &"spine"
 
-[node name="Dark" type="Marker3D" parent="DistrictAnchors" unique_id=522688553]
+[node name="Dark" type="Marker3D" parent="DistrictAnchors" unique_id=1546751562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 430)
 metadata/district_id = &"dark"

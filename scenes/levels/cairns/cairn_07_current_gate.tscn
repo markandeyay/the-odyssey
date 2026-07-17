@@ -107,7 +107,7 @@ size = Vector3(12, 3, 56)
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ohkt2"]
 size = Vector3(58, 20, 68)
 
-[node name="CairnCisternCurrentGate" type="Node3D" unique_id=1751729836]
+[node name="CairnCisternCurrentGate" type="Node3D" unique_id=2096804154]
 metadata/cairn_id = &"cistern_current_gate"
 metadata/district_id = &"cistern"
 metadata/taught_mechanic = &"water_current"
@@ -115,142 +115,144 @@ metadata/single_room = true
 metadata/heart_piece_reward = 1
 metadata/budget_profile = "cairn"
 
-[node name="WorldGeometry" type="Node3D" parent="." unique_id=177514289]
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=2134967861]
 
-[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=666626956]
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=809669620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=796162085]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=683138906]
 mesh = SubResource("BoxMesh_u4mln")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=1800767006]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=470329051]
 shape = SubResource("BoxShape3D_tw7bl")
 
-[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=427029681]
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1958938292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=1518738656]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=919921126]
 mesh = SubResource("BoxMesh_xtrdb")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=2076982577]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=787222728]
 shape = SubResource("BoxShape3D_sdwhq")
 
-[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1490065017]
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1382705521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=115073096]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=336908534]
 mesh = SubResource("BoxMesh_v2li2")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=773564356]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=1499103851]
 shape = SubResource("BoxShape3D_dvntk")
 
-[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=74580004]
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1209383057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=313816657]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=1112576360]
 mesh = SubResource("BoxMesh_fs5u5")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=36848533]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1002706687]
 shape = SubResource("BoxShape3D_78hl4")
 
-[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=606448294]
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=52577225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1197575876]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=788977451]
 mesh = SubResource("BoxMesh_207mr")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=674581552]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=611389259]
 shape = SubResource("BoxShape3D_xeh8u")
 
-[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1722988298]
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1163197978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=1924120144]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=905444758]
 mesh = SubResource("BoxMesh_7r4rd")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1306005107]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=767883226]
 shape = SubResource("BoxShape3D_unqhj")
 
-[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=449869695]
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1088421889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=297078040]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=549069244]
 mesh = SubResource("BoxMesh_jw7qt")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=173264694]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1949201121]
 shape = SubResource("BoxShape3D_mjkhr")
 
-[node name="CurrentBankWest" type="StaticBody3D" parent="WorldGeometry" unique_id=1649065791]
+[node name="CurrentBankWest" type="StaticBody3D" parent="WorldGeometry" unique_id=342579278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CurrentBankWest" unique_id=1746742828]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CurrentBankWest" unique_id=410996953]
 mesh = SubResource("BoxMesh_bh8t8")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CurrentBankWest" unique_id=471840173]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CurrentBankWest" unique_id=1127552570]
 shape = SubResource("BoxShape3D_hql0c")
 
-[node name="CurrentBankEast" type="StaticBody3D" parent="WorldGeometry" unique_id=1762906432]
+[node name="CurrentBankEast" type="StaticBody3D" parent="WorldGeometry" unique_id=97191647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CurrentBankEast" unique_id=1826349762]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CurrentBankEast" unique_id=1140579302]
 mesh = SubResource("BoxMesh_x62dq")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CurrentBankEast" unique_id=1129026109]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CurrentBankEast" unique_id=241772732]
 shape = SubResource("BoxShape3D_hc0p0")
 
-[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=424428481]
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=515904407]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 occluder = SubResource("BoxOccluder3D_ohkt2")
 
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=541757424]
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=101704065]
 aabb = AABB(-32, -3, -38, 64, 30, 76)
 
-[node name="GameplaySockets" type="Node3D" parent="." unique_id=965686718]
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=150648563]
 
-[node name="WaterVolume" type="Marker3D" parent="GameplaySockets" unique_id=19440953]
+[node name="WaterVolume" type="Marker3D" parent="GameplaySockets" unique_id=84112847]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 metadata/socket_type = &"water_volume"
 metadata/socket_size_m = Vector3(32, 8, 56)
 
-[node name="Current" type="Marker3D" parent="GameplaySockets" unique_id=1895322009]
+[node name="Current" type="Marker3D" parent="GameplaySockets" unique_id=1427880131]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 metadata/socket_type = &"water_current"
 metadata/socket_size_m = Vector3(30, 7, 52)
 metadata/direction = Vector3(0.70710677, 0, -0.70710677)
 metadata/strength = 5.0
 
-[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=1546824032]
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=2123215013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
 metadata/socket_type = &"heart_piece_reward"
 metadata/cairn_id = &"cistern_current_gate"
 metadata/heart_piece_amount = 1
 
-[node name="RouteMarkers" type="Node3D" parent="." unique_id=1459469843]
+[node name="Dressing" type="Node3D" parent="." unique_id=1022496411]
 
-[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=663508475]
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1975088901]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1533016469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"entry"
 
-[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=299201751]
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=622943049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"exit"

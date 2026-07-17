@@ -10,6 +10,7 @@ const CHUNK_ROOT: String = "res://scenes/levels/lanka/chunks"
 const LANDMARK_ROOT: String = "res://scenes/levels/lanka/landmarks"
 const SPINE_BLOCKOUT_PATH: String = "res://scenes/levels/lanka/landmarks/spine_blockout.tscn"
 const LANKA_SCENE_PATH: String = "res://scenes/levels/lanka/lanka.tscn"
+const LANKA_LOOK_PATH: String = "res://scenes/levels/lanka/look/lanka_look.tscn"
 const LOW_TEXTURE_PATH: String = "res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png"
 const HIGH_TEXTURE_PATH: String = "res://assets/materials/library/poly_haven/aerial_rocks_04/aerial_rocks_04_albedo.png"
 
@@ -190,6 +191,16 @@ func _build_lanka_root() -> Error:
 	root.set_meta(&"budget_profile", "default")
 	root.set_meta(&"playable_size_m", LankaTerrainContract.ISLAND_SIZE_M)
 	root.set_meta(&"streaming_required", true)
+	root.set_meta(&"m7_visual_system", true)
+
+	var look_packed: PackedScene = load(LANKA_LOOK_PATH) as PackedScene
+	if look_packed == null:
+		root.free()
+		return ERR_FILE_CANT_READ
+	var look: Node3D = look_packed.instantiate() as Node3D
+	look.name = "PersistentLook"
+	root.add_child(look)
+	look.owner = root
 
 	var chunks: Node3D = Node3D.new()
 	chunks.name = "StreamedChunks"

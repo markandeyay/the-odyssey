@@ -42,11 +42,14 @@ func _build_cairn(data: Dictionary) -> Error:
 	var sockets: Node3D = Node3D.new()
 	sockets.name = "GameplaySockets"
 	root.add_child(sockets)
+	var dressing: Node3D = Node3D.new()
+	dressing.name = "Dressing"
+	root.add_child(dressing)
 	var routes: Node3D = Node3D.new()
 	routes.name = "RouteMarkers"
 	root.add_child(routes)
 	_add_room_shell(geometry)
-	_add_puzzle(geometry, sockets, data["mechanic"] as StringName)
+	_add_puzzle(geometry, sockets, dressing, data["mechanic"] as StringName)
 	_builder.add_marker(routes, "Entry", Vector3(0.0, 1.0, 34.0), &"route_anchor", {&"route_id": &"entry"})
 	_builder.add_marker(routes, "Exit", Vector3(0.0, 1.0, 38.0), &"route_anchor", {&"route_id": &"exit"})
 	_builder.add_marker(
@@ -70,7 +73,7 @@ func _add_room_shell(geometry: Node3D) -> void:
 	_builder.add_static_box(geometry, "RewardPlinth", Vector3(0.0, 1.0, -29.0), Vector3(7.0, 2.0, 7.0), _materials[&"solid"], true)
 
 
-func _add_puzzle(geometry: Node3D, sockets: Node3D, mechanic: StringName) -> void:
+func _add_puzzle(geometry: Node3D, sockets: Node3D, dressing: Node3D, mechanic: StringName) -> void:
 	match mechanic:
 		&"carry_stack":
 			_builder.add_static_box(geometry, "HighShelf", Vector3(0.0, 8.0, -12.0), Vector3(22.0, 3.0, 14.0), _materials[&"solid"], true)
@@ -92,6 +95,8 @@ func _add_puzzle(geometry: Node3D, sockets: Node3D, mechanic: StringName) -> voi
 				var position: Vector3 = Vector3(-18.0 + float(index) * 12.0, 1.0, 14.0 - float(index) * 9.0)
 				_builder.add_static_box(geometry, "FuelPedestal%02d" % index, position, Vector3(7.0, 2.0, 7.0), _materials[&"hot"] if index > 1 else _materials[&"solid"], true)
 				_builder.add_marker(sockets, "FuelSource%02d" % index, position + Vector3(0.0, 2.0, 0.0), &"fire_source", {&"spawn_id": StringName("cairn_fuel_%02d" % index)})
+				if index > 1:
+					_builder.add_fire_visual(dressing, "FuelFireVisual%02d" % index, position + Vector3(0.0, 1.5, 0.0), 0.75)
 		&"updraft_glide":
 			_builder.add_static_box(geometry, "LaunchPlatform", Vector3(0.0, 2.0, 18.0), Vector3(20.0, 3.0, 14.0), _materials[&"solid"], true)
 			_builder.add_static_box(geometry, "LandingPlatform", Vector3(0.0, 15.0, -18.0), Vector3(20.0, 3.0, 14.0), _materials[&"solid"], true)
@@ -105,3 +110,4 @@ func _add_puzzle(geometry: Node3D, sockets: Node3D, mechanic: StringName) -> voi
 			_builder.add_static_box(geometry, "DryWalkway", Vector3(-16.0, 1.0, 0.0), Vector3(10.0, 3.0, 56.0), _materials[&"solid"], true)
 			_builder.add_marker(sockets, "FloodedChannel", Vector3(8.0, 1.0, 0.0), &"water_volume", {&"socket_size_m": Vector3(30.0, 7.0, 56.0)})
 			_builder.add_marker(sockets, "CarriedFlame", Vector3(-16.0, 3.0, 25.0), &"fire_source", {&"spawn_id": &"cairn_carried_flame"})
+			_builder.add_fire_visual(dressing, "CarriedFlameVisual", Vector3(-16.0, 3.0, 25.0), 0.62)

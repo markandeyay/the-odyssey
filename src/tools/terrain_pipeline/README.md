@@ -45,3 +45,17 @@ godot --headless --path . --script res://src/tools/terrain_pipeline/validate_lan
 ```
 
 The content validator rejects extra Cairn scenes, incorrect heart-piece math, duplicate crew IDs, uncontracted ingredient or salvage types, and invalid Keffer merchant/dialogue state.
+
+## M7 Visual System
+
+M7 uses generated, shared visual resources so terrain, districts, Cairns, and persistent scenery remain reproducible. Build the persistent look and fire visual before rebuilding dependent scenes:
+
+```powershell
+godot --headless --path . --script res://src/tools/terrain_pipeline/build_lanka_look.gd
+godot --headless --path . --script res://src/tools/terrain_pipeline/build_lanka_districts.gd
+godot --headless --path . --script res://src/tools/terrain_pipeline/build_lanka_content.gd
+godot --headless --path . --script res://src/tools/terrain_pipeline/build_lanka_terrain.gd
+godot --headless --path . --script res://src/tools/terrain_pipeline/validate_lanka_visuals.gd
+```
+
+The persistent look owns only rendering: low sun, depth and volumetric fog, ocean scenery, and generated visual-only fire/smoke/heat nodes. Fire behavior remains SYSTEMS-owned. `capture_lanka_m7.gd` renders the production look for the full island and all six Lanka districts.

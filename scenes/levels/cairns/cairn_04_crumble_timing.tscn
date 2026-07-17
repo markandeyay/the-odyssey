@@ -135,7 +135,7 @@ size = Vector3(7, 2, 7)
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_1vu0s"]
 size = Vector3(58, 20, 68)
 
-[node name="CairnTerracesCrumbleTiming" type="Node3D" unique_id=1572965176]
+[node name="CairnTerracesCrumbleTiming" type="Node3D" unique_id=397200406]
 metadata/cairn_id = &"terraces_crumble_timing"
 metadata/district_id = &"terraces"
 metadata/taught_mechanic = &"crumbling_timing"
@@ -143,174 +143,176 @@ metadata/single_room = true
 metadata/heart_piece_reward = 1
 metadata/budget_profile = "cairn"
 
-[node name="WorldGeometry" type="Node3D" parent="." unique_id=721767435]
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=242326067]
 
-[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=726500550]
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=1575584298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=581706108]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=1193500805]
 mesh = SubResource("BoxMesh_4ydmm")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=442896926]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=1107866760]
 shape = SubResource("BoxShape3D_b03js")
 
-[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1096515071]
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1872499287]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=1018638179]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=1820973040]
 mesh = SubResource("BoxMesh_47cvw")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=1751592590]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=855150477]
 shape = SubResource("BoxShape3D_5smb4")
 
-[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1559874703]
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=2056972271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=936946175]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=24351704]
 mesh = SubResource("BoxMesh_ccgkd")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=1148093303]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=221383074]
 shape = SubResource("BoxShape3D_ux5bf")
 
-[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1816591978]
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=637504981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=1078656481]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=1987467161]
 mesh = SubResource("BoxMesh_snkxn")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1525170768]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1016100090]
 shape = SubResource("BoxShape3D_8ecb1")
 
-[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=457589143]
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=681315836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=403773236]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1855531587]
 mesh = SubResource("BoxMesh_qsv0h")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1080496583]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=2112157482]
 shape = SubResource("BoxShape3D_w043r")
 
-[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1159752183]
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1421402629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=712340121]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=602877864]
 mesh = SubResource("BoxMesh_e6lm7")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1214948192]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1436700414]
 shape = SubResource("BoxShape3D_k60fh")
 
-[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1111382850]
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1042545563]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=692282686]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=1316522513]
 mesh = SubResource("BoxMesh_8aqgn")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1974480762]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=253169460]
 shape = SubResource("BoxShape3D_lhela")
 
-[node name="CrumblingLedge00" type="StaticBody3D" parent="WorldGeometry" unique_id=858290809]
+[node name="CrumblingLedge00" type="StaticBody3D" parent="WorldGeometry" unique_id=924635034]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 18)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge00" unique_id=2018065171]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge00" unique_id=926315778]
 mesh = SubResource("BoxMesh_2mwy7")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge00" unique_id=1494345672]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge00" unique_id=527099794]
 shape = SubResource("BoxShape3D_gje2q")
 
-[node name="CrumblingLedge01" type="StaticBody3D" parent="WorldGeometry" unique_id=1406444671]
+[node name="CrumblingLedge01" type="StaticBody3D" parent="WorldGeometry" unique_id=1070038817]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.2, 10)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge01" unique_id=1313168763]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge01" unique_id=908512659]
 mesh = SubResource("BoxMesh_ivjb1")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge01" unique_id=158153507]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge01" unique_id=848821592]
 shape = SubResource("BoxShape3D_yhurf")
 
-[node name="CrumblingLedge02" type="StaticBody3D" parent="WorldGeometry" unique_id=1234545116]
+[node name="CrumblingLedge02" type="StaticBody3D" parent="WorldGeometry" unique_id=39351951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6.4, 2)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge02" unique_id=732989705]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge02" unique_id=1297178224]
 mesh = SubResource("BoxMesh_687uy")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge02" unique_id=204327405]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge02" unique_id=1328057367]
 shape = SubResource("BoxShape3D_7qaj3")
 
-[node name="CrumblingLedge03" type="StaticBody3D" parent="WorldGeometry" unique_id=1271273991]
+[node name="CrumblingLedge03" type="StaticBody3D" parent="WorldGeometry" unique_id=1136154810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8.6, -6)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge03" unique_id=2008176486]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge03" unique_id=1308402137]
 mesh = SubResource("BoxMesh_8iivi")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge03" unique_id=1285337184]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge03" unique_id=483721625]
 shape = SubResource("BoxShape3D_mv78g")
 
-[node name="CrumblingLedge04" type="StaticBody3D" parent="WorldGeometry" unique_id=1038991138]
+[node name="CrumblingLedge04" type="StaticBody3D" parent="WorldGeometry" unique_id=441003197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10.8, -14)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge04" unique_id=990544724]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge04" unique_id=1387202260]
 mesh = SubResource("BoxMesh_afnyv")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge04" unique_id=273711237]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge04" unique_id=1202677495]
 shape = SubResource("BoxShape3D_rqh58")
 
-[node name="CrumblingLedge05" type="StaticBody3D" parent="WorldGeometry" unique_id=1468297895]
+[node name="CrumblingLedge05" type="StaticBody3D" parent="WorldGeometry" unique_id=1486593670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 13, -22)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge05" unique_id=374284945]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CrumblingLedge05" unique_id=1110792141]
 mesh = SubResource("BoxMesh_itest")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge05" unique_id=1964127826]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CrumblingLedge05" unique_id=297452010]
 shape = SubResource("BoxShape3D_g70tp")
 
-[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=93802501]
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=1373984942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 occluder = SubResource("BoxOccluder3D_1vu0s")
 
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=840558522]
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=613361086]
 aabb = AABB(-32, -3, -38, 64, 30, 76)
 
-[node name="GameplaySockets" type="Node3D" parent="." unique_id=416877719]
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=777670031]
 
-[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=1390621420]
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=282618038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
 metadata/socket_type = &"heart_piece_reward"
 metadata/cairn_id = &"terraces_crumble_timing"
 metadata/heart_piece_amount = 1
 
-[node name="RouteMarkers" type="Node3D" parent="." unique_id=1276066140]
+[node name="Dressing" type="Node3D" parent="." unique_id=137079076]
 
-[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1125132758]
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1406385353]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1474272886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"entry"
 
-[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=2021235041]
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1472005899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"exit"

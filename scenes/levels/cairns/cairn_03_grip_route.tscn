@@ -140,7 +140,7 @@ size = Vector3(7, 25, 7)
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_i1xdc"]
 size = Vector3(58, 20, 68)
 
-[node name="CairnTerracesGripRoute" type="Node3D" unique_id=31809823]
+[node name="CairnTerracesGripRoute" type="Node3D" unique_id=1711642202]
 metadata/cairn_id = &"terraces_grip_route"
 metadata/district_id = &"terraces"
 metadata/taught_mechanic = &"grip_route"
@@ -148,152 +148,154 @@ metadata/single_room = true
 metadata/heart_piece_reward = 1
 metadata/budget_profile = "cairn"
 
-[node name="WorldGeometry" type="Node3D" parent="." unique_id=677554313]
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=554467582]
 
-[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=2049339483]
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=1347507342]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=1539329933]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=1438492853]
 mesh = SubResource("BoxMesh_4fiyi")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=1721226668]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=629340894]
 shape = SubResource("BoxShape3D_o68k6")
 
-[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=207107906]
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1181775850]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=1990148074]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=1644658480]
 mesh = SubResource("BoxMesh_13i1s")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=251829789]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=1091771581]
 shape = SubResource("BoxShape3D_bmqsj")
 
-[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1246043086]
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1617424561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=854798726]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=1027225521]
 mesh = SubResource("BoxMesh_mcbjd")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=1929670687]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=40639630]
 shape = SubResource("BoxShape3D_iiiuy")
 
-[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1176592035]
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1366407868]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=1933013447]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=932580095]
 mesh = SubResource("BoxMesh_5dlp4")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1153757387]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=459764462]
 shape = SubResource("BoxShape3D_g3rxk")
 
-[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=568720322]
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=1676188748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1709338134]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1934301290]
 mesh = SubResource("BoxMesh_8fkfs")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=2015051618]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1688416906]
 shape = SubResource("BoxShape3D_fx6rn")
 
-[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1700303330]
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1681491838]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=763124869]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=112272707]
 mesh = SubResource("BoxMesh_ll0d6")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=297000780]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1876521259]
 shape = SubResource("BoxShape3D_grqq0")
 
-[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1055741570]
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=367852991]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=1402195843]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=490015745]
 mesh = SubResource("BoxMesh_bvrvv")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=61871172]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1467607630]
 shape = SubResource("BoxShape3D_y5ihu")
 
-[node name="GripPillar00" type="StaticBody3D" parent="WorldGeometry" unique_id=582308194]
+[node name="GripPillar00" type="StaticBody3D" parent="WorldGeometry" unique_id=968796077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 5, 4)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/GripPillar00" unique_id=927036789]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/GripPillar00" unique_id=1448059915]
 mesh = SubResource("BoxMesh_lekpx")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/GripPillar00" unique_id=1118725420]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/GripPillar00" unique_id=1558979799]
 shape = SubResource("BoxShape3D_mqxp4")
 
-[node name="GripPillar01" type="StaticBody3D" parent="WorldGeometry" unique_id=1483832738]
+[node name="GripPillar01" type="StaticBody3D" parent="WorldGeometry" unique_id=2028723632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 7.5, -3)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/GripPillar01" unique_id=1904762872]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/GripPillar01" unique_id=755171829]
 mesh = SubResource("BoxMesh_v5tod")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/GripPillar01" unique_id=1382466612]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/GripPillar01" unique_id=1225666065]
 shape = SubResource("BoxShape3D_iwqhx")
 
-[node name="GripPillar02" type="StaticBody3D" parent="WorldGeometry" unique_id=615571388]
+[node name="GripPillar02" type="StaticBody3D" parent="WorldGeometry" unique_id=1108096050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 10, -10)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/GripPillar02" unique_id=453775565]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/GripPillar02" unique_id=176226349]
 mesh = SubResource("BoxMesh_dstlw")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/GripPillar02" unique_id=2143488722]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/GripPillar02" unique_id=1841879967]
 shape = SubResource("BoxShape3D_1tso5")
 
-[node name="GripPillar03" type="StaticBody3D" parent="WorldGeometry" unique_id=768065999]
+[node name="GripPillar03" type="StaticBody3D" parent="WorldGeometry" unique_id=1680917069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 12.5, -17)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/GripPillar03" unique_id=1239784739]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/GripPillar03" unique_id=1103975179]
 mesh = SubResource("BoxMesh_6mqp6")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/GripPillar03" unique_id=750742480]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/GripPillar03" unique_id=1285168810]
 shape = SubResource("BoxShape3D_bw3ei")
 
-[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=1824379032]
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=625210825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 occluder = SubResource("BoxOccluder3D_i1xdc")
 
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=260173366]
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=1344904437]
 aabb = AABB(-32, -3, -38, 64, 30, 76)
 
-[node name="GameplaySockets" type="Node3D" parent="." unique_id=265623569]
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=1933788978]
 
-[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=173401135]
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=272625690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
 metadata/socket_type = &"heart_piece_reward"
 metadata/cairn_id = &"terraces_grip_route"
 metadata/heart_piece_amount = 1
 
-[node name="RouteMarkers" type="Node3D" parent="." unique_id=1653932919]
+[node name="Dressing" type="Node3D" parent="." unique_id=660798670]
 
-[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1066673791]
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1750940959]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=525372026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"entry"
 
-[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1390687795]
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1322414856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"exit"

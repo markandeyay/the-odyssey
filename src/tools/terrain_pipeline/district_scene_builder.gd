@@ -4,6 +4,10 @@ const WORLD_LAYER: int = 1
 const CLIMBABLE_LAYER: int = 1 << 2
 const STYLIZED_SURFACE_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader")
 const ROCK_DETAIL_TEXTURE: Texture2D = preload("res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png")
+const FIRE_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/lanka_fire.gdshader")
+const SMOKE_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/lanka_smoke.gdshader")
+const HEAT_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/lanka_heat_haze.gdshader")
+const OCEAN_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/lanka_ocean_scenery.gdshader")
 
 
 func make_material(name: String, color: Color, roughness: float = 0.9, metallic: float = 0.0) -> StandardMaterial3D:
@@ -46,6 +50,96 @@ func make_stylized_material(
 	material.set_shader_parameter(&"emission_tint", emission_tint)
 	material.set_shader_parameter(&"detail_strength", detail_strength)
 	return material
+
+
+func make_water_scenery_material(name: String, wave_height: float = 0.25) -> ShaderMaterial:
+	var material: ShaderMaterial = ShaderMaterial.new()
+	material.resource_name = name
+	material.shader = OCEAN_SHADER
+	material.set_shader_parameter(&"deep_color", Color(0.012, 0.055, 0.052))
+	material.set_shader_parameter(&"shallow_color", Color(0.055, 0.18, 0.16))
+	material.set_shader_parameter(&"foam_color", Color(0.42, 0.48, 0.43))
+	material.set_shader_parameter(&"wave_height", wave_height)
+	material.set_shader_parameter(&"wave_scale", 0.055)
+	material.set_shader_parameter(&"wave_speed", 0.08)
+	material.set_shader_parameter(&"mask_island", false)
+	return material
+
+
+func add_fire_visual(
+	parent: Node3D,
+	node_name: String,
+	position: Vector3,
+	scale_value: float = 1.0
+) -> Node3D:
+	var visual: Node3D = Node3D.new()
+	visual.name = node_name
+	visual.position = position
+	visual.scale = Vector3.ONE * scale_value
+	visual.set_meta(&"visual_only", true)
+	visual.set_meta(&"gameplay_behavior", "SYSTEMS_owned")
+	visual.set_meta(&"vfx_profile", "fire_smoke_heat")
+	parent.add_child(visual)
+	for plane_index: int in 2:
+		var flame: MeshInstance3D = MeshInstance3D.new()
+		flame.name = "FlamePlane%02d" % plane_index
+		flame.position.y = 2.1
+		flame.rotation_degrees.y = float(plane_index) * 90.0
+		var flame_mesh: QuadMesh = QuadMesh.new()
+		flame_mesh.size = Vector2(2.7, 4.5)
+		var flame_material: ShaderMaterial = ShaderMaterial.new()
+		flame_material.resource_name = "mat_lanka_fire_visual_grip_hot"
+		flame_material.shader = FIRE_SHADER
+		flame_material.set_shader_parameter(&"motion_offset", float(plane_index) * 1.7)
+		flame_mesh.material = flame_material
+		flame.mesh = flame_mesh
+		flame.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		visual.add_child(flame)
+	for smoke_index: int in 2:
+		var smoke: MeshInstance3D = MeshInstance3D.new()
+		smoke.name = "SmokePlane%02d" % smoke_index
+		smoke.position = Vector3(0.0, 5.0 + float(smoke_index) * 1.6, 0.0)
+		smoke.rotation_degrees.y = float(smoke_index) * 90.0 + 24.0
+		var smoke_mesh: QuadMesh = QuadMesh.new()
+		smoke_mesh.size = Vector2(5.6, 8.5)
+		var smoke_material: ShaderMaterial = ShaderMaterial.new()
+		smoke_material.resource_name = "mat_lanka_smoke_visual_grip_solid"
+		smoke_material.shader = SMOKE_SHADER
+		smoke_material.set_shader_parameter(&"motion_offset", float(smoke_index) * 0.43)
+		smoke_mesh.material = smoke_material
+		smoke.mesh = smoke_mesh
+		smoke.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		visual.add_child(smoke)
+	var heat: MeshInstance3D = MeshInstance3D.new()
+	heat.name = "HeatHaze"
+	heat.position.y = 2.6
+	var heat_mesh: QuadMesh = QuadMesh.new()
+	heat_mesh.size = Vector2(5.0, 5.2)
+	var heat_material: ShaderMaterial = ShaderMaterial.new()
+	heat_material.resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+	heat_material.shader = HEAT_SHADER
+	heat_mesh.material = heat_material
+	heat.mesh = heat_mesh
+	heat.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	visual.add_child(heat)
+	var light: OmniLight3D = OmniLight3D.new()
+	light.name = "FireLight"
+	light.position.y = 2.0
+	light.light_color = Color(1.0, 0.28, 0.045)
+	light.light_energy = 4.2
+	light.light_volumetric_fog_energy = 1.45
+	light.omni_range = 15.0
+	light.shadow_enabled = false
+	light.distance_fade_enabled = true
+	light.distance_fade_begin = 36.0
+	light.distance_fade_shadow = 28.0
+	light.distance_fade_length = 18.0
+	visual.add_child(light)
+	var notifier: VisibleOnScreenNotifier3D = VisibleOnScreenNotifier3D.new()
+	notifier.name = "VisibilityNotifier"
+	notifier.aabb = AABB(Vector3(-4.0, 0.0, -4.0), Vector3(8.0, 13.0, 8.0))
+	visual.add_child(notifier)
+	return visual
 
 
 func add_static_box(
@@ -138,6 +232,28 @@ func add_visual_box(
 	box_mesh.material = material
 	mesh_instance.mesh = box_mesh
 	mesh_instance.gi_mode = GeometryInstance3D.GI_MODE_STATIC
+	parent.add_child(mesh_instance)
+	return mesh_instance
+
+
+func add_visual_plane(
+	parent: Node3D,
+	node_name: String,
+	position: Vector3,
+	size: Vector2,
+	material: Material,
+	subdivisions: Vector2i = Vector2i(24, 18)
+) -> MeshInstance3D:
+	var mesh_instance: MeshInstance3D = MeshInstance3D.new()
+	mesh_instance.name = node_name
+	mesh_instance.position = position
+	var plane_mesh: PlaneMesh = PlaneMesh.new()
+	plane_mesh.size = size
+	plane_mesh.subdivide_width = subdivisions.x
+	plane_mesh.subdivide_depth = subdivisions.y
+	plane_mesh.material = material
+	mesh_instance.mesh = plane_mesh
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	parent.add_child(mesh_instance)
 	return mesh_instance
 

@@ -1,0 +1,90 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_ocean_scenery.gdshader" id="1_efoq1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n5ik4"]
+sky_top_color = Color(0.038, 0.068, 0.066, 1)
+sky_horizon_color = Color(0.3, 0.34, 0.31, 1)
+sky_curve = 0.22
+ground_bottom_color = Color(0.018, 0.026, 0.025, 1)
+ground_horizon_color = Color(0.15, 0.19, 0.17, 1)
+ground_curve = 0.18
+sun_angle_max = 7.0
+sun_curve = 0.08
+
+[sub_resource type="Sky" id="Sky_313af"]
+sky_material = SubResource("ProceduralSkyMaterial_n5ik4")
+
+[sub_resource type="Environment" id="Environment_o10xm"]
+background_mode = 2
+background_energy_multiplier = 0.48
+sky = SubResource("Sky_313af")
+ambient_light_source = 3
+ambient_light_color = Color(0.34, 0.43, 0.4, 1)
+ambient_light_sky_contribution = 0.58
+ambient_light_energy = 0.46
+reflected_light_source = 2
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.66
+glow_bloom = 0.08
+fog_enabled = true
+fog_light_color = Color(0.34, 0.39, 0.36, 1)
+fog_light_energy = 0.26
+fog_density = 0.0009
+fog_sky_affect = 0.72
+fog_height = 28.0
+fog_height_density = 0.004
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0034
+volumetric_fog_albedo = Color(0.32, 0.39, 0.36, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_length = 760.0
+volumetric_fog_detail_spread = 1.35
+volumetric_fog_ambient_inject = 0.28
+volumetric_fog_sky_affect = 0.48
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmx4e"]
+resource_name = "mat_lanka_ocean_scenery_grip_slick"
+render_priority = 0
+shader = ExtResource("1_efoq1")
+shader_parameter/deep_color = null
+shader_parameter/shallow_color = null
+shader_parameter/foam_color = null
+shader_parameter/wave_height = null
+shader_parameter/wave_scale = null
+shader_parameter/wave_speed = null
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nsb05"]
+material = SubResource("ShaderMaterial_hmx4e")
+size = Vector2(2800, 2800)
+subdivide_width = 96
+subdivide_depth = 96
+
+[node name="LankaLook" type="Node3D" unique_id=1496370302]
+metadata/m7_visual_system = true
+metadata/budget_profile = "default"
+metadata/palette = PackedStringArray("ash_grey", "wet_black", "bone_white", "ember_orange", "sea_green")
+
+[node name="SmokeEnvironment" type="WorldEnvironment" parent="." unique_id=614235773]
+environment = SubResource("Environment_o10xm")
+
+[node name="LowSmokeSun" type="DirectionalLight3D" parent="." unique_id=1069112097]
+transform = Transform3D(0.7880108, 0.12800322, -0.60220784, 0, 0.9781476, 0.2079117, 0.6156615, -0.16383666, 0.7707909, 0, 0, 0)
+light_color = Color(1, 0.9, 0.78, 1)
+light_energy = 1.48
+light_volumetric_fog_energy = 1.55
+shadow_enabled = true
+directional_shadow_fade_start = 0.72
+directional_shadow_max_distance = 850.0
+
+[node name="PatientOceanScenery" type="MeshInstance3D" parent="." unique_id=626226750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+cast_shadow = 0
+extra_cull_margin = 18.0
+mesh = SubResource("PlaneMesh_nsb05")
+metadata/scenery_only = true
+metadata/simulation = false
+
+[node name="OceanVisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="PatientOceanScenery" unique_id=1493367936]
+aabb = AABB(-1400, -6, -1400, 2800, 14, 2800)

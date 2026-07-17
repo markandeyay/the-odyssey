@@ -223,6 +223,7 @@ func _build_ember_quarter() -> Error:
 			sockets, "FireSource%02d" % crack, crack_position + Vector3(0.0, 1.0, 0.0), &"fire_source",
 			{&"spawn_id": StringName("ember_fire_%02d" % crack)}
 		)
+		_builder.add_fire_visual(dressing, "EmberFireVisual%02d" % crack, crack_position, 1.35)
 	if true:
 		var updraft_positions: Array[Vector3] = [Vector3(-38.0, 2.0, -8.0), Vector3(72.0, 2.0, 18.0), Vector3(118.0, 2.0, -72.0)]
 		for updraft_index: int in updraft_positions.size():
@@ -284,6 +285,29 @@ func _build_cistern() -> Error:
 			Vector3(-82.0 + float(drip) * 15.0, 29.0, 0.0), Vector3(3.0, 3.0, 145.0),
 			_materials[&"soot_stone"]
 		)
+	var water_scenery: MeshInstance3D = _builder.add_visual_plane(
+		dressing, "ReservoirWaterScenery", Vector3(0.0, -12.0, 0.0),
+		Vector2(182.0, 142.0), _materials[&"cistern_water"], Vector2i(32, 24)
+	)
+	water_scenery.set_meta(&"scenery_only", true)
+	water_scenery.set_meta(&"simulation", false)
+	var shaft_light: SpotLight3D = SpotLight3D.new()
+	shaft_light.name = "EntranceShaftGodRay"
+	shaft_light.position = Vector3(74.0, 61.0, 54.0)
+	shaft_light.rotation_degrees.x = -90.0
+	shaft_light.light_color = Color(0.82, 0.91, 0.84)
+	shaft_light.light_energy = 7.0
+	shaft_light.light_volumetric_fog_energy = 2.2
+	shaft_light.spot_range = 98.0
+	shaft_light.spot_angle = 19.0
+	shaft_light.spot_attenuation = 0.65
+	shaft_light.shadow_enabled = true
+	shaft_light.distance_fade_enabled = true
+	shaft_light.distance_fade_begin = 180.0
+	shaft_light.distance_fade_shadow = 140.0
+	shaft_light.distance_fade_length = 70.0
+	shaft_light.set_meta(&"visual_only", true)
+	dressing.add_child(shaft_light)
 	_builder.add_marker(
 		sockets, "MainWaterVolume", Vector3(0.0, -20.0, 0.0), &"water_volume",
 		{&"socket_size_m": Vector3(182.0, 16.0, 142.0), &"district_id": &"cistern"}
@@ -404,6 +428,7 @@ func _build_dark() -> Error:
 			{&"spawn_id": StringName("dark_drowned_%02d" % spawn_index), &"district_id": &"dark"}
 		)
 	_builder.add_marker(sockets, "CarriedLightStart", Vector3(0.0, 2.0, -72.0), &"fire_source", {&"spawn_id": &"dark_carried_light"})
+	_builder.add_fire_visual(dressing, "CarriedLightStartVisual", Vector3(0.0, 2.0, -72.0), 0.62)
 	_builder.add_marker(sockets, "DistrictTrigger", Vector3(0.0, 4.0, -82.0), &"district_trigger", {&"socket_size_m": Vector3(50.0, 20.0, 18.0), &"district_id": &"dark"})
 	_builder.add_marker(routes, "Entry", Vector3(0.0, 1.0, -78.0), &"route_anchor", {&"route_id": &"entry"})
 	_builder.add_marker(routes, "Figurehead", Vector3(0.0, 2.0, 72.0), &"route_anchor", {&"route_id": &"figurehead"})
@@ -431,6 +456,7 @@ func _make_materials() -> Dictionary:
 		&"charwood_fruit": _builder.make_stylized_material("mat_charwood_fruit_grip_solid", Color(0.34, 0.075, 0.012), 0.76, 0.0, 0.0, 0.18, 0.05, 0.65),
 		&"blind_fish": _builder.make_stylized_material("mat_blind_fish_grip_solid", Color(0.43, 0.50, 0.48), 0.64, 0.0, 0.28, 0.0, 0.03),
 		&"keffer_cloth": _builder.make_stylized_material("mat_keffer_cloth_grip_solid", Color(0.13, 0.14, 0.13), 0.94, 0.0, 0.0, 0.30, 0.14),
+		&"cistern_water": _builder.make_water_scenery_material("mat_cistern_water_scenery_grip_slick", 0.22),
 	}
 
 
@@ -500,6 +526,7 @@ func _add_m6_content(root: Node3D, district_id: StringName) -> void:
 		_builder.add_visual_box(proxy, "LogA", Vector3(0.0, 0.3, 0.0), Vector3(3.0, 0.55, 0.55), _materials[&"charred_timber"], Vector3(0.0, 35.0, 0.0))
 		_builder.add_visual_box(proxy, "LogB", Vector3(0.0, 0.3, 0.0), Vector3(3.0, 0.55, 0.55), _materials[&"charred_timber"], Vector3(0.0, -35.0, 0.0))
 		_builder.add_visual_box(proxy, "EmberBed", Vector3(0.0, 0.22, 0.0), Vector3(1.4, 0.3, 1.4), _materials[&"ember_stone"])
+		_builder.add_fire_visual(proxy, "FireVisual", Vector3(0.0, 0.25, 0.0), 0.78)
 	if district_id == &"shallows":
 		_add_keffer(dressing, sockets)
 
