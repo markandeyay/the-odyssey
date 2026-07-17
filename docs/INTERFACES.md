@@ -93,3 +93,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** As above; no scripting on your side. Addendum to the Nau placeholder clip list: `glide` (looping).
 **Blocking:** no
 **Status:** OPEN
+
+### [2026-07-16] FROM: SYSTEMS TO: WORLD
+**Request:** Setu and the trial rewards (M14). (1) Instance `scenes/prefabs/gameplay/setu.tscn` exactly once, in the Shallows. Components mount on it visibly as they are acquired anywhere on the island, and it stows/displays salvage — no scripting on your side. (2) At the end of each trial, instance `scenes/prefabs/gameplay/component_pickup.tscn` with `component_id` set to exactly one of `&"hull"` (the Hold), `&"mast"` (the Smolder), `&"sail"` (the Cistern), `&"keel"` (the Spine), `&"figurehead"` (the Dark). Do not emit `component_acquired` from anywhere else — the pickup emits it, and an already-acquired pickup removes itself on load. (3) Vela's one voice line: deliver the audio as `assets/audio/vela/figurehead_line.ogg` (SYSTEMS loads that exact path if it exists; until then the line is subtitle-only).
+**Why:** Taking the figurehead pickup triggers the stub ending wherever Nau stands: a beat, Vela's line, fade, "TO BE CONTINUED", and the tree freezes (ARCHITECTURE §0/§4). So place the figurehead pickup where The Dark's trial actually ends — there is no walking back to the boat afterward. The line text is an exported placeholder ("Come home.") awaiting the human's words.
+**Proposed API:** As above. Salvage counters display and do nothing; that is correct (§9).
+**Blocking:** no
+**Status:** OPEN
