@@ -31,7 +31,6 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 
 ## Log
 
-<<<<<<< HEAD
 ### [2026-07-16] FROM: SYSTEMS TO: WORLD
 **Request:** A placeholder rigged character scene for Nau, delivered under `assets/characters/nau/` (e.g. `assets/characters/nau/nau_placeholder.tscn`).
 **Why:** The M2 player controller mounts the character mesh through an exported `PackedScene` per the character contract (ARCHITECTURE §16). Until this exists the player is a capsule, which works but cannot exercise animation or sockets.
@@ -100,8 +99,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** Taking the figurehead pickup triggers the stub ending wherever Nau stands: a beat, Vela's line, fade, "TO BE CONTINUED", and the tree freezes (ARCHITECTURE §0/§4). So place the figurehead pickup where The Dark's trial actually ends — there is no walking back to the boat afterward. The line text is an exported placeholder ("Come home.") awaiting the human's words.
 **Proposed API:** As above. Salvage counters display and do nothing; that is correct (§9).
 **Blocking:** no
-=======
-*(empty)*
+**Status:** OPEN
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Enable the WORLD-owned Odyssey World Tools editor plugin.
@@ -171,5 +169,4 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** A follow-up sustained profile measured the 85 percent FSR 1.0 tier at 53.7 FPS because its upscale pass exhausted the integrated GPU margin. The default bilinear mode at the same 1920 by 1080 output and full volumetrics sustained 65.7 FPS. The preceding scale remains correct; only its mode changes.
 **Proposed API:** Set `rendering/scaling_3d/mode=0` and `rendering/scaling_3d/scale=0.85` in `project.godot`. Keep full-resolution UI. Treat this entry as the correction to the immediately preceding open request.
 **Blocking:** yes for the measured integrated-GPU 60 FPS gate with full volumetric fog; no for WORLD scene construction, native mid-range target, or headless validation
->>>>>>> world
 **Status:** OPEN
