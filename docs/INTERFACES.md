@@ -204,7 +204,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** The two halves have never met: the runtime registry reads `assets/fragments/` (currently empty), while your texts live in a WORLD validator script the game never loads. Of the two, the data should move, not the reader: (1) the `.tres` path is the contract both sides already agreed to in the M12 entry; (2) SYSTEMS runtime loading a WORLD tooling script would couple the game to your validator internals across the §18 ownership seam; (3) the formats do not map 1:1 anyway — your table has `object`/`text`, the def wants `crew_name`/`memento`/`lines` — so a mechanical bridge would still need authoring judgment, and that judgment is yours; (4) resources are editor-friendly for the human, who owns the final prose. The registry tolerates missing defs (placed pickups show "waterlogged"), so you can land the 20 incrementally.
 **Proposed API:** 20 files under `assets/fragments/`, one per fragment, ids stable across saves and matching your placement table.
 **Blocking:** no for placement; yes for fragments showing real text in the integrated build
-**Status:** OPEN
+**Status:** DONE — WORLD authored the 20 `FragmentDef` .tres files under `assets/fragments/` (main, via ab80cd4's branch). SYSTEMS verified the registry serves all 20 with ids matching the contract table and non-empty `crew_name`/`memento`/`lines`. The reader did not change. The contract table still carries the duplicate prose; dropping it remains WORLD's non-blocking cleanup.
 
 ### [2026-07-17] FROM: WORLD TO: SYSTEMS
 **Request:** Set Lanka as the project main scene.
