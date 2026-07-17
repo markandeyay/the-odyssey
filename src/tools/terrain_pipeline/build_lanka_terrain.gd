@@ -10,6 +10,7 @@ const CHUNK_ROOT: String = "res://scenes/levels/lanka/chunks"
 const LANDMARK_ROOT: String = "res://scenes/levels/lanka/landmarks"
 const SPINE_BLOCKOUT_PATH: String = "res://scenes/levels/lanka/landmarks/spine_blockout.tscn"
 const LANKA_SCENE_PATH: String = "res://scenes/levels/lanka/lanka.tscn"
+const PLAYER_SCENE_PATH: String = "res://scenes/player/player.tscn"
 const LANKA_LOOK_PATH: String = "res://scenes/levels/lanka/look/lanka_look.tscn"
 const LOW_TEXTURE_PATH: String = "res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png"
 const HIGH_TEXTURE_PATH: String = "res://assets/materials/library/poly_haven/aerial_rocks_04/aerial_rocks_04_albedo.png"
@@ -197,7 +198,7 @@ func _build_lanka_root() -> Error:
 	if look_packed == null:
 		root.free()
 		return ERR_FILE_CANT_READ
-	var look: Node3D = look_packed.instantiate() as Node3D
+	var look: Node3D = look_packed.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as Node3D
 	look.name = "PersistentLook"
 	root.add_child(look)
 	look.owner = root
@@ -223,7 +224,7 @@ func _build_lanka_root() -> Error:
 	if spine_packed == null:
 		root.free()
 		return ERR_FILE_CANT_READ
-	var spine: Node = spine_packed.instantiate()
+	var spine: Node = spine_packed.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	landmarks.add_child(spine)
 	spine.owner = root
 
@@ -236,9 +237,25 @@ func _build_lanka_root() -> Error:
 		var marker: Marker3D = Marker3D.new()
 		marker.name = str(district).to_pascal_case()
 		marker.position = LankaTerrainContract.DISTRICT_ANCHORS[district] as Vector3
+		if district == &"shallows":
+			# Nau faces north into Lanka on spawn; Godot's unrotated forward is south here.
+			marker.rotation.y = PI
 		marker.set_meta(&"district_id", district)
 		anchors.add_child(marker)
 		marker.owner = root
+	var player_packed: PackedScene = load(PLAYER_SCENE_PATH) as PackedScene
+	if player_packed == null:
+		root.free()
+		return ERR_FILE_CANT_READ
+	var player: Node3D = player_packed.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as Node3D
+	if player == null:
+		root.free()
+		return ERR_INVALID_DATA
+	player.name = "Player"
+	var shallows_anchor: Marker3D = anchors.get_node("Shallows") as Marker3D
+	shallows_anchor.add_child(player)
+	player.owner = root
+	root.set(&"streaming_target", player)
 
 	var save_error: Error = _save_scene(root, LANKA_SCENE_PATH)
 	root.free()
