@@ -155,7 +155,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** WORLD M8 caps authored shader-only fire visuals and profiles the worst streamed Lanka neighborhood, but dynamic spread can still create unbounded burning cells or particle emitters in SYSTEMS territory. ARCHITECTURE section 19 requires both limits.
 **Proposed API:** Define `MAX_ACTIVE_BURNING_CELLS = 48` and `MAX_ACTIVE_FIRE_EMITTERS = 16` in the SYSTEMS fire manager. Preserve gameplay fire state when the cell cap is reached by queueing propagation, and allocate visual emitters to the nearest active cells deterministically without spawning beyond the emitter cap. Expose read-only active counts for the integrated profiler.
 **Blocking:** yes for proving integrated dynamic-fire performance; no for WORLD-authored static visual and district budgets
-**Status:** OPEN
+**Status:** DONE
 
 ### [2026-07-17] FROM: WORLD TO: SYSTEMS
 **Request:** Set the integrated root viewport to an 85 percent FSR 1.0 3D scale at a 1920 by 1080 output.

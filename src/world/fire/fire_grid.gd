@@ -16,6 +16,12 @@ extends Node3D
 
 const GROUP: StringName = &"fire_grid"
 
+## Island-wide hard caps (ARCHITECTURE §19, WORLD M8 contract in
+## INTERFACES). The exports below may tune a grid instance further down,
+## never above these.
+const MAX_ACTIVE_BURNING_CELLS: int = 48
+const MAX_ACTIVE_FIRE_EMITTERS: int = 16
+
 @export_group("Grid")
 @export var cell_size: float = 1.0
 
@@ -31,10 +37,13 @@ const GROUP: StringName = &"fire_grid"
 @export var heat_decay: float = 1.0
 
 @export_group("Hard caps")
-## Simultaneously burning cells. A hard cap, not a budget (M7).
-@export var max_burning_cells: int = 64
-## Live pooled particle emitters (each carries one light).
-@export var max_fire_emitters: int = 16
+## Simultaneously burning cells. A hard cap, not a budget (M7). Clamped
+## to MAX_ACTIVE_BURNING_CELLS; propagation at the cap queues as retained
+## neighbor heat and ignites when capacity frees.
+@export var max_burning_cells: int = MAX_ACTIVE_BURNING_CELLS
+## Live pooled particle emitters (each carries one light). Clamped to
+## MAX_ACTIVE_FIRE_EMITTERS.
+@export var max_fire_emitters: int = MAX_ACTIVE_FIRE_EMITTERS
 @export var max_updrafts: int = 4
 
 @export_group("Damage")
@@ -105,6 +114,16 @@ func cell_center(cell: Vector3i) -> Vector3:
 
 func burning_cell_count() -> int:
 	return _burning.size()
+
+
+## The effective cell cap: instance tuning may lower the contract cap,
+## never raise it.
+func cell_cap() -> int:
+	return mini(max_burning_cells, MAX_ACTIVE_BURNING_CELLS)
+
+
+func emitter_cap() -> int:
+	return mini(max_fire_emitters, MAX_ACTIVE_FIRE_EMITTERS)
 
 
 func live_emitter_count() -> int:
@@ -212,7 +231,7 @@ func _claim(cell: Vector3i, flammable: Flammable) -> void:
 func _try_ignite(cell: Vector3i, flammable: Flammable) -> bool:
 	if flammable == null:
 		return false
-	if _burning.size() >= max_burning_cells:
+	if _burning.size() >= cell_cap():
 		return false
 	if flammable.is_charred() or flammable.is_doused():
 		return false
@@ -311,20 +330,19 @@ func _damage_tick(dt: float) -> void:
 
 
 func _refresh_emitters() -> void:
+	var chosen: Dictionary = {}
+	for cell: Vector3i in _nearest_vfx_cells(emitter_cap()):
+		chosen[cell] = true
 	for cell: Vector3i in _emitters_by_cell.keys():
-		if _burning.has(cell):
+		if chosen.has(cell):
 			continue
 		var emitter: CPUParticles3D = _emitters_by_cell[cell]
 		emitter.emitting = false
 		emitter.visible = false
 		_free_emitters.append(emitter)
 		_emitters_by_cell.erase(cell)
-	for cell: Vector3i in _burning:
-		if _emitters_by_cell.size() >= max_fire_emitters:
-			break
+	for cell: Vector3i in chosen:
 		if _emitters_by_cell.has(cell):
-			continue
-		if not (_burning[cell] as Flammable).pooled_vfx:
 			continue
 		var emitter: CPUParticles3D = _take_emitter()
 		if emitter == null:
@@ -335,10 +353,30 @@ func _refresh_emitters() -> void:
 		_emitters_by_cell[cell] = emitter
 
 
+## Under the emitter cap, visuals go to the burning cells nearest the
+## player, deterministically: distance first, cell order as the tie-break.
+func _nearest_vfx_cells(cap: int) -> Array[Vector3i]:
+	var candidates: Array[Vector3i] = []
+	for cell: Vector3i in _burning:
+		if (_burning[cell] as Flammable).pooled_vfx:
+			candidates.append(cell)
+	var origin: Vector3 = global_position
+	var player: Node3D = get_tree().get_first_node_in_group(&"player") as Node3D
+	if player != null:
+		origin = player.global_position
+	candidates.sort_custom(func(a: Vector3i, b: Vector3i) -> bool:
+		var distance_a: float = cell_center(a).distance_squared_to(origin)
+		var distance_b: float = cell_center(b).distance_squared_to(origin)
+		if distance_a != distance_b:
+			return distance_a < distance_b
+		return a < b)
+	return candidates.slice(0, cap)
+
+
 func _take_emitter() -> CPUParticles3D:
 	if not _free_emitters.is_empty():
 		return _free_emitters.pop_back()
-	if _emitter_count >= max_fire_emitters:
+	if _emitter_count >= emitter_cap():
 		return null
 	_emitter_count += 1
 	return _make_emitter()
