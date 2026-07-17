@@ -182,6 +182,13 @@ func _build_terraces() -> Error:
 	)
 	_builder.add_marker(routes, "SouthEntry", Vector3(110.0, 2.0, -110.0), &"route_anchor", {&"route_id": &"south_entry"})
 	_builder.add_marker(routes, "MesaExit", Vector3(150.0, 10.0, 95.0), &"route_anchor", {&"route_id": &"mesa_exit"})
+	for occluder_tier: int in [1, 3, 5]:
+		var occluder_x: float = -172.0 + float(occluder_tier) * 54.0
+		var occluder_y: float = -8.0 + float(occluder_tier) * 5.5
+		_builder.add_box_occluder(
+			geometry, "TerraceStepOccluder%02d" % occluder_tier,
+			Vector3(occluder_x, occluder_y, 0.0), Vector3(5.0, 8.0, 230.0)
+		)
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-180.0, -15.0, -125.0), Vector3(360.0, 55.0, 250.0)))
 	_add_m6_content(root, &"terraces")
 	return _save_and_free(root, DistrictContract.district_path(&"terraces"))
@@ -301,12 +308,13 @@ func _build_cistern() -> Error:
 	shaft_light.spot_range = 98.0
 	shaft_light.spot_angle = 19.0
 	shaft_light.spot_attenuation = 0.65
-	shaft_light.shadow_enabled = true
+	shaft_light.shadow_enabled = false
 	shaft_light.distance_fade_enabled = true
 	shaft_light.distance_fade_begin = 180.0
 	shaft_light.distance_fade_shadow = 140.0
 	shaft_light.distance_fade_length = 70.0
 	shaft_light.set_meta(&"visual_only", true)
+	shaft_light.set_meta(&"m8_shadow_budget", "volumetric_only")
 	dressing.add_child(shaft_light)
 	_builder.add_marker(
 		sockets, "MainWaterVolume", Vector3(0.0, -20.0, 0.0), &"water_volume",

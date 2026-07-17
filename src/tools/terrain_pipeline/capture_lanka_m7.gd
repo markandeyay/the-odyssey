@@ -11,6 +11,10 @@ func _initialize() -> void:
 
 
 func _capture() -> void:
+	var capture_root: String = CAPTURE_ROOT
+	if OS.get_cmdline_user_args().has("scale_85"):
+		root.scaling_3d_scale = 0.85
+		capture_root = "res://.godot/review/m8/captures_scale_85"
 	var review_root: Node3D = Node3D.new()
 	review_root.name = "M7Review"
 	root.add_child(review_root)
@@ -47,7 +51,7 @@ func _capture() -> void:
 	inspection_light.visible = false
 	camera.add_child(inspection_light)
 	root.size = Vector2i(1280, 720)
-	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(CAPTURE_ROOT))
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(capture_root))
 	var views: Array[Dictionary] = [
 		{"id": "island_ocean", "camera": Vector3(650.0, 420.0, -780.0), "target": Vector3(0.0, 42.0, 0.0), "interior": false},
 		{"id": "ocean_horizon", "camera": Vector3(0.0, 18.0, -760.0), "target": Vector3(0.0, -1.0, -465.0), "interior": false},
@@ -69,11 +73,11 @@ func _capture() -> void:
 			await process_frame
 			await RenderingServer.frame_post_draw
 		var image: Image = root.get_texture().get_image()
-		var output_path: String = CAPTURE_ROOT + "/%s.png" % str(view["id"])
+		var output_path: String = capture_root + "/%s.png" % str(view["id"])
 		var save_error: Error = image.save_png(output_path)
 		if save_error != OK:
 			printerr("Unable to save %s: %s" % [output_path, error_string(save_error)])
 			quit(1)
 			return
-	print("Saved nine Lanka M7 production-look captures to %s" % CAPTURE_ROOT)
+	print("Saved nine Lanka M7 production-look captures to %s" % capture_root)
 	quit(0)

@@ -32,8 +32,9 @@ func _build_persistent_look() -> Error:
 	sun.light_energy = 1.48
 	sun.light_volumetric_fog_energy = 1.55
 	sun.shadow_enabled = true
-	sun.directional_shadow_max_distance = 850.0
-	sun.directional_shadow_fade_start = 0.72
+	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
+	sun.directional_shadow_max_distance = 460.0
+	sun.directional_shadow_fade_start = 0.68
 	sun.sky_mode = DirectionalLight3D.SKY_MODE_LIGHT_AND_SKY
 	root_node.add_child(sun)
 

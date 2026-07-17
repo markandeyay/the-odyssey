@@ -20,17 +20,15 @@ varying vec3 world_position;
 varying vec3 world_normal;
 varying vec3 vertex_paint;
 
-vec3 triplanar_weights(vec3 normal_value) {
-	vec3 weights = pow(abs(normal_value), vec3(5.0));
-	return weights / max(dot(weights, vec3(1.0)), 0.0001);
-}
-
-vec3 sample_triplanar(vec3 position, vec3 normal_value) {
-	vec3 weights = triplanar_weights(normal_value);
-	vec3 x_projection = texture(detail_albedo, position.zy * texture_scale).rgb;
-	vec3 y_projection = texture(detail_albedo, position.xz * texture_scale).rgb;
-	vec3 z_projection = texture(detail_albedo, position.xy * texture_scale).rgb;
-	return x_projection * weights.x + y_projection * weights.y + z_projection * weights.z;
+vec2 dominant_projection_uv(vec3 position, vec3 normal_value) {
+	vec3 axis_weight = abs(normal_value);
+	if (axis_weight.x > axis_weight.y && axis_weight.x > axis_weight.z) {
+		return position.zy * texture_scale;
+	}
+	if (axis_weight.z > axis_weight.y) {
+		return position.xy * texture_scale;
+	}
+	return position.xz * texture_scale;
 }
 
 void vertex() {
@@ -41,7 +39,7 @@ void vertex() {
 
 void fragment() {
 	vec3 normal_value = normalize(world_normal);
-	vec3 sampled = sample_triplanar(world_position, normal_value);
+	vec3 sampled = texture(detail_albedo, dominant_projection_uv(world_position, normal_value)).rgb;
 	float luminance = dot(sampled, vec3(0.299, 0.587, 0.114));
 	float broad_detail = mix(1.0, mix(0.64, 1.28, luminance), detail_strength);
 	float macro = sin(world_position.x * 0.035 + world_position.z * 0.027) * 0.5 + 0.5;

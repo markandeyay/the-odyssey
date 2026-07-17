@@ -8,6 +8,9 @@ const FIRE_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/la
 const SMOKE_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/lanka_smoke.gdshader")
 const HEAT_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/lanka_heat_haze.gdshader")
 const OCEAN_SHADER: Shader = preload("res://addons/odyssey_world_tools/shaders/lanka_ocean_scenery.gdshader")
+const FIRE_VISIBILITY_RANGE_M: float = 90.0
+const SMOKE_VISIBILITY_RANGE_M: float = 130.0
+const HEAT_VISIBILITY_RANGE_M: float = 65.0
 
 
 func make_material(name: String, color: Color, roughness: float = 0.9, metallic: float = 0.0) -> StandardMaterial3D:
@@ -94,6 +97,8 @@ func add_fire_visual(
 		flame_mesh.material = flame_material
 		flame.mesh = flame_mesh
 		flame.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		flame.visibility_range_end = FIRE_VISIBILITY_RANGE_M
+		flame.visibility_range_end_margin = 8.0
 		visual.add_child(flame)
 	for smoke_index: int in 2:
 		var smoke: MeshInstance3D = MeshInstance3D.new()
@@ -109,6 +114,8 @@ func add_fire_visual(
 		smoke_mesh.material = smoke_material
 		smoke.mesh = smoke_mesh
 		smoke.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		smoke.visibility_range_end = SMOKE_VISIBILITY_RANGE_M
+		smoke.visibility_range_end_margin = 12.0
 		visual.add_child(smoke)
 	var heat: MeshInstance3D = MeshInstance3D.new()
 	heat.name = "HeatHaze"
@@ -121,6 +128,8 @@ func add_fire_visual(
 	heat_mesh.material = heat_material
 	heat.mesh = heat_mesh
 	heat.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	heat.visibility_range_end = HEAT_VISIBILITY_RANGE_M
+	heat.visibility_range_end_margin = 6.0
 	visual.add_child(heat)
 	var light: OmniLight3D = OmniLight3D.new()
 	light.name = "FireLight"
@@ -295,6 +304,7 @@ func add_visibility_notifier(parent: Node3D, aabb: AABB) -> VisibleOnScreenNotif
 
 
 func finish_scene(root: Node3D, path: String) -> Error:
+	_batch_repeatable_geometry(root)
 	_set_owner_recursive(root, root)
 	var packed: PackedScene = PackedScene.new()
 	var pack_error: Error = packed.pack(root)
@@ -302,6 +312,128 @@ func finish_scene(root: Node3D, path: String) -> Error:
 		return pack_error
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(path.get_base_dir()))
 	return ResourceSaver.save(packed, path)
+
+
+func _batch_repeatable_geometry(root: Node3D) -> void:
+	var candidates_by_key: Dictionary = {}
+	_collect_batch_candidates(root, root, candidates_by_key)
+	var batches: Node3D = Node3D.new()
+	batches.name = "M8RenderBatches"
+	batches.set_meta(&"m8_material_batching", true)
+	root.add_child(batches)
+	var batch_index: int = 0
+	for key_value: Variant in candidates_by_key:
+		var candidates: Array = candidates_by_key[key_value] as Array
+		if candidates.size() < 2:
+			continue
+		var first: Dictionary = candidates[0] as Dictionary
+		var unit_mesh: PrimitiveMesh = _make_unit_batch_mesh(first)
+		if unit_mesh == null:
+			continue
+		var multimesh: MultiMesh = MultiMesh.new()
+		multimesh.transform_format = MultiMesh.TRANSFORM_3D
+		multimesh.mesh = unit_mesh
+		multimesh.instance_count = candidates.size()
+		for instance_index: int in candidates.size():
+			var candidate: Dictionary = candidates[instance_index] as Dictionary
+			multimesh.set_instance_transform(instance_index, candidate[&"transform"] as Transform3D)
+			(candidate[&"node"] as MeshInstance3D).visible = false
+		var batch: MultiMeshInstance3D = MultiMeshInstance3D.new()
+		batch.name = "GeometryBatch%02d_%s" % [batch_index, _safe_node_suffix(str(first[&"material_name"]))]
+		batch.multimesh = multimesh
+		batch.cast_shadow = first[&"cast_shadow"] as GeometryInstance3D.ShadowCastingSetting
+		batch.gi_mode = GeometryInstance3D.GI_MODE_STATIC
+		batch.set_meta(&"m8_batch_instance_count", candidates.size())
+		batch.set_meta(&"m8_batch_shape", first[&"shape"] as StringName)
+		batch.set_meta(&"m8_batch_material", first[&"material_name"] as String)
+		batches.add_child(batch)
+		batch_index += 1
+	batches.set_meta(&"m8_batch_count", batch_index)
+
+
+func _collect_batch_candidates(node: Node, root: Node3D, candidates_by_key: Dictionary) -> void:
+	if node is MeshInstance3D:
+		var mesh_instance: MeshInstance3D = node as MeshInstance3D
+		var candidate: Dictionary = _make_batch_candidate(mesh_instance, root)
+		if not candidate.is_empty():
+			var key: String = str(candidate[&"key"])
+			if not candidates_by_key.has(key):
+				candidates_by_key[key] = []
+			(candidates_by_key[key] as Array).append(candidate)
+	for child: Node in node.get_children():
+		_collect_batch_candidates(child, root, candidates_by_key)
+
+
+func _make_batch_candidate(mesh_instance: MeshInstance3D, root: Node3D) -> Dictionary:
+	var primitive: PrimitiveMesh = mesh_instance.mesh as PrimitiveMesh
+	if primitive == null or not (primitive is BoxMesh or primitive is CylinderMesh):
+		return {}
+	var material: Material = primitive.material
+	if material == null or material.resource_name.is_empty():
+		return {}
+	var shape: StringName = &"box"
+	var local_scale: Vector3 = Vector3.ONE
+	var topology: String = "unit"
+	if primitive is BoxMesh:
+		local_scale = (primitive as BoxMesh).size
+	else:
+		var cylinder: CylinderMesh = primitive as CylinderMesh
+		if not is_equal_approx(cylinder.bottom_radius, cylinder.top_radius * 1.08):
+			return {}
+		shape = &"cylinder"
+		local_scale = Vector3(cylinder.top_radius * 2.0, cylinder.height, cylinder.top_radius * 2.0)
+		topology = "%d_%d" % [cylinder.radial_segments, cylinder.rings]
+	var relative_transform: Transform3D = _relative_transform_to_root(mesh_instance, root)
+	relative_transform *= Transform3D(Basis.from_scale(local_scale), Vector3.ZERO)
+	var cast_shadow: GeometryInstance3D.ShadowCastingSetting = mesh_instance.cast_shadow
+	var key: String = "%s_%s_%d_%d" % [shape, topology, material.get_instance_id(), int(cast_shadow)]
+	return {
+		&"key": key,
+		&"node": mesh_instance,
+		&"shape": shape,
+		&"topology": topology,
+		&"transform": relative_transform,
+		&"material": material,
+		&"material_name": material.resource_name,
+		&"cast_shadow": cast_shadow,
+	}
+
+
+func _relative_transform_to_root(node: Node3D, root: Node3D) -> Transform3D:
+	var relative_transform: Transform3D = node.transform
+	var ancestor: Node = node.get_parent()
+	while ancestor != null and ancestor != root:
+		if ancestor is Node3D:
+			relative_transform = (ancestor as Node3D).transform * relative_transform
+		ancestor = ancestor.get_parent()
+	return relative_transform
+
+
+func _make_unit_batch_mesh(candidate: Dictionary) -> PrimitiveMesh:
+	var material: Material = candidate[&"material"] as Material
+	if candidate[&"shape"] as StringName == &"box":
+		var box: BoxMesh = BoxMesh.new()
+		box.size = Vector3.ONE
+		box.material = material
+		return box
+	var topology: PackedStringArray = str(candidate[&"topology"]).split("_")
+	if topology.size() != 2:
+		return null
+	var cylinder: CylinderMesh = CylinderMesh.new()
+	cylinder.top_radius = 0.5
+	cylinder.bottom_radius = 0.54
+	cylinder.height = 1.0
+	cylinder.radial_segments = int(topology[0])
+	cylinder.rings = int(topology[1])
+	cylinder.material = material
+	return cylinder
+
+
+func _safe_node_suffix(value: String) -> String:
+	var suffix: String = value.trim_prefix("mat_")
+	for character: String in ["-", ".", " ", "/"]:
+		suffix = suffix.replace(character, "_")
+	return suffix.to_pascal_case()
 
 
 func _set_owner_recursive(node: Node, scene_owner: Node) -> void:

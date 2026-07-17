@@ -23,17 +23,15 @@ uniform float wet_height = 10.0;
 varying vec3 world_position;
 varying vec3 world_normal;
 
-vec3 triplanar_weights(vec3 normal_value) {
-	vec3 weights = pow(abs(normal_value), vec3(6.0));
-	return weights / max(dot(weights, vec3(1.0)), 0.0001);
-}
-
-vec3 sample_triplanar(sampler2D texture_sampler, vec3 position, vec3 normal_value) {
-	vec3 weights = triplanar_weights(normal_value);
-	vec3 x_projection = texture(texture_sampler, position.zy * texture_scale).rgb;
-	vec3 y_projection = texture(texture_sampler, position.xz * texture_scale).rgb;
-	vec3 z_projection = texture(texture_sampler, position.xy * texture_scale).rgb;
-	return x_projection * weights.x + y_projection * weights.y + z_projection * weights.z;
+vec2 dominant_projection_uv(vec3 position, vec3 normal_value) {
+	vec3 axis_weight = abs(normal_value);
+	if (axis_weight.x > axis_weight.y && axis_weight.x > axis_weight.z) {
+		return position.zy * texture_scale;
+	}
+	if (axis_weight.z > axis_weight.y) {
+		return position.xy * texture_scale;
+	}
+	return position.xz * texture_scale;
 }
 
 void vertex() {
@@ -46,9 +44,10 @@ void fragment() {
 	float altitude_mix = smoothstep(altitude_blend_start, altitude_blend_end, world_position.y);
 	float slope = 1.0 - abs(normal_value.y);
 	float steep_mix = smoothstep(slope_blend_start, slope_blend_end, slope);
-	vec3 low_sample = sample_triplanar(albedo_low, world_position, normal_value);
-	vec3 high_sample = sample_triplanar(albedo_high, world_position, normal_value);
-	vec3 steep_sample = sample_triplanar(albedo_steep, world_position, normal_value);
+	vec2 detail_uv = dominant_projection_uv(world_position, normal_value);
+	vec3 low_sample = texture(albedo_low, detail_uv).rgb;
+	vec3 high_sample = texture(albedo_high, detail_uv).rgb;
+	vec3 steep_sample = texture(albedo_steep, detail_uv).rgb;
 	float low_luma = dot(low_sample, vec3(0.299, 0.587, 0.114));
 	float high_luma = dot(high_sample, vec3(0.299, 0.587, 0.114));
 	float steep_luma = dot(steep_sample, vec3(0.299, 0.587, 0.114));

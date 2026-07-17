@@ -54,6 +54,7 @@ shader_parameter/foam_color = null
 shader_parameter/wave_height = null
 shader_parameter/wave_scale = null
 shader_parameter/wave_speed = null
+shader_parameter/mask_island = null
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_nsb05"]
 material = SubResource("ShaderMaterial_hmx4e")
@@ -61,24 +62,25 @@ size = Vector2(2800, 2800)
 subdivide_width = 96
 subdivide_depth = 96
 
-[node name="LankaLook" type="Node3D" unique_id=1496370302]
+[node name="LankaLook" type="Node3D" unique_id=993630374]
 metadata/m7_visual_system = true
 metadata/budget_profile = "default"
 metadata/palette = PackedStringArray("ash_grey", "wet_black", "bone_white", "ember_orange", "sea_green")
 
-[node name="SmokeEnvironment" type="WorldEnvironment" parent="." unique_id=614235773]
+[node name="SmokeEnvironment" type="WorldEnvironment" parent="." unique_id=73316889]
 environment = SubResource("Environment_o10xm")
 
-[node name="LowSmokeSun" type="DirectionalLight3D" parent="." unique_id=1069112097]
+[node name="LowSmokeSun" type="DirectionalLight3D" parent="." unique_id=93922471]
 transform = Transform3D(0.7880108, 0.12800322, -0.60220784, 0, 0.9781476, 0.2079117, 0.6156615, -0.16383666, 0.7707909, 0, 0, 0)
 light_color = Color(1, 0.9, 0.78, 1)
 light_energy = 1.48
 light_volumetric_fog_energy = 1.55
 shadow_enabled = true
-directional_shadow_fade_start = 0.72
-directional_shadow_max_distance = 850.0
+directional_shadow_mode = 1
+directional_shadow_fade_start = 0.68
+directional_shadow_max_distance = 460.0
 
-[node name="PatientOceanScenery" type="MeshInstance3D" parent="." unique_id=626226750]
+[node name="PatientOceanScenery" type="MeshInstance3D" parent="." unique_id=1366881642]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 cast_shadow = 0
 extra_cull_margin = 18.0
@@ -86,5 +88,5 @@ mesh = SubResource("PlaneMesh_nsb05")
 metadata/scenery_only = true
 metadata/simulation = false
 
-[node name="OceanVisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="PatientOceanScenery" unique_id=1493367936]
+[node name="OceanVisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="PatientOceanScenery" unique_id=590233454]
 aabb = AABB(-1400, -6, -1400, 2800, 14, 2800)
