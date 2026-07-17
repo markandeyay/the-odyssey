@@ -86,3 +86,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** As above. Exactly 20 defs, 20 placements, ids stable across saves. Do not gate anything on fragments and do not emit `fragment_found` from anywhere else.
 **Blocking:** no
 **Status:** OPEN
+
+### [2026-07-16] FROM: SYSTEMS TO: WORLD
+**Request:** Glider placement (M13, ARCHITECTURE §14), two parts. (1) The pickup: instance `scenes/prefabs/gameplay/item_pickup.tscn` exactly once, in the Ember Quarter partway through The Smolder, with `item_id = &"glider"` and `display_name = "Sailcloth"`. It is a unique key item; it routes to the reserved key area automatically. (2) Street vents: instance `scenes/prefabs/gameplay/updraft_vent.tscn` where the Ember Quarter's streets crack and vent; per-instance exports `radius` (default 2m) and `height` (default 12m) size the lift column, which rises from the node's origin — place the node at ground level. `height` is the ride's ceiling, so set it to the ledge you intend the player to reach.
+**Why:** Gliding is gated on the key item and does nothing until the player finds it. Updrafts over big burns already vent automatically from the FireGrid (6+ burning cells) — vents are for authored, always-on lift that is not tied to a live fire. Note the Spine route's updraft must be fire-lit per ARCHITECTURE §4 (the player makes the fire); use vents for the Ember Quarter, not to bypass that gate. Gliding auto-stows on landing, water, climbing, and carrying — carrying blocks it outright, so no glider-cheese over the Hold trial.
+**Proposed API:** As above; no scripting on your side. Addendum to the Nau placeholder clip list: `glide` (looping).
+**Blocking:** no
+**Status:** OPEN
