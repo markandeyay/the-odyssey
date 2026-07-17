@@ -6,10 +6,13 @@ extends Control
 ## voice, and the screen goes to TO BE CONTINUED. That is the entire
 ## ending of the current build. No voyage, no crossing, no next island.
 ##
-## Lives on the HUD layer so it works wherever Nau is standing when the
-## Figurehead is taken, even with the Shallows streamed out. The voice
-## audio is WORLD's, loaded from a conventional path if it exists; until
-## then the line is a subtitle alone. The line text is a placeholder for
+## The trigger is still `component_acquired`, but the Figurehead's is
+## emitted only by Setu when the carried Figurehead is mounted (M14
+## rework) — so the ending always plays at the boat in the Shallows.
+## Lives on the HUD layer anyway; it costs nothing and survives whatever
+## is streamed in or out around the beach. The voice audio is WORLD's,
+## loaded from a conventional path if it exists; until then the line is
+## a subtitle alone. The line text is a placeholder for
 ## the human to author.
 
 const ENDING_FLAG: StringName = &"setu_ending_played"

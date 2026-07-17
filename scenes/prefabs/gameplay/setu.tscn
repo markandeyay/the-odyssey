@@ -94,3 +94,4 @@ outline_size = 8
 [node name="Interactable" type="Node" parent="."]
 script = ExtResource("2_interactable")
 prompt = "Setu"
+usable_while_carrying = true

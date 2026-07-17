@@ -1,10 +1,13 @@
 extends GutTest
 ## M14 Setu and the stub ending: five component slots, visible mounting,
-## salvage stores that display and do nothing (ARCHITECTURE §9), and the
-## Figurehead speaking exactly once before TO BE CONTINUED (§0/§4).
+## salvage stores that display and do nothing (ARCHITECTURE §9), the
+## Figurehead carried home and mounted at the boat (M14 rework), and Vela
+## speaking exactly once before TO BE CONTINUED (§0/§4).
 
 const SETU_SCENE: PackedScene = preload("res://scenes/prefabs/gameplay/setu.tscn")
 const PICKUP_SCENE: PackedScene = preload("res://scenes/prefabs/gameplay/component_pickup.tscn")
+const FIGUREHEAD_SCENE: PackedScene = preload("res://scenes/prefabs/gameplay/figurehead_carryable.tscn")
+const PLAYER_SCENE: PackedScene = preload("res://scenes/player/player.tscn")
 
 
 func before_each() -> void:
@@ -44,6 +47,17 @@ func _make_ending() -> EndingSequence:
 func _acquire_all_but_figurehead() -> void:
 	for id: StringName in [&"hull", &"mast", &"sail", &"keel"]:
 		EventBus.component_acquired.emit(id)
+
+
+func _make_player_carrying_figurehead() -> Player:
+	var player: Player = PLAYER_SCENE.instantiate()
+	add_child_autofree(player)
+	var figurehead: FigureheadCarryable = FIGUREHEAD_SCENE.instantiate()
+	figurehead.position = Vector3(0, 0.6, -1.2)
+	add_child_autofree(figurehead)
+	var carry: CarryController = player.get_node("CarryController") as CarryController
+	assert_true(carry.pick_up(figurehead), "precondition: the Figurehead is carryable")
+	return player
 
 
 func test_component_acquisition_records_and_files_the_key_item() -> void:
@@ -125,6 +139,50 @@ func test_salvage_stores_survive_a_save_round_trip() -> void:
 	GameState.apply_save_data(data)
 	assert_eq(GameState.setu_salvage_count(&"canvas"), 7)
 	assert_eq(GameState.setu_salvage_count(&"timber"), 12)
+
+
+func test_figurehead_is_a_carryable_not_a_pickup() -> void:
+	var pickup: ComponentPickup = _make_pickup(&"figurehead")
+	await wait_physics_frames(2)
+	assert_false(is_instance_valid(pickup),
+			"a figurehead component pickup refuses to exist (M14 rework)")
+	assert_false(GameState.components_acquired.has(&"figurehead"))
+
+
+func test_carried_figurehead_mounts_at_the_boat() -> void:
+	var setu: Setu = _make_setu()
+	var player: Player = _make_player_carrying_figurehead()
+	await wait_physics_frames(1)
+	var interactable: Interactable = setu.get_node("Interactable") as Interactable
+	assert_true(interactable.usable_while_carrying,
+			"the boat accepts interaction with full hands")
+	assert_eq(interactable.prompt, "Mount the Figurehead",
+			"the boat offers to take its Figurehead")
+	interactable.interact(player)
+	assert_true(GameState.components_acquired.has(&"figurehead"),
+			"mounting acquires the component")
+	assert_true(setu.is_mounted(&"figurehead"), "the Figurehead is on the boat")
+	assert_false(player.is_carrying, "Nau's hands are empty again")
+
+
+func test_interacting_without_the_figurehead_still_stows_salvage() -> void:
+	Inventory.add_item(&"timber", 4)
+	var setu: Setu = _make_setu()
+	var player: Player = PLAYER_SCENE.instantiate()
+	add_child_autofree(player)
+	await wait_physics_frames(1)
+	var interactable: Interactable = setu.get_node("Interactable") as Interactable
+	interactable.interact(player)
+	assert_eq(GameState.setu_salvage_count(&"timber"), 4, "salvage stows as before")
+	assert_false(GameState.components_acquired.has(&"figurehead"))
+
+
+func test_acquired_figurehead_carryable_removes_itself_on_ready() -> void:
+	EventBus.component_acquired.emit(&"figurehead")
+	var figurehead: FigureheadCarryable = FIGUREHEAD_SCENE.instantiate()
+	add_child_autofree(figurehead)
+	await wait_physics_frames(2)
+	assert_false(is_instance_valid(figurehead), "a loaded save never shows a duplicate")
 
 
 func test_no_ending_before_the_fifth_component() -> void:

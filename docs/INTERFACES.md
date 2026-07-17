@@ -184,3 +184,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** `UserSettings.set_render_scale(scale: float)` (clamped 0.5–1.0), `UserSettings.render_scale`. A future settings menu exposes it.
 **Blocking:** no
 **Status:** DONE
+
+### [2026-07-17] FROM: SYSTEMS TO: WORLD
+**Request:** Supersedes item (2) of the [2026-07-16] Setu/trial-rewards entry, for the Figurehead only (hull/mast/sail/keel pickups are unchanged). Do NOT place a `component_pickup.tscn` with `&"figurehead"` at the end of The Dark. Instead instance `scenes/prefabs/gameplay/figurehead_carryable.tscn` there. It is a carryable (M4 carry rules: blocks climbing and the glider, slows Nau). The ending no longer plays where the pickup is taken — it plays at Setu in the Shallows, when the player carries the Figurehead to the boat and mounts it there.
+**Why:** M14 rework per the human: taking the Figurehead is not the end; carrying it home is. The walk out of The Dark and across the island with full hands is the last beat of the build. Setu's interact prompt offers "Mount the Figurehead" while it is carried; mounting emits `component_acquired(&"figurehead")` exactly as before, so save wiring and mount visuals are unchanged. Vela's line file path is also unchanged (`assets/audio/vela/figurehead_line.ogg`); the line text is now authored: "Nau." — one word.
+**Proposed API:** As above. The carryable removes itself on load once the Figurehead is acquired. Note: like all carryables, its mid-carry position is not saved; a reload before mounting returns it to its authored spawn in The Dark.
+**Blocking:** no
+**Status:** OPEN
