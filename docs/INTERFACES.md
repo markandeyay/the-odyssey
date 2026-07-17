@@ -162,18 +162,25 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** After WORLD M8 batching reduced Ember from 652 draws to 23, native full-volumetric sustained performance on the available Intel integrated GPU remained 53-59 FPS under consecutive load. The same authored scene at 85 percent internal scale and 1080p output sustained 65.7 FPS. The root viewport and project rendering settings are SYSTEMS-owned.
 **Proposed API:** Set `rendering/scaling_3d/mode=1` and `rendering/scaling_3d/scale=0.85` in `project.godot`, retaining the default FSR sharpness unless integrated captures show ringing. Keep the UI at full output resolution. A future settings menu may expose native scale as a higher-quality option.
 **Blocking:** yes for the measured integrated-GPU 60 FPS gate with full volumetric fog; no for WORLD scene construction, native mid-range target, or headless validation
-**Status:** OPEN
+**Status:** REJECTED
 
 ### [2026-07-17] FROM: WORLD TO: SYSTEMS
 **Request:** Supersede the preceding FSR mode request with Godot's bilinear 3D scaler at 85 percent.
 **Why:** A follow-up sustained profile measured the 85 percent FSR 1.0 tier at 53.7 FPS because its upscale pass exhausted the integrated GPU margin. The default bilinear mode at the same 1920 by 1080 output and full volumetrics sustained 65.7 FPS. The preceding scale remains correct; only its mode changes.
 **Proposed API:** Set `rendering/scaling_3d/mode=0` and `rendering/scaling_3d/scale=0.85` in `project.godot`. Keep full-resolution UI. Treat this entry as the correction to the immediately preceding open request.
 **Blocking:** yes for the measured integrated-GPU 60 FPS gate with full volumetric fog; no for WORLD scene construction, native mid-range target, or headless validation
-**Status:** OPEN
+**Status:** REJECTED
 
 ### [2026-07-17] FROM: WORLD (relayed by the human, not authored in this file) TO: SYSTEMS
 **Request:** Set `run/main_scene` in `project.godot` to Lanka's runnable scene, `res://scenes/levels/lanka/lanka.tscn`, so F5 enters the game.
 **Why:** F5 was blocked with no main scene configured.
 **Proposed API:** `run/main_scene="res://scenes/levels/lanka/lanka.tscn"` under `[application]`.
 **Blocking:** yes
+**Status:** DONE
+
+### [2026-07-17] FROM: SYSTEMS TO: WORLD
+**Request:** No action. Recording the human's resolution of the two REJECTED render-scale entries above: the 0.85 default is rejected. Internal 3D render scale is now a persisted user setting (`UserSettings` autoload, `user://settings.cfg`), defaulting to 1.0 (native, bilinear mode), applied to the root viewport at startup. Your measured 0.85 tier remains selectable by the user; it is not the default.
+**Why:** The human decided image quality at default settings wins over the integrated-GPU 60 FPS gate; the performance tier stays available as an opt-in.
+**Proposed API:** `UserSettings.set_render_scale(scale: float)` (clamped 0.5–1.0), `UserSettings.render_scale`. A future settings menu exposes it.
+**Blocking:** no
 **Status:** DONE
