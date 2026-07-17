@@ -1,0 +1,665 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_a3vad"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_4edw4"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_fire.gdshader" id="3_h7x4x"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_smoke.gdshader" id="4_nu6by"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_heat_haze.gdshader" id="5_lhv2t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bx44p"]
+resource_name = "mat_wet_stone_grip_slick"
+render_priority = 0
+shader = ExtResource("1_a3vad")
+shader_parameter/detail_albedo = ExtResource("2_4edw4")
+shader_parameter/base_tint = Color(0.075, 0.115, 0.105, 1)
+shader_parameter/accent_tint = Color(0.033, 0.0506, 0.0462, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.82
+shader_parameter/soot_amount = 0.1
+shader_parameter/ash_amount = 0.08
+shader_parameter/surface_roughness = 0.62
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ik26"]
+material = SubResource("ShaderMaterial_bx44p")
+size = Vector3(210, 4, 180)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cr6cl"]
+size = Vector3(210, 4, 180)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6xpqe"]
+resource_name = "mat_soot_stone_grip_slick"
+render_priority = 0
+shader = ExtResource("1_a3vad")
+shader_parameter/detail_albedo = ExtResource("2_4edw4")
+shader_parameter/base_tint = Color(0.095, 0.095, 0.085, 1)
+shader_parameter/accent_tint = Color(0.0418, 0.0418, 0.0374, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.1
+shader_parameter/soot_amount = 0.78
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_nqfvv"]
+material = SubResource("ShaderMaterial_6xpqe")
+size = Vector3(210, 5, 180)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xftgh"]
+size = Vector3(210, 5, 180)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iw250"]
+material = SubResource("ShaderMaterial_bx44p")
+size = Vector3(6, 30, 180)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b481c"]
+size = Vector3(6, 30, 180)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lf8pj"]
+material = SubResource("ShaderMaterial_bx44p")
+size = Vector3(6, 30, 180)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a4m65"]
+size = Vector3(6, 30, 180)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ffo5i"]
+material = SubResource("ShaderMaterial_bx44p")
+size = Vector3(210, 30, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ux58"]
+size = Vector3(210, 30, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7h1oo"]
+material = SubResource("ShaderMaterial_bx44p")
+size = Vector3(210, 30, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bqbyh"]
+size = Vector3(210, 30, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lddkx"]
+material = SubResource("ShaderMaterial_bx44p")
+size = Vector3(6, 24, 88)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5275"]
+size = Vector3(6, 24, 88)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ksuq3"]
+material = SubResource("ShaderMaterial_bx44p")
+size = Vector3(6, 24, 96)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dhvub"]
+size = Vector3(6, 24, 96)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ldm1q"]
+material = SubResource("ShaderMaterial_bx44p")
+size = Vector3(68, 24, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7m0j5"]
+size = Vector3(68, 24, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f8cu6"]
+material = SubResource("ShaderMaterial_bx44p")
+size = Vector3(64, 24, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etm0o"]
+size = Vector3(64, 24, 6)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_bg16r"]
+size = Vector3(190, 24, 160)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6l7hl"]
+resource_name = "mat_clean_stone_grip_solid"
+render_priority = 0
+shader = ExtResource("1_a3vad")
+shader_parameter/detail_albedo = ExtResource("2_4edw4")
+shader_parameter/base_tint = Color(0.31, 0.32, 0.3, 1)
+shader_parameter/accent_tint = Color(0.1364, 0.1408, 0.132, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.08
+shader_parameter/ash_amount = 0.2
+shader_parameter/surface_roughness = 0.94
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_kap3x"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(22, 4, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jj2k5"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(22, 4, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lo6u2"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(22, 4, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oxhx3"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(22, 4, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_svrt1"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(22, 4, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mexev"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(22, 4, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bayep"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(22, 4, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2y3ni"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_h7x4x")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_by33u"]
+material = SubResource("ShaderMaterial_2y3ni")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3laco"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_h7x4x")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_mgvsc"]
+material = SubResource("ShaderMaterial_3laco")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ce87k"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_nu6by")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1kdjd"]
+material = SubResource("ShaderMaterial_ce87k")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7eih"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_nu6by")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_yvvgn"]
+material = SubResource("ShaderMaterial_f7eih")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lf8v"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_lhv2t")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_y1t1q"]
+material = SubResource("ShaderMaterial_4lf8v")
+size = Vector2(5, 5.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecwq4"]
+resource_name = "mat_bone_canvas_grip_solid"
+render_priority = 0
+shader = ExtResource("1_a3vad")
+shader_parameter/detail_albedo = ExtResource("2_4edw4")
+shader_parameter/base_tint = Color(0.58, 0.56, 0.48, 1)
+shader_parameter/accent_tint = Color(0.2552, 0.2464, 0.2112, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_yl0pr"]
+material = SubResource("ShaderMaterial_ecwq4")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tojjv"]
+material = SubResource("ShaderMaterial_ecwq4")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8f57o"]
+material = SubResource("ShaderMaterial_ecwq4")
+size = Vector3(2.6, 0.8, 1.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y0j4q"]
+material = SubResource("ShaderMaterial_bx44p")
+
+[sub_resource type="MultiMesh" id="MultiMesh_6nawe"]
+transform_format = 1
+instance_count = 9
+mesh = SubResource("BoxMesh_y0j4q")
+
+[sub_resource type="BoxMesh" id="BoxMesh_vldxs"]
+material = SubResource("ShaderMaterial_6l7hl")
+
+[sub_resource type="MultiMesh" id="MultiMesh_ijcvl"]
+transform_format = 1
+instance_count = 7
+mesh = SubResource("BoxMesh_vldxs")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3td2t"]
+material = SubResource("ShaderMaterial_ecwq4")
+
+[sub_resource type="MultiMesh" id="MultiMesh_3afxv"]
+transform_format = 1
+instance_count = 3
+mesh = SubResource("BoxMesh_3td2t")
+
+[node name="DarkDistrict" type="Node3D" unique_id=1714349613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34, 430)
+metadata/district_id = &"dark"
+metadata/budget_profile = "dark"
+metadata/separate_streamed_area = true
+metadata/open_world_loaded = false
+
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=67017671]
+
+[node name="DarkFloor" type="StaticBody3D" parent="WorldGeometry" unique_id=747373149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkFloor" unique_id=691233796]
+visible = false
+mesh = SubResource("BoxMesh_7ik26")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkFloor" unique_id=1184641387]
+shape = SubResource("BoxShape3D_cr6cl")
+
+[node name="DarkCeiling" type="StaticBody3D" parent="WorldGeometry" unique_id=1788064634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkCeiling" unique_id=178530917]
+mesh = SubResource("BoxMesh_nqfvv")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkCeiling" unique_id=1652623264]
+shape = SubResource("BoxShape3D_xftgh")
+
+[node name="DarkWall00" type="StaticBody3D" parent="WorldGeometry" unique_id=1941173604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 13, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall00" unique_id=618510282]
+visible = false
+mesh = SubResource("BoxMesh_iw250")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall00" unique_id=411123676]
+shape = SubResource("BoxShape3D_b481c")
+
+[node name="DarkWall01" type="StaticBody3D" parent="WorldGeometry" unique_id=1038459568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 13, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall01" unique_id=2127743797]
+visible = false
+mesh = SubResource("BoxMesh_lf8pj")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall01" unique_id=824668128]
+shape = SubResource("BoxShape3D_a4m65")
+
+[node name="DarkWall02" type="StaticBody3D" parent="WorldGeometry" unique_id=729493866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -90)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall02" unique_id=1373284701]
+visible = false
+mesh = SubResource("BoxMesh_ffo5i")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall02" unique_id=951930878]
+shape = SubResource("BoxShape3D_0ux58")
+
+[node name="DarkWall03" type="StaticBody3D" parent="WorldGeometry" unique_id=150133071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 90)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall03" unique_id=1283009601]
+visible = false
+mesh = SubResource("BoxMesh_7h1oo")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall03" unique_id=71840431]
+shape = SubResource("BoxShape3D_bqbyh")
+
+[node name="DarkWall04" type="StaticBody3D" parent="WorldGeometry" unique_id=1930240028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 10, -42)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall04" unique_id=1014534327]
+visible = false
+mesh = SubResource("BoxMesh_lddkx")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall04" unique_id=1920742413]
+shape = SubResource("BoxShape3D_h5275")
+
+[node name="DarkWall05" type="StaticBody3D" parent="WorldGeometry" unique_id=1186221208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 10, 38)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall05" unique_id=1471458829]
+visible = false
+mesh = SubResource("BoxMesh_ksuq3")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall05" unique_id=1782995633]
+shape = SubResource("BoxShape3D_dhvub")
+
+[node name="DarkWall06" type="StaticBody3D" parent="WorldGeometry" unique_id=152207162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 10, -18)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall06" unique_id=1204154171]
+visible = false
+mesh = SubResource("BoxMesh_ldm1q")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall06" unique_id=1980994432]
+shape = SubResource("BoxShape3D_7m0j5")
+
+[node name="DarkWall07" type="StaticBody3D" parent="WorldGeometry" unique_id=1882715163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 10, 26)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall07" unique_id=1158717055]
+visible = false
+mesh = SubResource("BoxMesh_f8cu6")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall07" unique_id=355437429]
+shape = SubResource("BoxShape3D_etm0o")
+
+[node name="DarkCoreOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=49865727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+occluder = SubResource("BoxOccluder3D_bg16r")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=770296672]
+aabb = AABB(-108, -5, -93, 216, 38, 186)
+
+[node name="Dressing" type="Node3D" parent="." unique_id=1642585689]
+
+[node name="HidingAlcoveLintel00" type="MeshInstance3D" parent="Dressing" unique_id=1028738854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, -65)
+visible = false
+mesh = SubResource("BoxMesh_kap3x")
+
+[node name="HidingAlcoveLintel01" type="MeshInstance3D" parent="Dressing" unique_id=1443455871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 15, -44)
+visible = false
+mesh = SubResource("BoxMesh_jj2k5")
+
+[node name="HidingAlcoveLintel02" type="MeshInstance3D" parent="Dressing" unique_id=2108949530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 15, -23)
+visible = false
+mesh = SubResource("BoxMesh_lo6u2")
+
+[node name="HidingAlcoveLintel03" type="MeshInstance3D" parent="Dressing" unique_id=1256208531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 15, -2)
+visible = false
+mesh = SubResource("BoxMesh_oxhx3")
+
+[node name="HidingAlcoveLintel04" type="MeshInstance3D" parent="Dressing" unique_id=1875909036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 15, 19)
+visible = false
+mesh = SubResource("BoxMesh_svrt1")
+
+[node name="HidingAlcoveLintel05" type="MeshInstance3D" parent="Dressing" unique_id=768606358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 15, 40)
+visible = false
+mesh = SubResource("BoxMesh_mexev")
+
+[node name="HidingAlcoveLintel06" type="MeshInstance3D" parent="Dressing" unique_id=176556713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, 61)
+visible = false
+mesh = SubResource("BoxMesh_bayep")
+
+[node name="CarriedLightStartVisual" type="Node3D" parent="Dressing" unique_id=2070822411]
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 2, -72)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=1940592145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_by33u")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=1673418920]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_mgvsc")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=1407468506]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_1kdjd")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=934956804]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_yvvgn")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=1369485617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_y1t1q")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/CarriedLightStartVisual" unique_id=1688993503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/CarriedLightStartVisual" unique_id=1228330454]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="FragmentProxy_CrewTarin" type="MeshInstance3D" parent="Dressing" unique_id=1168639232]
+transform = Transform3D(0.94573736, -0.06456008, 0.3184537, 0.13613184, 0.96862835, -0.2079117, -0.2950405, 0.23998156, 0.9248567, -54, 1.35, 18)
+visible = false
+mesh = SubResource("BoxMesh_yl0pr")
+
+[node name="FragmentProxy_CrewVasu" type="MeshInstance3D" parent="Dressing" unique_id=1653537172]
+transform = Transform3D(-0.69223875, 0.2431348, 0.6794785, 0.13613184, 0.96862835, -0.2079117, -0.7087127, -0.051425867, -0.70362043, 48, 1.35, 64)
+visible = false
+mesh = SubResource("BoxMesh_tojjv")
+
+[node name="SalvageProxy_SalvageCanvas05" type="MeshInstance3D" parent="Dressing" unique_id=1783435272]
+transform = Transform3D(-0.83867055, 0, 0.54463905, 0, 1, 0, -0.54463905, 0, -0.83867055, -78, 1.5, -56)
+visible = false
+mesh = SubResource("BoxMesh_8f57o")
+
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=767957494]
+
+[node name="DrownedSpawn00" type="Marker3D" parent="GameplaySockets" unique_id=540477498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 0, -58)
+metadata/socket_type = &"drowned_spawn"
+metadata/spawn_id = &"dark_drowned_00"
+metadata/district_id = &"dark"
+
+[node name="DrownedSpawn01" type="Marker3D" parent="GameplaySockets" unique_id=1566054503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, -48)
+metadata/socket_type = &"drowned_spawn"
+metadata/spawn_id = &"dark_drowned_01"
+metadata/district_id = &"dark"
+
+[node name="DrownedSpawn02" type="Marker3D" parent="GameplaySockets" unique_id=543912497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
+metadata/socket_type = &"drowned_spawn"
+metadata/spawn_id = &"dark_drowned_02"
+metadata/district_id = &"dark"
+
+[node name="DrownedSpawn03" type="Marker3D" parent="GameplaySockets" unique_id=72821280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 46)
+metadata/socket_type = &"drowned_spawn"
+metadata/spawn_id = &"dark_drowned_03"
+metadata/district_id = &"dark"
+
+[node name="DrownedSpawn04" type="Marker3D" parent="GameplaySockets" unique_id=87268676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 0, 62)
+metadata/socket_type = &"drowned_spawn"
+metadata/spawn_id = &"dark_drowned_04"
+metadata/district_id = &"dark"
+
+[node name="DrownedSpawn05" type="Marker3D" parent="GameplaySockets" unique_id=1644926668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 74)
+metadata/socket_type = &"drowned_spawn"
+metadata/spawn_id = &"dark_drowned_05"
+metadata/district_id = &"dark"
+
+[node name="CarriedLightStart" type="Marker3D" parent="GameplaySockets" unique_id=806495672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -72)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"dark_carried_light"
+
+[node name="DistrictTrigger" type="Marker3D" parent="GameplaySockets" unique_id=778229172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -82)
+metadata/socket_type = &"district_trigger"
+metadata/socket_size_m = Vector3(50, 20, 18)
+metadata/district_id = &"dark"
+
+[node name="CrewFragment_CrewTarin" type="Marker3D" parent="GameplaySockets" unique_id=1268727511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 1, 18)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_tarin"
+metadata/memory_object = "rusted whistle"
+metadata/memory_text = "Tarin whistled in the dark. Something answered in his own voice."
+metadata/district_id = &"dark"
+
+[node name="CrewFragment_CrewVasu" type="Marker3D" parent="GameplaySockets" unique_id=1693120147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 1, 64)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_vasu"
+metadata/memory_object = "carved face"
+metadata/memory_text = "Vasu guarded the figurehead. He knew who had carved it."
+metadata/district_id = &"dark"
+
+[node name="Salvage_SalvageCanvas05" type="Marker3D" parent="GameplaySockets" unique_id=1958635790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 1, -56)
+metadata/socket_type = &"salvage_pickup"
+metadata/placement_id = &"salvage_canvas_05"
+metadata/salvage_id = &"canvas"
+metadata/district_id = &"dark"
+
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=98204715]
+
+[node name="HidingAlcove00" type="Marker3D" parent="RouteMarkers" unique_id=943217671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 7, -65)
+metadata/socket_type = &"hiding_place"
+metadata/route_id = &"hide_00"
+
+[node name="HidingAlcove01" type="Marker3D" parent="RouteMarkers" unique_id=1602062572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 7, -44)
+metadata/socket_type = &"hiding_place"
+metadata/route_id = &"hide_01"
+
+[node name="HidingAlcove02" type="Marker3D" parent="RouteMarkers" unique_id=690999936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 7, -23)
+metadata/socket_type = &"hiding_place"
+metadata/route_id = &"hide_02"
+
+[node name="HidingAlcove03" type="Marker3D" parent="RouteMarkers" unique_id=778913589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 7, -2)
+metadata/socket_type = &"hiding_place"
+metadata/route_id = &"hide_03"
+
+[node name="HidingAlcove04" type="Marker3D" parent="RouteMarkers" unique_id=886300645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 7, 19)
+metadata/socket_type = &"hiding_place"
+metadata/route_id = &"hide_04"
+
+[node name="HidingAlcove05" type="Marker3D" parent="RouteMarkers" unique_id=1341332222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 7, 40)
+metadata/socket_type = &"hiding_place"
+metadata/route_id = &"hide_05"
+
+[node name="HidingAlcove06" type="Marker3D" parent="RouteMarkers" unique_id=870874218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 7, 61)
+metadata/socket_type = &"hiding_place"
+metadata/route_id = &"hide_06"
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=948674450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -78)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"entry"
+
+[node name="Figurehead" type="Marker3D" parent="RouteMarkers" unique_id=1139581230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 72)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"figurehead"
+
+[node name="EmergencyHide" type="Marker3D" parent="RouteMarkers" unique_id=944523528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88, 1, 70)
+metadata/socket_type = &"hiding_place"
+metadata/route_id = &"final_hide"
+
+[node name="M8RenderBatches" type="Node3D" parent="." unique_id=1482098772]
+metadata/m8_material_batching = true
+metadata/m8_batch_count = 3
+
+[node name="GeometryBatch00_WetStoneGripSlick" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1879872280]
+multimesh = SubResource("MultiMesh_6nawe")
+metadata/m8_batch_instance_count = 9
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_wet_stone_grip_slick"
+
+[node name="GeometryBatch01_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=2079629072]
+multimesh = SubResource("MultiMesh_ijcvl")
+metadata/m8_batch_instance_count = 7
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_clean_stone_grip_solid"
+
+[node name="GeometryBatch02_BoneCanvasGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1628913107]
+multimesh = SubResource("MultiMesh_3afxv")
+metadata/m8_batch_instance_count = 3
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_bone_canvas_grip_solid"

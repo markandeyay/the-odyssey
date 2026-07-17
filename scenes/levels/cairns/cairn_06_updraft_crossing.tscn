@@ -1,0 +1,234 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_rvn81"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_iqmay"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h70ih"]
+resource_name = "mat_cairn_stone_grip_solid"
+render_priority = 0
+shader = ExtResource("1_rvn81")
+shader_parameter/detail_albedo = ExtResource("2_iqmay")
+shader_parameter/base_tint = Color(0.26, 0.29, 0.28, 1)
+shader_parameter/accent_tint = Color(0.11439999, 0.1276, 0.1232, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.14
+shader_parameter/ash_amount = 0.3
+shader_parameter/surface_roughness = 0.95
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_fufbq"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1xgc"]
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2cxwf"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2utjj"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k0p2l"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cfe70"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hgr4r"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8n7j"]
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wsgyi"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1txla"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t2q57"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dm3f4"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wu4n3"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_64rnk"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y8sb5"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(20, 3, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1slb"]
+size = Vector3(20, 3, 14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_efi2d"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(20, 3, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_46ldf"]
+size = Vector3(20, 3, 14)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_1fxp8"]
+size = Vector3(58, 20, 68)
+
+[node name="CairnEmberUpdraftCrossing" type="Node3D" unique_id=273558102]
+metadata/cairn_id = &"ember_updraft_crossing"
+metadata/district_id = &"ember_quarter"
+metadata/taught_mechanic = &"updraft_glide"
+metadata/single_room = true
+metadata/heart_piece_reward = 1
+metadata/budget_profile = "cairn"
+
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=357441892]
+
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=1301147039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=826146825]
+mesh = SubResource("BoxMesh_fufbq")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=1554254251]
+shape = SubResource("BoxShape3D_g1xgc")
+
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=870963762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=471426503]
+mesh = SubResource("BoxMesh_2cxwf")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=1500251750]
+shape = SubResource("BoxShape3D_2utjj")
+
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1412268459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=1356319243]
+mesh = SubResource("BoxMesh_k0p2l")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=1482853913]
+shape = SubResource("BoxShape3D_cfe70")
+
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=480125734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=329107981]
+mesh = SubResource("BoxMesh_hgr4r")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1629636220]
+shape = SubResource("BoxShape3D_p8n7j")
+
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=624351470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1125504013]
+mesh = SubResource("BoxMesh_wsgyi")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=1980312387]
+shape = SubResource("BoxShape3D_1txla")
+
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1928304345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=175408543]
+mesh = SubResource("BoxMesh_t2q57")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=616045870]
+shape = SubResource("BoxShape3D_dm3f4")
+
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=1479274195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=2115423145]
+mesh = SubResource("BoxMesh_wu4n3")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=1321421594]
+shape = SubResource("BoxShape3D_64rnk")
+
+[node name="LaunchPlatform" type="StaticBody3D" parent="WorldGeometry" unique_id=36952048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 18)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/LaunchPlatform" unique_id=1562750]
+mesh = SubResource("BoxMesh_y8sb5")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/LaunchPlatform" unique_id=1306027450]
+shape = SubResource("BoxShape3D_w1slb")
+
+[node name="LandingPlatform" type="StaticBody3D" parent="WorldGeometry" unique_id=19493325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -18)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/LandingPlatform" unique_id=1662456853]
+mesh = SubResource("BoxMesh_efi2d")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/LandingPlatform" unique_id=439187375]
+shape = SubResource("BoxShape3D_46ldf")
+
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=830430152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+occluder = SubResource("BoxOccluder3D_1fxp8")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=664561958]
+aabb = AABB(-32, -3, -38, 64, 30, 76)
+
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=1159800530]
+
+[node name="Updraft" type="Marker3D" parent="GameplaySockets" unique_id=918206998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+metadata/socket_type = &"updraft_volume"
+metadata/socket_size_m = Vector3(16, 18, 16)
+metadata/direction = Vector3(0, 1, 0)
+metadata/strength = 16.0
+
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=1670524844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
+metadata/socket_type = &"heart_piece_reward"
+metadata/cairn_id = &"ember_updraft_crossing"
+metadata/heart_piece_amount = 1
+
+[node name="Dressing" type="Node3D" parent="." unique_id=2140271604]
+
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1239261972]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1201151376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"entry"
+
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=427260750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"exit"

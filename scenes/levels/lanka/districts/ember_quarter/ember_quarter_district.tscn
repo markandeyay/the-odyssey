@@ -1,0 +1,2890 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_j7lgm"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_ltde1"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_fire.gdshader" id="3_k4318"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_smoke.gdshader" id="4_gkhf3"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_heat_haze.gdshader" id="5_3ec66"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6xpqe"]
+resource_name = "mat_soot_stone_grip_slick"
+render_priority = 0
+shader = ExtResource("1_j7lgm")
+shader_parameter/detail_albedo = ExtResource("2_ltde1")
+shader_parameter/base_tint = Color(0.095, 0.095, 0.085, 1)
+shader_parameter/accent_tint = Color(0.0418, 0.0418, 0.0374, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.1
+shader_parameter/soot_amount = 0.78
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dxkaw"]
+material = SubResource("ShaderMaterial_6xpqe")
+size = Vector3(300, 2.4, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5rqj7"]
+size = Vector3(300, 2.4, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vegjn"]
+material = SubResource("ShaderMaterial_6xpqe")
+size = Vector3(300, 2.4, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tefp3"]
+size = Vector3(300, 2.4, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ildxq"]
+material = SubResource("ShaderMaterial_6xpqe")
+size = Vector3(300, 2.4, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4c2m4"]
+size = Vector3(300, 2.4, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3gun"]
+material = SubResource("ShaderMaterial_6xpqe")
+size = Vector3(22, 2, 250)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bjqb4"]
+size = Vector3(22, 2, 250)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mnfib"]
+material = SubResource("ShaderMaterial_6xpqe")
+size = Vector3(22, 2, 250)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yleos"]
+size = Vector3(22, 2, 250)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fbrp5"]
+material = SubResource("ShaderMaterial_6xpqe")
+size = Vector3(22, 2, 250)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pdxln"]
+size = Vector3(22, 2, 250)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_andg5"]
+resource_name = "mat_charred_timber_grip_crumbling"
+render_priority = 0
+shader = ExtResource("1_j7lgm")
+shader_parameter/detail_albedo = ExtResource("2_ltde1")
+shader_parameter/base_tint = Color(0.075, 0.072, 0.062, 1)
+shader_parameter/accent_tint = Color(0.033, 0.03168, 0.02728, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.86
+shader_parameter/ash_amount = 0.12
+shader_parameter/surface_roughness = 0.92
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_6p2e6"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ijquy"]
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f5771"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6e6ag"]
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h6jdf"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2363e"]
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_em7jo"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y6p7m"]
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2xg6"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_webpe"]
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pgriy"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gq4yx"]
+size = Vector3(39, 4, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrs8b"]
+resource_name = "mat_fire_cracked_stone_grip_crumbling"
+render_priority = 0
+shader = ExtResource("1_j7lgm")
+shader_parameter/detail_albedo = ExtResource("2_ltde1")
+shader_parameter/base_tint = Color(0.2, 0.2, 0.18, 1)
+shader_parameter/accent_tint = Color(0.088, 0.088, 0.0792, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.3
+shader_parameter/ash_amount = 0.18
+shader_parameter/surface_roughness = 0.97
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_717ck"]
+material = SubResource("ShaderMaterial_rrs8b")
+size = Vector3(34, 2.5, 35)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_awpw6"]
+size = Vector3(34, 2.5, 35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4irq3"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxqnl"]
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_in0wn"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huqdk"]
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kym7g"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gxyxa"]
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aa3qt"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jckg"]
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0qaxt"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibbv5"]
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ssuic"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8d1yj"]
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x71nw"]
+material = SubResource("ShaderMaterial_rrs8b")
+size = Vector3(42, 2.5, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jpxi"]
+size = Vector3(42, 2.5, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tied0"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6f4dk"]
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x36wp"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2cnq6"]
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wb5gu"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3a0yx"]
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f6aoa"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppn88"]
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p8pai"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jsdde"]
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x3yrt"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0du7k"]
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e5i5w"]
+material = SubResource("ShaderMaterial_rrs8b")
+size = Vector3(34, 2.5, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ft2dk"]
+size = Vector3(34, 2.5, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ta7f0"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5hqhv"]
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7h75f"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1hvp"]
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ktnnk"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_miqlx"]
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bsh2e"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oagbt"]
+size = Vector3(4.5, 18, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2r8v7"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n05xm"]
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jhf4p"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gprbd"]
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ed03y"]
+material = SubResource("ShaderMaterial_rrs8b")
+size = Vector3(42, 2.5, 35)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rxj51"]
+size = Vector3(42, 2.5, 35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kxhbf"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ft8n8"]
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m5o53"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v084w"]
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lwy2t"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dho4j"]
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ygdei"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vay4i"]
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4pits"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cw6gw"]
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5xqid"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2qns"]
+size = Vector3(39, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t5bm4"]
+material = SubResource("ShaderMaterial_rrs8b")
+size = Vector3(34, 2.5, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jj4co"]
+size = Vector3(34, 2.5, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_efel7"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qtjny"]
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_it6ns"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wmw1x"]
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ay4uo"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fedyo"]
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aodgv"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xygx"]
+size = Vector3(4.5, 28, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m70o4"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8oult"]
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uv2ad"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fv6e7"]
+size = Vector3(47, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6f1ar"]
+material = SubResource("ShaderMaterial_rrs8b")
+size = Vector3(42, 2.5, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e5uv0"]
+size = Vector3(42, 2.5, 30)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_axiwx"]
+size = Vector3(175, 26, 175)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6l7hl"]
+resource_name = "mat_clean_stone_grip_solid"
+render_priority = 0
+shader = ExtResource("1_j7lgm")
+shader_parameter/detail_albedo = ExtResource("2_ltde1")
+shader_parameter/base_tint = Color(0.31, 0.32, 0.3, 1)
+shader_parameter/accent_tint = Color(0.1364, 0.1408, 0.132, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.08
+shader_parameter/ash_amount = 0.2
+shader_parameter/surface_roughness = 0.94
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2q6se"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_krduw"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_01x8n"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwyr0"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ne65i"]
+material = SubResource("ShaderMaterial_rrs8b")
+size = Vector3(8.6, 2, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u8e3v"]
+size = Vector3(8.6, 2, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nxqm2"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_anndb"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bnvar"]
+material = SubResource("ShaderMaterial_6l7hl")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w8xve"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n8hst"]
+material = SubResource("ShaderMaterial_rrs8b")
+size = Vector3(8.6, 2, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qye7r"]
+size = Vector3(8.6, 2, 2.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gckjm"]
+resource_name = "mat_ember_stone_grip_hot"
+render_priority = 0
+shader = ExtResource("1_j7lgm")
+shader_parameter/detail_albedo = ExtResource("2_ltde1")
+shader_parameter/base_tint = Color(0.2, 0.055, 0.012, 1)
+shader_parameter/accent_tint = Color(0.088, 0.0242, 0.00528, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.45
+shader_parameter/ash_amount = 0.05
+shader_parameter/surface_roughness = 0.78
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 2.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_gegpa"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(24, 0.35, 2.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qie3v"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_2bb0g"]
+material = SubResource("ShaderMaterial_qie3v")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlm5x"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_diiop"]
+material = SubResource("ShaderMaterial_tlm5x")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7bt3l"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_v5irs"]
+material = SubResource("ShaderMaterial_7bt3l")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pl2ed"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_ahfj4"]
+material = SubResource("ShaderMaterial_pl2ed")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hljhb"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_3ec66")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_j4a4j"]
+material = SubResource("ShaderMaterial_hljhb")
+size = Vector2(5, 5.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qarb3"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(24, 0.35, 2.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11q5g"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_lqppm"]
+material = SubResource("ShaderMaterial_11q5g")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q45ey"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_w4one"]
+material = SubResource("ShaderMaterial_q45ey")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slofp"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1mnd0"]
+material = SubResource("ShaderMaterial_slofp")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bluhp"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_qlh61"]
+material = SubResource("ShaderMaterial_bluhp")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1grtf"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_3ec66")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_x3rso"]
+material = SubResource("ShaderMaterial_1grtf")
+size = Vector2(5, 5.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ekd3"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(24, 0.35, 2.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5y8h"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_8h7nq"]
+material = SubResource("ShaderMaterial_f5y8h")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lt43w"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_cvoyx"]
+material = SubResource("ShaderMaterial_lt43w")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_osn0k"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_tlnn1"]
+material = SubResource("ShaderMaterial_osn0k")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_riebg"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_mt3ud"]
+material = SubResource("ShaderMaterial_riebg")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sktyd"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_3ec66")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_tip1l"]
+material = SubResource("ShaderMaterial_sktyd")
+size = Vector2(5, 5.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eus83"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(24, 0.35, 2.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qucqq"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_w2dk6"]
+material = SubResource("ShaderMaterial_qucqq")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_idxbe"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_4sytc"]
+material = SubResource("ShaderMaterial_idxbe")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqlh3"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_qsw0f"]
+material = SubResource("ShaderMaterial_gqlh3")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fqxp0"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_5atn7"]
+material = SubResource("ShaderMaterial_fqxp0")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjd42"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_3ec66")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_smn0h"]
+material = SubResource("ShaderMaterial_wjd42")
+size = Vector2(5, 5.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vdb3p"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(24, 0.35, 2.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gyf1q"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_y2r5r"]
+material = SubResource("ShaderMaterial_gyf1q")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3wkt"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_ttafx"]
+material = SubResource("ShaderMaterial_p3wkt")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lbtnn"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_rdlm4"]
+material = SubResource("ShaderMaterial_lbtnn")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fquo4"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_hlfbm"]
+material = SubResource("ShaderMaterial_fquo4")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymccs"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_3ec66")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_bbs64"]
+material = SubResource("ShaderMaterial_ymccs")
+size = Vector2(5, 5.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dwrrj"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(24, 0.35, 2.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1avii"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_fi7ju"]
+material = SubResource("ShaderMaterial_1avii")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwmle"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_h4xcj"]
+material = SubResource("ShaderMaterial_lwmle")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5olt"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_sxgk8"]
+material = SubResource("ShaderMaterial_o5olt")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1sdlj"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_qhwko"]
+material = SubResource("ShaderMaterial_1sdlj")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1c43"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_3ec66")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_v4k1l"]
+material = SubResource("ShaderMaterial_p1c43")
+size = Vector2(5, 5.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ud1ts"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(24, 0.35, 2.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0ibv"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_gs0pf"]
+material = SubResource("ShaderMaterial_f0ibv")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ydb7p"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_0qwr5"]
+material = SubResource("ShaderMaterial_ydb7p")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s078k"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_xr47j"]
+material = SubResource("ShaderMaterial_s078k")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6fuo"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_wvoke"]
+material = SubResource("ShaderMaterial_m6fuo")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvxgv"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_3ec66")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_1eypw"]
+material = SubResource("ShaderMaterial_qvxgv")
+size = Vector2(5, 5.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecwq4"]
+resource_name = "mat_bone_canvas_grip_solid"
+render_priority = 0
+shader = ExtResource("1_j7lgm")
+shader_parameter/detail_albedo = ExtResource("2_ltde1")
+shader_parameter/base_tint = Color(0.58, 0.56, 0.48, 1)
+shader_parameter/accent_tint = Color(0.2552, 0.2464, 0.2112, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_uf17w"]
+material = SubResource("ShaderMaterial_ecwq4")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ffp77"]
+material = SubResource("ShaderMaterial_ecwq4")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0g6xf"]
+material = SubResource("ShaderMaterial_ecwq4")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sbm6t"]
+material = SubResource("ShaderMaterial_ecwq4")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmm6g"]
+resource_name = "mat_salvage_iron_grip_solid"
+render_priority = 0
+shader = ExtResource("1_j7lgm")
+shader_parameter/detail_albedo = ExtResource("2_ltde1")
+shader_parameter/base_tint = Color(0.19, 0.24, 0.23, 1)
+shader_parameter/accent_tint = Color(0.0836, 0.1056, 0.1012, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.18
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.05
+shader_parameter/surface_roughness = 0.5
+shader_parameter/surface_metallic = 0.7
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ihax2"]
+material = SubResource("ShaderMaterial_wmm6g")
+size = Vector3(2.6, 0.8, 1.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nhxh2"]
+material = SubResource("ShaderMaterial_wmm6g")
+size = Vector3(2.6, 0.8, 1.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7r56"]
+resource_name = "mat_unburnt_timber_grip_solid"
+render_priority = 0
+shader = ExtResource("1_j7lgm")
+shader_parameter/detail_albedo = ExtResource("2_ltde1")
+shader_parameter/base_tint = Color(0.17, 0.16, 0.12, 1)
+shader_parameter/accent_tint = Color(0.0748, 0.0704, 0.0528, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.22
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.86
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dk8w7"]
+material = SubResource("ShaderMaterial_n7r56")
+size = Vector3(2.6, 0.8, 1.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_53gdx"]
+material = SubResource("ShaderMaterial_n7r56")
+size = Vector3(2.6, 0.8, 1.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8jvaf"]
+material = SubResource("ShaderMaterial_ecwq4")
+size = Vector3(2.6, 0.8, 1.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75vaf"]
+resource_name = "mat_charwood_fruit_grip_solid"
+render_priority = 0
+shader = ExtResource("1_j7lgm")
+shader_parameter/detail_albedo = ExtResource("2_ltde1")
+shader_parameter/base_tint = Color(0.34, 0.075, 0.012, 1)
+shader_parameter/accent_tint = Color(0.1496, 0.033, 0.00528, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.05
+shader_parameter/surface_roughness = 0.76
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.65
+
+[sub_resource type="BoxMesh" id="BoxMesh_b0pf4"]
+material = SubResource("ShaderMaterial_75vaf")
+size = Vector3(0.7, 0.5, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ehk4b"]
+material = SubResource("ShaderMaterial_75vaf")
+size = Vector3(0.7, 0.5, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2e0xs"]
+material = SubResource("ShaderMaterial_75vaf")
+size = Vector3(0.7, 0.5, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1m3gr"]
+material = SubResource("ShaderMaterial_75vaf")
+size = Vector3(0.7, 0.5, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_djso5"]
+material = SubResource("ShaderMaterial_75vaf")
+size = Vector3(0.7, 0.5, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jl08s"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(3, 0.55, 0.55)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hanvu"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(3, 0.55, 0.55)
+
+[sub_resource type="BoxMesh" id="BoxMesh_whvlk"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(1.4, 0.3, 1.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p686h"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_bqib0"]
+material = SubResource("ShaderMaterial_p686h")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4sb8"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_cpe77"]
+material = SubResource("ShaderMaterial_k4sb8")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgopg"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_4r0xy"]
+material = SubResource("ShaderMaterial_kgopg")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_koqph"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_rqwkk"]
+material = SubResource("ShaderMaterial_koqph")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qab7"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_3ec66")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_080fp"]
+material = SubResource("ShaderMaterial_0qab7")
+size = Vector2(5, 5.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bbfkg"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(3, 0.55, 0.55)
+
+[sub_resource type="BoxMesh" id="BoxMesh_htmys"]
+material = SubResource("ShaderMaterial_andg5")
+size = Vector3(3, 0.55, 0.55)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v6fic"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(1.4, 0.3, 1.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2rx0"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_h0dtf"]
+material = SubResource("ShaderMaterial_v2rx0")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_megdw"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_k4318")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_3xoyy"]
+material = SubResource("ShaderMaterial_megdw")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0hto"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_lr1h4"]
+material = SubResource("ShaderMaterial_f0hto")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_am8bh"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_gkhf3")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_jesg7"]
+material = SubResource("ShaderMaterial_am8bh")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6uuux"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_3ec66")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_rsc8p"]
+material = SubResource("ShaderMaterial_6uuux")
+size = Vector2(5, 5.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u0noh"]
+material = SubResource("ShaderMaterial_6xpqe")
+
+[sub_resource type="MultiMesh" id="MultiMesh_ybrgm"]
+transform_format = 1
+instance_count = 6
+mesh = SubResource("BoxMesh_u0noh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qxj5d"]
+material = SubResource("ShaderMaterial_andg5")
+
+[sub_resource type="MultiMesh" id="MultiMesh_uvd75"]
+transform_format = 1
+instance_count = 40
+mesh = SubResource("BoxMesh_qxj5d")
+
+[sub_resource type="BoxMesh" id="BoxMesh_dq2vj"]
+material = SubResource("ShaderMaterial_rrs8b")
+
+[sub_resource type="MultiMesh" id="MultiMesh_0yoni"]
+transform_format = 1
+instance_count = 8
+mesh = SubResource("BoxMesh_dq2vj")
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvc1u"]
+material = SubResource("ShaderMaterial_6l7hl")
+
+[sub_resource type="MultiMesh" id="MultiMesh_ogs3e"]
+transform_format = 1
+instance_count = 4
+mesh = SubResource("BoxMesh_yvc1u")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3sigo"]
+material = SubResource("ShaderMaterial_gckjm")
+
+[sub_resource type="MultiMesh" id="MultiMesh_k2fb3"]
+transform_format = 1
+instance_count = 9
+mesh = SubResource("BoxMesh_3sigo")
+
+[sub_resource type="BoxMesh" id="BoxMesh_pdt0l"]
+material = SubResource("ShaderMaterial_ecwq4")
+
+[sub_resource type="MultiMesh" id="MultiMesh_swgxb"]
+transform_format = 1
+instance_count = 5
+mesh = SubResource("BoxMesh_pdt0l")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ue3fh"]
+material = SubResource("ShaderMaterial_wmm6g")
+
+[sub_resource type="MultiMesh" id="MultiMesh_ux0fo"]
+transform_format = 1
+instance_count = 2
+mesh = SubResource("BoxMesh_ue3fh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_sv6gp"]
+material = SubResource("ShaderMaterial_n7r56")
+
+[sub_resource type="MultiMesh" id="MultiMesh_u7emk"]
+transform_format = 1
+instance_count = 2
+mesh = SubResource("BoxMesh_sv6gp")
+
+[sub_resource type="BoxMesh" id="BoxMesh_1a8ba"]
+material = SubResource("ShaderMaterial_75vaf")
+
+[sub_resource type="MultiMesh" id="MultiMesh_jpp8g"]
+transform_format = 1
+instance_count = 5
+mesh = SubResource("BoxMesh_1a8ba")
+
+[node name="EmberQuarterDistrict" type="Node3D" unique_id=2056975610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 54, 80)
+metadata/district_id = &"ember_quarter"
+metadata/budget_profile = "ember_quarter"
+metadata/stream_center = Vector3(250, 54, 80)
+metadata/stream_load_radius_m = 320.0
+metadata/stream_unload_radius_m = 430.0
+metadata/open_world_loaded = true
+
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=865786034]
+
+[node name="EastWestStreet00" type="StaticBody3D" parent="WorldGeometry" unique_id=261149439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, -105)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWestStreet00" unique_id=501150723]
+visible = false
+mesh = SubResource("BoxMesh_dxkaw")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWestStreet00" unique_id=978249265]
+shape = SubResource("BoxShape3D_5rqj7")
+
+[node name="EastWestStreet01" type="StaticBody3D" parent="WorldGeometry" unique_id=1861841682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWestStreet01" unique_id=1661031018]
+visible = false
+mesh = SubResource("BoxMesh_vegjn")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWestStreet01" unique_id=207061692]
+shape = SubResource("BoxShape3D_tefp3")
+
+[node name="EastWestStreet02" type="StaticBody3D" parent="WorldGeometry" unique_id=901139989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 105)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWestStreet02" unique_id=234413533]
+visible = false
+mesh = SubResource("BoxMesh_ildxq")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWestStreet02" unique_id=887688753]
+shape = SubResource("BoxShape3D_4c2m4")
+
+[node name="NorthSouthStreet00" type="StaticBody3D" parent="WorldGeometry" unique_id=8590244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105, -1, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthSouthStreet00" unique_id=52912797]
+visible = false
+mesh = SubResource("BoxMesh_h3gun")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthSouthStreet00" unique_id=151515295]
+shape = SubResource("BoxShape3D_bjqb4")
+
+[node name="NorthSouthStreet01" type="StaticBody3D" parent="WorldGeometry" unique_id=880436013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthSouthStreet01" unique_id=1827673378]
+visible = false
+mesh = SubResource("BoxMesh_mnfib")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthSouthStreet01" unique_id=1098963504]
+shape = SubResource("BoxShape3D_yleos")
+
+[node name="NorthSouthStreet02" type="StaticBody3D" parent="WorldGeometry" unique_id=16992378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, -1, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthSouthStreet02" unique_id=1507203416]
+visible = false
+mesh = SubResource("BoxMesh_fbrp5")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthSouthStreet02" unique_id=513500433]
+shape = SubResource("BoxShape3D_pdxln")
+
+[node name="BurntBuilding00" type="Node3D" parent="WorldGeometry" unique_id=249061649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, -62)
+
+[node name="FramePost00" type="StaticBody3D" parent="WorldGeometry/BurntBuilding00" unique_id=665190970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 9, -17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding00/FramePost00" unique_id=644587083]
+visible = false
+mesh = SubResource("BoxMesh_6p2e6")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding00/FramePost00" unique_id=978663986]
+shape = SubResource("BoxShape3D_ijquy")
+
+[node name="FramePost01" type="StaticBody3D" parent="WorldGeometry/BurntBuilding00" unique_id=966832815]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06975647, 0.9975641, 0, 0, 0, 1, -17, 9, 17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding00/FramePost01" unique_id=1304496672]
+visible = false
+mesh = SubResource("BoxMesh_f5771")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding00/FramePost01" unique_id=672040836]
+shape = SubResource("BoxShape3D_6e6ag")
+
+[node name="FramePost10" type="StaticBody3D" parent="WorldGeometry/BurntBuilding00" unique_id=1046349681]
+transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 17, 9, -17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding00/FramePost10" unique_id=765534928]
+visible = false
+mesh = SubResource("BoxMesh_h6jdf")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding00/FramePost10" unique_id=1711219131]
+shape = SubResource("BoxShape3D_2363e")
+
+[node name="FramePost11" type="StaticBody3D" parent="WorldGeometry/BurntBuilding00" unique_id=1885830266]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06966087, 0.9961969, -0.05233596, 0.0036507717, 0.052208472, 0.9986295, 17, 9, 17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding00/FramePost11" unique_id=344032914]
+visible = false
+mesh = SubResource("BoxMesh_em7jo")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding00/FramePost11" unique_id=1641352214]
+shape = SubResource("BoxShape3D_y6p7m")
+
+[node name="NorthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding00" unique_id=1056606475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding00/NorthBeam" unique_id=1708616751]
+visible = false
+mesh = SubResource("BoxMesh_i2xg6")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding00/NorthBeam" unique_id=1288285898]
+shape = SubResource("BoxShape3D_webpe")
+
+[node name="SouthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding00" unique_id=851247564]
+transform = Transform3D(0.9945219, 0.104528464, 0, -0.104528464, 0.9945219, 0, 0, 0, 1, 0, 13, 17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding00/SouthBeam" unique_id=1952343459]
+visible = false
+mesh = SubResource("BoxMesh_pgriy")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding00/SouthBeam" unique_id=53956684]
+shape = SubResource("BoxShape3D_gq4yx")
+
+[node name="CollapsedRoof" type="StaticBody3D" parent="WorldGeometry/BurntBuilding00" unique_id=1986209675]
+transform = Transform3D(0.9612617, -0.27563736, 0, 0.27295488, 0.95190674, -0.1391731, 0.038361307, 0.13378178, 0.99026805, 0, 9.9, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding00/CollapsedRoof" unique_id=138341238]
+visible = false
+mesh = SubResource("BoxMesh_717ck")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding00/CollapsedRoof" unique_id=562190612]
+shape = SubResource("BoxShape3D_awpw6")
+
+[node name="BurntBuilding01" type="Node3D" parent="WorldGeometry" unique_id=190315318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -62)
+
+[node name="FramePost00" type="StaticBody3D" parent="WorldGeometry/BurntBuilding01" unique_id=2099494353]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06966087, 0.9961969, -0.05233596, 0.0036507717, 0.052208472, 0.9986295, -21, 11.5, -20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding01/FramePost00" unique_id=1487185043]
+visible = false
+mesh = SubResource("BoxMesh_4irq3")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding01/FramePost00" unique_id=1868383648]
+shape = SubResource("BoxShape3D_oxqnl")
+
+[node name="FramePost01" type="StaticBody3D" parent="WorldGeometry/BurntBuilding01" unique_id=1086996029]
+transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, -21, 11.5, 20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding01/FramePost01" unique_id=1266180891]
+visible = false
+mesh = SubResource("BoxMesh_in0wn")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding01/FramePost01" unique_id=1207210409]
+shape = SubResource("BoxShape3D_huqdk")
+
+[node name="FramePost10" type="StaticBody3D" parent="WorldGeometry/BurntBuilding01" unique_id=2082422757]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06937434, 0.99209934, -0.104528464, 0.007291537, 0.10427384, 0.9945219, 21, 11.5, -20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding01/FramePost10" unique_id=457294520]
+visible = false
+mesh = SubResource("BoxMesh_kym7g")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding01/FramePost10" unique_id=1918418939]
+shape = SubResource("BoxShape3D_gxyxa")
+
+[node name="FramePost11" type="StaticBody3D" parent="WorldGeometry/BurntBuilding01" unique_id=2008841769]
+transform = Transform3D(1, 0, 0, 0, 0.9945219, -0.104528464, 0, 0.104528464, 0.9945219, 21, 11.5, 20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding01/FramePost11" unique_id=1843281398]
+visible = false
+mesh = SubResource("BoxMesh_aa3qt")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding01/FramePost11" unique_id=1095777229]
+shape = SubResource("BoxShape3D_8jckg")
+
+[node name="NorthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding01" unique_id=547033611]
+transform = Transform3D(0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 0, 0, 1, 0, 20, -20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding01/NorthBeam" unique_id=1359772516]
+visible = false
+mesh = SubResource("BoxMesh_0qaxt")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding01/NorthBeam" unique_id=1300140459]
+shape = SubResource("BoxShape3D_ibbv5")
+
+[node name="SouthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding01" unique_id=1743711121]
+transform = Transform3D(0.9781476, 0.2079117, 0, -0.2079117, 0.9781476, 0, 0, 0, 1, 0, 18, 20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding01/SouthBeam" unique_id=1546833054]
+visible = false
+mesh = SubResource("BoxMesh_ssuic")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding01/SouthBeam" unique_id=1682054839]
+shape = SubResource("BoxShape3D_8d1yj")
+
+[node name="CollapsedRoof" type="StaticBody3D" parent="WorldGeometry/BurntBuilding01" unique_id=1169066743]
+transform = Transform3D(0.9473916, -0.23102364, 0.22153352, 0.2714498, 0.94665796, -0.17364818, -0.16959964, 0.22464807, 0.9595672, 0, 12.65, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding01/CollapsedRoof" unique_id=1794768085]
+visible = false
+mesh = SubResource("BoxMesh_x71nw")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding01/CollapsedRoof" unique_id=1466716846]
+shape = SubResource("BoxShape3D_5jpxi")
+
+[node name="BurntBuilding02" type="Node3D" parent="WorldGeometry" unique_id=569340602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0, 58)
+
+[node name="FramePost00" type="StaticBody3D" parent="WorldGeometry/BurntBuilding02" unique_id=135114105]
+transform = Transform3D(1, 0, 0, 0, 0.9945219, -0.104528464, 0, 0.104528464, 0.9945219, -17, 14, -15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding02/FramePost00" unique_id=1525925570]
+visible = false
+mesh = SubResource("BoxMesh_tied0")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding02/FramePost00" unique_id=1632516007]
+shape = SubResource("BoxShape3D_6f4dk")
+
+[node name="FramePost01" type="StaticBody3D" parent="WorldGeometry/BurntBuilding02" unique_id=17830810]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06937434, 0.99209934, -0.104528464, 0.007291537, 0.10427384, 0.9945219, -17, 14, 15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding02/FramePost01" unique_id=1166602885]
+visible = false
+mesh = SubResource("BoxMesh_x36wp")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding02/FramePost01" unique_id=1713852649]
+shape = SubResource("BoxShape3D_2cnq6")
+
+[node name="FramePost10" type="StaticBody3D" parent="WorldGeometry/BurntBuilding02" unique_id=429023598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 14, -15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding02/FramePost10" unique_id=505489272]
+visible = false
+mesh = SubResource("BoxMesh_wb5gu")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding02/FramePost10" unique_id=1597895676]
+shape = SubResource("BoxShape3D_3a0yx")
+
+[node name="FramePost11" type="StaticBody3D" parent="WorldGeometry/BurntBuilding02" unique_id=632924497]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06975647, 0.9975641, 0, 0, 0, 1, 17, 14, 15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding02/FramePost11" unique_id=1474394164]
+visible = false
+mesh = SubResource("BoxMesh_f6aoa")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding02/FramePost11" unique_id=1677862055]
+shape = SubResource("BoxShape3D_ppn88")
+
+[node name="NorthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding02" unique_id=561290474]
+transform = Transform3D(0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 0, 0, 1, 0, 25, -15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding02/NorthBeam" unique_id=1719903434]
+visible = false
+mesh = SubResource("BoxMesh_p8pai")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding02/NorthBeam" unique_id=569068230]
+shape = SubResource("BoxShape3D_jsdde")
+
+[node name="SouthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding02" unique_id=766024892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding02/SouthBeam" unique_id=790350352]
+visible = false
+mesh = SubResource("BoxMesh_x3yrt")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding02/SouthBeam" unique_id=1358943209]
+shape = SubResource("BoxShape3D_0du7k")
+
+[node name="CollapsedRoof" type="StaticBody3D" parent="WorldGeometry/BurntBuilding02" unique_id=1821187936]
+transform = Transform3D(0.8890986, -0.16012943, 0.4287917, 0.26961404, 0.9402558, -0.2079117, -0.3698811, 0.30046225, 0.87915325, 0, 15.4, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding02/CollapsedRoof" unique_id=78035117]
+visible = false
+mesh = SubResource("BoxMesh_e5i5w")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding02/CollapsedRoof" unique_id=337376224]
+shape = SubResource("BoxShape3D_ft2dk")
+
+[node name="BurntBuilding03" type="Node3D" parent="WorldGeometry" unique_id=256539949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 58)
+
+[node name="FramePost00" type="StaticBody3D" parent="WorldGeometry/BurntBuilding03" unique_id=2090822707]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06975647, 0.9975641, 0, 0, 0, 1, -21, 9, -17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding03/FramePost00" unique_id=620601639]
+visible = false
+mesh = SubResource("BoxMesh_ta7f0")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding03/FramePost00" unique_id=532066478]
+shape = SubResource("BoxShape3D_5hqhv")
+
+[node name="FramePost01" type="StaticBody3D" parent="WorldGeometry/BurntBuilding03" unique_id=1140204302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 9, 17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding03/FramePost01" unique_id=1558058621]
+visible = false
+mesh = SubResource("BoxMesh_7h75f")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding03/FramePost01" unique_id=119969188]
+shape = SubResource("BoxShape3D_p1hvp")
+
+[node name="FramePost10" type="StaticBody3D" parent="WorldGeometry/BurntBuilding03" unique_id=1161064990]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06966087, 0.9961969, -0.05233596, 0.0036507717, 0.052208472, 0.9986295, 21, 9, -17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding03/FramePost10" unique_id=1679352980]
+visible = false
+mesh = SubResource("BoxMesh_ktnnk")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding03/FramePost10" unique_id=1323144736]
+shape = SubResource("BoxShape3D_miqlx")
+
+[node name="FramePost11" type="StaticBody3D" parent="WorldGeometry/BurntBuilding03" unique_id=1241546537]
+transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 21, 9, 17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding03/FramePost11" unique_id=1848623142]
+visible = false
+mesh = SubResource("BoxMesh_bsh2e")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding03/FramePost11" unique_id=1056120974]
+shape = SubResource("BoxShape3D_oagbt")
+
+[node name="NorthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding03" unique_id=1812964888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding03/NorthBeam" unique_id=318912380]
+visible = false
+mesh = SubResource("BoxMesh_2r8v7")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding03/NorthBeam" unique_id=1547224445]
+shape = SubResource("BoxShape3D_n05xm")
+
+[node name="SouthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding03" unique_id=253412778]
+transform = Transform3D(0.9945219, 0.104528464, 0, -0.104528464, 0.9945219, 0, 0, 0, 1, 0, 13, 17.5)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding03/SouthBeam" unique_id=772335385]
+visible = false
+mesh = SubResource("BoxMesh_jhf4p")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding03/SouthBeam" unique_id=976067708]
+shape = SubResource("BoxShape3D_gprbd")
+
+[node name="CollapsedRoof" type="StaticBody3D" parent="WorldGeometry/BurntBuilding03" unique_id=1887865639]
+transform = Transform3D(0.7890054, -0.067861825, 0.6106269, 0.26744974, 0.9327081, -0.2419219, -0.55311936, 0.3541897, 0.75406134, 0, 9.9, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding03/CollapsedRoof" unique_id=49646993]
+visible = false
+mesh = SubResource("BoxMesh_ed03y")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding03/CollapsedRoof" unique_id=556682039]
+shape = SubResource("BoxShape3D_rxj51")
+
+[node name="BurntBuilding04" type="Node3D" parent="WorldGeometry" unique_id=191951610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 62)
+
+[node name="FramePost00" type="StaticBody3D" parent="WorldGeometry/BurntBuilding04" unique_id=2109441622]
+transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, -17, 11.5, -20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding04/FramePost00" unique_id=1137096618]
+visible = false
+mesh = SubResource("BoxMesh_kxhbf")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding04/FramePost00" unique_id=1825692966]
+shape = SubResource("BoxShape3D_ft8n8")
+
+[node name="FramePost01" type="StaticBody3D" parent="WorldGeometry/BurntBuilding04" unique_id=229729214]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06966087, 0.9961969, -0.05233596, 0.0036507717, 0.052208472, 0.9986295, -17, 11.5, 20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding04/FramePost01" unique_id=656555106]
+visible = false
+mesh = SubResource("BoxMesh_m5o53")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding04/FramePost01" unique_id=502649172]
+shape = SubResource("BoxShape3D_v084w")
+
+[node name="FramePost10" type="StaticBody3D" parent="WorldGeometry/BurntBuilding04" unique_id=1789465914]
+transform = Transform3D(1, 0, 0, 0, 0.9945219, -0.104528464, 0, 0.104528464, 0.9945219, 17, 11.5, -20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding04/FramePost10" unique_id=1264529702]
+visible = false
+mesh = SubResource("BoxMesh_lwy2t")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding04/FramePost10" unique_id=757325388]
+shape = SubResource("BoxShape3D_dho4j")
+
+[node name="FramePost11" type="StaticBody3D" parent="WorldGeometry/BurntBuilding04" unique_id=1663680391]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06937434, 0.99209934, -0.104528464, 0.007291537, 0.10427384, 0.9945219, 17, 11.5, 20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding04/FramePost11" unique_id=501313370]
+visible = false
+mesh = SubResource("BoxMesh_ygdei")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding04/FramePost11" unique_id=1212226019]
+shape = SubResource("BoxShape3D_vay4i")
+
+[node name="NorthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding04" unique_id=533795334]
+transform = Transform3D(0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 0, 0, 1, 0, 20, -20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding04/NorthBeam" unique_id=636213752]
+visible = false
+mesh = SubResource("BoxMesh_4pits")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding04/NorthBeam" unique_id=340668157]
+shape = SubResource("BoxShape3D_cw6gw")
+
+[node name="SouthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding04" unique_id=1491280725]
+transform = Transform3D(0.9781476, 0.2079117, 0, -0.2079117, 0.9781476, 0, 0, 0, 1, 0, 18, 20)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding04/SouthBeam" unique_id=56646151]
+visible = false
+mesh = SubResource("BoxMesh_5xqid")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding04/SouthBeam" unique_id=403972456]
+shape = SubResource("BoxShape3D_t2qns")
+
+[node name="CollapsedRoof" type="StaticBody3D" parent="WorldGeometry/BurntBuilding04" unique_id=58006409]
+transform = Transform3D(0.6516817, 0.03909172, 0.7574845, 0.26495963, 0.92402405, -0.27563736, -0.71070904, 0.38033062, 0.59181184, 0, 12.65, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding04/CollapsedRoof" unique_id=697425338]
+visible = false
+mesh = SubResource("BoxMesh_t5bm4")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding04/CollapsedRoof" unique_id=741914062]
+shape = SubResource("BoxShape3D_jj4co")
+
+[node name="BurntBuilding05" type="Node3D" parent="WorldGeometry" unique_id=2013984776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -62)
+
+[node name="FramePost00" type="StaticBody3D" parent="WorldGeometry/BurntBuilding05" unique_id=1922440798]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06937434, 0.99209934, -0.104528464, 0.007291537, 0.10427384, 0.9945219, -21, 14, -15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding05/FramePost00" unique_id=1421805819]
+visible = false
+mesh = SubResource("BoxMesh_efel7")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding05/FramePost00" unique_id=100280767]
+shape = SubResource("BoxShape3D_qtjny")
+
+[node name="FramePost01" type="StaticBody3D" parent="WorldGeometry/BurntBuilding05" unique_id=1629883309]
+transform = Transform3D(1, 0, 0, 0, 0.9945219, -0.104528464, 0, 0.104528464, 0.9945219, -21, 14, 15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding05/FramePost01" unique_id=1166391688]
+visible = false
+mesh = SubResource("BoxMesh_it6ns")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding05/FramePost01" unique_id=1237819517]
+shape = SubResource("BoxShape3D_wmw1x")
+
+[node name="FramePost10" type="StaticBody3D" parent="WorldGeometry/BurntBuilding05" unique_id=1707086943]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06975647, 0.9975641, 0, 0, 0, 1, 21, 14, -15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding05/FramePost10" unique_id=1037227909]
+visible = false
+mesh = SubResource("BoxMesh_ay4uo")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding05/FramePost10" unique_id=4256051]
+shape = SubResource("BoxShape3D_fedyo")
+
+[node name="FramePost11" type="StaticBody3D" parent="WorldGeometry/BurntBuilding05" unique_id=58461968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 14, 15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding05/FramePost11" unique_id=637607300]
+visible = false
+mesh = SubResource("BoxMesh_aodgv")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding05/FramePost11" unique_id=1501101959]
+shape = SubResource("BoxShape3D_8xygx")
+
+[node name="NorthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding05" unique_id=1108907410]
+transform = Transform3D(0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 0, 0, 1, 0, 25, -15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding05/NorthBeam" unique_id=952541823]
+visible = false
+mesh = SubResource("BoxMesh_m70o4")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding05/NorthBeam" unique_id=2143478978]
+shape = SubResource("BoxShape3D_8oult")
+
+[node name="SouthBeam" type="StaticBody3D" parent="WorldGeometry/BurntBuilding05" unique_id=186646893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 15)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding05/SouthBeam" unique_id=1846225706]
+visible = false
+mesh = SubResource("BoxMesh_uv2ad")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding05/SouthBeam" unique_id=1927038027]
+shape = SubResource("BoxShape3D_fv6e7")
+
+[node name="CollapsedRoof" type="StaticBody3D" parent="WorldGeometry/BurntBuilding05" unique_id=188450498]
+transform = Transform3D(0.48344296, 0.1527259, 0.86195, 0.2621467, 0.9142142, -0.309017, -0.8352018, 0.37534943, 0.40193385, 0, 15.4, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BurntBuilding05/CollapsedRoof" unique_id=1177901580]
+visible = false
+mesh = SubResource("BoxMesh_6f1ar")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BurntBuilding05/CollapsedRoof" unique_id=1465069282]
+shape = SubResource("BoxShape3D_e5uv0")
+
+[node name="CityCoreOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=1525065242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 13, 0)
+occluder = SubResource("BoxOccluder3D_axiwx")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=71107312]
+aabb = AABB(-165, -5, -135, 340, 75, 270)
+
+[node name="CairnDoor_EmberFuelLine" type="Node3D" parent="WorldGeometry" unique_id=1197003266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 2, 112)
+
+[node name="LeftPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_EmberFuelLine" unique_id=295680375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_EmberFuelLine/LeftPillar" unique_id=768756358]
+visible = false
+mesh = SubResource("BoxMesh_2q6se")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_EmberFuelLine/LeftPillar" unique_id=804918739]
+shape = SubResource("BoxShape3D_krduw")
+
+[node name="RightPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_EmberFuelLine" unique_id=485177684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_EmberFuelLine/RightPillar" unique_id=1597860444]
+visible = false
+mesh = SubResource("BoxMesh_01x8n")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_EmberFuelLine/RightPillar" unique_id=1157587435]
+shape = SubResource("BoxShape3D_rwyr0")
+
+[node name="Lintel" type="StaticBody3D" parent="WorldGeometry/CairnDoor_EmberFuelLine" unique_id=1718945529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_EmberFuelLine/Lintel" unique_id=312365817]
+visible = false
+mesh = SubResource("BoxMesh_ne65i")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_EmberFuelLine/Lintel" unique_id=996901874]
+shape = SubResource("BoxShape3D_u8e3v")
+
+[node name="CairnDoor_EmberUpdraftCrossing" type="Node3D" parent="WorldGeometry" unique_id=2030552809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146, 3, -108)
+
+[node name="LeftPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_EmberUpdraftCrossing" unique_id=111750995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_EmberUpdraftCrossing/LeftPillar" unique_id=680226372]
+visible = false
+mesh = SubResource("BoxMesh_nxqm2")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_EmberUpdraftCrossing/LeftPillar" unique_id=1564839463]
+shape = SubResource("BoxShape3D_anndb")
+
+[node name="RightPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_EmberUpdraftCrossing" unique_id=499349525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_EmberUpdraftCrossing/RightPillar" unique_id=1901831798]
+visible = false
+mesh = SubResource("BoxMesh_bnvar")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_EmberUpdraftCrossing/RightPillar" unique_id=1525481754]
+shape = SubResource("BoxShape3D_w8xve")
+
+[node name="Lintel" type="StaticBody3D" parent="WorldGeometry/CairnDoor_EmberUpdraftCrossing" unique_id=735333940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_EmberUpdraftCrossing/Lintel" unique_id=1680458459]
+visible = false
+mesh = SubResource("BoxMesh_n8hst")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_EmberUpdraftCrossing/Lintel" unique_id=1344656955]
+shape = SubResource("BoxShape3D_qye7r")
+
+[node name="Dressing" type="Node3D" parent="." unique_id=496769048]
+
+[node name="EmberCrack00" type="MeshInstance3D" parent="Dressing" unique_id=775102085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118, 0.25, -12)
+visible = false
+mesh = SubResource("BoxMesh_gegpa")
+
+[node name="EmberFireVisual00" type="Node3D" parent="Dressing" unique_id=880350397]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -118, 0.25, -12)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual00" unique_id=343616858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_2bb0g")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual00" unique_id=584970862]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_diiop")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual00" unique_id=1579732194]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_v5irs")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual00" unique_id=274358746]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_ahfj4")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/EmberFireVisual00" unique_id=297411388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_j4a4j")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/EmberFireVisual00" unique_id=2045411100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/EmberFireVisual00" unique_id=937804839]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="EmberCrack01" type="MeshInstance3D" parent="Dressing" unique_id=1968157637]
+transform = Transform3D(0.9563048, 0, 0.2923717, 0, 1, 0, -0.2923717, 0, 0.9563048, -79, 0.25, 23.341782)
+visible = false
+mesh = SubResource("BoxMesh_qarb3")
+
+[node name="EmberFireVisual01" type="Node3D" parent="Dressing" unique_id=35421805]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -79, 0.25, 23.341782)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual01" unique_id=1988293434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_lqppm")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual01" unique_id=1835200414]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_w4one")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual01" unique_id=2133907067]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_1mnd0")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual01" unique_id=1093520550]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_qlh61")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/EmberFireVisual01" unique_id=1906127939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_x3rso")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/EmberFireVisual01" unique_id=563953109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/EmberFireVisual01" unique_id=5924097]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="EmberCrack02" type="MeshInstance3D" parent="Dressing" unique_id=984873665]
+transform = Transform3D(0.8290376, 0, 0.5591929, 0, 1, 0, -0.5591929, 0, 0.8290376, -40, 0.25, 26.190493)
+visible = false
+mesh = SubResource("BoxMesh_1ekd3")
+
+[node name="EmberFireVisual02" type="Node3D" parent="Dressing" unique_id=1299844727]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -40, 0.25, 26.190493)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual02" unique_id=1489482893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_8h7nq")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual02" unique_id=1819426847]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_cvoyx")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual02" unique_id=1601165610]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_tlnn1")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual02" unique_id=339244388]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_mt3ud")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/EmberFireVisual02" unique_id=1172454434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_tip1l")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/EmberFireVisual02" unique_id=2051367786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/EmberFireVisual02" unique_id=664888633]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="EmberCrack03" type="MeshInstance3D" parent="Dressing" unique_id=1629216515]
+transform = Transform3D(0.62932044, 0, 0.7771459, 0, 1, 0, -0.7771459, 0, 0.62932044, -1, 0.25, -6.07296)
+visible = false
+mesh = SubResource("BoxMesh_eus83")
+
+[node name="EmberFireVisual03" type="Node3D" parent="Dressing" unique_id=1314873223]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -1, 0.25, -6.07296)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual03" unique_id=967183239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_w2dk6")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual03" unique_id=2077167667]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_4sytc")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual03" unique_id=307908150]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_qsw0f")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual03" unique_id=267713318]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_5atn7")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/EmberFireVisual03" unique_id=1597782408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_smn0h")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/EmberFireVisual03" unique_id=1699006443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/EmberFireVisual03" unique_id=1051002409]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="EmberCrack04" type="MeshInstance3D" parent="Dressing" unique_id=51623165]
+transform = Transform3D(0.37460664, 0, 0.92718387, 0, 1, 0, -0.92718387, 0, 0.37460664, 38, 0.25, -43.785706)
+visible = false
+mesh = SubResource("BoxMesh_vdb3p")
+
+[node name="EmberFireVisual04" type="Node3D" parent="Dressing" unique_id=103279812]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 38, 0.25, -43.785706)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual04" unique_id=1911980118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_y2r5r")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual04" unique_id=1923574056]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_ttafx")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual04" unique_id=1440727756]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_rdlm4")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual04" unique_id=981108425]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_hlfbm")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/EmberFireVisual04" unique_id=1191257835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_bbs64")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/EmberFireVisual04" unique_id=380087869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/EmberFireVisual04" unique_id=604140425]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="EmberCrack05" type="MeshInstance3D" parent="Dressing" unique_id=1267996132]
+transform = Transform3D(0.087155804, 0, 0.9961947, 0, 1, 0, -0.9961947, 0, 0.087155804, 77, 0.25, -52.27482)
+visible = false
+mesh = SubResource("BoxMesh_dwrrj")
+
+[node name="EmberFireVisual05" type="Node3D" parent="Dressing" unique_id=416291891]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 77, 0.25, -52.27482)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual05" unique_id=752684198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_fi7ju")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual05" unique_id=437907805]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_h4xcj")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual05" unique_id=1806202283]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_sxgk8")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual05" unique_id=1408570432]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_qhwko")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/EmberFireVisual05" unique_id=687999068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_v4k1l")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/EmberFireVisual05" unique_id=428338829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/EmberFireVisual05" unique_id=2129472002]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="EmberCrack06" type="MeshInstance3D" parent="Dressing" unique_id=298790151]
+transform = Transform3D(-0.20791163, 0, 0.9781476, 0, 1, 0, -0.9781476, 0, -0.20791163, 116, 0.25, -23.73545)
+visible = false
+mesh = SubResource("BoxMesh_ud1ts")
+
+[node name="EmberFireVisual06" type="Node3D" parent="Dressing" unique_id=808980892]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 116, 0.25, -23.73545)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual06" unique_id=675526275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_gs0pf")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual06" unique_id=1422991939]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_0qwr5")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/EmberFireVisual06" unique_id=144327233]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_xr47j")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/EmberFireVisual06" unique_id=1366774662]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_wvoke")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/EmberFireVisual06" unique_id=887659677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_1eypw")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/EmberFireVisual06" unique_id=1084442494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/EmberFireVisual06" unique_id=712737004]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="FragmentProxy_CrewIlan" type="MeshInstance3D" parent="Dressing" unique_id=443566259]
+transform = Transform3D(-0.02293055, 0.21288991, 0.97680706, 0.13613184, 0.96862835, -0.2079117, -0.9904253, 0.12820701, -0.051192276, -112, 3.35, -74)
+visible = false
+mesh = SubResource("BoxMesh_uf17w")
+
+[node name="FragmentProxy_CrewJaya" type="MeshInstance3D" parent="Dressing" unique_id=678653597]
+transform = Transform3D(-0.97019905, 0.17281091, 0.16985367, 0.13613184, 0.96862835, -0.2079117, -0.20045447, -0.17859325, -0.96328735, -28, 5.35, 88)
+visible = false
+mesh = SubResource("BoxMesh_ffp77")
+
+[node name="FragmentProxy_CrewKavi" type="MeshInstance3D" parent="Dressing" unique_id=1605900881]
+transform = Transform3D(0.9598825, -0.07703127, 0.26961404, 0.13613184, 0.96862835, -0.2079117, -0.24514009, 0.23627385, 0.9402558, 72, 3.35, -82)
+visible = false
+mesh = SubResource("BoxMesh_0g6xf")
+
+[node name="FragmentProxy_CrewLal" type="MeshInstance3D" parent="Dressing" unique_id=154400536]
+transform = Transform3D(0.65869814, 0.06826085, 0.74930453, 0.13613184, 0.96862835, -0.2079117, -0.7399898, 0.23895526, 0.6287412, 132, 6.35, 72)
+visible = false
+mesh = SubResource("BoxMesh_sbm6t")
+
+[node name="SalvageProxy_SalvageIron03" type="MeshInstance3D" parent="Dressing" unique_id=630849345]
+transform = Transform3D(-0.4539904, 0, 0.8910066, 0, 1, 0, -0.8910066, 0, -0.4539904, -92, 3.5, 54)
+visible = false
+mesh = SubResource("BoxMesh_ihax2")
+
+[node name="SalvageProxy_SalvageIron04" type="MeshInstance3D" parent="Dressing" unique_id=970862976]
+transform = Transform3D(-0.46947157, 0, 0.88294756, 0, 1, 0, -0.88294756, 0, -0.46947157, 74, 3.5, -54)
+visible = false
+mesh = SubResource("BoxMesh_nhxh2")
+
+[node name="SalvageProxy_SalvageTimber04" type="MeshInstance3D" parent="Dressing" unique_id=1348844977]
+transform = Transform3D(-0.9455186, 0, 0.3255681, 0, 1, 0, -0.3255681, 0, -0.9455186, -42, 3.5, -96)
+visible = false
+mesh = SubResource("BoxMesh_dk8w7")
+
+[node name="SalvageProxy_SalvageTimber05" type="MeshInstance3D" parent="Dressing" unique_id=665857405]
+transform = Transform3D(-0.9510565, 0, 0.30901703, 0, 1, 0, -0.30901703, 0, -0.9510565, 124, 3.5, 96)
+visible = false
+mesh = SubResource("BoxMesh_53gdx")
+
+[node name="SalvageProxy_SalvageCanvas03" type="MeshInstance3D" parent="Dressing" unique_id=1171054102]
+transform = Transform3D(-0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, -0.81915206, 26, 4.5, 66)
+visible = false
+mesh = SubResource("BoxMesh_8jvaf")
+
+[node name="IngredientProxy_Charwood01" type="MeshInstance3D" parent="Dressing" unique_id=729561776]
+transform = Transform3D(0.034899496, 0, 0.99939084, 0, 1, 0, -0.99939084, 0, 0.034899496, -57, 2.3, -68)
+visible = false
+mesh = SubResource("BoxMesh_b0pf4")
+
+[node name="IngredientProxy_Charwood02" type="MeshInstance3D" parent="Dressing" unique_id=1417075502]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 68, 2.3, -68)
+visible = false
+mesh = SubResource("BoxMesh_ehk4b")
+
+[node name="IngredientProxy_Charwood03" type="MeshInstance3D" parent="Dressing" unique_id=653228297]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -58, 2.3, 52)
+visible = false
+mesh = SubResource("BoxMesh_2e0xs")
+
+[node name="IngredientProxy_Charwood04" type="MeshInstance3D" parent="Dressing" unique_id=31153990]
+transform = Transform3D(-0.017452352, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, -0.017452352, 70, 2.3, 52)
+visible = false
+mesh = SubResource("BoxMesh_1m3gr")
+
+[node name="IngredientProxy_Charwood05" type="MeshInstance3D" parent="Dressing" unique_id=102701300]
+transform = Transform3D(-0.034899462, 0, 0.99939084, 0, 1, 0, -0.99939084, 0, -0.034899462, 136, 2.3, 56)
+visible = false
+mesh = SubResource("BoxMesh_djso5")
+
+[node name="CampfireProxy_CampEmberWest" type="Node3D" parent="Dressing" unique_id=1516858900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 3, -18)
+
+[node name="LogA" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberWest" unique_id=91394606]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0.3, 0)
+visible = false
+mesh = SubResource("BoxMesh_jl08s")
+
+[node name="LogB" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberWest" unique_id=607780312]
+transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0.3, 0)
+visible = false
+mesh = SubResource("BoxMesh_hanvu")
+
+[node name="EmberBed" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberWest" unique_id=453189493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+visible = false
+mesh = SubResource("BoxMesh_whvlk")
+
+[node name="FireVisual" type="Node3D" parent="Dressing/CampfireProxy_CampEmberWest" unique_id=1713352203]
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 0.25, 0)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberWest/FireVisual" unique_id=831331722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_bqib0")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberWest/FireVisual" unique_id=590940135]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_cpe77")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberWest/FireVisual" unique_id=719170503]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_4r0xy")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberWest/FireVisual" unique_id=6208996]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_rqwkk")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberWest/FireVisual" unique_id=1763424960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_080fp")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/CampfireProxy_CampEmberWest/FireVisual" unique_id=1440145447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/CampfireProxy_CampEmberWest/FireVisual" unique_id=1514452605]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="CampfireProxy_CampEmberEast" type="Node3D" parent="Dressing" unique_id=538216367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144, 3, 18)
+
+[node name="LogA" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberEast" unique_id=881658002]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0.3, 0)
+visible = false
+mesh = SubResource("BoxMesh_bbfkg")
+
+[node name="LogB" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberEast" unique_id=756455057]
+transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0.3, 0)
+visible = false
+mesh = SubResource("BoxMesh_htmys")
+
+[node name="EmberBed" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberEast" unique_id=880592922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+visible = false
+mesh = SubResource("BoxMesh_v6fic")
+
+[node name="FireVisual" type="Node3D" parent="Dressing/CampfireProxy_CampEmberEast" unique_id=173158613]
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 0.25, 0)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberEast/FireVisual" unique_id=531361721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_h0dtf")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberEast/FireVisual" unique_id=1688332121]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_3xoyy")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberEast/FireVisual" unique_id=1762127928]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_lr1h4")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberEast/FireVisual" unique_id=1242431816]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_jesg7")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampEmberEast/FireVisual" unique_id=1896870558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_rsc8p")
+
+[node name="FireLight" type="OmniLight3D" parent="Dressing/CampfireProxy_CampEmberEast/FireVisual" unique_id=1645135176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/CampfireProxy_CampEmberEast/FireVisual" unique_id=43595904]
+aabb = AABB(-4, 0, -4, 8, 13, 8)
+
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=968599679]
+
+[node name="FireSource00" type="Marker3D" parent="GameplaySockets" unique_id=485385770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118, 1.25, -12)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_00"
+
+[node name="FireSource01" type="Marker3D" parent="GameplaySockets" unique_id=963057204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79, 1.25, 23.341782)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_01"
+
+[node name="FireSource02" type="Marker3D" parent="GameplaySockets" unique_id=1488619018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 1.25, 26.190493)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_02"
+
+[node name="FireSource03" type="Marker3D" parent="GameplaySockets" unique_id=1713525257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25, -6.07296)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_03"
+
+[node name="FireSource04" type="Marker3D" parent="GameplaySockets" unique_id=1939749736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 1.25, -43.785706)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_04"
+
+[node name="FireSource05" type="Marker3D" parent="GameplaySockets" unique_id=639276086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.25, -52.27482)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_05"
+
+[node name="FireSource06" type="Marker3D" parent="GameplaySockets" unique_id=803003879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116, 1.25, -23.73545)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_06"
+
+[node name="Updraft00" type="Marker3D" parent="GameplaySockets" unique_id=1954353737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2, -8)
+metadata/socket_type = &"updraft_volume"
+metadata/socket_size_m = Vector3(18, 55, 18)
+metadata/direction = Vector3(0, 1, 0)
+metadata/strength = 18.0
+
+[node name="Updraft01" type="Marker3D" parent="GameplaySockets" unique_id=1420086754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 2, 18)
+metadata/socket_type = &"updraft_volume"
+metadata/socket_size_m = Vector3(18, 55, 18)
+metadata/direction = Vector3(0, 1, 0)
+metadata/strength = 18.0
+
+[node name="Updraft02" type="Marker3D" parent="GameplaySockets" unique_id=1395525402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 2, -72)
+metadata/socket_type = &"updraft_volume"
+metadata/socket_size_m = Vector3(18, 55, 18)
+metadata/direction = Vector3(0, 1, 0)
+metadata/strength = 18.0
+
+[node name="HeatLayer00" type="Marker3D" parent="GameplaySockets" unique_id=588800244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 6, 0)
+metadata/socket_type = &"heat_volume"
+metadata/socket_size_m = Vector3(250, 20, 220)
+metadata/strength = 1.0
+
+[node name="HeatLayer01" type="Marker3D" parent="GameplaySockets" unique_id=1673014963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 28, 0)
+metadata/socket_type = &"heat_volume"
+metadata/socket_size_m = Vector3(250, 20, 220)
+metadata/strength = 1.55
+
+[node name="HeatLayer02" type="Marker3D" parent="GameplaySockets" unique_id=259953504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 50, 0)
+metadata/socket_type = &"heat_volume"
+metadata/socket_size_m = Vector3(250, 20, 220)
+metadata/strength = 2.1
+
+[node name="CharwoodHabitat00" type="Marker3D" parent="GameplaySockets" unique_id=1550214608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 2, -68)
+metadata/socket_type = &"ingredient_habitat"
+metadata/spawn_id = &"charwood_habitat_00"
+
+[node name="CharwoodHabitat01" type="Marker3D" parent="GameplaySockets" unique_id=731516168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 2, -68)
+metadata/socket_type = &"ingredient_habitat"
+metadata/spawn_id = &"charwood_habitat_01"
+
+[node name="CharwoodHabitat02" type="Marker3D" parent="GameplaySockets" unique_id=101252256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 2, 52)
+metadata/socket_type = &"ingredient_habitat"
+metadata/spawn_id = &"charwood_habitat_02"
+
+[node name="CharwoodHabitat03" type="Marker3D" parent="GameplaySockets" unique_id=906896411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 2, 52)
+metadata/socket_type = &"ingredient_habitat"
+metadata/spawn_id = &"charwood_habitat_03"
+
+[node name="CharwoodHabitat04" type="Marker3D" parent="GameplaySockets" unique_id=36279222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 2, 56)
+metadata/socket_type = &"ingredient_habitat"
+metadata/spawn_id = &"charwood_habitat_04"
+
+[node name="DistrictTrigger" type="Marker3D" parent="GameplaySockets" unique_id=996496473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138, 8, -95)
+metadata/socket_type = &"district_trigger"
+metadata/socket_size_m = Vector3(50, 35, 80)
+metadata/district_id = &"ember_quarter"
+
+[node name="CairnEntrance_EmberFuelLine" type="Marker3D" parent="GameplaySockets" unique_id=1626821858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 2, 112)
+metadata/socket_type = &"cairn_entrance"
+metadata/cairn_id = &"ember_fuel_line"
+metadata/target_scene_path = "res://scenes/levels/cairns/cairn_05_fuel_line.tscn"
+metadata/district_id = &"ember_quarter"
+
+[node name="CairnEntrance_EmberUpdraftCrossing" type="Marker3D" parent="GameplaySockets" unique_id=1227507791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146, 3, -108)
+metadata/socket_type = &"cairn_entrance"
+metadata/cairn_id = &"ember_updraft_crossing"
+metadata/target_scene_path = "res://scenes/levels/cairns/cairn_06_updraft_crossing.tscn"
+metadata/district_id = &"ember_quarter"
+
+[node name="CrewFragment_CrewIlan" type="Marker3D" parent="GameplaySockets" unique_id=1624038049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112, 3, -74)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_ilan"
+metadata/memory_object = "melted buckle"
+metadata/memory_text = "Ilan ran into the first fire because he heard someone calling."
+metadata/district_id = &"ember_quarter"
+
+[node name="CrewFragment_CrewJaya" type="Marker3D" parent="GameplaySockets" unique_id=1626697683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 5, 88)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_jaya"
+metadata/memory_object = "blackened bell"
+metadata/memory_text = "Jaya rang the retreat. No one heard it over the roofs."
+metadata/district_id = &"ember_quarter"
+
+[node name="CrewFragment_CrewKavi" type="Marker3D" parent="GameplaySockets" unique_id=1405647669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 3, -82)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_kavi"
+metadata/memory_object = "glass bead"
+metadata/memory_text = "Kavi promised the smoke would clear before nightfall."
+metadata/district_id = &"ember_quarter"
+
+[node name="CrewFragment_CrewLal" type="Marker3D" parent="GameplaySockets" unique_id=648447937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132, 6, 72)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_lal"
+metadata/memory_object = "iron key"
+metadata/memory_text = "Lal locked the cistern and carried the key into the burn."
+metadata/district_id = &"ember_quarter"
+
+[node name="Salvage_SalvageIron03" type="Marker3D" parent="GameplaySockets" unique_id=191026921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 3, 54)
+metadata/socket_type = &"salvage_pickup"
+metadata/placement_id = &"salvage_iron_03"
+metadata/salvage_id = &"iron"
+metadata/district_id = &"ember_quarter"
+
+[node name="Salvage_SalvageIron04" type="Marker3D" parent="GameplaySockets" unique_id=1074002543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 3, -54)
+metadata/socket_type = &"salvage_pickup"
+metadata/placement_id = &"salvage_iron_04"
+metadata/salvage_id = &"iron"
+metadata/district_id = &"ember_quarter"
+
+[node name="Salvage_SalvageTimber04" type="Marker3D" parent="GameplaySockets" unique_id=1611613265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 3, -96)
+metadata/socket_type = &"salvage_pickup"
+metadata/placement_id = &"salvage_timber_04"
+metadata/salvage_id = &"timber"
+metadata/district_id = &"ember_quarter"
+
+[node name="Salvage_SalvageTimber05" type="Marker3D" parent="GameplaySockets" unique_id=332646078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124, 3, 96)
+metadata/socket_type = &"salvage_pickup"
+metadata/placement_id = &"salvage_timber_05"
+metadata/salvage_id = &"timber"
+metadata/district_id = &"ember_quarter"
+
+[node name="Salvage_SalvageCanvas03" type="Marker3D" parent="GameplaySockets" unique_id=1973935800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 4, 66)
+metadata/socket_type = &"salvage_pickup"
+metadata/placement_id = &"salvage_canvas_03"
+metadata/salvage_id = &"canvas"
+metadata/district_id = &"ember_quarter"
+
+[node name="Ingredient_Charwood01" type="Marker3D" parent="GameplaySockets" unique_id=418921528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 2, -68)
+metadata/socket_type = &"ingredient_pickup"
+metadata/placement_id = &"charwood_01"
+metadata/ingredient_id = &"charwood_fruit"
+metadata/district_id = &"ember_quarter"
+
+[node name="Ingredient_Charwood02" type="Marker3D" parent="GameplaySockets" unique_id=1754604233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 2, -68)
+metadata/socket_type = &"ingredient_pickup"
+metadata/placement_id = &"charwood_02"
+metadata/ingredient_id = &"charwood_fruit"
+metadata/district_id = &"ember_quarter"
+
+[node name="Ingredient_Charwood03" type="Marker3D" parent="GameplaySockets" unique_id=906646422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 2, 52)
+metadata/socket_type = &"ingredient_pickup"
+metadata/placement_id = &"charwood_03"
+metadata/ingredient_id = &"charwood_fruit"
+metadata/district_id = &"ember_quarter"
+
+[node name="Ingredient_Charwood04" type="Marker3D" parent="GameplaySockets" unique_id=463114635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 2, 52)
+metadata/socket_type = &"ingredient_pickup"
+metadata/placement_id = &"charwood_04"
+metadata/ingredient_id = &"charwood_fruit"
+metadata/district_id = &"ember_quarter"
+
+[node name="Ingredient_Charwood05" type="Marker3D" parent="GameplaySockets" unique_id=1032361174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 2, 56)
+metadata/socket_type = &"ingredient_pickup"
+metadata/placement_id = &"charwood_05"
+metadata/ingredient_id = &"charwood_fruit"
+metadata/district_id = &"ember_quarter"
+
+[node name="Campfire_CampEmberWest" type="Marker3D" parent="GameplaySockets" unique_id=1472668376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 3, -18)
+metadata/socket_type = &"campfire"
+metadata/checkpoint_id = &"camp_ember_west"
+metadata/district_id = &"ember_quarter"
+
+[node name="Campfire_CampEmberEast" type="Marker3D" parent="GameplaySockets" unique_id=487675733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144, 3, 18)
+metadata/socket_type = &"campfire"
+metadata/checkpoint_id = &"camp_ember_east"
+metadata/district_id = &"ember_quarter"
+
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=2053884468]
+
+[node name="WestEntry" type="Marker3D" parent="RouteMarkers" unique_id=1465031407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145, 3, -92)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"west_entry"
+
+[node name="SmolderTrial" type="Marker3D" parent="RouteMarkers" unique_id=1980690525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 4, 20)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"smolder"
+
+[node name="CisternEntrance" type="Marker3D" parent="RouteMarkers" unique_id=484939371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 2, 96)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"cistern_entrance"
+
+[node name="M8RenderBatches" type="Node3D" parent="." unique_id=362884579]
+metadata/m8_material_batching = true
+metadata/m8_batch_count = 9
+
+[node name="GeometryBatch00_SootStoneGripSlick" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1667475847]
+multimesh = SubResource("MultiMesh_ybrgm")
+metadata/m8_batch_instance_count = 6
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_soot_stone_grip_slick"
+
+[node name="GeometryBatch01_CharredTimberGripCrumbling" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=40202018]
+multimesh = SubResource("MultiMesh_uvd75")
+metadata/m8_batch_instance_count = 40
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_charred_timber_grip_crumbling"
+
+[node name="GeometryBatch02_FireCrackedStoneGripCrumbling" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=65098961]
+multimesh = SubResource("MultiMesh_0yoni")
+metadata/m8_batch_instance_count = 8
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_fire_cracked_stone_grip_crumbling"
+
+[node name="GeometryBatch03_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1454428440]
+multimesh = SubResource("MultiMesh_ogs3e")
+metadata/m8_batch_instance_count = 4
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_clean_stone_grip_solid"
+
+[node name="GeometryBatch04_EmberStoneGripHot" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1076719032]
+multimesh = SubResource("MultiMesh_k2fb3")
+metadata/m8_batch_instance_count = 9
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_ember_stone_grip_hot"
+
+[node name="GeometryBatch05_BoneCanvasGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1564694712]
+multimesh = SubResource("MultiMesh_swgxb")
+metadata/m8_batch_instance_count = 5
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_bone_canvas_grip_solid"
+
+[node name="GeometryBatch06_SalvageIronGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1594012951]
+multimesh = SubResource("MultiMesh_ux0fo")
+metadata/m8_batch_instance_count = 2
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_salvage_iron_grip_solid"
+
+[node name="GeometryBatch07_UnburntTimberGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1163256769]
+multimesh = SubResource("MultiMesh_u7emk")
+metadata/m8_batch_instance_count = 2
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_unburnt_timber_grip_solid"
+
+[node name="GeometryBatch08_CharwoodFruitGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=794974963]
+multimesh = SubResource("MultiMesh_jpp8g")
+metadata/m8_batch_instance_count = 5
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_charwood_fruit_grip_solid"

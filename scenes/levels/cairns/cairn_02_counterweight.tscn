@@ -1,0 +1,219 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_0vlty"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_qnxgn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h70ih"]
+resource_name = "mat_cairn_stone_grip_solid"
+render_priority = 0
+shader = ExtResource("1_0vlty")
+shader_parameter/detail_albedo = ExtResource("2_qnxgn")
+shader_parameter/base_tint = Color(0.26, 0.29, 0.28, 1)
+shader_parameter/accent_tint = Color(0.11439999, 0.1276, 0.1232, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.14
+shader_parameter/ash_amount = 0.3
+shader_parameter/surface_roughness = 0.95
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_wgkpu"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kb0mp"]
+size = Vector3(60, 3, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hbc7o"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mvu7q"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e5vvm"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oc8tp"]
+size = Vector3(4, 23, 72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_am85m"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j77bj"]
+size = Vector3(60, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i4xjl"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3r3ec"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mog4j"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oeehn"]
+size = Vector3(24, 23, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w83ae"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_syibu"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j0e15"]
+material = SubResource("ShaderMaterial_h70ih")
+size = Vector3(38, 2, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwrig"]
+size = Vector3(38, 2, 8)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ysbtv"]
+size = Vector3(58, 20, 68)
+
+[node name="CairnShallowsCounterweight" type="Node3D" unique_id=2085261265]
+metadata/cairn_id = &"shallows_counterweight"
+metadata/district_id = &"shallows"
+metadata/taught_mechanic = &"carry_counterweight"
+metadata/single_room = true
+metadata/heart_piece_reward = 1
+metadata/budget_profile = "cairn"
+
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=1856655211]
+
+[node name="Floor" type="StaticBody3D" parent="WorldGeometry" unique_id=1111926735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/Floor" unique_id=1139674930]
+mesh = SubResource("BoxMesh_wgkpu")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/Floor" unique_id=358660256]
+shape = SubResource("BoxShape3D_kb0mp")
+
+[node name="WestWall" type="StaticBody3D" parent="WorldGeometry" unique_id=1124200368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/WestWall" unique_id=1445347114]
+mesh = SubResource("BoxMesh_hbc7o")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/WestWall" unique_id=262252463]
+shape = SubResource("BoxShape3D_mvu7q")
+
+[node name="EastWall" type="StaticBody3D" parent="WorldGeometry" unique_id=197020199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/EastWall" unique_id=1411033211]
+mesh = SubResource("BoxMesh_e5vvm")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/EastWall" unique_id=1367370746]
+shape = SubResource("BoxShape3D_oc8tp")
+
+[node name="NorthWall" type="StaticBody3D" parent="WorldGeometry" unique_id=905044495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/NorthWall" unique_id=1226484563]
+mesh = SubResource("BoxMesh_am85m")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/NorthWall" unique_id=1965650948]
+shape = SubResource("BoxShape3D_j77bj")
+
+[node name="SouthDoorLeft" type="StaticBody3D" parent="WorldGeometry" unique_id=39175366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorLeft" unique_id=2067054404]
+mesh = SubResource("BoxMesh_i4xjl")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorLeft" unique_id=554580778]
+shape = SubResource("BoxShape3D_3r3ec")
+
+[node name="SouthDoorRight" type="StaticBody3D" parent="WorldGeometry" unique_id=1335868783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 36)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SouthDoorRight" unique_id=1244251859]
+mesh = SubResource("BoxMesh_mog4j")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SouthDoorRight" unique_id=1435879265]
+shape = SubResource("BoxShape3D_oeehn")
+
+[node name="RewardPlinth" type="StaticBody3D" parent="WorldGeometry" unique_id=109031793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/RewardPlinth" unique_id=495757329]
+mesh = SubResource("BoxMesh_w83ae")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/RewardPlinth" unique_id=2008391507]
+shape = SubResource("BoxShape3D_syibu")
+
+[node name="BalanceBridge" type="StaticBody3D" parent="WorldGeometry" unique_id=1792877073]
+transform = Transform3D(0.9781476, -0.2079117, 0, 0.2079117, 0.9781476, 0, 0, 0, 1, 0, 5, -4)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/BalanceBridge" unique_id=1811475118]
+mesh = SubResource("BoxMesh_j0e15")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/BalanceBridge" unique_id=1964149496]
+shape = SubResource("BoxShape3D_bwrig")
+
+[node name="RoomOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=859180601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+occluder = SubResource("BoxOccluder3D_ysbtv")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=2008777487]
+aabb = AABB(-32, -3, -38, 64, 30, 76)
+
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=892287637]
+
+[node name="Counterweight00" type="Marker3D" parent="GameplaySockets" unique_id=1973964465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, 22)
+metadata/socket_type = &"carryable_object"
+metadata/spawn_id = &"cairn_weight_00"
+
+[node name="Counterweight01" type="Marker3D" parent="GameplaySockets" unique_id=1731178895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, 22)
+metadata/socket_type = &"carryable_object"
+metadata/spawn_id = &"cairn_weight_01"
+
+[node name="HeartPieceReward" type="Marker3D" parent="GameplaySockets" unique_id=2119669396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -29)
+metadata/socket_type = &"heart_piece_reward"
+metadata/cairn_id = &"shallows_counterweight"
+metadata/heart_piece_amount = 1
+
+[node name="Dressing" type="Node3D" parent="." unique_id=1396662498]
+
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1324994147]
+
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1088384264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"entry"
+
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1553200337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"exit"
