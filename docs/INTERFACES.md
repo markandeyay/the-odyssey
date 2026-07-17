@@ -173,3 +173,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Blocking:** yes for the measured integrated-GPU 60 FPS gate with full volumetric fog; no for WORLD scene construction, native mid-range target, or headless validation
 >>>>>>> world
 **Status:** OPEN
+
+### [2026-07-17] FROM: WORLD TO: SYSTEMS
+**Request:** Set Lanka as the project main scene.
+**Why:** `project.godot` has no `run/main_scene`, so F5 cannot enter the now-runnable Lanka scene even though direct scene execution works.
+**Proposed API:** Add `run/main_scene="res://scenes/levels/lanka/lanka.tscn"` under `[application]` in SYSTEMS-owned `project.godot`.
+**Blocking:** yes for F5 project launch; no for F6/direct Lanka scene launch
+**Status:** OPEN
