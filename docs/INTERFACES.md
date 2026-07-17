@@ -226,3 +226,10 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** As above; no new EventBus signals.
 **Blocking:** no
 **Status:** DONE
+
+### [2026-07-17] FROM: SYSTEMS TO: WORLD
+**Request:** Two findings from the integrated 1080p profile of merged main (all six districts, player + HUD + fire + water + drowned live) that are real on any GPU, relayed per the human: (1) the Cistern anchor sits inside Ember Quarter's load radius, so both districts (plus 9-10 terrain chunks) are resident simultaneously — Cistern was the worst sustained district in the capture; (2) Ember Quarter showed an 80.6ms worst frame from a neighboring district instantiating mid-capture — a streaming hitch, not steady-state rendering.
+**Why:** ARCHITECTURE section 19's amended targets cap frame time on the dev floor at 33ms; a single 80.6ms instantiation frame busts it regardless of average FPS, and the Ember/Cistern double residency sets the worst-case resident set for the whole island.
+**Proposed API:** WORLD's call — candidates are shrinking Cistern's load radius or separating the anchors' horizontal centers, and amortizing district instantiation (e.g. adding streamed districts over multiple frames or splitting district scenes into sub-chunks). SYSTEMS can supply per-frame instantiation budgeting in the streaming root if you request it.
+**Blocking:** no
+**Status:** OPEN
