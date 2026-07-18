@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/world/dark_entrance.gd" id="1_dark"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_doorway"]
+size = Vector3(6, 4, 4)
+
+[node name="DarkEntrance" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dark")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_doorway")

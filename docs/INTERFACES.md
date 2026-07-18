@@ -141,7 +141,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** M5 provides `dark_district.tscn` as an enclosed terror sequence with drowned spawn and hiding sockets. The constitution requires it to be separately streamed, and player transfer plus drowned lifecycle are SYSTEMS-owned.
 **Proposed API:** When the SYSTEMS-owned trial flow opens The Dark, instance `res://scenes/levels/lanka/districts/dark/dark_district.tscn` through the level host, place Nau at `RouteMarkers/Entry`, and unload it when the sequence exits. Do not add this path to `LankaDistrictContract.OPEN_WORLD_DISTRICTS`; the WORLD validator deliberately rejects that coupling.
 **Blocking:** yes for entering and completing The Dark in the integrated build; no for WORLD M5 scene validation
-**Status:** OPEN
+**Status:** DONE — `scenes/prefabs/gameplay/dark_entrance.tscn` delivers this; see the [2026-07-18] SYSTEMS delivery entry below for placement and the one marker The Dark's scene still needs (`RouteMarkers/Exit`).
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Provide the gameplay prefabs and sublevel transition needed to activate WORLD-authored M6 content sockets.
@@ -232,4 +232,11 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** ARCHITECTURE section 19's amended targets cap frame time on the dev floor at 33ms; a single 80.6ms instantiation frame busts it regardless of average FPS, and the Ember/Cistern double residency sets the worst-case resident set for the whole island.
 **Proposed API:** WORLD's call — candidates are shrinking Cistern's load radius or separating the anchors' horizontal centers, and amortizing district instantiation (e.g. adding streamed districts over multiple frames or splitting district scenes into sub-chunks). SYSTEMS can supply per-frame instantiation budgeting in the streaming root if you request it.
 **Blocking:** no
+**Status:** OPEN
+
+### [2026-07-18] FROM: SYSTEMS TO: WORLD
+**Request:** Delivery of the Dark sublevel transition: `scenes/prefabs/gameplay/dark_entrance.tscn` (script `res://src/world/dark_entrance.gd`) now exists. Instance it once, at the doorway into The Dark at the end of the Spine trial, and size its `CollisionShape3D` box like every other volume prefab. Set two exports the way your builder already does for `cairn_entrance`: `target_scene: PackedScene` = `res://scenes/levels/lanka/districts/dark/dark_district.tscn`, and optionally `required_trial_id: StringName` — when set, the doorway stays inert until that trial is complete (leave empty for always-open). One marker request: add `RouteMarkers/Exit` to `dark_district.tscn`, a `Marker3D` at the mouth where walking out should return Nau to the surface. Until it exists the prefab falls back to using `RouteMarkers/Entry` as the way out (armed only after Nau has left it once, so arrival does not bounce him straight back), which works but gives you no authorial control over where "out" is.
+**Why:** Nau crossing the doorway instances The Dark at its authored world transform (your root transform stands; nothing is repositioned), transfers him to `RouteMarkers/Entry`, and wires a touch volume over `RouteMarkers/Exit` that returns him to the doorway and frees the interior. The Dark stays out of open-world streaming per your validator. A carryable held on the way out — the Figurehead walk (M14) — is reparented out of the interior before the free, so the carry survives the transition.
+**Proposed API:** As above; no new EventBus signals. `district_entered(&"dark")` still comes from your district trigger socket inside the scene, not from this prefab.
+**Blocking:** no for SYSTEMS behavior (tested against a stand-in interior); yes for the integrated Dark until you place the prefab and rerun your builder
 **Status:** OPEN
