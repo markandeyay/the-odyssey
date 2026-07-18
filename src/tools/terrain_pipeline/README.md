@@ -69,20 +69,15 @@ godot --headless --path . --script res://src/tools/terrain_pipeline/validate_lan
 godot --path . --script res://src/tools/terrain_pipeline/profile_lanka_m8.gd -- sustained optimized
 ```
 
-The profiler forces a 1920 by 1080 Forward+ output with VSync and the frame cap disabled, warms each district, then writes frame-time, draw, primitive, texture-memory, buffer-memory, and video-memory results under `res://.godot/review/m8/`. Pass a district id such as `ember_quarter` for an isolated run or `reverse` to expose order-dependent behavior. Native rendering is the default; `scale_85` verifies the requested integrated 1080p bilinear quality tier, while `scale_85 fsr` remains available as a diagnostic.
+The profiler forces a native-scale 1920 by 1080 Forward+ output with VSync and the frame cap disabled, warms each district, then writes frame-time, draw, primitive, texture-memory, buffer-memory, and video-memory results under `res://.godot/review/m8/`. Pass a district id such as `ember_quarter` for an isolated run or `reverse` to expose order-dependent behavior. Ember Quarter and Cistern are profiled independently, matching their mutually exclusive vertical streaming boundary.
 
-Final 85 percent bilinear results on Intel Graphics using D3D12 Forward+, after 1,200 warmup frames and 240 measured frames per isolated district:
+The §19 contract is native 1080p at render scale 1.0: the reference RTX 3060 target is a 60 FPS average with 1 percent lows above 45 FPS, while the Iris Xe development floor permits no frame above 33 ms. Render scale is a user setting and is never used to make either target pass.
 
-| District | Average ms | P95 ms | Average FPS | Max draws |
-|---|---:|---:|---:|---:|
-| Shallows | 8.237 | 8.945 | 121.4 | 17 |
-| Terraces | 16.099 | 17.588 | 62.1 | 22 |
-| Ember Quarter | 15.667 | 16.981 | 63.8 | 23 |
-| Cistern | 13.209 | 14.511 | 75.7 | 20 |
-| Spine | 13.433 | 14.584 | 74.4 | 18 |
-| Dark | 12.730 | 13.621 | 78.6 | 4 |
+Profile a real shipped-scene Ember-to-Cistern streaming transition separately from the steady-state harness:
 
-Peak texture memory was 153,780,224 bytes against a 192 MiB cap. Peak video memory was 278,855,680 bytes against a 384 MiB cap. The unoptimized sustained Ember baseline was 24.287 ms, 41.2 FPS, and 652 draws.
+```powershell
+godot --path . --script res://src/tools/terrain_pipeline/profile_lanka_streaming.gd
+```
 
 ## M9 Shipped-Scene Integration
 

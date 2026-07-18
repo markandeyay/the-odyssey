@@ -26,7 +26,7 @@ metadata/m7_visual_system = true
 [node name="DistrictAnchors" type="Node3D" parent="." unique_id=885170063]
 
 [node name="Shallows" type="Marker3D" parent="DistrictAnchors" unique_id=449705099]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 5, -440)
+position = Vector3(0, 5, -440)
 metadata/district_id = &"shallows"
 
 [node name="Player" parent="DistrictAnchors/Shallows" unique_id=1676433880 instance=ExtResource("4_peg2a")]

@@ -237,9 +237,6 @@ func _build_lanka_root() -> Error:
 		var marker: Marker3D = Marker3D.new()
 		marker.name = str(district).to_pascal_case()
 		marker.position = LankaTerrainContract.DISTRICT_ANCHORS[district] as Vector3
-		if district == &"shallows":
-			# Nau faces north into Lanka on spawn; Godot's unrotated forward is south here.
-			marker.rotation.y = PI
 		marker.set_meta(&"district_id", district)
 		anchors.add_child(marker)
 		marker.owner = root

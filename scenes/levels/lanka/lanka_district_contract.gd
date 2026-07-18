@@ -22,12 +22,14 @@ const OPEN_WORLD_DISTRICTS: Dictionary = {
 		"center": Vector3(250.0, 54.0, 80.0),
 		"load_radius_m": 320.0,
 		"unload_radius_m": 430.0,
+		"minimum_y_m": 30.0,
 	},
 	&"cistern": {
 		"path": DISTRICT_ROOT + "/cistern/cistern_district.tscn",
 		"center": Vector3(250.0, 8.0, 80.0),
 		"load_radius_m": 250.0,
 		"unload_radius_m": 350.0,
+		"maximum_y_m": 30.0,
 	},
 }
 
@@ -49,7 +51,10 @@ static func desired_open_world_paths(world_position: Vector3) -> PackedStringArr
 		var district_id: StringName = id_value as StringName
 		var data: Dictionary = OPEN_WORLD_DISTRICTS[district_id] as Dictionary
 		var center: Vector3 = data["center"] as Vector3
-		if horizontal_position.distance_to(Vector2(center.x, center.z)) <= float(data["load_radius_m"]):
+		if (
+			horizontal_position.distance_to(Vector2(center.x, center.z)) <= float(data["load_radius_m"])
+			and _inside_vertical_boundary(data, world_position.y)
+		):
 			paths.append(str(data["path"]))
 	paths.sort()
 	return paths
@@ -61,3 +66,23 @@ static func data_for_path(path: String) -> Dictionary:
 		if str(data.get("path", "")) == path:
 			return data
 	return {}
+
+
+static func should_keep_path_loaded(path: String, world_position: Vector3) -> bool:
+	var data: Dictionary = data_for_path(path)
+	if data.is_empty() or not _inside_vertical_boundary(data, world_position.y):
+		return false
+	var center: Vector3 = data["center"] as Vector3
+	var horizontal_position: Vector2 = Vector2(world_position.x, world_position.z)
+	return (
+		horizontal_position.distance_to(Vector2(center.x, center.z))
+		<= float(data.get("unload_radius_m", 0.0))
+	)
+
+
+static func _inside_vertical_boundary(data: Dictionary, world_y: float) -> bool:
+	if data.has("minimum_y_m") and world_y < float(data["minimum_y_m"]):
+		return false
+	if data.has("maximum_y_m") and world_y >= float(data["maximum_y_m"]):
+		return false
+	return true

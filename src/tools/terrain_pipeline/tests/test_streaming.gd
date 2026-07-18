@@ -51,16 +51,26 @@ func _run() -> void:
 func _wait_for_streaming(
 	lanka: Node3D, desired_paths: PackedStringArray, maximum_loaded: int
 ) -> void:
+	var previous_loaded: int = int(lanka.call("loaded_chunk_count"))
+	var largest_single_frame_addition: int = 0
 	for frame: int in 600:
 		await process_frame
 		var loaded: int = int(lanka.call("loaded_chunk_count"))
 		var pending: int = int(lanka.call("pending_chunk_count"))
+		largest_single_frame_addition = maxi(
+			largest_single_frame_addition, loaded - previous_loaded
+		)
+		previous_loaded = loaded
 		if (
 			pending == 0
 			and loaded >= desired_paths.size()
 			and loaded <= maximum_loaded
 			and _loaded_paths_include(lanka, desired_paths)
 		):
+			_expect(
+				largest_single_frame_addition <= 1,
+				"streaming instantiates at most one terrain chunk per frame"
+			)
 			return
 	_expect(false, "threaded stream operation completes before timeout")
 

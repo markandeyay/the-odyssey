@@ -4,7 +4,8 @@ const TerrainContract: Script = preload("res://scenes/levels/lanka/lanka_terrain
 const DistrictContract: Script = preload("res://scenes/levels/lanka/lanka_district_contract.gd")
 const LOOK_PATH: String = "res://scenes/levels/lanka/look/lanka_look.tscn"
 const REPORT_ROOT: String = "res://.godot/review/m8"
-const TARGET_FRAME_MS: float = 1000.0 / 60.0
+const REFERENCE_AVERAGE_FRAME_MS: float = 1000.0 / 60.0
+const DEVELOPMENT_MAX_FRAME_MS: float = 33.0
 const TEXTURE_MEMORY_BUDGET_BYTES: int = 192 * 1024 * 1024
 const VIDEO_MEMORY_BUDGET_BYTES: int = 384 * 1024 * 1024
 
@@ -33,7 +34,7 @@ var _profiles: Array[Dictionary] = [
 		"center": Vector3(250.0, 54.0, 80.0),
 		"camera": Vector3(445.0, 120.0, -105.0),
 		"target": Vector3(250.0, 63.0, 80.0),
-		"districts": PackedStringArray(["ember_quarter", "cistern"]),
+		"districts": PackedStringArray(["ember_quarter"]),
 		"terrain": true,
 	},
 	{
@@ -41,7 +42,7 @@ var _profiles: Array[Dictionary] = [
 		"center": Vector3(250.0, 8.0, 80.0),
 		"camera": Vector3(205.0, -2.0, 24.0),
 		"target": Vector3(324.0, 12.0, 134.0),
-		"districts": PackedStringArray(["ember_quarter", "cistern"]),
+		"districts": PackedStringArray(["cistern"]),
 		"terrain": true,
 	},
 	{
@@ -73,16 +74,11 @@ func _profile() -> void:
 		_warmup_frames = 1200
 		_sample_frames = 240
 	root.size = Vector2i(1920, 1080)
+	root.scaling_3d_scale = 1.0
 	if user_args.has("occlusion"):
 		root.use_occlusion_culling = true
 	elif user_args.has("no_occlusion"):
 		root.use_occlusion_culling = false
-	if user_args.has("fsr"):
-		root.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR
-	if user_args.has("scale_85"):
-		root.scaling_3d_scale = 0.85
-	elif user_args.has("scale_75"):
-		root.scaling_3d_scale = 0.75
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	Engine.max_fps = 0
 	var stage: Node3D = Node3D.new()
@@ -121,7 +117,8 @@ func _profile() -> void:
 		"scaling_3d_scale": root.scaling_3d_scale,
 		"scaling_3d_mode": int(root.scaling_3d_mode),
 		"occlusion_culling": root.use_occlusion_culling,
-		"target_frame_ms": TARGET_FRAME_MS,
+		"reference_average_frame_ms": REFERENCE_AVERAGE_FRAME_MS,
+		"development_max_frame_ms": DEVELOPMENT_MAX_FRAME_MS,
 		"texture_memory_budget_bytes": TEXTURE_MEMORY_BUDGET_BYTES,
 		"video_memory_budget_bytes": VIDEO_MEMORY_BUDGET_BYTES,
 		"profiles": [],
@@ -155,7 +152,7 @@ func _profile() -> void:
 	var phase: String = "optimized" if "optimized" in OS.get_cmdline_user_args() else "baseline"
 	if selected_profiles.size() == 1:
 		phase += "_" + str(selected_profiles[0]["id"]) + "_isolated"
-	for diagnostic: String in ["sustained", "no_volumetric", "no_vfx", "no_shadows", "occlusion", "no_occlusion", "scale_85", "scale_75", "fsr"]:
+	for diagnostic: String in ["sustained", "no_volumetric", "no_vfx", "no_shadows", "occlusion", "no_occlusion"]:
 		if user_args.has(diagnostic):
 			phase += "_" + diagnostic
 	var output_path: String = REPORT_ROOT + "/lanka_m8_%s.json" % phase
@@ -253,7 +250,8 @@ func _sample_profile(profile_id: String) -> Dictionary:
 		"video_memory_bytes": max_video_memory,
 		"texture_memory_bytes": max_texture_memory,
 		"buffer_memory_bytes": max_buffer_memory,
-		"meets_60_fps_target": average_ms <= TARGET_FRAME_MS,
+		"meets_reference_average_target": average_ms <= REFERENCE_AVERAGE_FRAME_MS,
+		"meets_development_max_frame_target": sorted_times.back() <= DEVELOPMENT_MAX_FRAME_MS,
 		"meets_texture_memory_budget": max_texture_memory <= TEXTURE_MEMORY_BUDGET_BYTES,
 		"meets_video_memory_budget": max_video_memory <= VIDEO_MEMORY_BUDGET_BYTES,
 	}

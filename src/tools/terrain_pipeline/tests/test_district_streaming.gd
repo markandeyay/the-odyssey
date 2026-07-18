@@ -22,7 +22,16 @@ func _run() -> void:
 	root.add_child(target)
 	lanka.call("set_streaming_target", target)
 	await _move_and_expect(lanka, target, DistrictContract.district_center(&"shallows"), 1, "Shallows")
-	await _move_and_expect(lanka, target, DistrictContract.district_center(&"ember_quarter"), 2, "Ember/Cistern")
+	await _move_and_expect(lanka, target, DistrictContract.district_center(&"ember_quarter"), 1, "Ember")
+	_expect(
+		not _loaded_district_paths(lanka).has(DistrictContract.district_path(&"cistern")),
+		"Cistern is not resident in the Ember vertical district"
+	)
+	await _move_and_expect(lanka, target, DistrictContract.district_center(&"cistern"), 1, "Cistern")
+	_expect(
+		not _loaded_district_paths(lanka).has(DistrictContract.district_path(&"ember_quarter")),
+		"Ember is not resident in the Cistern vertical district"
+	)
 	await _move_and_expect(lanka, target, DistrictContract.district_center(&"terraces"), 1, "Terraces")
 	var loaded_paths: PackedStringArray = _loaded_district_paths(lanka)
 	_expect(not loaded_paths.has(DistrictContract.DARK_PATH), "The Dark never joins open-world streaming")
@@ -30,13 +39,15 @@ func _run() -> void:
 	_expect(landmarks.get_child_count() == 1, "exactly one persistent landmark is resident")
 	if landmarks.get_child_count() == 1:
 		_expect(landmarks.get_child(0).scene_file_path == DistrictContract.SPINE_PATH, "full Spine remains persistent")
-	for frame: int in 600:
+	for frame: int in 1200:
 		await process_frame
 		if int(lanka.call("pending_chunk_count")) == 0 and int(lanka.call("pending_district_count")) == 0:
 			break
 	lanka.queue_free()
 	target.queue_free()
-	for frame: int in 4:
+	# Let the render/resource servers retire threaded-load references before the
+	# SceneTree exits; quitting on the first free tick produces false leak noise.
+	for frame: int in 120:
 		await process_frame
 	if _failures == 0:
 		print("PASS: Odyssey M5 threaded district streaming")
@@ -61,9 +72,20 @@ func _move_and_expect(
 			int(lanka.call("pending_district_count")) == 0
 			and int(lanka.call("loaded_district_count")) == expected_count
 			and _includes_all(_loaded_district_paths(lanka), desired)
+			and _desired_districts_ready(lanka, desired)
 		):
 			return
-	_expect(false, "%s district transition completes before timeout" % label)
+	_expect(
+		false,
+		"%s transition timed out: desired=%s loaded=%s pending=%d retiring=%d"
+		% [
+			label,
+			desired,
+			_loaded_district_paths(lanka),
+			int(lanka.call("pending_district_count")),
+			int(lanka.call("retiring_district_count")),
+		]
+	)
 
 
 func _loaded_district_paths(lanka: Node3D) -> PackedStringArray:
@@ -77,6 +99,21 @@ func _loaded_district_paths(lanka: Node3D) -> PackedStringArray:
 func _includes_all(actual: PackedStringArray, expected: PackedStringArray) -> bool:
 	for path: String in expected:
 		if not actual.has(path):
+			return false
+	return true
+
+
+func _desired_districts_ready(lanka: Node3D, desired: PackedStringArray) -> bool:
+	for path: String in desired:
+		var found: bool = false
+		for child: Node in lanka.get_node("StreamedDistricts").get_children():
+			if child.scene_file_path != path:
+				continue
+			found = true
+			if not bool(child.get_meta(&"district_streaming_ready", true)):
+				return false
+			break
+		if not found:
 			return false
 	return true
 
