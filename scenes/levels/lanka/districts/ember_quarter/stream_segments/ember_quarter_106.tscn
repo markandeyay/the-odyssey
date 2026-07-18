@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_kbdar"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_rebmo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqoj2"]
+resource_name = "mat_bone_canvas_grip_solid"
+render_priority = 0
+shader = ExtResource("1_kbdar")
+shader_parameter/detail_albedo = ExtResource("2_rebmo")
+shader_parameter/base_tint = Color(0.58, 0.56, 0.48, 1)
+shader_parameter/accent_tint = Color(0.2552, 0.2464, 0.2112, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_c4ip1"]
+material = SubResource("ShaderMaterial_tqoj2")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7bi50"]
+material = SubResource("ShaderMaterial_tqoj2")
+size = Vector3(1.4, 0.5, 0.6)
+
+[node name="DistrictSegment106" type="Node3D" unique_id=2117634607]
+
+[node name="FragmentProxy_CrewKavi" type="MeshInstance3D" parent="." unique_id=987943683]
+transform = Transform3D(0.9598825, -0.07703127, 0.26961404, 0.13613184, 0.96862835, -0.2079117, -0.24514009, 0.23627385, 0.9402558, 72, 3.35, -82)
+visible = false
+mesh = SubResource("BoxMesh_c4ip1")
+
+[node name="FragmentProxy_CrewLal" type="MeshInstance3D" parent="." unique_id=152724180]
+transform = Transform3D(0.65869814, 0.06826085, 0.74930453, 0.13613184, 0.96862835, -0.2079117, -0.7399898, 0.23895526, 0.6287412, 132, 6.35, 72)
+visible = false
+mesh = SubResource("BoxMesh_7bi50")

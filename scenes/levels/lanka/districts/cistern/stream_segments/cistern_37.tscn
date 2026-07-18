@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_2ib6f"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_r2vkl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihrsk"]
+resource_name = "mat_wet_stone_grip_slick"
+render_priority = 0
+shader = ExtResource("1_2ib6f")
+shader_parameter/detail_albedo = ExtResource("2_r2vkl")
+shader_parameter/base_tint = Color(0.075, 0.115, 0.105, 1)
+shader_parameter/accent_tint = Color(0.033, 0.0506, 0.0462, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.82
+shader_parameter/soot_amount = 0.1
+shader_parameter/ash_amount = 0.08
+shader_parameter/surface_roughness = 0.62
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ho644"]
+material = SubResource("ShaderMaterial_ihrsk")
+
+[sub_resource type="MultiMesh" id="MultiMesh_sh0ei"]
+transform_format = 1
+instance_count = 8
+mesh = SubResource("BoxMesh_ho644")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxe7a"]
+resource_name = "mat_clean_stone_grip_solid"
+render_priority = 0
+shader = ExtResource("1_2ib6f")
+shader_parameter/detail_albedo = ExtResource("2_r2vkl")
+shader_parameter/base_tint = Color(0.31, 0.32, 0.3, 1)
+shader_parameter/accent_tint = Color(0.1364, 0.1408, 0.132, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.08
+shader_parameter/ash_amount = 0.2
+shader_parameter/surface_roughness = 0.94
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4vju8"]
+material = SubResource("ShaderMaterial_jxe7a")
+bottom_radius = 0.54
+height = 1.0
+radial_segments = 16
+rings = 3
+
+[sub_resource type="MultiMesh" id="MultiMesh_m37j7"]
+transform_format = 1
+instance_count = 12
+mesh = SubResource("CylinderMesh_4vju8")
+
+[node name="DistrictSegment37" type="Node3D" unique_id=1223530073]
+
+[node name="GeometryBatch00_WetStoneGripSlick" type="MultiMeshInstance3D" parent="." unique_id=1783932407]
+multimesh = SubResource("MultiMesh_sh0ei")
+metadata/m8_batch_instance_count = 8
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_wet_stone_grip_slick"
+
+[node name="GeometryBatch01_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="." unique_id=437619038]
+multimesh = SubResource("MultiMesh_m37j7")
+metadata/m8_batch_instance_count = 12
+metadata/m8_batch_shape = &"cylinder"
+metadata/m8_batch_material = "mat_clean_stone_grip_solid"

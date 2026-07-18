@@ -1,0 +1,63 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_f02pu"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_8jvys"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcavg"]
+resource_name = "mat_soot_stone_grip_slick"
+render_priority = 0
+shader = ExtResource("1_f02pu")
+shader_parameter/detail_albedo = ExtResource("2_8jvys")
+shader_parameter/base_tint = Color(0.095, 0.095, 0.085, 1)
+shader_parameter/accent_tint = Color(0.0418, 0.0418, 0.0374, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.1
+shader_parameter/soot_amount = 0.78
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_uvq53"]
+material = SubResource("ShaderMaterial_mcavg")
+size = Vector3(22, 2, 250)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xr4l8"]
+size = Vector3(22, 2, 250)
+
+[sub_resource type="BoxMesh" id="BoxMesh_knljq"]
+material = SubResource("ShaderMaterial_mcavg")
+size = Vector3(22, 2, 250)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bd1co"]
+size = Vector3(22, 2, 250)
+
+[node name="DistrictSegment21" type="Node3D" unique_id=2040470466]
+
+[node name="NorthSouthStreet01" type="StaticBody3D" parent="." unique_id=1363925542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="NorthSouthStreet01" unique_id=483403599]
+visible = false
+mesh = SubResource("BoxMesh_uvq53")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="NorthSouthStreet01" unique_id=853960518]
+shape = SubResource("BoxShape3D_xr4l8")
+
+[node name="NorthSouthStreet02" type="StaticBody3D" parent="." unique_id=221582921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, -1, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="NorthSouthStreet02" unique_id=1726178494]
+visible = false
+mesh = SubResource("BoxMesh_knljq")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="NorthSouthStreet02" unique_id=578397203]
+shape = SubResource("BoxShape3D_bd1co")

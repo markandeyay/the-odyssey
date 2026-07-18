@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[node name="DistrictSegment03" type="Node3D" unique_id=641251796]
+
+[node name="FireSource05" type="Marker3D" parent="." unique_id=1853881709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.25, -52.27482)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_05"
+
+[node name="FireSource06" type="Marker3D" parent="." unique_id=781447755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116, 1.25, -23.73545)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_06"

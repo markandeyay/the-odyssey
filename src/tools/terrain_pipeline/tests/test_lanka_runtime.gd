@@ -16,6 +16,7 @@ const PREFAB_PATHS: Dictionary = {
 	"fire_grid": "res://scenes/prefabs/gameplay/fire_grid.tscn",
 	"fragment": "res://scenes/prefabs/gameplay/fragment_pickup.tscn",
 	"heat": "res://scenes/prefabs/gameplay/heat_volume.tscn",
+	"ocean_kill": "res://scenes/prefabs/gameplay/kill_volume.tscn",
 	"setu": "res://scenes/prefabs/gameplay/setu.tscn",
 	"water": "res://scenes/prefabs/gameplay/water_volume.tscn",
 }
@@ -26,6 +27,7 @@ const EXPECTED_BY_DISTRICT: Dictionary = {
 		"component": 1,
 		"district_trigger": 1,
 		"fragment": 4,
+		"ocean_kill": 1,
 		"setu": 1,
 	},
 	"terraces": {
@@ -160,15 +162,13 @@ func _run() -> void:
 	)
 	_assert_district_runtime(terraces, &"terraces")
 
-	# Ember and Cistern deliberately share an x/z streaming center; both are real
-	# shipped scenes loaded by Lanka's normal player-driven streaming path.
 	var ember: Node = await _move_real_player_and_get_district(
 		lanka, player, &"ember_quarter"
 	)
-	var cistern: Node = await _wait_for_district(lanka, DistrictContract.district_path(&"cistern"))
 	_assert_district_runtime(ember, &"ember_quarter")
-	_assert_district_runtime(cistern, &"cistern")
 	_assert_ember_runtime(ember)
+	var cistern: Node = await _move_real_player_and_get_district(lanka, player, &"cistern")
+	_assert_district_runtime(cistern, &"cistern")
 	_assert_cistern_runtime(cistern)
 
 	var spine: Node = lanka.get_node_or_null("PersistentLandmarks/SpineDistrict")
@@ -192,6 +192,7 @@ func _run() -> void:
 	_expect(int(_observed_totals.get("campfire", 0)) == 8, "all 8 shipped campfires are live")
 	_expect(int(_observed_totals.get("district_trigger", 0)) == 6, "all 6 district triggers are live")
 	_expect(int(_observed_totals.get("cairn", 0)) == 8, "all 8 Cairn entrances are live")
+	_expect(int(_observed_totals.get("ocean_kill", 0)) == 1, "the shipped ocean kill volume is live")
 	_expect(int(_observed_totals.get("fragment", 0)) == 20, "all 20 fragment pickups are live")
 
 	if player != null:
@@ -238,7 +239,10 @@ func _wait_for_district(lanka: Node3D, scene_path: String) -> Node:
 	for frame: int in 1200:
 		await process_frame
 		for child: Node in lanka.get_node("StreamedDistricts").get_children():
-			if child.scene_file_path == scene_path:
+			if (
+				child.scene_file_path == scene_path
+				and bool(child.get_meta(&"district_streaming_ready", true))
+			):
 				return child
 	_expect(false, "player-driven streaming loads %s before timeout" % scene_path)
 	return null
@@ -355,6 +359,9 @@ func _assert_component_set() -> void:
 		var scene: Node = packed.instantiate() if packed != null else null
 		if scene == null:
 			continue
+		var segment_loader: Node = scene.get_node_or_null("DistrictSegmentLoader")
+		if segment_loader != null:
+			segment_loader.call("load_all_immediately")
 		for pickup: Node in _nodes_with_metadata(
 			scene, &"m9_prefab_path", str(PREFAB_PATHS["component"])
 		):

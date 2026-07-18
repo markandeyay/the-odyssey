@@ -100,7 +100,12 @@ func _validate_open_world_placements(issues: Array[String]) -> void:
 		if packed == null:
 			issues.append("%s: unable to load M6 placement host" % path)
 			continue
-		roots.append(packed.instantiate() as Node3D)
+		var root: Node3D = packed.instantiate() as Node3D
+		if root != null:
+			var segment_loader: Node = root.get_node_or_null("DistrictSegmentLoader")
+			if segment_loader != null and not bool(segment_loader.call("load_all_immediately")):
+				issues.append("%s: unable to hydrate generated district segments" % path)
+			roots.append(root)
 	var cairn_markers: Array[Marker3D] = _all_sockets(roots, &"cairn_entrance")
 	var fragment_markers: Array[Marker3D] = _all_sockets(roots, &"crew_fragment")
 	var salvage_markers: Array[Marker3D] = _all_sockets(roots, &"salvage_pickup")

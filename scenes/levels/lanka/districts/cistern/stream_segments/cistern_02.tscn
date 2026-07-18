@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[node name="DistrictSegment02" type="Node3D" unique_id=572528140]
+
+[node name="BlindFishHabitat00" type="Marker3D" parent="." unique_id=1145921684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, -18, 38)
+metadata/socket_type = &"ingredient_habitat"
+metadata/spawn_id = &"blind_fish_habitat_00"
+
+[node name="BlindFishHabitat01" type="Marker3D" parent="." unique_id=1775582638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -18, -32)
+metadata/socket_type = &"ingredient_habitat"
+metadata/spawn_id = &"blind_fish_habitat_01"

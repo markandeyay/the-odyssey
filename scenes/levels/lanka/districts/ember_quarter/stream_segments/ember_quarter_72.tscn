@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[node name="DistrictSegment72" type="Node3D" unique_id=1840459103]
+
+[node name="BurntBuilding04" type="Node3D" parent="." unique_id=2012085454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 62)
+
+[node name="BurntBuilding05" type="Node3D" parent="." unique_id=900352225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -62)

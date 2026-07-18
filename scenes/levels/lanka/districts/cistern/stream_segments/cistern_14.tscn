@@ -1,0 +1,73 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_8csvq"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_dvsak"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxe7a"]
+resource_name = "mat_clean_stone_grip_solid"
+render_priority = 0
+shader = ExtResource("1_8csvq")
+shader_parameter/detail_albedo = ExtResource("2_dvsak")
+shader_parameter/base_tint = Color(0.31, 0.32, 0.3, 1)
+shader_parameter/accent_tint = Color(0.1364, 0.1408, 0.132, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.08
+shader_parameter/ash_amount = 0.2
+shader_parameter/surface_roughness = 0.94
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5d2sh"]
+material = SubResource("ShaderMaterial_jxe7a")
+top_radius = 4.2
+bottom_radius = 4.536
+height = 56.0
+radial_segments = 16
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_se5tw"]
+height = 56.0
+radius = 4.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t28gl"]
+material = SubResource("ShaderMaterial_jxe7a")
+top_radius = 4.2
+bottom_radius = 4.536
+height = 56.0
+radial_segments = 16
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s047v"]
+height = 56.0
+radius = 4.2
+
+[node name="DistrictSegment14" type="Node3D" unique_id=1220829593]
+
+[node name="ReservoirColumn01" type="StaticBody3D" parent="." unique_id=173168630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="ReservoirColumn01" unique_id=915593336]
+visible = false
+mesh = SubResource("CylinderMesh_5d2sh")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="ReservoirColumn01" unique_id=1307439353]
+shape = SubResource("CylinderShape3D_se5tw")
+
+[node name="ReservoirColumn02" type="StaticBody3D" parent="." unique_id=1814071076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0, 46)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="ReservoirColumn02" unique_id=221362043]
+visible = false
+mesh = SubResource("CylinderMesh_t28gl")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="ReservoirColumn02" unique_id=809111298]
+shape = SubResource("CylinderShape3D_s047v")

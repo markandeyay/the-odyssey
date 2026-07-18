@@ -1,0 +1,72 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_bp48l"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_bdy16"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgufk"]
+resource_name = "mat_salvage_iron_grip_solid"
+render_priority = 0
+shader = ExtResource("1_bp48l")
+shader_parameter/detail_albedo = ExtResource("2_bdy16")
+shader_parameter/base_tint = Color(0.19, 0.24, 0.23, 1)
+shader_parameter/accent_tint = Color(0.0836, 0.1056, 0.1012, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.18
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.05
+shader_parameter/surface_roughness = 0.5
+shader_parameter/surface_metallic = 0.7
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_v7425"]
+material = SubResource("ShaderMaterial_cgufk")
+
+[sub_resource type="MultiMesh" id="MultiMesh_uwgt8"]
+transform_format = 1
+instance_count = 2
+mesh = SubResource("BoxMesh_v7425")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dp246"]
+resource_name = "mat_unburnt_timber_grip_solid"
+render_priority = 0
+shader = ExtResource("1_bp48l")
+shader_parameter/detail_albedo = ExtResource("2_bdy16")
+shader_parameter/base_tint = Color(0.17, 0.16, 0.12, 1)
+shader_parameter/accent_tint = Color(0.0748, 0.0704, 0.0528, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.22
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.86
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_85usa"]
+material = SubResource("ShaderMaterial_dp246")
+
+[sub_resource type="MultiMesh" id="MultiMesh_6js4e"]
+transform_format = 1
+instance_count = 2
+mesh = SubResource("BoxMesh_85usa")
+
+[node name="DistrictSegment117" type="Node3D" unique_id=1598613358]
+
+[node name="GeometryBatch06_SalvageIronGripSolid" type="MultiMeshInstance3D" parent="." unique_id=1422804321]
+multimesh = SubResource("MultiMesh_uwgt8")
+metadata/m8_batch_instance_count = 2
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_salvage_iron_grip_solid"
+
+[node name="GeometryBatch07_UnburntTimberGripSolid" type="MultiMeshInstance3D" parent="." unique_id=46585374]
+multimesh = SubResource("MultiMesh_6js4e")
+metadata/m8_batch_instance_count = 2
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_unburnt_timber_grip_solid"

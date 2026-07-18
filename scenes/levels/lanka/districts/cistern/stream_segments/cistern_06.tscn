@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/fragment_pickup.tscn" id="1_f3d8k"]
+
+[node name="DistrictSegment06" type="Node3D" unique_id=1035294724]
+
+[node name="CrewFragment_CrewNilan" type="Marker3D" parent="." unique_id=1584898438]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -19, 52)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_nilan"
+metadata/memory_object = "fish hook"
+metadata/memory_text = "Nilan found living fish below a city already dead."
+metadata/district_id = &"cistern"
+
+[node name="FragmentPickup" parent="CrewFragment_CrewNilan" unique_id=1133093190 instance=ExtResource("1_f3d8k")]
+fragment_id = &"crew_nilan"
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
+
+[node name="CrewFragment_CrewOmar" type="Marker3D" parent="." unique_id=121159816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, -12, -24)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_omar"
+metadata/memory_object = "sealed letter"
+metadata/memory_text = "Omar wrote home. The wax bears Nau's mark."
+metadata/district_id = &"cistern"
+
+[node name="FragmentPickup" parent="CrewFragment_CrewOmar" unique_id=2087790896 instance=ExtResource("1_f3d8k")]
+fragment_id = &"crew_omar"
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
+
+[editable path="CrewFragment_CrewNilan/FragmentPickup"]
+[editable path="CrewFragment_CrewOmar/FragmentPickup"]

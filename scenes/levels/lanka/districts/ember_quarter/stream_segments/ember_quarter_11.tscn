@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/fragment_pickup.tscn" id="1_dwlk0"]
+
+[node name="DistrictSegment11" type="Node3D" unique_id=1479635572]
+
+[node name="CrewFragment_CrewIlan" type="Marker3D" parent="." unique_id=275606938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112, 3, -74)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_ilan"
+metadata/memory_object = "melted buckle"
+metadata/memory_text = "Ilan ran into the first fire because he heard someone calling."
+metadata/district_id = &"ember_quarter"
+
+[node name="FragmentPickup" parent="CrewFragment_CrewIlan" unique_id=2119814230 instance=ExtResource("1_dwlk0")]
+fragment_id = &"crew_ilan"
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
+
+[node name="CrewFragment_CrewJaya" type="Marker3D" parent="." unique_id=1279553494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 5, 88)
+metadata/socket_type = &"crew_fragment"
+metadata/fragment_id = &"crew_jaya"
+metadata/memory_object = "blackened bell"
+metadata/memory_text = "Jaya rang the retreat. No one heard it over the roofs."
+metadata/district_id = &"ember_quarter"
+
+[node name="FragmentPickup" parent="CrewFragment_CrewJaya" unique_id=440509057 instance=ExtResource("1_dwlk0")]
+fragment_id = &"crew_jaya"
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
+
+[editable path="CrewFragment_CrewIlan/FragmentPickup"]
+[editable path="CrewFragment_CrewJaya/FragmentPickup"]

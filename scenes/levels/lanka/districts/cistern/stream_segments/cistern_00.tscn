@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/water_volume.tscn" id="1_kiqf8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xb4e1"]
+size = Vector3(182, 16, 142)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_01x86"]
+size = Vector3(42, 12, 42)
+
+[node name="DistrictSegment00" type="Node3D" unique_id=1822392905]
+
+[node name="MainWaterVolume" type="Marker3D" parent="." unique_id=1359065284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+metadata/socket_type = &"water_volume"
+metadata/socket_size_m = Vector3(182, 16, 142)
+metadata/district_id = &"cistern"
+
+[node name="WaterVolume" parent="MainWaterVolume" unique_id=921757695 instance=ExtResource("1_kiqf8")]
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/water_volume.tscn"
+
+[node name="CollisionShape3D" parent="MainWaterVolume/WaterVolume" index="0"]
+shape = SubResource("BoxShape3D_xb4e1")
+
+[node name="WaterCurrent00" type="Marker3D" parent="." unique_id=40556923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, -19, -25)
+metadata/socket_type = &"water_current"
+metadata/socket_size_m = Vector3(42, 12, 42)
+metadata/direction = Vector3(0.98893636, 0, 0.14834046)
+metadata/strength = 5.0
+
+[node name="WaterVolume" parent="WaterCurrent00" unique_id=321722273 instance=ExtResource("1_kiqf8")]
+current = Vector3(4.9446816, 0, 0.7417023)
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/water_volume.tscn"
+
+[node name="CollisionShape3D" parent="WaterCurrent00/WaterVolume" index="0"]
+shape = SubResource("BoxShape3D_01x86")
+
+[editable path="MainWaterVolume/WaterVolume"]
+[editable path="WaterCurrent00/WaterVolume"]

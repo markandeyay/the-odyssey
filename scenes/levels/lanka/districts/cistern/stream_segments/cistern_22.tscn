@@ -1,0 +1,104 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_uc2pm"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_kmts6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxe7a"]
+resource_name = "mat_clean_stone_grip_solid"
+render_priority = 0
+shader = ExtResource("1_uc2pm")
+shader_parameter/detail_albedo = ExtResource("2_kmts6")
+shader_parameter/base_tint = Color(0.31, 0.32, 0.3, 1)
+shader_parameter/accent_tint = Color(0.1364, 0.1408, 0.132, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.08
+shader_parameter/ash_amount = 0.2
+shader_parameter/surface_roughness = 0.94
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2wiac"]
+material = SubResource("ShaderMaterial_jxe7a")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eg7qf"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y8tt0"]
+material = SubResource("ShaderMaterial_jxe7a")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6d5m"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+resource_name = "mat_fire_cracked_stone_grip_crumbling"
+render_priority = 0
+shader = ExtResource("1_uc2pm")
+shader_parameter/detail_albedo = ExtResource("2_kmts6")
+shader_parameter/base_tint = Color(0.2, 0.2, 0.18, 1)
+shader_parameter/accent_tint = Color(0.088, 0.088, 0.0792, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.3
+shader_parameter/ash_amount = 0.18
+shader_parameter/surface_roughness = 0.97
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_u36lh"]
+material = SubResource("ShaderMaterial_h3bn4")
+size = Vector3(8.6, 2, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yt226"]
+size = Vector3(8.6, 2, 2.2)
+
+[node name="DistrictSegment22" type="Node3D" unique_id=834938129]
+
+[node name="CairnDoor_CisternFlameCrossing" type="Node3D" parent="." unique_id=944984891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, -8, -61)
+
+[node name="LeftPillar" type="StaticBody3D" parent="CairnDoor_CisternFlameCrossing" unique_id=1830881547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_CisternFlameCrossing/LeftPillar" unique_id=536634592]
+visible = false
+mesh = SubResource("BoxMesh_2wiac")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_CisternFlameCrossing/LeftPillar" unique_id=1889500562]
+shape = SubResource("BoxShape3D_eg7qf")
+
+[node name="RightPillar" type="StaticBody3D" parent="CairnDoor_CisternFlameCrossing" unique_id=2005486969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_CisternFlameCrossing/RightPillar" unique_id=385629120]
+visible = false
+mesh = SubResource("BoxMesh_y8tt0")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_CisternFlameCrossing/RightPillar" unique_id=1500025905]
+shape = SubResource("BoxShape3D_p6d5m")
+
+[node name="Lintel" type="StaticBody3D" parent="CairnDoor_CisternFlameCrossing" unique_id=413828645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_CisternFlameCrossing/Lintel" unique_id=988588626]
+visible = false
+mesh = SubResource("BoxMesh_u36lh")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_CisternFlameCrossing/Lintel" unique_id=140330655]
+shape = SubResource("BoxShape3D_yt226")

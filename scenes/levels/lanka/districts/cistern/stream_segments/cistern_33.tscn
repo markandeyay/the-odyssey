@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_i2sm7"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_y522e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhf7e"]
+resource_name = "mat_blind_fish_grip_solid"
+render_priority = 0
+shader = ExtResource("1_i2sm7")
+shader_parameter/detail_albedo = ExtResource("2_y522e")
+shader_parameter/base_tint = Color(0.43, 0.5, 0.48, 1)
+shader_parameter/accent_tint = Color(0.1892, 0.22, 0.2112, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.28
+shader_parameter/soot_amount = 0.0
+shader_parameter/ash_amount = 0.03
+shader_parameter/surface_roughness = 0.64
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_30gnc"]
+material = SubResource("ShaderMaterial_bhf7e")
+size = Vector3(0.7, 0.5, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hk14c"]
+material = SubResource("ShaderMaterial_bhf7e")
+size = Vector3(0.7, 0.5, 0.7)
+
+[node name="DistrictSegment33" type="Node3D" unique_id=650200943]
+
+[node name="IngredientProxy_BlindFish01" type="MeshInstance3D" parent="." unique_id=1238683983]
+transform = Transform3D(0.8910065, 0, 0.4539905, 0, 1, 0, -0.4539905, 0, 0.8910065, -65, -17.7, 38)
+visible = false
+mesh = SubResource("BoxMesh_30gnc")
+
+[node name="IngredientProxy_BlindFish02" type="MeshInstance3D" parent="." unique_id=1350033536]
+transform = Transform3D(0.88294756, 0, 0.46947157, 0, 1, 0, -0.46947157, 0, 0.88294756, -23, -17.7, -32)
+visible = false
+mesh = SubResource("BoxMesh_hk14c")

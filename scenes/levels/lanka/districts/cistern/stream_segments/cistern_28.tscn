@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_tijhu"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_x8opd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcavg"]
+resource_name = "mat_soot_stone_grip_slick"
+render_priority = 0
+shader = ExtResource("1_tijhu")
+shader_parameter/detail_albedo = ExtResource("2_x8opd")
+shader_parameter/base_tint = Color(0.095, 0.095, 0.085, 1)
+shader_parameter/accent_tint = Color(0.0418, 0.0418, 0.0374, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.1
+shader_parameter/soot_amount = 0.78
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2pgbn"]
+material = SubResource("ShaderMaterial_mcavg")
+size = Vector3(3, 3, 145)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pqm1u"]
+material = SubResource("ShaderMaterial_mcavg")
+size = Vector3(3, 3, 145)
+
+[node name="DistrictSegment28" type="Node3D" unique_id=1366057376]
+
+[node name="CeilingRib10" type="MeshInstance3D" parent="." unique_id=773385606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 29, 0)
+visible = false
+mesh = SubResource("BoxMesh_2pgbn")
+
+[node name="CeilingRib11" type="MeshInstance3D" parent="." unique_id=940937500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 29, 0)
+visible = false
+mesh = SubResource("BoxMesh_pqm1u")

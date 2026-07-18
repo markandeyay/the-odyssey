@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/campfire.tscn" id="1_f1421"]
+
+[node name="DistrictSegment18" type="Node3D" unique_id=234348838]
+
+[node name="Campfire_CampEmberWest" type="Marker3D" parent="." unique_id=1850772749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 3, -18)
+metadata/socket_type = &"campfire"
+metadata/checkpoint_id = &"camp_ember_west"
+metadata/district_id = &"ember_quarter"
+
+[node name="Campfire" parent="Campfire_CampEmberWest" unique_id=1968168300 instance=ExtResource("1_f1421")]
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/campfire.tscn"
+
+[node name="Campfire_CampEmberEast" type="Marker3D" parent="." unique_id=1848851677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144, 3, 18)
+metadata/socket_type = &"campfire"
+metadata/checkpoint_id = &"camp_ember_east"
+metadata/district_id = &"ember_quarter"
+
+[node name="Campfire" parent="Campfire_CampEmberEast" unique_id=1633841016 instance=ExtResource("1_f1421")]
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/campfire.tscn"
+
+[editable path="Campfire_CampEmberWest/Campfire"]
+[editable path="Campfire_CampEmberEast/Campfire"]

@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/fire_grid.tscn" id="1_nkj7y"]
+
+[node name="DistrictSegment00" type="Node3D" unique_id=1359638147]
+
+[node name="FireGrid" parent="." unique_id=1967777371 instance=ExtResource("1_nkj7y")]
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fire_grid.tscn"
+
+[node name="FireSource00" type="Marker3D" parent="." unique_id=276305552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118, 1.25, -12)
+metadata/socket_type = &"fire_source"
+metadata/spawn_id = &"ember_fire_00"
+
+[editable path="FireGrid"]

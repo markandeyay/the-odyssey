@@ -1,0 +1,72 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_lxnxq"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_oekx1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcavg"]
+resource_name = "mat_soot_stone_grip_slick"
+render_priority = 0
+shader = ExtResource("1_lxnxq")
+shader_parameter/detail_albedo = ExtResource("2_oekx1")
+shader_parameter/base_tint = Color(0.095, 0.095, 0.085, 1)
+shader_parameter/accent_tint = Color(0.0418, 0.0418, 0.0374, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.1
+shader_parameter/soot_amount = 0.78
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1v2nd"]
+material = SubResource("ShaderMaterial_mcavg")
+
+[sub_resource type="MultiMesh" id="MultiMesh_ukvf8"]
+transform_format = 1
+instance_count = 6
+mesh = SubResource("BoxMesh_1v2nd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8cyv"]
+resource_name = "mat_charred_timber_grip_crumbling"
+render_priority = 0
+shader = ExtResource("1_lxnxq")
+shader_parameter/detail_albedo = ExtResource("2_oekx1")
+shader_parameter/base_tint = Color(0.075, 0.072, 0.062, 1)
+shader_parameter/accent_tint = Color(0.033, 0.03168, 0.02728, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.86
+shader_parameter/ash_amount = 0.12
+shader_parameter/surface_roughness = 0.92
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_7q54k"]
+material = SubResource("ShaderMaterial_k8cyv")
+
+[sub_resource type="MultiMesh" id="MultiMesh_6rca4"]
+transform_format = 1
+instance_count = 36
+mesh = SubResource("BoxMesh_7q54k")
+
+[node name="DistrictSegment114" type="Node3D" unique_id=27970524]
+
+[node name="GeometryBatch00_SootStoneGripSlick" type="MultiMeshInstance3D" parent="." unique_id=2123412947]
+multimesh = SubResource("MultiMesh_ukvf8")
+metadata/m8_batch_instance_count = 6
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_soot_stone_grip_slick"
+
+[node name="GeometryBatch01_CharredTimberGripCrumbling" type="MultiMeshInstance3D" parent="." unique_id=506029190]
+multimesh = SubResource("MultiMesh_6rca4")
+metadata/m8_batch_instance_count = 36
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_charred_timber_grip_crumbling"

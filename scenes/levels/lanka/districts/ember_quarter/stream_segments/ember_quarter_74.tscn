@@ -1,0 +1,51 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_smifl"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_ionrl"]
+[ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="3_38by2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8cyv"]
+resource_name = "mat_charred_timber_grip_crumbling"
+render_priority = 0
+shader = ExtResource("1_smifl")
+shader_parameter/detail_albedo = ExtResource("2_ionrl")
+shader_parameter/base_tint = Color(0.075, 0.072, 0.062, 1)
+shader_parameter/accent_tint = Color(0.033, 0.03168, 0.02728, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.86
+shader_parameter/ash_amount = 0.12
+shader_parameter/surface_roughness = 0.92
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_514pt"]
+material = SubResource("ShaderMaterial_k8cyv")
+size = Vector3(4.5, 23, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1xcni"]
+size = Vector3(4.5, 23, 4.5)
+
+[node name="DistrictSegment74" type="Node3D" unique_id=846415301]
+
+[node name="FramePost01" type="StaticBody3D" parent="." unique_id=405314056]
+transform = Transform3D(0.9975641, -0.06975647, 0, 0.06966087, 0.9961969, -0.05233596, 0.0036507717, 0.052208472, 0.9986295, -17, 11.5, 20)
+collision_layer = 1029
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="FramePost01" unique_id=2092515316]
+visible = false
+mesh = SubResource("BoxMesh_514pt")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="FramePost01" unique_id=725353523]
+shape = SubResource("BoxShape3D_1xcni")
+
+[node name="Flammable" type="Node" parent="FramePost01" unique_id=575386088]
+script = ExtResource("3_38by2")
+fuel = 12.0
+size = Vector3(4.5, 23, 4.5)
+metadata/m9_gameplay_type = &"flammable"

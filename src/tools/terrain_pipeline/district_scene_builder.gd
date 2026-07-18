@@ -304,8 +304,16 @@ func add_visibility_notifier(parent: Node3D, aabb: AABB) -> VisibleOnScreenNotif
 
 
 func finish_scene(root: Node3D, path: String) -> Error:
+	prepare_scene(root)
+	return save_prepared_scene(root, path)
+
+
+func prepare_scene(root: Node3D) -> void:
 	_batch_repeatable_geometry(root)
 	_set_owner_recursive(root, root)
+
+
+func save_prepared_scene(root: Node3D, path: String) -> Error:
 	var packed: PackedScene = PackedScene.new()
 	var pack_error: Error = packed.pack(root)
 	if pack_error != OK:

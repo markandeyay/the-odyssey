@@ -1,0 +1,63 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_75vgj"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_rxu6s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihrsk"]
+resource_name = "mat_wet_stone_grip_slick"
+render_priority = 0
+shader = ExtResource("1_75vgj")
+shader_parameter/detail_albedo = ExtResource("2_rxu6s")
+shader_parameter/base_tint = Color(0.075, 0.115, 0.105, 1)
+shader_parameter/accent_tint = Color(0.033, 0.0506, 0.0462, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.82
+shader_parameter/soot_amount = 0.1
+shader_parameter/ash_amount = 0.08
+shader_parameter/surface_roughness = 0.62
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_skf0m"]
+material = SubResource("ShaderMaterial_ihrsk")
+size = Vector3(170, 2, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v4aqx"]
+size = Vector3(170, 2, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0p0ph"]
+material = SubResource("ShaderMaterial_ihrsk")
+size = Vector3(170, 2, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgtke"]
+size = Vector3(170, 2, 8)
+
+[node name="DistrictSegment20" type="Node3D" unique_id=1337726371]
+
+[node name="SlickWalkway01" type="StaticBody3D" parent="." unique_id=379567464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="SlickWalkway01" unique_id=353348561]
+visible = false
+mesh = SubResource("BoxMesh_skf0m")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="SlickWalkway01" unique_id=980391389]
+shape = SubResource("BoxShape3D_v4aqx")
+
+[node name="SlickWalkway02" type="StaticBody3D" parent="." unique_id=676023915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 48)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="SlickWalkway02" unique_id=372726246]
+visible = false
+mesh = SubResource("BoxMesh_0p0ph")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="SlickWalkway02" unique_id=2130881703]
+shape = SubResource("BoxShape3D_dgtke")

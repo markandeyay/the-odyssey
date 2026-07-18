@@ -1,0 +1,51 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_08cqv"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_v3rui"]
+[ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="3_sybp3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+resource_name = "mat_fire_cracked_stone_grip_crumbling"
+render_priority = 0
+shader = ExtResource("1_08cqv")
+shader_parameter/detail_albedo = ExtResource("2_v3rui")
+shader_parameter/base_tint = Color(0.2, 0.2, 0.18, 1)
+shader_parameter/accent_tint = Color(0.088, 0.088, 0.0792, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.3
+shader_parameter/ash_amount = 0.18
+shader_parameter/surface_roughness = 0.97
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_kr4i4"]
+material = SubResource("ShaderMaterial_h3bn4")
+size = Vector3(11.333333, 2.5, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ylp5"]
+size = Vector3(11.333333, 2.5, 15)
+
+[node name="DistrictSegment57" type="Node3D" unique_id=511825760]
+
+[node name="CollapsedRoof11" type="StaticBody3D" parent="." unique_id=1571039371]
+transform = Transform3D(0.8890986, -0.16012943, 0.4287917, 0.26961404, 0.9402558, -0.2079117, -0.3698811, 0.30046225, 0.87915325, 3.2159379, 13.840662, 6.5936494)
+collision_layer = 1029
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof11" unique_id=31759544]
+visible = false
+mesh = SubResource("BoxMesh_kr4i4")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof11" unique_id=68340277]
+shape = SubResource("BoxShape3D_8ylp5")
+
+[node name="Flammable" type="Node" parent="CollapsedRoof11" unique_id=985419623]
+script = ExtResource("3_sybp3")
+fuel = 20.0
+size = Vector3(11.333333, 2.5, 15)
+metadata/m9_gameplay_type = &"flammable"

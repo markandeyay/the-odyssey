@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/component_pickup.tscn" id="1_tgnsl"]
+
+[node name="DistrictSegment112" type="Node3D" unique_id=1540413438]
+
+[node name="WestEntry" type="Marker3D" parent="." unique_id=1917811981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145, 3, -92)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"west_entry"
+
+[node name="SmolderTrial" type="Marker3D" parent="." unique_id=1272722435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 4, 20)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"smolder"
+
+[node name="ComponentPickup_Mast" parent="SmolderTrial" unique_id=952933957 instance=ExtResource("1_tgnsl")]
+component_id = &"mast"
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/component_pickup.tscn"
+
+[editable path="SmolderTrial/ComponentPickup_Mast"]

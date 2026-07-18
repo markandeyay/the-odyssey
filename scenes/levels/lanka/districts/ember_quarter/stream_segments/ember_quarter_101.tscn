@@ -1,0 +1,149 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_7wadc"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_6yiub"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_fire.gdshader" id="3_vsyns"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_smoke.gdshader" id="4_h443x"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_heat_haze.gdshader" id="5_iblet"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1jph"]
+resource_name = "mat_ember_stone_grip_hot"
+render_priority = 0
+shader = ExtResource("1_7wadc")
+shader_parameter/detail_albedo = ExtResource("2_6yiub")
+shader_parameter/base_tint = Color(0.2, 0.055, 0.012, 1)
+shader_parameter/accent_tint = Color(0.088, 0.0242, 0.00528, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.45
+shader_parameter/ash_amount = 0.05
+shader_parameter/surface_roughness = 0.78
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 2.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_qkq2i"]
+material = SubResource("ShaderMaterial_w1jph")
+size = Vector3(24, 0.35, 2.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ujnu"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_vsyns")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_02uq0"]
+material = SubResource("ShaderMaterial_1ujnu")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_reaou"]
+resource_name = "mat_lanka_fire_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("3_vsyns")
+shader_parameter/ember_color = null
+shader_parameter/flame_color = null
+shader_parameter/motion_offset = 1.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_hw5qs"]
+material = SubResource("ShaderMaterial_reaou")
+size = Vector2(2.7, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cth8r"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_h443x")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_rkytj"]
+material = SubResource("ShaderMaterial_cth8r")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3n7h5"]
+resource_name = "mat_lanka_smoke_visual_grip_solid"
+render_priority = 0
+shader = ExtResource("4_h443x")
+shader_parameter/smoke_color = null
+shader_parameter/motion_offset = 0.43
+
+[sub_resource type="QuadMesh" id="QuadMesh_tq31f"]
+material = SubResource("ShaderMaterial_3n7h5")
+size = Vector2(5.6, 8.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syf54"]
+resource_name = "mat_lanka_heat_haze_visual_grip_hot"
+render_priority = 0
+shader = ExtResource("5_iblet")
+shader_parameter/distortion_strength = null
+shader_parameter/motion_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_d1v8k"]
+material = SubResource("ShaderMaterial_syf54")
+size = Vector2(5, 5.2)
+
+[node name="DistrictSegment101" type="Node3D" unique_id=1971033184]
+
+[node name="EmberCrack03" type="MeshInstance3D" parent="." unique_id=14390129]
+transform = Transform3D(0.62932044, 0, 0.7771459, 0, 1, 0, -0.7771459, 0, 0.62932044, -1, 0.25, -6.07296)
+visible = false
+mesh = SubResource("BoxMesh_qkq2i")
+
+[node name="EmberFireVisual03" type="Node3D" parent="." unique_id=314100121]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -1, 0.25, -6.07296)
+metadata/visual_only = true
+metadata/gameplay_behavior = "SYSTEMS_owned"
+metadata/vfx_profile = "fire_smoke_heat"
+
+[node name="FlamePlane00" type="MeshInstance3D" parent="EmberFireVisual03" unique_id=813025970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_02uq0")
+
+[node name="FlamePlane01" type="MeshInstance3D" parent="EmberFireVisual03" unique_id=307462362]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 8.0
+mesh = SubResource("QuadMesh_hw5qs")
+
+[node name="SmokePlane00" type="MeshInstance3D" parent="EmberFireVisual03" unique_id=1315736003]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_rkytj")
+
+[node name="SmokePlane01" type="MeshInstance3D" parent="EmberFireVisual03" unique_id=239227383]
+transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
+cast_shadow = 0
+visibility_range_end = 130.0
+visibility_range_end_margin = 12.0
+mesh = SubResource("QuadMesh_tq31f")
+
+[node name="HeatHaze" type="MeshInstance3D" parent="EmberFireVisual03" unique_id=1676301240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+cast_shadow = 0
+visibility_range_end = 65.0
+visibility_range_end_margin = 6.0
+mesh = SubResource("QuadMesh_d1v8k")
+
+[node name="FireLight" type="OmniLight3D" parent="EmberFireVisual03" unique_id=1932622243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_color = Color(1, 0.28, 0.045, 1)
+light_energy = 4.2
+light_volumetric_fog_energy = 1.45
+distance_fade_enabled = true
+distance_fade_begin = 36.0
+distance_fade_shadow = 28.0
+distance_fade_length = 18.0
+omni_range = 15.0
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="EmberFireVisual03" unique_id=564895368]
+aabb = AABB(-4, 0, -4, 8, 13, 8)

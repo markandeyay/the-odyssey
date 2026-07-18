@@ -6,6 +6,10 @@ func _ready() -> void:
 
 
 func _activate_authored_fires() -> void:
+	while not bool(get_meta(&"district_streaming_ready", true)):
+		if bool(get_meta(&"district_streaming_failed", false)):
+			return
+		await get_tree().process_frame
 	await get_tree().physics_frame
 	var fire_grid: Node = get_node_or_null("GameplaySockets/FireGrid")
 	var sockets: Node = get_node_or_null("GameplaySockets")

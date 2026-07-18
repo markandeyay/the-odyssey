@@ -225,4 +225,8 @@ func _instantiate_scene(path: String, issues: Array[String]) -> Node:
 	if packed == null:
 		issues.append("%s: unable to load scene" % path)
 		return null
-	return packed.instantiate()
+	var instance: Node = packed.instantiate()
+	var segment_loader: Node = instance.get_node_or_null("DistrictSegmentLoader")
+	if segment_loader != null and not bool(segment_loader.call("load_all_immediately")):
+		issues.append("%s: unable to hydrate generated district segments" % path)
+	return instance

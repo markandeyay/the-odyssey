@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/heat_volume.tscn" id="1_5fdmc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pycwt"]
+size = Vector3(250, 20, 220)
+
+[node name="DistrictSegment05" type="Node3D" unique_id=1699718292]
+
+[node name="Updraft02" type="Marker3D" parent="." unique_id=1771099820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 2, -72)
+metadata/socket_type = &"updraft_volume"
+metadata/socket_size_m = Vector3(18, 55, 18)
+metadata/direction = Vector3(0, 1, 0)
+metadata/strength = 18.0
+
+[node name="HeatLayer00" type="Marker3D" parent="." unique_id=594552719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 6, 0)
+metadata/socket_type = &"heat_volume"
+metadata/socket_size_m = Vector3(250, 20, 220)
+metadata/strength = 1.0
+
+[node name="HeatVolume" parent="HeatLayer00" unique_id=1432963277 instance=ExtResource("1_5fdmc")]
+damage_per_second = 1.0
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/heat_volume.tscn"
+
+[node name="CollisionShape3D" parent="HeatLayer00/HeatVolume" index="0"]
+shape = SubResource("BoxShape3D_pycwt")
+
+[editable path="HeatLayer00/HeatVolume"]

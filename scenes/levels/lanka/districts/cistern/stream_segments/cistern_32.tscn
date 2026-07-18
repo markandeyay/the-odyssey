@@ -1,0 +1,62 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_xsiuw"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_e7jvk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgufk"]
+resource_name = "mat_salvage_iron_grip_solid"
+render_priority = 0
+shader = ExtResource("1_xsiuw")
+shader_parameter/detail_albedo = ExtResource("2_e7jvk")
+shader_parameter/base_tint = Color(0.19, 0.24, 0.23, 1)
+shader_parameter/accent_tint = Color(0.0836, 0.1056, 0.1012, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.18
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.05
+shader_parameter/surface_roughness = 0.5
+shader_parameter/surface_metallic = 0.7
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_vafne"]
+material = SubResource("ShaderMaterial_cgufk")
+size = Vector3(2.6, 0.8, 1.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqoj2"]
+resource_name = "mat_bone_canvas_grip_solid"
+render_priority = 0
+shader = ExtResource("1_xsiuw")
+shader_parameter/detail_albedo = ExtResource("2_e7jvk")
+shader_parameter/base_tint = Color(0.58, 0.56, 0.48, 1)
+shader_parameter/accent_tint = Color(0.2552, 0.2464, 0.2112, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_6t12i"]
+material = SubResource("ShaderMaterial_tqoj2")
+size = Vector3(2.6, 0.8, 1.4)
+
+[node name="DistrictSegment32" type="Node3D" unique_id=1037458957]
+
+[node name="SalvageProxy_SalvageIron06" type="MeshInstance3D" parent="." unique_id=7481193]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, 62, -17.5, -46)
+visible = false
+mesh = SubResource("BoxMesh_vafne")
+
+[node name="SalvageProxy_SalvageCanvas04" type="MeshInstance3D" parent="." unique_id=48388390]
+transform = Transform3D(-0.8290375, 0, 0.559193, 0, 1, 0, -0.559193, 0, -0.8290375, 22, -11.5, 58)
+visible = false
+mesh = SubResource("BoxMesh_6t12i")

@@ -1,0 +1,164 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_6wqqu"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_6chce"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxe7a"]
+resource_name = "mat_clean_stone_grip_solid"
+render_priority = 0
+shader = ExtResource("1_6wqqu")
+shader_parameter/detail_albedo = ExtResource("2_6chce")
+shader_parameter/base_tint = Color(0.31, 0.32, 0.3, 1)
+shader_parameter/accent_tint = Color(0.1364, 0.1408, 0.132, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.08
+shader_parameter/ash_amount = 0.2
+shader_parameter/surface_roughness = 0.94
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_wil1l"]
+material = SubResource("ShaderMaterial_jxe7a")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uess5"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3dk5v"]
+material = SubResource("ShaderMaterial_jxe7a")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yeegw"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+resource_name = "mat_fire_cracked_stone_grip_crumbling"
+render_priority = 0
+shader = ExtResource("1_6wqqu")
+shader_parameter/detail_albedo = ExtResource("2_6chce")
+shader_parameter/base_tint = Color(0.2, 0.2, 0.18, 1)
+shader_parameter/accent_tint = Color(0.088, 0.088, 0.0792, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.3
+shader_parameter/ash_amount = 0.18
+shader_parameter/surface_roughness = 0.97
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ym5gb"]
+material = SubResource("ShaderMaterial_h3bn4")
+size = Vector3(8.6, 2, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qo6t"]
+size = Vector3(8.6, 2, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gd3ro"]
+material = SubResource("ShaderMaterial_jxe7a")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vvnw3"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3rpci"]
+material = SubResource("ShaderMaterial_jxe7a")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxixv"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qf3wk"]
+material = SubResource("ShaderMaterial_h3bn4")
+size = Vector3(8.6, 2, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ngyg"]
+size = Vector3(8.6, 2, 2.2)
+
+[node name="DistrictSegment97" type="Node3D" unique_id=1269409008]
+
+[node name="CairnDoor_EmberFuelLine" type="Node3D" parent="." unique_id=1076940258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 2, 112)
+
+[node name="LeftPillar" type="StaticBody3D" parent="CairnDoor_EmberFuelLine" unique_id=1855634154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_EmberFuelLine/LeftPillar" unique_id=1343665296]
+visible = false
+mesh = SubResource("BoxMesh_wil1l")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_EmberFuelLine/LeftPillar" unique_id=1619836014]
+shape = SubResource("BoxShape3D_uess5")
+
+[node name="RightPillar" type="StaticBody3D" parent="CairnDoor_EmberFuelLine" unique_id=1151868197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_EmberFuelLine/RightPillar" unique_id=858004651]
+visible = false
+mesh = SubResource("BoxMesh_3dk5v")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_EmberFuelLine/RightPillar" unique_id=1769916010]
+shape = SubResource("BoxShape3D_yeegw")
+
+[node name="Lintel" type="StaticBody3D" parent="CairnDoor_EmberFuelLine" unique_id=1939617573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_EmberFuelLine/Lintel" unique_id=2009703695]
+visible = false
+mesh = SubResource("BoxMesh_ym5gb")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_EmberFuelLine/Lintel" unique_id=867455947]
+shape = SubResource("BoxShape3D_3qo6t")
+
+[node name="CairnDoor_EmberUpdraftCrossing" type="Node3D" parent="." unique_id=811393440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146, 3, -108)
+
+[node name="LeftPillar" type="StaticBody3D" parent="CairnDoor_EmberUpdraftCrossing" unique_id=1880555510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_EmberUpdraftCrossing/LeftPillar" unique_id=332028779]
+visible = false
+mesh = SubResource("BoxMesh_gd3ro")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_EmberUpdraftCrossing/LeftPillar" unique_id=291463547]
+shape = SubResource("BoxShape3D_vvnw3")
+
+[node name="RightPillar" type="StaticBody3D" parent="CairnDoor_EmberUpdraftCrossing" unique_id=1029557699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_EmberUpdraftCrossing/RightPillar" unique_id=152600066]
+visible = false
+mesh = SubResource("BoxMesh_3rpci")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_EmberUpdraftCrossing/RightPillar" unique_id=931008071]
+shape = SubResource("BoxShape3D_vxixv")
+
+[node name="Lintel" type="StaticBody3D" parent="CairnDoor_EmberUpdraftCrossing" unique_id=1493007921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_EmberUpdraftCrossing/Lintel" unique_id=1286810890]
+visible = false
+mesh = SubResource("BoxMesh_qf3wk")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_EmberUpdraftCrossing/Lintel" unique_id=942543402]
+shape = SubResource("BoxShape3D_2ngyg")

@@ -4,7 +4,12 @@ const BuilderScript: Script = preload("res://src/tools/terrain_pipeline/district
 const DistrictContract: Script = preload("res://scenes/levels/lanka/lanka_district_contract.gd")
 const ContentContract: Script = preload("res://scenes/levels/lanka/lanka_content_contract.gd")
 const EmberRuntimeScript: Script = preload("res://scenes/levels/lanka/districts/ember_quarter/ember_quarter_runtime.gd")
+const DistrictSegmentLoaderScript: Script = preload("res://scenes/levels/lanka/district_segment_loader.gd")
 const FLAMMABLE_SCRIPT_PATH: String = "res://src/world/fire/flammable.gd"
+const SEGMENT_BATCH_SIZE: int = 2
+const SEGMENT_CONTAINER_NAMES: Array[String] = [
+	"GameplaySockets", "WorldGeometry", "Dressing", "RouteMarkers", "M8RenderBatches",
+]
 
 const PREFAB_PATHS: Dictionary = {
 	&"campfire": "res://scenes/prefabs/gameplay/campfire.tscn",
@@ -13,6 +18,7 @@ const PREFAB_PATHS: Dictionary = {
 	&"district_trigger": "res://scenes/prefabs/gameplay/district_trigger.tscn",
 	&"drowned_spawn": "res://scenes/prefabs/gameplay/drowned.tscn",
 	&"heat_volume": "res://scenes/prefabs/gameplay/heat_volume.tscn",
+	&"ocean_kill_volume": "res://scenes/prefabs/gameplay/kill_volume.tscn",
 	&"water_current": "res://scenes/prefabs/gameplay/water_volume.tscn",
 	&"water_volume": "res://scenes/prefabs/gameplay/water_volume.tscn",
 }
@@ -115,7 +121,7 @@ func _build_shallows() -> Error:
 	_builder.add_static_box(build_site, "SlipwayRight", Vector3(14.0, 0.0, 0.0), Vector3(4.0, 2.0, 52.0), _materials[&"clean_stone"], true)
 	_builder.add_static_box(build_site, "AssemblyPlinth", Vector3(0.0, 2.0, 18.0), Vector3(38.0, 4.0, 22.0), _materials[&"clean_stone"], true)
 	_builder.add_marker(
-		sockets, "OceanKillVolume", Vector3(0.0, -10.0, -275.0), &"ocean_kill_volume",
+		sockets, "OceanKillVolume", Vector3(0.0, -15.0, -275.0), &"ocean_kill_volume",
 		{&"socket_size_m": Vector3(1250.0, 24.0, 520.0), &"district_id": &"shallows"}
 	)
 	_builder.add_marker(
@@ -281,7 +287,9 @@ func _build_ember_quarter() -> Error:
 	_add_m6_content(root, &"ember_quarter")
 	root.set_script(EmberRuntimeScript)
 	_add_m9_gameplay(root, &"ember_quarter")
-	return _save_and_free(root, DistrictContract.district_path(&"ember_quarter"))
+	return _save_segmented_and_free(
+		root, DistrictContract.district_path(&"ember_quarter"), &"ember_quarter"
+	)
 
 
 func _build_cistern() -> Error:
@@ -366,7 +374,7 @@ func _build_cistern() -> Error:
 	_builder.add_visibility_notifier(geometry, AABB(Vector3(-100.0, -32.0, -80.0), Vector3(200.0, 100.0, 160.0)))
 	_add_m6_content(root, &"cistern")
 	_add_m9_gameplay(root, &"cistern")
-	return _save_and_free(root, DistrictContract.district_path(&"cistern"))
+	return _save_segmented_and_free(root, DistrictContract.district_path(&"cistern"), &"cistern")
 
 
 func _build_spine() -> Error:
@@ -506,6 +514,8 @@ func _add_m9_gameplay(root: Node3D, district_id: StringName) -> void:
 			&"heat_volume":
 				_set_required_property(instance, &"damage_per_second", float(socket.get_meta(&"strength", 1.0)))
 				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
+			&"ocean_kill_volume":
+				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
 			&"water_current":
 				var direction: Vector3 = socket.get_meta(&"direction", Vector3.ZERO) as Vector3
 				var strength: float = float(socket.get_meta(&"strength", 0.0))
@@ -586,7 +596,7 @@ func _add_ember_flammables(root: Node3D) -> void:
 			var flammable: Node = Node.new()
 			flammable.name = "Flammable"
 			flammable.set_script(load(FLAMMABLE_SCRIPT_PATH) as Script)
-			flammable.set(&"fuel", 20.0 if prop.name == &"CollapsedRoof" else 12.0)
+			flammable.set(&"fuel", 20.0 if prop.name.begins_with("CollapsedRoof") else 12.0)
 			flammable.set(&"size", size)
 			flammable.set(&"mobile", false)
 			flammable.set_meta(&"m9_gameplay_type", &"flammable")
@@ -717,6 +727,8 @@ func _add_m6_content(root: Node3D, district_id: StringName) -> void:
 			sockets, "Campfire_" + str(checkpoint_id).to_pascal_case(), position, &"campfire",
 			{&"checkpoint_id": checkpoint_id, &"district_id": district_id}
 		)
+		if ResourceLoader.exists(str(PREFAB_PATHS[&"campfire"])):
+			continue
 		var proxy: Node3D = Node3D.new()
 		proxy.name = "CampfireProxy_" + str(checkpoint_id).to_pascal_case()
 		proxy.position = position
@@ -804,10 +816,167 @@ func _add_burnt_building(parent: Node3D, node_name: String, position: Vector3, h
 			)
 	_builder.add_static_box(building, "NorthBeam", Vector3(0.0, height - 3.0, -depth * 0.5), Vector3(width + 5.0, 4.0, 4.0), _materials[&"charred_timber"], true, Vector3(0.0, 0.0, float(variant % 3) * 5.0))
 	_builder.add_static_box(building, "SouthBeam", Vector3(0.0, height - 5.0, depth * 0.5), Vector3(width + 5.0, 4.0, 4.0), _materials[&"charred_timber"], true, Vector3(0.0, 0.0, -float((variant + 1) % 3) * 6.0))
-	_builder.add_static_box(building, "CollapsedRoof", Vector3(0.0, height * 0.55, 0.0), Vector3(width, 2.5, depth), _materials[&"cracked_stone"], true, Vector3(8.0 + float(variant) * 2.0, float(variant * 13), 16.0))
+	# Roofs are separate authored props rather than one huge FireGrid footprint.
+	# Each tile registers on its own streamed frame, keeping spread behavior while
+	# avoiding a single thousands-of-cells registration spike.
+	var roof_rotation: Vector3 = Vector3(
+		8.0 + float(variant) * 2.0, float(variant * 13), 16.0
+	)
+	var roof_basis: Basis = Basis.from_euler(Vector3(
+		deg_to_rad(roof_rotation.x), deg_to_rad(roof_rotation.y), deg_to_rad(roof_rotation.z)
+	))
+	var roof_tile_size: Vector3 = Vector3(width / 3.0, 2.5, depth / 2.0)
+	for roof_x: int in 3:
+		for roof_z: int in 2:
+			var local_offset: Vector3 = Vector3(
+				(float(roof_x) - 1.0) * roof_tile_size.x,
+				0.0,
+				(float(roof_z) - 0.5) * roof_tile_size.z
+			)
+			_builder.add_static_box(
+				building,
+				"CollapsedRoof%d%d" % [roof_x, roof_z],
+				Vector3(0.0, height * 0.55, 0.0) + roof_basis * local_offset,
+				roof_tile_size,
+				_materials[&"cracked_stone"],
+				true,
+				roof_rotation
+			)
 
 
 func _save_and_free(root: Node3D, path: String) -> Error:
 	var save_error: Error = _builder.finish_scene(root, path)
 	root.free()
 	return save_error
+
+
+func _save_segmented_and_free(
+	root: Node3D, path: String, district_id: StringName
+) -> Error:
+	_builder.prepare_scene(root)
+	var segment_paths: PackedStringArray = PackedStringArray()
+	var parent_paths: Array[NodePath] = []
+	var segment_root_path: String = path.get_base_dir() + "/stream_segments"
+	var segment_index: int = 0
+	for container_name: String in SEGMENT_CONTAINER_NAMES:
+		var container: Node = root.get_node_or_null(container_name)
+		if container == null:
+			continue
+		var children: Array[Node] = []
+		for child: Node in container.get_children():
+			# Occlusion resources remain in the lightweight host. Creating their
+			# renderer RIDs from worker-loaded segments is unsafe on D3D12.
+			if child is OccluderInstance3D or child is VisibleOnScreenNotifier3D:
+				continue
+			children.append(child)
+		if container_name == "GameplaySockets":
+			children.sort_custom(_gameplay_segment_before)
+		var batch_start: int = 0
+		while batch_start < children.size():
+			var segment: Node3D = Node3D.new()
+			segment.name = "DistrictSegment%02d" % segment_index
+			var nested_units: Array[Dictionary] = []
+			var batch_end: int = mini(batch_start + SEGMENT_BATCH_SIZE, children.size())
+			for child_index: int in range(batch_start, batch_end):
+				var child: Node = children[child_index]
+				if (
+					district_id == &"ember_quarter"
+					and container_name == "WorldGeometry"
+					and child.name.begins_with("BurntBuilding")
+				):
+					for nested_child: Node in child.get_children():
+						var nested_owned: Array[Node] = _nodes_owned_by(nested_child, root)
+						for owned_node: Node in nested_owned:
+							owned_node.owner = null
+						child.remove_child(nested_child)
+						nested_units.append({
+							"node": nested_child,
+							"owned": nested_owned,
+							"parent": NodePath("../WorldGeometry/" + str(child.name)),
+						})
+				var originally_owned: Array[Node] = _nodes_owned_by(child, root)
+				for owned_node: Node in originally_owned:
+					owned_node.owner = null
+				container.remove_child(child)
+				segment.add_child(child)
+				for owned_node: Node in originally_owned:
+					owned_node.owner = segment
+			var segment_error: Error = _write_segment(
+				segment, segment_root_path, district_id, segment_index,
+				NodePath("../" + container_name), segment_paths, parent_paths
+			)
+			if segment_error != OK:
+				root.free()
+				return segment_error
+			segment_index += 1
+			for nested_unit: Dictionary in nested_units:
+				var nested_segment: Node3D = Node3D.new()
+				nested_segment.name = "DistrictSegment%02d" % segment_index
+				var nested_node: Node = nested_unit["node"] as Node
+				nested_segment.add_child(nested_node)
+				for owned_node: Node in nested_unit["owned"] as Array[Node]:
+					owned_node.owner = nested_segment
+				segment_error = _write_segment(
+					nested_segment, segment_root_path, district_id, segment_index,
+					nested_unit["parent"] as NodePath, segment_paths, parent_paths
+				)
+				if segment_error != OK:
+					root.free()
+					return segment_error
+				segment_index += 1
+			batch_start = batch_end
+
+	var loader: Node = Node.new()
+	loader.name = "DistrictSegmentLoader"
+	loader.set_script(DistrictSegmentLoaderScript)
+	loader.set(&"segment_paths", segment_paths)
+	loader.set(&"segment_parent_paths", parent_paths)
+	root.add_child(loader)
+	loader.owner = root
+	root.set_meta(&"district_streaming_ready", false)
+	var save_error: Error = _builder.save_prepared_scene(root, path)
+	root.free()
+	return save_error
+
+
+func _nodes_owned_by(node: Node, scene_owner: Node) -> Array[Node]:
+	var owned: Array[Node] = []
+	if node.owner == scene_owner:
+		owned.append(node)
+	for child: Node in node.get_children():
+		owned.append_array(_nodes_owned_by(child, scene_owner))
+	return owned
+
+
+func _write_segment(
+	segment: Node3D,
+	segment_root_path: String,
+	district_id: StringName,
+	segment_index: int,
+	parent_path: NodePath,
+	segment_paths: PackedStringArray,
+	parent_paths: Array[NodePath]
+) -> Error:
+	var segment_path: String = "%s/%s_%02d.tscn" % [
+		segment_root_path, district_id, segment_index,
+	]
+	var packed: PackedScene = PackedScene.new()
+	var pack_error: Error = packed.pack(segment)
+	if pack_error != OK:
+		segment.free()
+		return pack_error
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(segment_root_path))
+	var segment_error: Error = ResourceSaver.save(packed, segment_path)
+	segment.free()
+	if segment_error == OK:
+		segment_paths.append(segment_path)
+		parent_paths.append(parent_path)
+	return segment_error
+
+
+func _gameplay_segment_before(left: Node, right: Node) -> bool:
+	if left.name == &"FireGrid":
+		return true
+	if right.name == &"FireGrid":
+		return false
+	return left.get_index() < right.get_index()

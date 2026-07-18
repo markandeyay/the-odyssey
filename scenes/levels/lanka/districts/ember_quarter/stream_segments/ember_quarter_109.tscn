@@ -1,0 +1,62 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_tiyne"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_8rysk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqoj2"]
+resource_name = "mat_bone_canvas_grip_solid"
+render_priority = 0
+shader = ExtResource("1_tiyne")
+shader_parameter/detail_albedo = ExtResource("2_8rysk")
+shader_parameter/base_tint = Color(0.58, 0.56, 0.48, 1)
+shader_parameter/accent_tint = Color(0.2552, 0.2464, 0.2112, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_w5d1x"]
+material = SubResource("ShaderMaterial_tqoj2")
+size = Vector3(2.6, 0.8, 1.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqgfr"]
+resource_name = "mat_charwood_fruit_grip_solid"
+render_priority = 0
+shader = ExtResource("1_tiyne")
+shader_parameter/detail_albedo = ExtResource("2_8rysk")
+shader_parameter/base_tint = Color(0.34, 0.075, 0.012, 1)
+shader_parameter/accent_tint = Color(0.1496, 0.033, 0.00528, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.05
+shader_parameter/surface_roughness = 0.76
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.65
+
+[sub_resource type="BoxMesh" id="BoxMesh_heh8l"]
+material = SubResource("ShaderMaterial_lqgfr")
+size = Vector3(0.7, 0.5, 0.7)
+
+[node name="DistrictSegment109" type="Node3D" unique_id=1282144279]
+
+[node name="SalvageProxy_SalvageCanvas03" type="MeshInstance3D" parent="." unique_id=1618651010]
+transform = Transform3D(-0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, -0.81915206, 26, 4.5, 66)
+visible = false
+mesh = SubResource("BoxMesh_w5d1x")
+
+[node name="IngredientProxy_Charwood01" type="MeshInstance3D" parent="." unique_id=355013298]
+transform = Transform3D(0.034899496, 0, 0.99939084, 0, 1, 0, -0.99939084, 0, 0.034899496, -57, 2.3, -68)
+visible = false
+mesh = SubResource("BoxMesh_heh8l")

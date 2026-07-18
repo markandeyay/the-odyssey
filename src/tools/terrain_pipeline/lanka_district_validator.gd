@@ -37,6 +37,9 @@ func _validate_district(district_id: StringName, issues: Array[String]) -> void:
 	if root == null:
 		issues.append("%s: district root must be Node3D" % path)
 		return
+	var segment_loader: Node = root.get_node_or_null("DistrictSegmentLoader")
+	if segment_loader != null and not bool(segment_loader.call("load_all_immediately")):
+		issues.append("%s: unable to hydrate generated district segments" % path)
 	if root.get_meta(&"district_id", &"") != district_id:
 		issues.append("%s: district_id metadata is incorrect" % path)
 	for group_name: String in ["WorldGeometry", "Dressing", "GameplaySockets", "RouteMarkers"]:
@@ -89,8 +92,8 @@ func _validate_shallows(root: Node3D, path: String, issues: Array[String]) -> vo
 	var final_stump: Node3D = _find_name(root, "SetuStump11") as Node3D
 	if final_stump == null or root.position.z + final_stump.position.z > -740.0:
 		issues.append("%s: Setu stumps do not vanish far enough into the sea" % path)
-	if _count_type(root, "Area3D") > 0:
-		issues.append("%s: Shallows may not use an invisible Area3D wall" % path)
+	if _find_name(root, "InvisibleWall") != null:
+		issues.append("%s: Shallows may not use an invisible wall" % path)
 
 
 func _validate_terraces(root: Node3D, path: String, issues: Array[String]) -> void:

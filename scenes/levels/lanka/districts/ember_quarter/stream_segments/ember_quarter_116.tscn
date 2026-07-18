@@ -1,0 +1,72 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_hlj1q"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_l4h7m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1jph"]
+resource_name = "mat_ember_stone_grip_hot"
+render_priority = 0
+shader = ExtResource("1_hlj1q")
+shader_parameter/detail_albedo = ExtResource("2_l4h7m")
+shader_parameter/base_tint = Color(0.2, 0.055, 0.012, 1)
+shader_parameter/accent_tint = Color(0.088, 0.0242, 0.00528, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.45
+shader_parameter/ash_amount = 0.05
+shader_parameter/surface_roughness = 0.78
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 2.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_qr5g0"]
+material = SubResource("ShaderMaterial_w1jph")
+
+[sub_resource type="MultiMesh" id="MultiMesh_yq4g4"]
+transform_format = 1
+instance_count = 7
+mesh = SubResource("BoxMesh_qr5g0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqoj2"]
+resource_name = "mat_bone_canvas_grip_solid"
+render_priority = 0
+shader = ExtResource("1_hlj1q")
+shader_parameter/detail_albedo = ExtResource("2_l4h7m")
+shader_parameter/base_tint = Color(0.58, 0.56, 0.48, 1)
+shader_parameter/accent_tint = Color(0.2552, 0.2464, 0.2112, 1)
+shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
+shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
+shader_parameter/texture_scale = null
+shader_parameter/detail_strength = 0.32
+shader_parameter/macro_variation = null
+shader_parameter/wetness = 0.0
+shader_parameter/soot_amount = 0.18
+shader_parameter/ash_amount = 0.1
+shader_parameter/surface_roughness = 0.9
+shader_parameter/surface_metallic = 0.0
+shader_parameter/emission_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_m60ev"]
+material = SubResource("ShaderMaterial_tqoj2")
+
+[sub_resource type="MultiMesh" id="MultiMesh_3ifwe"]
+transform_format = 1
+instance_count = 5
+mesh = SubResource("BoxMesh_m60ev")
+
+[node name="DistrictSegment116" type="Node3D" unique_id=996312228]
+
+[node name="GeometryBatch04_EmberStoneGripHot" type="MultiMeshInstance3D" parent="." unique_id=1027533497]
+multimesh = SubResource("MultiMesh_yq4g4")
+metadata/m8_batch_instance_count = 7
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_ember_stone_grip_hot"
+
+[node name="GeometryBatch05_BoneCanvasGripSolid" type="MultiMeshInstance3D" parent="." unique_id=1820269306]
+multimesh = SubResource("MultiMesh_3ifwe")
+metadata/m8_batch_instance_count = 5
+metadata/m8_batch_shape = &"box"
+metadata/m8_batch_material = "mat_bone_canvas_grip_solid"

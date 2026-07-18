@@ -8,6 +8,7 @@ const ROOT_PATH: String = "res://scenes/levels/lanka/lanka.tscn"
 const SURFACE_SHADER_PATH: String = "res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader"
 const TERRAIN_SHADER_PATH: String = "res://addons/odyssey_world_tools/shaders/lanka_terrain_triplanar.gdshader"
 const OCEAN_SHADER_PATH: String = "res://addons/odyssey_world_tools/shaders/lanka_ocean_scenery.gdshader"
+const CAMPFIRE_PREFAB_PATH: String = "res://scenes/prefabs/gameplay/campfire.tscn"
 const FIRE_SHADER_PATH: String = "res://addons/odyssey_world_tools/shaders/lanka_fire.gdshader"
 const SMOKE_SHADER_PATH: String = "res://addons/odyssey_world_tools/shaders/lanka_smoke.gdshader"
 const HEAT_SHADER_PATH: String = "res://addons/odyssey_world_tools/shaders/lanka_heat_haze.gdshader"
@@ -146,7 +147,9 @@ func _validate_district_visuals(issues: Array[String]) -> void:
 		for fire_visual: Node in fire_visuals:
 			_validate_fire_visual(fire_visual, "%s:%s" % [path, fire_visual.name], issues)
 		ember_fire_count += _count_named_prefix(district, "EmberFireVisual")
-		campfire_visual_count += _count_named_exact(district, "FireVisual")
+		campfire_visual_count += _count_metadata_value(
+			district, &"m9_prefab_path", CAMPFIRE_PREFAB_PATH
+		)
 		district.free()
 	if ember_fire_count != 7:
 		issues.append("Ember Quarter must contain exactly 7 visual fire cracks, found %d" % ember_fire_count)
@@ -270,9 +273,20 @@ func _collect_vfx_nodes(node: Node, profile: String, output: Array[Node]) -> voi
 		_collect_vfx_nodes(child, profile, output)
 
 
+func _count_metadata_value(node: Node, key: StringName, value: Variant) -> int:
+	var count: int = int(node.has_meta(key) and node.get_meta(key) == value)
+	for child: Node in node.get_children():
+		count += _count_metadata_value(child, key, value)
+	return count
+
+
 func _instantiate_scene(path: String, issues: Array[String]) -> Node:
 	var packed: PackedScene = load(path) as PackedScene
 	if packed == null:
 		issues.append("Unable to load M7 scene: %s" % path)
 		return null
-	return packed.instantiate()
+	var instance: Node = packed.instantiate()
+	var segment_loader: Node = instance.get_node_or_null("DistrictSegmentLoader")
+	if segment_loader != null and not bool(segment_loader.call("load_all_immediately")):
+		issues.append("Unable to hydrate generated M7 scene segments: %s" % path)
+	return instance

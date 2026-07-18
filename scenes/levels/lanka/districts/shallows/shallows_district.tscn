@@ -1,20 +1,22 @@
 [gd_scene format=3]
 
-[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_fvi7u"]
-[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_bx44p"]
-[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/setu.tscn" id="3_ivdrb"]
-[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_fire.gdshader" id="4_m2bqh"]
-[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_smoke.gdshader" id="5_nqohm"]
-[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_heat_haze.gdshader" id="6_0wf6i"]
-[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/fragment_pickup.tscn" id="7_3ckoj"]
-[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/campfire.tscn" id="8_mopih"]
-[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/component_pickup.tscn" id="9_bt7po"]
+[ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_ivdrb"]
+[ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_m2bqh"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/setu.tscn" id="3_nqohm"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/kill_volume.tscn" id="4_0wf6i"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/district_trigger.tscn" id="5_3ckoj"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/cairn_entrance.tscn" id="6_mopih"]
+[ext_resource type="PackedScene" path="res://scenes/levels/cairns/cairn_01_hold_stack.tscn" id="7_bt7po"]
+[ext_resource type="PackedScene" path="res://scenes/levels/cairns/cairn_02_counterweight.tscn" id="8_kxrfm"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/fragment_pickup.tscn" id="9_jxcdg"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/campfire.tscn" id="10_yvgkf"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/component_pickup.tscn" id="11_mvckf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxrfm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iiysq"]
 resource_name = "mat_wet_stone_grip_slick"
 render_priority = 0
-shader = ExtResource("1_fvi7u")
-shader_parameter/detail_albedo = ExtResource("2_bx44p")
+shader = ExtResource("1_ivdrb")
+shader_parameter/detail_albedo = ExtResource("2_m2bqh")
 shader_parameter/base_tint = Color(0.075, 0.115, 0.105, 1)
 shader_parameter/accent_tint = Color(0.033, 0.0506, 0.0462, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -29,155 +31,155 @@ shader_parameter/surface_roughness = 0.62
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_jxcdg"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_6wkva"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 5.8
 bottom_radius = 6.264
 height = 18.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_yvgkf"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pws5y"]
 height = 18.0
 radius = 5.8
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_mvckf"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_c4pft"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 5.66
 bottom_radius = 6.1128
 height = 17.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_iiysq"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vks22"]
 height = 17.0
 radius = 5.66
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_6wkva"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_po35a"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 5.52
 bottom_radius = 5.9616
 height = 16.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_pws5y"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i0t7c"]
 height = 16.0
 radius = 5.52
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_c4pft"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_mrjfs"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 5.38
 bottom_radius = 5.8104
 height = 15.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_vks22"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mp1dk"]
 height = 15.0
 radius = 5.38
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_po35a"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_ls816"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 5.24
 bottom_radius = 5.6592
 height = 14.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_i0t7c"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_udwc3"]
 height = 14.0
 radius = 5.24
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_mrjfs"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_68pmh"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 5.1
 bottom_radius = 5.508
 height = 13.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_mp1dk"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5w643"]
 height = 13.0
 radius = 5.1
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_ls816"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_6l7hl"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 4.96
 bottom_radius = 5.3568
 height = 12.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_udwc3"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_34ey2"]
 height = 12.0
 radius = 4.96
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_68pmh"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_74nim"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 4.82
 bottom_radius = 5.2056
 height = 12.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_5w643"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ytyjv"]
 height = 12.0
 radius = 4.82
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_6l7hl"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_p0p0q"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 4.68
 bottom_radius = 5.0544
 height = 12.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_34ey2"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mdwsv"]
 height = 12.0
 radius = 4.68
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_74nim"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_qlrmn"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 4.54
 bottom_radius = 4.9032
 height = 12.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ytyjv"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_igtds"]
 height = 12.0
 radius = 4.54
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_p0p0q"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_55yn3"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 4.4
 bottom_radius = 4.752
 height = 12.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_mdwsv"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6dpdb"]
 height = 12.0
 radius = 4.4
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_qlrmn"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="CylinderMesh" id="CylinderMesh_k00n3"]
+material = SubResource("ShaderMaterial_iiysq")
 top_radius = 4.26
 bottom_radius = 4.6008
 height = 12.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_igtds"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rrs8b"]
 height = 12.0
 radius = 4.26
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_55yn3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvyia"]
 resource_name = "mat_clean_stone_grip_solid"
 render_priority = 0
-shader = ExtResource("1_fvi7u")
-shader_parameter/detail_albedo = ExtResource("2_bx44p")
+shader = ExtResource("1_ivdrb")
+shader_parameter/detail_albedo = ExtResource("2_m2bqh")
 shader_parameter/base_tint = Color(0.31, 0.32, 0.3, 1)
 shader_parameter/accent_tint = Color(0.1364, 0.1408, 0.132, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -192,46 +194,46 @@ shader_parameter/surface_roughness = 0.94
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_6dpdb"]
-material = SubResource("ShaderMaterial_55yn3")
-size = Vector3(4, 2, 52)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_k00n3"]
-size = Vector3(4, 2, 52)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rrs8b"]
-material = SubResource("ShaderMaterial_55yn3")
-size = Vector3(4, 2, 52)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jvyia"]
-size = Vector3(4, 2, 52)
-
 [sub_resource type="BoxMesh" id="BoxMesh_6j8mh"]
-material = SubResource("ShaderMaterial_55yn3")
-size = Vector3(38, 4, 22)
+material = SubResource("ShaderMaterial_jvyia")
+size = Vector3(4, 2, 52)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rk7p5"]
-size = Vector3(38, 4, 22)
+size = Vector3(4, 2, 52)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xhspv"]
-material = SubResource("ShaderMaterial_55yn3")
-size = Vector3(2.2, 7, 2.2)
+material = SubResource("ShaderMaterial_jvyia")
+size = Vector3(4, 2, 52)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0545p"]
-size = Vector3(2.2, 7, 2.2)
+size = Vector3(4, 2, 52)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yyckp"]
-material = SubResource("ShaderMaterial_55yn3")
-size = Vector3(2.2, 7, 2.2)
+material = SubResource("ShaderMaterial_jvyia")
+size = Vector3(38, 4, 22)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uhhkf"]
+size = Vector3(38, 4, 22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_loekd"]
+material = SubResource("ShaderMaterial_jvyia")
 size = Vector3(2.2, 7, 2.2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_loekd"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_andg5"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_32m8a"]
+material = SubResource("ShaderMaterial_jvyia")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ds7sq"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kj17"]
 resource_name = "mat_fire_cracked_stone_grip_crumbling"
 render_priority = 0
-shader = ExtResource("1_fvi7u")
-shader_parameter/detail_albedo = ExtResource("2_bx44p")
+shader = ExtResource("1_ivdrb")
+shader_parameter/detail_albedo = ExtResource("2_m2bqh")
 shader_parameter/base_tint = Color(0.2, 0.2, 0.18, 1)
 shader_parameter/accent_tint = Color(0.088, 0.088, 0.0792, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -246,39 +248,39 @@ shader_parameter/surface_roughness = 0.97
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_andg5"]
-material = SubResource("ShaderMaterial_loekd")
-size = Vector3(8.6, 2, 2.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_32m8a"]
-size = Vector3(8.6, 2, 2.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ds7sq"]
-material = SubResource("ShaderMaterial_55yn3")
-size = Vector3(2.2, 7, 2.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6kj17"]
-size = Vector3(2.2, 7, 2.2)
-
 [sub_resource type="BoxMesh" id="BoxMesh_lgagg"]
-material = SubResource("ShaderMaterial_55yn3")
-size = Vector3(2.2, 7, 2.2)
+material = SubResource("ShaderMaterial_6kj17")
+size = Vector3(8.6, 2, 2.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hpoqa"]
-size = Vector3(2.2, 7, 2.2)
+size = Vector3(8.6, 2, 2.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rivg0"]
-material = SubResource("ShaderMaterial_loekd")
-size = Vector3(8.6, 2, 2.2)
+material = SubResource("ShaderMaterial_jvyia")
+size = Vector3(2.2, 7, 2.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nuth0"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oelkf"]
+material = SubResource("ShaderMaterial_jvyia")
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1r5n3"]
+size = Vector3(2.2, 7, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qphy"]
+material = SubResource("ShaderMaterial_6kj17")
 size = Vector3(8.6, 2, 2.2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oelkf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rjska"]
+size = Vector3(8.6, 2, 2.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqtkh"]
 resource_name = "mat_charred_timber_grip_crumbling"
 render_priority = 0
-shader = ExtResource("1_fvi7u")
-shader_parameter/detail_albedo = ExtResource("2_bx44p")
+shader = ExtResource("1_ivdrb")
+shader_parameter/detail_albedo = ExtResource("2_m2bqh")
 shader_parameter/base_tint = Color(0.075, 0.072, 0.062, 1)
 shader_parameter/accent_tint = Color(0.033, 0.03168, 0.02728, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -293,63 +295,39 @@ shader_parameter/surface_roughness = 0.92
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_1r5n3"]
-material = SubResource("ShaderMaterial_oelkf")
+[sub_resource type="BoxMesh" id="BoxMesh_4txnc"]
+material = SubResource("ShaderMaterial_aqtkh")
 size = Vector3(5, 5, 58)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4qphy"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_a8vbo"]
 size = Vector3(5, 5, 58)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_rjska"]
-material = SubResource("ShaderMaterial_oelkf")
-top_radius = 1.5
-bottom_radius = 1.62
-height = 27.0
-radial_segments = 10
-rings = 3
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_aqtkh"]
-height = 27.0
-radius = 1.5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_4txnc"]
-material = SubResource("ShaderMaterial_oelkf")
-top_radius = 1.5
-bottom_radius = 1.62
-height = 30.0
-radial_segments = 10
-rings = 3
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_a8vbo"]
-height = 30.0
-radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6anvv"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 33.0
+height = 27.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5mtps"]
-height = 33.0
+height = 27.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ecwq4"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 36.0
+height = 30.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hbitx"]
-height = 36.0
+height = 30.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jb428"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
 height = 33.0
@@ -361,34 +339,58 @@ height = 33.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_u7it1"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 30.0
+height = 36.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ofr15"]
-height = 30.0
+height = 36.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ysbso"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
+top_radius = 1.5
+bottom_radius = 1.62
+height = 33.0
+radial_segments = 10
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_12d80"]
+height = 33.0
+radius = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ii0sf"]
+material = SubResource("ShaderMaterial_aqtkh")
+top_radius = 1.5
+bottom_radius = 1.62
+height = 30.0
+radial_segments = 10
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nu87p"]
+height = 30.0
+radius = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ry5ss"]
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
 height = 27.0
 radial_segments = 10
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_12d80"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cwaxk"]
 height = 27.0
 radius = 1.5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ii0sf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cocg0"]
 resource_name = "mat_bone_canvas_grip_solid"
 render_priority = 0
-shader = ExtResource("1_fvi7u")
-shader_parameter/detail_albedo = ExtResource("2_bx44p")
+shader = ExtResource("1_ivdrb")
+shader_parameter/detail_albedo = ExtResource("2_m2bqh")
 shader_parameter/base_tint = Color(0.58, 0.56, 0.48, 1)
 shader_parameter/accent_tint = Color(0.2552, 0.2464, 0.2112, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -403,67 +405,43 @@ shader_parameter/surface_roughness = 0.9
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_nu87p"]
-material = SubResource("ShaderMaterial_ii0sf")
+[sub_resource type="BoxMesh" id="BoxMesh_lhds0"]
+material = SubResource("ShaderMaterial_cocg0")
 size = Vector3(1, 17, 29)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ry5ss"]
-material = SubResource("ShaderMaterial_oelkf")
+[sub_resource type="BoxMesh" id="BoxMesh_s8khg"]
+material = SubResource("ShaderMaterial_aqtkh")
 size = Vector3(5, 5, 58)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cwaxk"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_m8gij"]
 size = Vector3(5, 5, 58)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_cocg0"]
-material = SubResource("ShaderMaterial_oelkf")
-top_radius = 1.5
-bottom_radius = 1.62
-height = 27.0
-radial_segments = 10
-rings = 3
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_lhds0"]
-height = 27.0
-radius = 1.5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_s8khg"]
-material = SubResource("ShaderMaterial_oelkf")
-top_radius = 1.5
-bottom_radius = 1.62
-height = 30.0
-radial_segments = 10
-rings = 3
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_m8gij"]
-height = 30.0
-radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tnr3p"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 33.0
+height = 27.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_onus0"]
-height = 33.0
+height = 27.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vnb7y"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 36.0
+height = 30.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kwl28"]
-height = 36.0
+height = 30.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ktn7c"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
 height = 33.0
@@ -475,90 +453,90 @@ height = 33.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_44pdb"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 30.0
+height = 36.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qiide"]
-height = 30.0
+height = 36.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_li8v6"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 27.0
+height = 33.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_eh88k"]
+height = 33.0
+radius = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q0f6s"]
+material = SubResource("ShaderMaterial_aqtkh")
+top_radius = 1.5
+bottom_radius = 1.62
+height = 30.0
+radial_segments = 10
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1ygd4"]
+height = 30.0
+radius = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_elkl2"]
+material = SubResource("ShaderMaterial_aqtkh")
+top_radius = 1.5
+bottom_radius = 1.62
+height = 27.0
+radial_segments = 10
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ip8xm"]
 height = 27.0
 radius = 1.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_q0f6s"]
-material = SubResource("ShaderMaterial_ii0sf")
+[sub_resource type="BoxMesh" id="BoxMesh_isnl8"]
+material = SubResource("ShaderMaterial_cocg0")
 size = Vector3(1, 17, 29)
 
-[sub_resource type="BoxMesh" id="BoxMesh_1ygd4"]
-material = SubResource("ShaderMaterial_oelkf")
+[sub_resource type="BoxMesh" id="BoxMesh_lii4w"]
+material = SubResource("ShaderMaterial_aqtkh")
 size = Vector3(5, 5, 58)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_elkl2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8tmrm"]
 size = Vector3(5, 5, 58)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ip8xm"]
-material = SubResource("ShaderMaterial_oelkf")
-top_radius = 1.5
-bottom_radius = 1.62
-height = 27.0
-radial_segments = 10
-rings = 3
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_isnl8"]
-height = 27.0
-radius = 1.5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_lii4w"]
-material = SubResource("ShaderMaterial_oelkf")
-top_radius = 1.5
-bottom_radius = 1.62
-height = 30.0
-radial_segments = 10
-rings = 3
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_8tmrm"]
-height = 30.0
-radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gktku"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 33.0
+height = 27.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g4yrp"]
-height = 33.0
+height = 27.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gnm50"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 36.0
+height = 30.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qmvjg"]
-height = 36.0
+height = 30.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_l5mbc"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
 height = 33.0
@@ -570,129 +548,153 @@ height = 33.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xpgvw"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
-height = 30.0
+height = 36.0
 radial_segments = 10
 rings = 3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_05c0s"]
-height = 30.0
+height = 36.0
 radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jhds3"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
+top_radius = 1.5
+bottom_radius = 1.62
+height = 33.0
+radial_segments = 10
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ydwv6"]
+height = 33.0
+radius = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dtsqx"]
+material = SubResource("ShaderMaterial_aqtkh")
+top_radius = 1.5
+bottom_radius = 1.62
+height = 30.0
+radial_segments = 10
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gnfxl"]
+height = 30.0
+radius = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jh6h1"]
+material = SubResource("ShaderMaterial_aqtkh")
 top_radius = 1.5
 bottom_radius = 1.62
 height = 27.0
 radial_segments = 10
 rings = 3
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ydwv6"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p7jdb"]
 height = 27.0
 radius = 1.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_dtsqx"]
-material = SubResource("ShaderMaterial_ii0sf")
+[sub_resource type="BoxMesh" id="BoxMesh_vuhfv"]
+material = SubResource("ShaderMaterial_cocg0")
 size = Vector3(1, 17, 29)
 
-[sub_resource type="BoxMesh" id="BoxMesh_gnfxl"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(2.5, 1.2, 12)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jh6h1"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(3.5, 1.2, 15)
-
-[sub_resource type="BoxMesh" id="BoxMesh_p7jdb"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(4.5, 1.2, 18)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vuhfv"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(2.5, 1.2, 21)
-
 [sub_resource type="BoxMesh" id="BoxMesh_pabst"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(3.5, 1.2, 12)
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(2.5, 1.2, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fe0s5"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(4.5, 1.2, 15)
-
-[sub_resource type="BoxMesh" id="BoxMesh_x36g2"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(2.5, 1.2, 18)
-
-[sub_resource type="BoxMesh" id="BoxMesh_elc62"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(3.5, 1.2, 21)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lsfxl"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(4.5, 1.2, 12)
-
-[sub_resource type="BoxMesh" id="BoxMesh_b3x3x"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(2.5, 1.2, 15)
-
-[sub_resource type="BoxMesh" id="BoxMesh_k2g28"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(3.5, 1.2, 18)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jm5uv"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(4.5, 1.2, 21)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3bxs1"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(2.5, 1.2, 12)
-
-[sub_resource type="BoxMesh" id="BoxMesh_trmhb"]
-material = SubResource("ShaderMaterial_oelkf")
+material = SubResource("ShaderMaterial_aqtkh")
 size = Vector3(3.5, 1.2, 15)
 
-[sub_resource type="BoxMesh" id="BoxMesh_lq32o"]
-material = SubResource("ShaderMaterial_oelkf")
+[sub_resource type="BoxMesh" id="BoxMesh_x36g2"]
+material = SubResource("ShaderMaterial_aqtkh")
 size = Vector3(4.5, 1.2, 18)
 
-[sub_resource type="BoxMesh" id="BoxMesh_n7r56"]
-material = SubResource("ShaderMaterial_oelkf")
+[sub_resource type="BoxMesh" id="BoxMesh_elc62"]
+material = SubResource("ShaderMaterial_aqtkh")
 size = Vector3(2.5, 1.2, 21)
 
-[sub_resource type="BoxMesh" id="BoxMesh_gtlck"]
-material = SubResource("ShaderMaterial_oelkf")
+[sub_resource type="BoxMesh" id="BoxMesh_lsfxl"]
+material = SubResource("ShaderMaterial_aqtkh")
 size = Vector3(3.5, 1.2, 12)
 
-[sub_resource type="BoxMesh" id="BoxMesh_37kbf"]
-material = SubResource("ShaderMaterial_oelkf")
+[sub_resource type="BoxMesh" id="BoxMesh_b3x3x"]
+material = SubResource("ShaderMaterial_aqtkh")
 size = Vector3(4.5, 1.2, 15)
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_id55h"]
-size = Vector3(54, 15, 22)
+[sub_resource type="BoxMesh" id="BoxMesh_k2g28"]
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(2.5, 1.2, 18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jm5uv"]
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(3.5, 1.2, 21)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3bxs1"]
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(4.5, 1.2, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trmhb"]
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(2.5, 1.2, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lq32o"]
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(3.5, 1.2, 18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n7r56"]
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(4.5, 1.2, 21)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gtlck"]
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(2.5, 1.2, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_37kbf"]
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(3.5, 1.2, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_id55h"]
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(4.5, 1.2, 18)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lwku3"]
-material = SubResource("ShaderMaterial_ii0sf")
-size = Vector3(1.4, 0.5, 0.6)
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(2.5, 1.2, 21)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hg6m3"]
-material = SubResource("ShaderMaterial_ii0sf")
-size = Vector3(1.4, 0.5, 0.6)
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(3.5, 1.2, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4n76"]
-material = SubResource("ShaderMaterial_ii0sf")
+material = SubResource("ShaderMaterial_aqtkh")
+size = Vector3(4.5, 1.2, 15)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_caebt"]
+size = Vector3(54, 15, 22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_68ojb"]
+material = SubResource("ShaderMaterial_cocg0")
 size = Vector3(1.4, 0.5, 0.6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_caebt"]
-material = SubResource("ShaderMaterial_ii0sf")
+[sub_resource type="BoxMesh" id="BoxMesh_8sntp"]
+material = SubResource("ShaderMaterial_cocg0")
 size = Vector3(1.4, 0.5, 0.6)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_68ojb"]
+[sub_resource type="BoxMesh" id="BoxMesh_psbg5"]
+material = SubResource("ShaderMaterial_cocg0")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_apdmw"]
+material = SubResource("ShaderMaterial_cocg0")
+size = Vector3(1.4, 0.5, 0.6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vh0i8"]
 resource_name = "mat_unburnt_timber_grip_solid"
 render_priority = 0
-shader = ExtResource("1_fvi7u")
-shader_parameter/detail_albedo = ExtResource("2_bx44p")
+shader = ExtResource("1_ivdrb")
+shader_parameter/detail_albedo = ExtResource("2_m2bqh")
 shader_parameter/base_tint = Color(0.17, 0.16, 0.12, 1)
 shader_parameter/accent_tint = Color(0.0748, 0.0704, 0.0528, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -707,27 +709,27 @@ shader_parameter/surface_roughness = 0.86
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_8sntp"]
-material = SubResource("ShaderMaterial_68ojb")
+[sub_resource type="BoxMesh" id="BoxMesh_2argd"]
+material = SubResource("ShaderMaterial_vh0i8")
 size = Vector3(2.6, 0.8, 1.4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_psbg5"]
-material = SubResource("ShaderMaterial_68ojb")
+[sub_resource type="BoxMesh" id="BoxMesh_gckjm"]
+material = SubResource("ShaderMaterial_vh0i8")
 size = Vector3(2.6, 0.8, 1.4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_apdmw"]
-material = SubResource("ShaderMaterial_ii0sf")
+[sub_resource type="BoxMesh" id="BoxMesh_bfmvj"]
+material = SubResource("ShaderMaterial_cocg0")
 size = Vector3(2.6, 0.8, 1.4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_vh0i8"]
-material = SubResource("ShaderMaterial_ii0sf")
+[sub_resource type="BoxMesh" id="BoxMesh_iwbpp"]
+material = SubResource("ShaderMaterial_cocg0")
 size = Vector3(2.6, 0.8, 1.4)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2argd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_liu4p"]
 resource_name = "mat_shellfish_grip_solid"
 render_priority = 0
-shader = ExtResource("1_fvi7u")
-shader_parameter/detail_albedo = ExtResource("2_bx44p")
+shader = ExtResource("1_ivdrb")
+shader_parameter/detail_albedo = ExtResource("2_m2bqh")
 shader_parameter/base_tint = Color(0.4, 0.51, 0.47, 1)
 shader_parameter/accent_tint = Color(0.176, 0.2244, 0.2068, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -742,192 +744,35 @@ shader_parameter/surface_roughness = 0.72
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_gckjm"]
-material = SubResource("ShaderMaterial_2argd")
-size = Vector3(0.7, 0.5, 0.7)
-
-[sub_resource type="BoxMesh" id="BoxMesh_bfmvj"]
-material = SubResource("ShaderMaterial_2argd")
-size = Vector3(0.7, 0.5, 0.7)
-
-[sub_resource type="BoxMesh" id="BoxMesh_iwbpp"]
-material = SubResource("ShaderMaterial_2argd")
-size = Vector3(0.7, 0.5, 0.7)
-
-[sub_resource type="BoxMesh" id="BoxMesh_liu4p"]
-material = SubResource("ShaderMaterial_2argd")
-size = Vector3(0.7, 0.5, 0.7)
-
 [sub_resource type="BoxMesh" id="BoxMesh_0ia4c"]
-material = SubResource("ShaderMaterial_2argd")
+material = SubResource("ShaderMaterial_liu4p")
 size = Vector3(0.7, 0.5, 0.7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4po5b"]
-material = SubResource("ShaderMaterial_2argd")
+material = SubResource("ShaderMaterial_liu4p")
 size = Vector3(0.7, 0.5, 0.7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a2u5b"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(3, 0.55, 0.55)
+material = SubResource("ShaderMaterial_liu4p")
+size = Vector3(0.7, 0.5, 0.7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7jk4m"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(3, 0.55, 0.55)
+material = SubResource("ShaderMaterial_liu4p")
+size = Vector3(0.7, 0.5, 0.7)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybxbs"]
-resource_name = "mat_ember_stone_grip_hot"
-render_priority = 0
-shader = ExtResource("1_fvi7u")
-shader_parameter/detail_albedo = ExtResource("2_bx44p")
-shader_parameter/base_tint = Color(0.2, 0.055, 0.012, 1)
-shader_parameter/accent_tint = Color(0.088, 0.0242, 0.00528, 1)
-shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
-shader_parameter/emission_tint = Color(1, 0.2, 0.02, 1)
-shader_parameter/texture_scale = null
-shader_parameter/detail_strength = 0.32
-shader_parameter/macro_variation = null
-shader_parameter/wetness = 0.0
-shader_parameter/soot_amount = 0.45
-shader_parameter/ash_amount = 0.05
-shader_parameter/surface_roughness = 0.78
-shader_parameter/surface_metallic = 0.0
-shader_parameter/emission_energy = 2.6
+[sub_resource type="BoxMesh" id="BoxMesh_ybxbs"]
+material = SubResource("ShaderMaterial_liu4p")
+size = Vector3(0.7, 0.5, 0.7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_i2gue"]
-material = SubResource("ShaderMaterial_ybxbs")
-size = Vector3(1.4, 0.3, 1.4)
+material = SubResource("ShaderMaterial_liu4p")
+size = Vector3(0.7, 0.5, 0.7)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sdrqb"]
-resource_name = "mat_lanka_fire_visual_grip_hot"
-render_priority = 0
-shader = ExtResource("4_m2bqh")
-shader_parameter/ember_color = null
-shader_parameter/flame_color = null
-shader_parameter/motion_offset = 0.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_peb7n"]
-material = SubResource("ShaderMaterial_sdrqb")
-size = Vector2(2.7, 4.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2sj83"]
-resource_name = "mat_lanka_fire_visual_grip_hot"
-render_priority = 0
-shader = ExtResource("4_m2bqh")
-shader_parameter/ember_color = null
-shader_parameter/flame_color = null
-shader_parameter/motion_offset = 1.7
-
-[sub_resource type="QuadMesh" id="QuadMesh_dll8i"]
-material = SubResource("ShaderMaterial_2sj83")
-size = Vector2(2.7, 4.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_123i7"]
-resource_name = "mat_lanka_smoke_visual_grip_solid"
-render_priority = 0
-shader = ExtResource("5_nqohm")
-shader_parameter/smoke_color = null
-shader_parameter/motion_offset = 0.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_38wfe"]
-material = SubResource("ShaderMaterial_123i7")
-size = Vector2(5.6, 8.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ijda"]
-resource_name = "mat_lanka_smoke_visual_grip_solid"
-render_priority = 0
-shader = ExtResource("5_nqohm")
-shader_parameter/smoke_color = null
-shader_parameter/motion_offset = 0.43
-
-[sub_resource type="QuadMesh" id="QuadMesh_us2sy"]
-material = SubResource("ShaderMaterial_7ijda")
-size = Vector2(5.6, 8.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_07y80"]
-resource_name = "mat_lanka_heat_haze_visual_grip_hot"
-render_priority = 0
-shader = ExtResource("6_0wf6i")
-shader_parameter/distortion_strength = null
-shader_parameter/motion_offset = null
-
-[sub_resource type="QuadMesh" id="QuadMesh_e0j84"]
-material = SubResource("ShaderMaterial_07y80")
-size = Vector2(5, 5.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_njmxo"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(3, 0.55, 0.55)
-
-[sub_resource type="BoxMesh" id="BoxMesh_uty5j"]
-material = SubResource("ShaderMaterial_oelkf")
-size = Vector3(3, 0.55, 0.55)
-
-[sub_resource type="BoxMesh" id="BoxMesh_wlphx"]
-material = SubResource("ShaderMaterial_ybxbs")
-size = Vector3(1.4, 0.3, 1.4)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_30oml"]
-resource_name = "mat_lanka_fire_visual_grip_hot"
-render_priority = 0
-shader = ExtResource("4_m2bqh")
-shader_parameter/ember_color = null
-shader_parameter/flame_color = null
-shader_parameter/motion_offset = 0.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_3oxe3"]
-material = SubResource("ShaderMaterial_30oml")
-size = Vector2(2.7, 4.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1ey1"]
-resource_name = "mat_lanka_fire_visual_grip_hot"
-render_priority = 0
-shader = ExtResource("4_m2bqh")
-shader_parameter/ember_color = null
-shader_parameter/flame_color = null
-shader_parameter/motion_offset = 1.7
-
-[sub_resource type="QuadMesh" id="QuadMesh_lg0yk"]
-material = SubResource("ShaderMaterial_w1ey1")
-size = Vector2(2.7, 4.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jitna"]
-resource_name = "mat_lanka_smoke_visual_grip_solid"
-render_priority = 0
-shader = ExtResource("5_nqohm")
-shader_parameter/smoke_color = null
-shader_parameter/motion_offset = 0.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_hcbkg"]
-material = SubResource("ShaderMaterial_jitna")
-size = Vector2(5.6, 8.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0b27"]
-resource_name = "mat_lanka_smoke_visual_grip_solid"
-render_priority = 0
-shader = ExtResource("5_nqohm")
-shader_parameter/smoke_color = null
-shader_parameter/motion_offset = 0.43
-
-[sub_resource type="QuadMesh" id="QuadMesh_u74qs"]
-material = SubResource("ShaderMaterial_h0b27")
-size = Vector2(5.6, 8.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dkov2"]
-resource_name = "mat_lanka_heat_haze_visual_grip_hot"
-render_priority = 0
-shader = ExtResource("6_0wf6i")
-shader_parameter/distortion_strength = null
-shader_parameter/motion_offset = null
-
-[sub_resource type="QuadMesh" id="QuadMesh_tmj1b"]
-material = SubResource("ShaderMaterial_dkov2")
-size = Vector2(5, 5.2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qgdc"]
 resource_name = "mat_keffer_cloth_grip_solid"
 render_priority = 0
-shader = ExtResource("1_fvi7u")
-shader_parameter/detail_albedo = ExtResource("2_bx44p")
+shader = ExtResource("1_ivdrb")
+shader_parameter/detail_albedo = ExtResource("2_m2bqh")
 shader_parameter/base_tint = Color(0.13, 0.14, 0.13, 1)
 shader_parameter/accent_tint = Color(0.057199996, 0.0616, 0.057199996, 1)
 shader_parameter/ash_tint = Color(0.59, 0.6, 0.56, 1)
@@ -942,133 +787,131 @@ shader_parameter/surface_roughness = 0.94
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_13uit"]
-material = SubResource("ShaderMaterial_6qgdc")
+[sub_resource type="BoxMesh" id="BoxMesh_peb7n"]
+material = SubResource("ShaderMaterial_sdrqb")
 size = Vector3(1.25, 1.8, 0.85)
 
-[sub_resource type="BoxMesh" id="BoxMesh_sq56w"]
-material = SubResource("ShaderMaterial_6qgdc")
+[sub_resource type="BoxMesh" id="BoxMesh_2sj83"]
+material = SubResource("ShaderMaterial_sdrqb")
 size = Vector3(1.05, 0.9, 0.9)
 
-[sub_resource type="BoxMesh" id="BoxMesh_3mc80"]
-material = SubResource("ShaderMaterial_ii0sf")
+[sub_resource type="BoxMesh" id="BoxMesh_dll8i"]
+material = SubResource("ShaderMaterial_cocg0")
 size = Vector3(0.95, 1.2, 0.5)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_5cqo3"]
-material = SubResource("ShaderMaterial_kxrfm")
+[sub_resource type="BoxShape3D" id="BoxShape3D_123i7"]
+size = Vector3(1250, 24, 520)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38wfe"]
+size = Vector3(260, 30, 80)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7ijda"]
+material = SubResource("ShaderMaterial_iiysq")
 bottom_radius = 0.54
 height = 1.0
 radial_segments = 18
 rings = 3
 
-[sub_resource type="MultiMesh" id="MultiMesh_xraes"]
+[sub_resource type="MultiMesh" id="MultiMesh_us2sy"]
 transform_format = 1
 instance_count = 12
-mesh = SubResource("CylinderMesh_5cqo3")
+mesh = SubResource("CylinderMesh_7ijda")
 
-[sub_resource type="BoxMesh" id="BoxMesh_xpvdn"]
-material = SubResource("ShaderMaterial_55yn3")
+[sub_resource type="BoxMesh" id="BoxMesh_07y80"]
+material = SubResource("ShaderMaterial_jvyia")
 
-[sub_resource type="MultiMesh" id="MultiMesh_vcryx"]
+[sub_resource type="MultiMesh" id="MultiMesh_e0j84"]
 transform_format = 1
 instance_count = 7
-mesh = SubResource("BoxMesh_xpvdn")
+mesh = SubResource("BoxMesh_07y80")
 
 [sub_resource type="StandardMaterial3D" id="Mat_setu_wood"]
 resource_name = "mat_setu_wood"
 albedo_color = Color(0.32, 0.24, 0.17, 1)
 roughness = 0.95
 
-[sub_resource type="BoxMesh" id="BoxMesh_wrfg7"]
+[sub_resource type="BoxMesh" id="BoxMesh_njmxo"]
 material = SubResource("Mat_setu_wood")
 
-[sub_resource type="MultiMesh" id="MultiMesh_e4tqm"]
+[sub_resource type="MultiMesh" id="MultiMesh_uty5j"]
 transform_format = 1
 instance_count = 4
-mesh = SubResource("BoxMesh_wrfg7")
+mesh = SubResource("BoxMesh_njmxo")
 
 [sub_resource type="StandardMaterial3D" id="Mat_setu_canvas"]
 resource_name = "mat_setu_canvas"
 albedo_color = Color(0.85, 0.8, 0.68, 1)
 roughness = 0.9
 
-[sub_resource type="BoxMesh" id="BoxMesh_u0ch2"]
+[sub_resource type="BoxMesh" id="BoxMesh_wlphx"]
 material = SubResource("Mat_setu_canvas")
 
-[sub_resource type="MultiMesh" id="MultiMesh_bk351"]
+[sub_resource type="MultiMesh" id="MultiMesh_30oml"]
 transform_format = 1
 instance_count = 2
-mesh = SubResource("BoxMesh_u0ch2")
+mesh = SubResource("BoxMesh_wlphx")
 
-[sub_resource type="BoxMesh" id="BoxMesh_tiqsp"]
-material = SubResource("ShaderMaterial_loekd")
+[sub_resource type="BoxMesh" id="BoxMesh_3oxe3"]
+material = SubResource("ShaderMaterial_6kj17")
 
-[sub_resource type="MultiMesh" id="MultiMesh_o0xc2"]
+[sub_resource type="MultiMesh" id="MultiMesh_w1ey1"]
 transform_format = 1
 instance_count = 2
-mesh = SubResource("BoxMesh_tiqsp")
+mesh = SubResource("BoxMesh_3oxe3")
 
-[sub_resource type="BoxMesh" id="BoxMesh_v1fjm"]
-material = SubResource("ShaderMaterial_oelkf")
+[sub_resource type="BoxMesh" id="BoxMesh_lg0yk"]
+material = SubResource("ShaderMaterial_aqtkh")
 
-[sub_resource type="MultiMesh" id="MultiMesh_7hegj"]
+[sub_resource type="MultiMesh" id="MultiMesh_jitna"]
 transform_format = 1
-instance_count = 25
-mesh = SubResource("BoxMesh_v1fjm")
+instance_count = 21
+mesh = SubResource("BoxMesh_lg0yk")
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_lkmj6"]
-material = SubResource("ShaderMaterial_oelkf")
+[sub_resource type="CylinderMesh" id="CylinderMesh_hcbkg"]
+material = SubResource("ShaderMaterial_aqtkh")
 bottom_radius = 0.54
 height = 1.0
 radial_segments = 10
 rings = 3
 
-[sub_resource type="MultiMesh" id="MultiMesh_4xf1s"]
+[sub_resource type="MultiMesh" id="MultiMesh_h0b27"]
 transform_format = 1
 instance_count = 21
-mesh = SubResource("CylinderMesh_lkmj6")
+mesh = SubResource("CylinderMesh_hcbkg")
 
-[sub_resource type="BoxMesh" id="BoxMesh_s81qp"]
-material = SubResource("ShaderMaterial_ii0sf")
+[sub_resource type="BoxMesh" id="BoxMesh_u74qs"]
+material = SubResource("ShaderMaterial_cocg0")
 
-[sub_resource type="MultiMesh" id="MultiMesh_ddpm2"]
+[sub_resource type="MultiMesh" id="MultiMesh_dkov2"]
 transform_format = 1
 instance_count = 10
-mesh = SubResource("BoxMesh_s81qp")
+mesh = SubResource("BoxMesh_u74qs")
 
-[sub_resource type="BoxMesh" id="BoxMesh_m1vn6"]
-material = SubResource("ShaderMaterial_68ojb")
+[sub_resource type="BoxMesh" id="BoxMesh_tmj1b"]
+material = SubResource("ShaderMaterial_vh0i8")
 
-[sub_resource type="MultiMesh" id="MultiMesh_jgxgx"]
+[sub_resource type="MultiMesh" id="MultiMesh_6qgdc"]
 transform_format = 1
 instance_count = 2
-mesh = SubResource("BoxMesh_m1vn6")
+mesh = SubResource("BoxMesh_tmj1b")
 
-[sub_resource type="BoxMesh" id="BoxMesh_tv368"]
-material = SubResource("ShaderMaterial_2argd")
+[sub_resource type="BoxMesh" id="BoxMesh_13uit"]
+material = SubResource("ShaderMaterial_liu4p")
 
-[sub_resource type="MultiMesh" id="MultiMesh_eov41"]
+[sub_resource type="MultiMesh" id="MultiMesh_sq56w"]
 transform_format = 1
 instance_count = 6
-mesh = SubResource("BoxMesh_tv368")
+mesh = SubResource("BoxMesh_13uit")
 
-[sub_resource type="BoxMesh" id="BoxMesh_q7sq7"]
-material = SubResource("ShaderMaterial_ybxbs")
+[sub_resource type="BoxMesh" id="BoxMesh_3mc80"]
+material = SubResource("ShaderMaterial_sdrqb")
 
-[sub_resource type="MultiMesh" id="MultiMesh_t7wy6"]
+[sub_resource type="MultiMesh" id="MultiMesh_5cqo3"]
 transform_format = 1
 instance_count = 2
-mesh = SubResource("BoxMesh_q7sq7")
+mesh = SubResource("BoxMesh_3mc80")
 
-[sub_resource type="BoxMesh" id="BoxMesh_sie22"]
-material = SubResource("ShaderMaterial_6qgdc")
-
-[sub_resource type="MultiMesh" id="MultiMesh_khowf"]
-transform_format = 1
-instance_count = 2
-mesh = SubResource("BoxMesh_sie22")
-
-[node name="ShallowsDistrict" type="Node3D" unique_id=2119137083]
+[node name="ShallowsDistrict" type="Node3D" unique_id=162069636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -410)
 metadata/district_id = &"shallows"
 metadata/budget_profile = "shallows"
@@ -1077,977 +920,851 @@ metadata/stream_load_radius_m = 290.0
 metadata/stream_unload_radius_m = 400.0
 metadata/open_world_loaded = true
 
-[node name="WorldGeometry" type="Node3D" parent="." unique_id=459974261]
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=267325328]
 
-[node name="SetuStump00" type="StaticBody3D" parent="WorldGeometry" unique_id=1102840156]
+[node name="SetuStump00" type="StaticBody3D" parent="WorldGeometry" unique_id=884143643]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -82)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump00" unique_id=1027209820]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump00" unique_id=157982481]
 visible = false
-mesh = SubResource("CylinderMesh_jxcdg")
+mesh = SubResource("CylinderMesh_6wkva")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump00" unique_id=833997519]
-shape = SubResource("CylinderShape3D_yvgkf")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump00" unique_id=1017222801]
+shape = SubResource("CylinderShape3D_pws5y")
 
-[node name="SetuStump01" type="StaticBody3D" parent="WorldGeometry" unique_id=1161421759]
+[node name="SetuStump01" type="StaticBody3D" parent="WorldGeometry" unique_id=1917004886]
 transform = Transform3D(0.998275, -0.05871197, 0, 0.05871197, 0.998275, 0, 0, 0, 1, 3.9166346, -2.32, -107)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump01" unique_id=971522496]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump01" unique_id=767403584]
 visible = false
-mesh = SubResource("CylinderMesh_mvckf")
+mesh = SubResource("CylinderMesh_c4pft")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump01" unique_id=512843794]
-shape = SubResource("CylinderShape3D_iiysq")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump01" unique_id=1198041923]
+shape = SubResource("CylinderShape3D_vks22")
 
-[node name="SetuStump02" type="StaticBody3D" parent="WorldGeometry" unique_id=912789465]
+[node name="SetuStump02" type="StaticBody3D" parent="WorldGeometry" unique_id=290842708]
 transform = Transform3D(0.9979858, -0.06343831, 0, 0.06343831, 0.9979858, 0, 0, 0, 1, 4.8692384, -2.64, -132)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump02" unique_id=1191459000]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump02" unique_id=1503479270]
 visible = false
-mesh = SubResource("CylinderMesh_6wkva")
+mesh = SubResource("CylinderMesh_po35a")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump02" unique_id=393757039]
-shape = SubResource("CylinderShape3D_pws5y")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump02" unique_id=175640985]
+shape = SubResource("CylinderShape3D_i0t7c")
 
-[node name="SetuStump03" type="StaticBody3D" parent="WorldGeometry" unique_id=536302261]
+[node name="SetuStump03" type="StaticBody3D" parent="WorldGeometry" unique_id=1746613179]
 transform = Transform3D(0.9999515, -0.009851876, 0, 0.009851876, 0.9999515, 0, 0, 0, 1, 2.1368995, -2.96, -157)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump03" unique_id=1108102978]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump03" unique_id=852701805]
 visible = false
-mesh = SubResource("CylinderMesh_c4pft")
+mesh = SubResource("CylinderMesh_mrjfs")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump03" unique_id=2116354393]
-shape = SubResource("CylinderShape3D_vks22")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump03" unique_id=656433558]
+shape = SubResource("CylinderShape3D_mp1dk")
 
-[node name="SetuStump04" type="StaticBody3D" parent="WorldGeometry" unique_id=1966568898]
+[node name="SetuStump04" type="StaticBody3D" parent="WorldGeometry" unique_id=261131824]
 transform = Transform3D(0.9986046, 0.052810203, 0, -0.052810203, 0.9986046, 0, 0, 0, 1, -2.2126021, -3.28, -182)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump04" unique_id=1427192737]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump04" unique_id=198895639]
 visible = false
-mesh = SubResource("CylinderMesh_po35a")
+mesh = SubResource("CylinderMesh_ls816")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump04" unique_id=1549196551]
-shape = SubResource("CylinderShape3D_i0t7c")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump04" unique_id=2143996702]
+shape = SubResource("CylinderShape3D_udwc3")
 
-[node name="SetuStump05" type="StaticBody3D" parent="WorldGeometry" unique_id=1851526431]
+[node name="SetuStump05" type="StaticBody3D" parent="WorldGeometry" unique_id=332901686]
 transform = Transform3D(0.99776, 0.06689555, 0, -0.06689555, 0.99776, 0, 0, 0, 1, -4.8876505, -3.6, -207)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump05" unique_id=527655722]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump05" unique_id=422764741]
 visible = false
-mesh = SubResource("CylinderMesh_mrjfs")
+mesh = SubResource("CylinderMesh_68pmh")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump05" unique_id=2021458151]
-shape = SubResource("CylinderShape3D_mp1dk")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump05" unique_id=958546063]
+shape = SubResource("CylinderShape3D_5w643")
 
-[node name="SetuStump06" type="StaticBody3D" parent="WorldGeometry" unique_id=584625533]
+[node name="SetuStump06" type="StaticBody3D" parent="WorldGeometry" unique_id=1920719451]
 transform = Transform3D(0.99980974, 0.019505644, 0, -0.019505644, 0.99980974, 0, 0, 0, 1, -3.8638225, -3.92, -232)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump06" unique_id=910331410]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump06" unique_id=651894561]
 visible = false
-mesh = SubResource("CylinderMesh_ls816")
+mesh = SubResource("CylinderMesh_6l7hl")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump06" unique_id=1535098611]
-shape = SubResource("CylinderShape3D_udwc3")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump06" unique_id=1223386874]
+shape = SubResource("CylinderShape3D_34ey2")
 
-[node name="SetuStump07" type="StaticBody3D" parent="WorldGeometry" unique_id=1412783749]
+[node name="SetuStump07" type="StaticBody3D" parent="WorldGeometry" unique_id=424660921]
 transform = Transform3D(0.99894834, -0.04585024, 0, 0.04585024, 0.99894834, 0, 0, 0, 1, 0.084069505, -4.24, -257)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump07" unique_id=1650233312]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump07" unique_id=648529581]
 visible = false
-mesh = SubResource("CylinderMesh_68pmh")
+mesh = SubResource("CylinderMesh_74nim")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump07" unique_id=1947921990]
-shape = SubResource("CylinderShape3D_5w643")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump07" unique_id=426026111]
+shape = SubResource("CylinderShape3D_ytyjv")
 
-[node name="SetuStump08" type="StaticBody3D" parent="WorldGeometry" unique_id=15081295]
+[node name="SetuStump08" type="StaticBody3D" parent="WorldGeometry" unique_id=1230347631]
 transform = Transform3D(0.9976156, -0.06901533, 0, 0.06901533, 0.9976156, 0, 0, 0, 1, 3.9683392, -4.56, -282)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump08" unique_id=394720613]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump08" unique_id=258825762]
 visible = false
-mesh = SubResource("CylinderMesh_6l7hl")
+mesh = SubResource("CylinderMesh_p0p0q")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump08" unique_id=578255830]
-shape = SubResource("CylinderShape3D_34ey2")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump08" unique_id=1297518070]
+shape = SubResource("CylinderShape3D_mdwsv")
 
-[node name="SetuStump09" type="StaticBody3D" parent="WorldGeometry" unique_id=393194327]
+[node name="SetuStump09" type="StaticBody3D" parent="WorldGeometry" unique_id=615314166]
 transform = Transform3D(0.9995861, -0.028767329, 0, 0.028767329, 0.9995861, 0, 0, 0, 1, 4.849449, -4.88, -307)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump09" unique_id=1884915246]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump09" unique_id=118781002]
 visible = false
-mesh = SubResource("CylinderMesh_74nim")
+mesh = SubResource("CylinderMesh_qlrmn")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump09" unique_id=1046252574]
-shape = SubResource("CylinderShape3D_ytyjv")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump09" unique_id=1070436780]
+shape = SubResource("CylinderShape3D_igtds")
 
-[node name="SetuStump10" type="StaticBody3D" parent="WorldGeometry" unique_id=482201164]
+[node name="SetuStump10" type="StaticBody3D" parent="WorldGeometry" unique_id=745932336]
 transform = Transform3D(0.99927884, 0.037970707, 0, -0.037970707, 0.99927884, 0, 0, 0, 1, 2.0605924, -5.2, -332)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump10" unique_id=1410034583]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump10" unique_id=1636117221]
 visible = false
-mesh = SubResource("CylinderMesh_p0p0q")
+mesh = SubResource("CylinderMesh_55yn3")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump10" unique_id=857420001]
-shape = SubResource("CylinderShape3D_mdwsv")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump10" unique_id=413175277]
+shape = SubResource("CylinderShape3D_6dpdb")
 
-[node name="SetuStump11" type="StaticBody3D" parent="WorldGeometry" unique_id=220623622]
+[node name="SetuStump11" type="StaticBody3D" parent="WorldGeometry" unique_id=734277257]
 transform = Transform3D(0.9975641, 0.06975579, 0, -0.06975579, 0.9975641, 0, 0, 0, 1, -2.2876794, -5.52, -357)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump11" unique_id=1390057438]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuStump11" unique_id=1830102508]
 visible = false
-mesh = SubResource("CylinderMesh_qlrmn")
+mesh = SubResource("CylinderMesh_k00n3")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump11" unique_id=1667061795]
-shape = SubResource("CylinderShape3D_igtds")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuStump11" unique_id=2083731932]
+shape = SubResource("CylinderShape3D_rrs8b")
 
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=528437503]
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=1158126826]
 aabb = AABB(-20, -12, -375, 40, 35, 320)
 
-[node name="SetuBuildSite" type="Node3D" parent="WorldGeometry" unique_id=1471009938]
+[node name="SetuBuildSite" type="Node3D" parent="WorldGeometry" unique_id=1678465747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 4, 78)
 
-[node name="SlipwayLeft" type="StaticBody3D" parent="WorldGeometry/SetuBuildSite" unique_id=2023182902]
+[node name="SlipwayLeft" type="StaticBody3D" parent="WorldGeometry/SetuBuildSite" unique_id=1734706248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuBuildSite/SlipwayLeft" unique_id=1803038428]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuBuildSite/SlipwayLeft" unique_id=267875849]
 visible = false
-mesh = SubResource("BoxMesh_6dpdb")
+mesh = SubResource("BoxMesh_6j8mh")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuBuildSite/SlipwayLeft" unique_id=705253356]
-shape = SubResource("BoxShape3D_k00n3")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuBuildSite/SlipwayLeft" unique_id=1347448045]
+shape = SubResource("BoxShape3D_rk7p5")
 
-[node name="SlipwayRight" type="StaticBody3D" parent="WorldGeometry/SetuBuildSite" unique_id=1721465592]
+[node name="SlipwayRight" type="StaticBody3D" parent="WorldGeometry/SetuBuildSite" unique_id=1520716486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuBuildSite/SlipwayRight" unique_id=811145768]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuBuildSite/SlipwayRight" unique_id=1500859217]
 visible = false
-mesh = SubResource("BoxMesh_rrs8b")
+mesh = SubResource("BoxMesh_xhspv")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuBuildSite/SlipwayRight" unique_id=322569763]
-shape = SubResource("BoxShape3D_jvyia")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuBuildSite/SlipwayRight" unique_id=1871659070]
+shape = SubResource("BoxShape3D_0545p")
 
-[node name="AssemblyPlinth" type="StaticBody3D" parent="WorldGeometry/SetuBuildSite" unique_id=1153477865]
+[node name="AssemblyPlinth" type="StaticBody3D" parent="WorldGeometry/SetuBuildSite" unique_id=679878040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 18)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuBuildSite/AssemblyPlinth" unique_id=1168778536]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/SetuBuildSite/AssemblyPlinth" unique_id=237713249]
 visible = false
-mesh = SubResource("BoxMesh_6j8mh")
+mesh = SubResource("BoxMesh_yyckp")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuBuildSite/AssemblyPlinth" unique_id=319360243]
-shape = SubResource("BoxShape3D_rk7p5")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/SetuBuildSite/AssemblyPlinth" unique_id=1764904414]
+shape = SubResource("BoxShape3D_uhhkf")
 
-[node name="Setu" parent="WorldGeometry/SetuBuildSite" unique_id=1030316103 instance=ExtResource("3_ivdrb")]
+[node name="Setu" parent="WorldGeometry/SetuBuildSite" unique_id=37521298 instance=ExtResource("3_nqohm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 18)
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/setu.tscn"
 
 [node name="Frame" parent="WorldGeometry/SetuBuildSite/Setu" index="1"]
 visible = false
 
-[node name="CairnDoor_ShallowsHoldStack" type="Node3D" parent="WorldGeometry" unique_id=43660287]
+[node name="CairnDoor_ShallowsHoldStack" type="Node3D" parent="WorldGeometry" unique_id=1727857218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 6, -12)
 
-[node name="LeftPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack" unique_id=1829915882]
+[node name="LeftPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack" unique_id=1279073965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/LeftPillar" unique_id=1464142825]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/LeftPillar" unique_id=695997100]
 visible = false
-mesh = SubResource("BoxMesh_xhspv")
+mesh = SubResource("BoxMesh_loekd")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/LeftPillar" unique_id=811860124]
-shape = SubResource("BoxShape3D_0545p")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/LeftPillar" unique_id=218053801]
+shape = SubResource("BoxShape3D_andg5")
 
-[node name="RightPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack" unique_id=1300928797]
+[node name="RightPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack" unique_id=1284250182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 3.5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/RightPillar" unique_id=1085548245]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/RightPillar" unique_id=845844414]
 visible = false
-mesh = SubResource("BoxMesh_yyckp")
+mesh = SubResource("BoxMesh_32m8a")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/RightPillar" unique_id=1543913780]
-shape = SubResource("BoxShape3D_uhhkf")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/RightPillar" unique_id=1364003756]
+shape = SubResource("BoxShape3D_ds7sq")
 
-[node name="Lintel" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack" unique_id=447803467]
+[node name="Lintel" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack" unique_id=1470147654]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/Lintel" unique_id=1032842314]
-visible = false
-mesh = SubResource("BoxMesh_andg5")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/Lintel" unique_id=862511281]
-shape = SubResource("BoxShape3D_32m8a")
-
-[node name="CairnDoor_ShallowsCounterweight" type="Node3D" parent="WorldGeometry" unique_id=568293916]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162, 8, 116)
-
-[node name="LeftPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight" unique_id=1139037518]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.5, 0)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/LeftPillar" unique_id=1020497597]
-visible = false
-mesh = SubResource("BoxMesh_ds7sq")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/LeftPillar" unique_id=812914703]
-shape = SubResource("BoxShape3D_6kj17")
-
-[node name="RightPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight" unique_id=923424246]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 3.5, 0)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/RightPillar" unique_id=878658958]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/Lintel" unique_id=188171825]
 visible = false
 mesh = SubResource("BoxMesh_lgagg")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/RightPillar" unique_id=484518607]
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsHoldStack/Lintel" unique_id=1615589171]
 shape = SubResource("BoxShape3D_hpoqa")
 
-[node name="Lintel" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight" unique_id=412405267]
+[node name="CairnDoor_ShallowsCounterweight" type="Node3D" parent="WorldGeometry" unique_id=837952582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162, 8, 116)
+
+[node name="LeftPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight" unique_id=1922909409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/LeftPillar" unique_id=379568500]
+visible = false
+mesh = SubResource("BoxMesh_rivg0")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/LeftPillar" unique_id=624350777]
+shape = SubResource("BoxShape3D_nuth0")
+
+[node name="RightPillar" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight" unique_id=441784526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 3.5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/RightPillar" unique_id=1417537882]
+visible = false
+mesh = SubResource("BoxMesh_oelkf")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/RightPillar" unique_id=333307498]
+shape = SubResource("BoxShape3D_1r5n3")
+
+[node name="Lintel" type="StaticBody3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight" unique_id=1905209214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/Lintel" unique_id=159747158]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/Lintel" unique_id=730301707]
 visible = false
-mesh = SubResource("BoxMesh_rivg0")
+mesh = SubResource("BoxMesh_4qphy")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/Lintel" unique_id=2032085319]
-shape = SubResource("BoxShape3D_nuth0")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/CairnDoor_ShallowsCounterweight/Lintel" unique_id=1312792705]
+shape = SubResource("BoxShape3D_rjska")
 
-[node name="Dressing" type="Node3D" parent="." unique_id=62999087]
+[node name="Dressing" type="Node3D" parent="." unique_id=473253769]
 
-[node name="ArrivalWreck" type="Node3D" parent="Dressing" unique_id=1420611044]
+[node name="ArrivalWreck" type="Node3D" parent="Dressing" unique_id=1109304427]
 transform = Transform3D(0.95105654, 0, -0.309017, 0, 1, 0, 0.309017, 0, 0.95105654, -92, 5, 22)
 
-[node name="Keel" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=279838562]
+[node name="Keel" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=106514644]
 transform = Transform3D(0.99026805, -0.1391731, 0, 0.1391731, 0.99026805, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Keel" unique_id=1317950140]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Keel" unique_id=412480369]
 visible = false
-mesh = SubResource("BoxMesh_1r5n3")
+mesh = SubResource("BoxMesh_4txnc")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Keel" unique_id=1300027853]
-shape = SubResource("BoxShape3D_4qphy")
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Keel" unique_id=383157068]
+shape = SubResource("BoxShape3D_a8vbo")
 
-[node name="Rib00" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=1910233834]
+[node name="Rib00" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=1468117300]
 transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, -24)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib00" unique_id=969198723]
-visible = false
-mesh = SubResource("CylinderMesh_rjska")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib00" unique_id=2053728269]
-shape = SubResource("CylinderShape3D_aqtkh")
-
-[node name="Rib01" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=123477530]
-transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, -16)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib01" unique_id=1725935399]
-visible = false
-mesh = SubResource("CylinderMesh_4txnc")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib01" unique_id=374542710]
-shape = SubResource("CylinderShape3D_a8vbo")
-
-[node name="Rib02" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=2065379352]
-transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, -8)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib02" unique_id=619521051]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib00" unique_id=428927972]
 visible = false
 mesh = SubResource("CylinderMesh_6anvv")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib02" unique_id=827101087]
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib00" unique_id=1500729320]
 shape = SubResource("CylinderShape3D_5mtps")
 
-[node name="Rib03" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=414933069]
-transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 0)
+[node name="Rib01" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=1114366004]
+transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, -16)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib03" unique_id=415897695]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib01" unique_id=829425122]
 visible = false
 mesh = SubResource("CylinderMesh_ecwq4")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib03" unique_id=1652568018]
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib01" unique_id=1662833851]
 shape = SubResource("CylinderShape3D_hbitx")
 
-[node name="Rib04" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=826958763]
-transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 8)
+[node name="Rib02" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=1948779794]
+transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, -8)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib04" unique_id=1481390098]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib02" unique_id=1127756464]
 visible = false
 mesh = SubResource("CylinderMesh_jb428")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib04" unique_id=1318803934]
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib02" unique_id=924735592]
 shape = SubResource("CylinderShape3D_3v66u")
 
-[node name="Rib05" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=1546258185]
-transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 16)
+[node name="Rib03" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=181307216]
+transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib05" unique_id=246733782]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib03" unique_id=1458261328]
 visible = false
 mesh = SubResource("CylinderMesh_u7it1")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib05" unique_id=2030606493]
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib03" unique_id=1950772135]
 shape = SubResource("CylinderShape3D_ofr15")
 
-[node name="Rib06" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=827493743]
-transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 24)
+[node name="Rib04" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=685956345]
+transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 8)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib06" unique_id=1383254407]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib04" unique_id=144938390]
 visible = false
 mesh = SubResource("CylinderMesh_ysbso")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib06" unique_id=1100578828]
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib04" unique_id=1810428160]
 shape = SubResource("CylinderShape3D_12d80")
 
-[node name="TornCanvas" type="MeshInstance3D" parent="Dressing/ArrivalWreck" unique_id=707102805]
+[node name="Rib05" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=1985488000]
+transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 16)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib05" unique_id=1678684185]
+visible = false
+mesh = SubResource("CylinderMesh_ii0sf")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib05" unique_id=1021831004]
+shape = SubResource("CylinderShape3D_nu87p")
+
+[node name="Rib06" type="StaticBody3D" parent="Dressing/ArrivalWreck" unique_id=1410852286]
+transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 24)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/ArrivalWreck/Rib06" unique_id=1625489532]
+visible = false
+mesh = SubResource("CylinderMesh_ry5ss")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/ArrivalWreck/Rib06" unique_id=1298469972]
+shape = SubResource("CylinderShape3D_cwaxk")
+
+[node name="TornCanvas" type="MeshInstance3D" parent="Dressing/ArrivalWreck" unique_id=142098773]
 transform = Transform3D(0.9702957, -0.2419219, 0, 0.2419219, 0.9702957, 0, 0, 0, 1, 4, 8, -5)
 visible = false
-mesh = SubResource("BoxMesh_nu87p")
+mesh = SubResource("BoxMesh_lhds0")
 
-[node name="EasternWreck" type="Node3D" parent="Dressing" unique_id=1382605242]
+[node name="EasternWreck" type="Node3D" parent="Dressing" unique_id=1219077303]
 transform = Transform3D(0.72320336, 0, 0.2921931, 0, 0.78, 0, -0.2921931, 0, 0.72320336, 125, 3, -38)
 
-[node name="Keel" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=1570519669]
+[node name="Keel" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=398422289]
 transform = Transform3D(0.99026805, -0.1391731, 0, 0.1391731, 0.99026805, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Keel" unique_id=71404766]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Keel" unique_id=2084289818]
 visible = false
-mesh = SubResource("BoxMesh_ry5ss")
+mesh = SubResource("BoxMesh_s8khg")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Keel" unique_id=171049367]
-shape = SubResource("BoxShape3D_cwaxk")
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Keel" unique_id=723033122]
+shape = SubResource("BoxShape3D_m8gij")
 
-[node name="Rib00" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=1406932533]
+[node name="Rib00" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=1293815815]
 transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, -24)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib00" unique_id=408966712]
-visible = false
-mesh = SubResource("CylinderMesh_cocg0")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib00" unique_id=1258733502]
-shape = SubResource("CylinderShape3D_lhds0")
-
-[node name="Rib01" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=1512121099]
-transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, -16)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib01" unique_id=1168899300]
-visible = false
-mesh = SubResource("CylinderMesh_s8khg")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib01" unique_id=1990545120]
-shape = SubResource("CylinderShape3D_m8gij")
-
-[node name="Rib02" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=1072195650]
-transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, -8)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib02" unique_id=2122545833]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib00" unique_id=955732046]
 visible = false
 mesh = SubResource("CylinderMesh_tnr3p")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib02" unique_id=434403469]
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib00" unique_id=612780102]
 shape = SubResource("CylinderShape3D_onus0")
 
-[node name="Rib03" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=459774399]
-transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 0)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib03" unique_id=2099139537]
-visible = false
-mesh = SubResource("CylinderMesh_vnb7y")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib03" unique_id=1791363024]
-shape = SubResource("CylinderShape3D_kwl28")
-
-[node name="Rib04" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=340038509]
-transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 8)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib04" unique_id=2117121209]
-visible = false
-mesh = SubResource("CylinderMesh_ktn7c")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib04" unique_id=433060784]
-shape = SubResource("CylinderShape3D_jok6g")
-
-[node name="Rib05" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=828531874]
-transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 16)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib05" unique_id=1239735639]
-visible = false
-mesh = SubResource("CylinderMesh_44pdb")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib05" unique_id=1870746434]
-shape = SubResource("CylinderShape3D_qiide")
-
-[node name="Rib06" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=334191132]
-transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 24)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib06" unique_id=50824992]
-visible = false
-mesh = SubResource("CylinderMesh_li8v6")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib06" unique_id=266617440]
-shape = SubResource("CylinderShape3D_eh88k")
-
-[node name="TornCanvas" type="MeshInstance3D" parent="Dressing/EasternWreck" unique_id=1185753272]
-transform = Transform3D(0.9702957, -0.2419219, 0, 0.2419219, 0.9702957, 0, 0, 0, 1, 4, 8, -5)
-visible = false
-mesh = SubResource("BoxMesh_q0f6s")
-
-[node name="KefferOverturnedHull" type="Node3D" parent="Dressing" unique_id=98926015]
-transform = Transform3D(0.89124125, 0, 0.1252558, 0, 0.9, 0, -0.1252558, 0, 0.89124125, -135, 8, 68)
-
-[node name="Keel" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=1411140349]
-transform = Transform3D(0.99026805, -0.1391731, 0, 0.1391731, 0.99026805, 0, 0, 0, 1, 0, 0, 0)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Keel" unique_id=1764880544]
-visible = false
-mesh = SubResource("BoxMesh_1ygd4")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Keel" unique_id=1842365423]
-shape = SubResource("BoxShape3D_elkl2")
-
-[node name="Rib00" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=1065047926]
-transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, -24)
-collision_layer = 5
-collision_mask = 0
-
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib00" unique_id=648813002]
-visible = false
-mesh = SubResource("CylinderMesh_ip8xm")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib00" unique_id=196057272]
-shape = SubResource("CylinderShape3D_isnl8")
-
-[node name="Rib01" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=9303939]
+[node name="Rib01" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=1458285848]
 transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, -16)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib01" unique_id=2083780275]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib01" unique_id=716761995]
 visible = false
-mesh = SubResource("CylinderMesh_lii4w")
+mesh = SubResource("CylinderMesh_vnb7y")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib01" unique_id=843506242]
-shape = SubResource("CylinderShape3D_8tmrm")
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib01" unique_id=711411283]
+shape = SubResource("CylinderShape3D_kwl28")
 
-[node name="Rib02" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=56333718]
+[node name="Rib02" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=814813228]
 transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, -8)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib02" unique_id=849563210]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib02" unique_id=1170412944]
 visible = false
-mesh = SubResource("CylinderMesh_gktku")
+mesh = SubResource("CylinderMesh_ktn7c")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib02" unique_id=1299028887]
-shape = SubResource("CylinderShape3D_g4yrp")
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib02" unique_id=787894915]
+shape = SubResource("CylinderShape3D_jok6g")
 
-[node name="Rib03" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=968314688]
+[node name="Rib03" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=1382754928]
 transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib03" unique_id=415821112]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib03" unique_id=1006353409]
 visible = false
-mesh = SubResource("CylinderMesh_gnm50")
+mesh = SubResource("CylinderMesh_44pdb")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib03" unique_id=413000497]
-shape = SubResource("CylinderShape3D_qmvjg")
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib03" unique_id=756948320]
+shape = SubResource("CylinderShape3D_qiide")
 
-[node name="Rib04" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=1369383184]
+[node name="Rib04" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=1796963640]
 transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 8)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib04" unique_id=1199662307]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib04" unique_id=1771613301]
 visible = false
-mesh = SubResource("CylinderMesh_l5mbc")
+mesh = SubResource("CylinderMesh_li8v6")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib04" unique_id=1066766370]
-shape = SubResource("CylinderShape3D_ep5c7")
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib04" unique_id=900144084]
+shape = SubResource("CylinderShape3D_eh88k")
 
-[node name="Rib05" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=1166168069]
+[node name="Rib05" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=301351447]
 transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 16)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib05" unique_id=1220003527]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib05" unique_id=1171420310]
 visible = false
-mesh = SubResource("CylinderMesh_xpgvw")
+mesh = SubResource("CylinderMesh_q0f6s")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib05" unique_id=396519941]
-shape = SubResource("CylinderShape3D_05c0s")
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib05" unique_id=1721668899]
+shape = SubResource("CylinderShape3D_1ygd4")
 
-[node name="Rib06" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=381172546]
+[node name="Rib06" type="StaticBody3D" parent="Dressing/EasternWreck" unique_id=551047350]
 transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 24)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib06" unique_id=800377812]
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/EasternWreck/Rib06" unique_id=434420533]
+visible = false
+mesh = SubResource("CylinderMesh_elkl2")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/EasternWreck/Rib06" unique_id=1487218392]
+shape = SubResource("CylinderShape3D_ip8xm")
+
+[node name="TornCanvas" type="MeshInstance3D" parent="Dressing/EasternWreck" unique_id=464579343]
+transform = Transform3D(0.9702957, -0.2419219, 0, 0.2419219, 0.9702957, 0, 0, 0, 1, 4, 8, -5)
+visible = false
+mesh = SubResource("BoxMesh_isnl8")
+
+[node name="KefferOverturnedHull" type="Node3D" parent="Dressing" unique_id=1329560565]
+transform = Transform3D(0.89124125, 0, 0.1252558, 0, 0.9, 0, -0.1252558, 0, 0.89124125, -135, 8, 68)
+
+[node name="Keel" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=332081832]
+transform = Transform3D(0.99026805, -0.1391731, 0, 0.1391731, 0.99026805, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Keel" unique_id=1969222283]
+visible = false
+mesh = SubResource("BoxMesh_lii4w")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Keel" unique_id=776247649]
+shape = SubResource("BoxShape3D_8tmrm")
+
+[node name="Rib00" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=1116102150]
+transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, -24)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib00" unique_id=1484118388]
+visible = false
+mesh = SubResource("CylinderMesh_gktku")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib00" unique_id=61499587]
+shape = SubResource("CylinderShape3D_g4yrp")
+
+[node name="Rib01" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=1348698282]
+transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, -16)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib01" unique_id=1436580156]
+visible = false
+mesh = SubResource("CylinderMesh_gnm50")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib01" unique_id=1660689462]
+shape = SubResource("CylinderShape3D_qmvjg")
+
+[node name="Rib02" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=454256982]
+transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, -8)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib02" unique_id=1516334955]
+visible = false
+mesh = SubResource("CylinderMesh_l5mbc")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib02" unique_id=211025962]
+shape = SubResource("CylinderShape3D_ep5c7")
+
+[node name="Rib03" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=204040551]
+transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 0)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib03" unique_id=1521347145]
+visible = false
+mesh = SubResource("CylinderMesh_xpgvw")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib03" unique_id=1820863266]
+shape = SubResource("CylinderShape3D_05c0s")
+
+[node name="Rib04" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=1833612453]
+transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 8)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib04" unique_id=952965859]
 visible = false
 mesh = SubResource("CylinderMesh_jhds3")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib06" unique_id=77378347]
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib04" unique_id=748203533]
 shape = SubResource("CylinderShape3D_ydwv6")
 
-[node name="TornCanvas" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull" unique_id=1593058455]
+[node name="Rib05" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=898435302]
+transform = Transform3D(0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 0, 0, 0, 1, 0, 5, 16)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib05" unique_id=730317068]
+visible = false
+mesh = SubResource("CylinderMesh_dtsqx")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib05" unique_id=1755017188]
+shape = SubResource("CylinderShape3D_gnfxl")
+
+[node name="Rib06" type="StaticBody3D" parent="Dressing/KefferOverturnedHull" unique_id=1726014847]
+transform = Transform3D(0.20791166, -0.9781476, 0, 0.9781476, 0.20791166, 0, 0, 0, 1, 0, 5, 24)
+collision_layer = 5
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull/Rib06" unique_id=835351832]
+visible = false
+mesh = SubResource("CylinderMesh_jh6h1")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Dressing/KefferOverturnedHull/Rib06" unique_id=1677555589]
+shape = SubResource("CylinderShape3D_p7jdb")
+
+[node name="TornCanvas" type="MeshInstance3D" parent="Dressing/KefferOverturnedHull" unique_id=1618859201]
 transform = Transform3D(0.9702957, -0.2419219, 0, 0.2419219, 0.9702957, 0, 0, 0, 1, 4, 8, -5)
-visible = false
-mesh = SubResource("BoxMesh_dtsqx")
-
-[node name="WreckDebris00" type="MeshInstance3D" parent="Dressing" unique_id=1994885426]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 45)
-visible = false
-mesh = SubResource("BoxMesh_gnfxl")
-
-[node name="WreckDebris01" type="MeshInstance3D" parent="Dressing" unique_id=1514759665]
-transform = Transform3D(0.6860209, 0.08387586, 0.722731, 0.11874584, 0.96710724, -0.22495104, -0.7178263, 0.24014242, 0.6534959, 88.139084, 1.8, -9.574063)
-visible = false
-mesh = SubResource("BoxMesh_jh6h1")
-
-[node name="WreckDebris02" type="MeshInstance3D" parent="Dressing" unique_id=1142558002]
-transform = Transform3D(0.008135527, 0.44748178, 0.89425606, 0.21743797, 0.872096, -0.43837115, -0.97604024, 0.19801159, -0.09020457, -33.803436, 1.8, -89.418976)
-visible = false
-mesh = SubResource("BoxMesh_p7jdb")
-
-[node name="WreckDebris03" type="MeshInstance3D" parent="Dressing" unique_id=406443659]
-transform = Transform3D(-0.7982839, 0.15511395, 0.5819644, 0.0513744, 0.98028183, -0.190809, -0.6000862, -0.12242167, -0.7905121, -143.50749, 1.8, 47.452618)
 visible = false
 mesh = SubResource("BoxMesh_vuhfv")
 
-[node name="WreckDebris04" type="MeshInstance3D" parent="Dressing" unique_id=1227094587]
-transform = Transform3D(-0.9790741, 0.090154685, -0.18244424, 0.1586355, 0.8996666, -0.40673664, 0.1274698, -0.42716748, -0.8951421, 29.06666, 1.8, 119.700935)
+[node name="WreckDebris00" type="MeshInstance3D" parent="Dressing" unique_id=1909972711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 45)
 visible = false
 mesh = SubResource("BoxMesh_pabst")
 
-[node name="WreckDebris05" type="MeshInstance3D" parent="Dressing" unique_id=1574405966]
-transform = Transform3D(-0.5261667, 0.020063192, -0.85014474, 0.2887721, 0.9445311, -0.15643448, 0.79984957, -0.32780868, -0.5027745, 68.298706, 1.8, -28.852528)
+[node name="WreckDebris01" type="MeshInstance3D" parent="Dressing" unique_id=785535528]
+transform = Transform3D(0.6860209, 0.08387586, 0.722731, 0.11874584, 0.96710724, -0.22495104, -0.7178263, 0.24014242, 0.6534959, 88.139084, 1.8, -9.574063)
 visible = false
 mesh = SubResource("BoxMesh_fe0s5")
 
-[node name="WreckDebris06" type="MeshInstance3D" parent="Dressing" unique_id=2018048633]
-transform = Transform3D(0.25802463, -0.38678837, -0.885335, 0.09691711, 0.92210466, -0.37460658, 0.96126497, 0.010853618, 0.2754121, -91.1978, 1.8, -46.2999)
+[node name="WreckDebris02" type="MeshInstance3D" parent="Dressing" unique_id=60906002]
+transform = Transform3D(0.008135527, 0.44748178, 0.89425606, 0.21743797, 0.872096, -0.43837115, -0.97604024, 0.19801159, -0.09020457, -33.803436, 1.8, -89.418976)
 visible = false
 mesh = SubResource("BoxMesh_x36g2")
 
-[node name="WreckDebris07" type="MeshInstance3D" parent="Dressing" unique_id=1775188070]
-transform = Transform3D(0.8727092, -0.254023, -0.41695437, 0.22327429, 0.96710724, -0.12186935, 0.43419722, 0.013261311, 0.90072024, -88.178, 1.8, 76.94629)
+[node name="WreckDebris03" type="MeshInstance3D" parent="Dressing" unique_id=148839114]
+transform = Transform3D(-0.7982839, 0.15511395, 0.5819644, 0.0513744, 0.98028183, -0.190809, -0.6000862, -0.12242167, -0.7905121, -143.50749, 1.8, 47.452618)
 visible = false
 mesh = SubResource("BoxMesh_elc62")
 
-[node name="WreckDebris08" type="MeshInstance3D" parent="Dressing" unique_id=968394496]
-transform = Transform3D(0.92434275, 0.101660594, 0.36777118, 0.0327948, 0.9391202, -0.34202012, -0.3801513, 0.3282048, 0.864735, 49.351864, 1.8, 51.644707)
+[node name="WreckDebris04" type="MeshInstance3D" parent="Dressing" unique_id=172385323]
+transform = Transform3D(-0.9790741, 0.090154685, -0.18244424, 0.1586355, 0.8996666, -0.40673664, 0.1274698, -0.42716748, -0.8951421, 29.06666, 1.8, 119.700935)
 visible = false
 mesh = SubResource("BoxMesh_lsfxl")
 
-[node name="WreckDebris09" type="MeshInstance3D" parent="Dressing" unique_id=770065803]
-transform = Transform3D(0.33574829, 0.030217096, 0.941467, 0.1558392, 0.98392993, -0.08715574, -0.9289711, 0.17597985, 0.32564378, 27.824299, 1.8, -133.93225)
+[node name="WreckDebris05" type="MeshInstance3D" parent="Dressing" unique_id=1879245426]
+transform = Transform3D(-0.5261667, 0.020063192, -0.85014474, 0.2887721, 0.9445311, -0.15643448, 0.79984957, -0.32780868, -0.5027745, 68.298706, 1.8, -28.852528)
 visible = false
 mesh = SubResource("BoxMesh_b3x3x")
 
-[node name="WreckDebris10" type="MeshInstance3D" parent="Dressing" unique_id=210615956]
-transform = Transform3D(-0.38845015, 0.39309287, 0.8334174, 0.2621467, 0.9142142, -0.309017, -0.88339436, 0.09843993, -0.45817465, -121.03999, 1.8, -8.001409)
+[node name="WreckDebris06" type="MeshInstance3D" parent="Dressing" unique_id=714113550]
+transform = Transform3D(0.25802463, -0.38678837, -0.885335, 0.09691711, 0.92210466, -0.37460658, 0.96126497, 0.010853618, 0.2754121, -91.1978, 1.8, -46.2999)
 visible = false
 mesh = SubResource("BoxMesh_k2g28")
 
-[node name="WreckDebris11" type="MeshInstance3D" parent="Dressing" unique_id=2101909132]
-transform = Transform3D(-0.9683446, 0.096822895, 0.23007394, 0.08703629, 0.9948294, -0.05233596, -0.23395166, -0.030654462, -0.97176486, -6.20866, 1.8, 68.94603)
+[node name="WreckDebris07" type="MeshInstance3D" parent="Dressing" unique_id=1289636492]
+transform = Transform3D(0.8727092, -0.254023, -0.41695437, 0.22327429, 0.96710724, -0.12186935, 0.43419722, 0.013261311, 0.90072024, -88.178, 1.8, 76.94629)
 visible = false
 mesh = SubResource("BoxMesh_jm5uv")
 
-[node name="WreckDebris12" type="MeshInstance3D" parent="Dressing" unique_id=1153690584]
-transform = Transform3D(-0.83804566, 0.018278435, -0.5452938, 0.19985755, 0.9402558, -0.27563736, 0.5076775, -0.3399778, -0.7916304, 54.72716, 1.8, -9.251912)
+[node name="WreckDebris08" type="MeshInstance3D" parent="Dressing" unique_id=1027377713]
+transform = Transform3D(0.92434275, 0.101660594, 0.36777118, 0.0327948, 0.9391202, -0.34202012, -0.3801513, 0.3282048, 0.864735, 49.351864, 1.8, 51.644707)
 visible = false
 mesh = SubResource("BoxMesh_3bxs1")
 
-[node name="WreckDebris13" type="MeshInstance3D" parent="Dressing" unique_id=556700699]
-transform = Transform3D(-0.13184622, -0.015001953, -0.99115664, 0.017449748, 0.9996954, -0.017452406, 0.9911166, -0.019596467, -0.13154428, -21.056227, 1.8, -113.67841)
+[node name="WreckDebris09" type="MeshInstance3D" parent="Dressing" unique_id=1816314411]
+transform = Transform3D(0.33574829, 0.030217096, 0.941467, 0.1558392, 0.98392993, -0.08715574, -0.9289711, 0.17597985, 0.32564378, 27.824299, 1.8, -133.93225)
 visible = false
 mesh = SubResource("BoxMesh_trmhb")
 
-[node name="WreckDebris14" type="MeshInstance3D" parent="Dressing" unique_id=1330892702]
-transform = Transform3D(0.6150883, -0.27270925, -0.7397946, 0.13503908, 0.96085286, -0.2419219, 0.7768081, 0.04890216, 0.62783575, -114.31427, 1.8, 52.045017)
+[node name="WreckDebris10" type="MeshInstance3D" parent="Dressing" unique_id=232301966]
+transform = Transform3D(-0.38845015, 0.39309287, 0.8334174, 0.2621467, 0.9142142, -0.309017, -0.88339436, 0.09843993, -0.45817465, -121.03999, 1.8, -8.001409)
 visible = false
 mesh = SubResource("BoxMesh_lq32o")
 
-[node name="WreckDebris15" type="MeshInstance3D" parent="Dressing" unique_id=1971027178]
-transform = Transform3D(0.96175843, -0.27246547, -0.027986892, 0.23060946, 0.8606462, -0.4539905, 0.14778355, 0.43017516, 0.8905669, 77.636406, 1.8, 39.11301)
+[node name="WreckDebris11" type="MeshInstance3D" parent="Dressing" unique_id=549660106]
+transform = Transform3D(-0.9683446, 0.096822895, 0.23007394, 0.08703629, 0.9948294, -0.05233596, -0.23395166, -0.030654462, -0.97176486, -6.20866, 1.8, 68.94603)
 visible = false
 mesh = SubResource("BoxMesh_n7r56")
 
-[node name="WreckDebris16" type="MeshInstance3D" parent="Dressing" unique_id=678119963]
-transform = Transform3D(0.70241004, 0.10100916, 0.7045689, 0.06823213, 0.97576493, -0.2079117, -0.70849454, 0.1941135, 0.678495, 43.568592, 1.8, -42.11197)
+[node name="WreckDebris12" type="MeshInstance3D" parent="Dressing" unique_id=1893438352]
+transform = Transform3D(-0.83804566, 0.018278435, -0.5452938, 0.19985755, 0.9402558, -0.27563736, 0.5076775, -0.3399778, -0.7916304, 54.72716, 1.8, -9.251912)
 visible = false
 mesh = SubResource("BoxMesh_gtlck")
 
-[node name="WreckDebris17" type="MeshInstance3D" parent="Dressing" unique_id=914419189]
-transform = Transform3D(0.01265502, 0.4270405, 0.9041439, 0.17293167, 0.8896563, -0.42261827, -0.9848525, 0.16170338, -0.06259021, -63.575363, 1.8, -65.082245)
+[node name="WreckDebris13" type="MeshInstance3D" parent="Dressing" unique_id=2029833718]
+transform = Transform3D(-0.13184622, -0.015001953, -0.99115664, 0.017449748, 0.9996954, -0.017452406, 0.9911166, -0.019596467, -0.13154428, -21.056227, 1.8, -113.67841)
 visible = false
 mesh = SubResource("BoxMesh_37kbf")
 
-[node name="KefferHullOccluder" type="OccluderInstance3D" parent="Dressing" unique_id=946334865]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 8, 68)
-occluder = SubResource("BoxOccluder3D_id55h")
+[node name="WreckDebris14" type="MeshInstance3D" parent="Dressing" unique_id=1675410238]
+transform = Transform3D(0.6150883, -0.27270925, -0.7397946, 0.13503908, 0.96085286, -0.2419219, 0.7768081, 0.04890216, 0.62783575, -114.31427, 1.8, 52.045017)
+visible = false
+mesh = SubResource("BoxMesh_id55h")
 
-[node name="FragmentProxy_CrewAadi" type="MeshInstance3D" parent="Dressing" unique_id=1995714304]
-transform = Transform3D(0.63247156, 0.076558664, 0.7707908, 0.13613184, 0.96862835, -0.2079117, -0.7625272, 0.2364274, 0.60220784, -72, 4.35, -42)
+[node name="WreckDebris15" type="MeshInstance3D" parent="Dressing" unique_id=633206018]
+transform = Transform3D(0.96175843, -0.27246547, -0.027986892, 0.23060946, 0.8606462, -0.4539905, 0.14778355, 0.43017516, 0.8905669, 77.636406, 1.8, 39.11301)
 visible = false
 mesh = SubResource("BoxMesh_lwku3")
 
-[node name="FragmentProxy_CrewBaran" type="MeshInstance3D" parent="Dressing" unique_id=1865340980]
-transform = Transform3D(-0.09196323, 0.22131458, 0.97085667, 0.13613184, 0.96862835, -0.2079117, -0.9864131, 0.11304427, -0.11920615, 88, 3.35, -86)
+[node name="WreckDebris16" type="MeshInstance3D" parent="Dressing" unique_id=964274698]
+transform = Transform3D(0.70241004, 0.10100916, 0.7045689, 0.06823213, 0.97576493, -0.2079117, -0.70849454, 0.1941135, 0.678495, 43.568592, 1.8, -42.11197)
 visible = false
 mesh = SubResource("BoxMesh_hg6m3")
 
-[node name="FragmentProxy_CrewChaya" type="MeshInstance3D" parent="Dressing" unique_id=1673265418]
-transform = Transform3D(0.9904253, -0.12820701, 0.051192295, 0.13613184, 0.96862835, -0.2079117, -0.022930568, 0.21288991, 0.97680706, -126, 6.35, 44)
+[node name="WreckDebris17" type="MeshInstance3D" parent="Dressing" unique_id=374220093]
+transform = Transform3D(0.01265502, 0.4270405, 0.9041439, 0.17293167, 0.8896563, -0.42261827, -0.9848525, 0.16170338, -0.06259021, -63.575363, 1.8, -65.082245)
 visible = false
 mesh = SubResource("BoxMesh_g4n76")
 
-[node name="FragmentProxy_CrewDevan" type="MeshInstance3D" parent="Dressing" unique_id=1719848931]
-transform = Transform3D(0.7439703, 0.038630724, 0.66709507, 0.13613184, 0.96862835, -0.2079117, -0.65419894, 0.24549302, 0.7153719, 138, 4.35, 92)
-visible = false
-mesh = SubResource("BoxMesh_caebt")
+[node name="KefferHullOccluder" type="OccluderInstance3D" parent="Dressing" unique_id=1382062167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 8, 68)
+occluder = SubResource("BoxOccluder3D_caebt")
 
-[node name="SalvageProxy_SalvageTimber01" type="MeshInstance3D" parent="Dressing" unique_id=402930539]
-transform = Transform3D(-0.9271838, 0, 0.3746067, 0, 1, 0, -0.3746067, 0, -0.9271838, -102, 3.5, -14)
+[node name="FragmentProxy_CrewAadi" type="MeshInstance3D" parent="Dressing" unique_id=461919380]
+transform = Transform3D(0.63247156, 0.076558664, 0.7707908, 0.13613184, 0.96862835, -0.2079117, -0.7625272, 0.2364274, 0.60220784, -72, 4.35, -42)
+visible = false
+mesh = SubResource("BoxMesh_68ojb")
+
+[node name="FragmentProxy_CrewBaran" type="MeshInstance3D" parent="Dressing" unique_id=1934959314]
+transform = Transform3D(-0.09196323, 0.22131458, 0.97085667, 0.13613184, 0.96862835, -0.2079117, -0.9864131, 0.11304427, -0.11920615, 88, 3.35, -86)
 visible = false
 mesh = SubResource("BoxMesh_8sntp")
 
-[node name="SalvageProxy_SalvageTimber02" type="MeshInstance3D" parent="Dressing" unique_id=552593952]
-transform = Transform3D(-0.93358046, 0, 0.35836792, 0, 1, 0, -0.35836792, 0, -0.93358046, 118, 3.5, -34)
+[node name="FragmentProxy_CrewChaya" type="MeshInstance3D" parent="Dressing" unique_id=161133052]
+transform = Transform3D(0.9904253, -0.12820701, 0.051192295, 0.13613184, 0.96862835, -0.2079117, -0.022930568, 0.21288991, 0.97680706, -126, 6.35, 44)
 visible = false
 mesh = SubResource("BoxMesh_psbg5")
 
-[node name="SalvageProxy_SalvageCanvas01" type="MeshInstance3D" parent="Dressing" unique_id=1564519753]
-transform = Transform3D(-0.7986355, 0, 0.6018151, 0, 1, 0, -0.6018151, 0, -0.7986355, -138, 5.5, 71)
+[node name="FragmentProxy_CrewDevan" type="MeshInstance3D" parent="Dressing" unique_id=937608956]
+transform = Transform3D(0.7439703, 0.038630724, 0.66709507, 0.13613184, 0.96862835, -0.2079117, -0.65419894, 0.24549302, 0.7153719, 138, 4.35, 92)
 visible = false
 mesh = SubResource("BoxMesh_apdmw")
 
-[node name="SalvageProxy_SalvageCanvas02" type="MeshInstance3D" parent="Dressing" unique_id=1973709706]
-transform = Transform3D(-0.80901706, 0, 0.5877852, 0, 1, 0, -0.5877852, 0, -0.80901706, 96, 4.5, 102)
+[node name="SalvageProxy_SalvageTimber01" type="MeshInstance3D" parent="Dressing" unique_id=39360052]
+transform = Transform3D(-0.9271838, 0, 0.3746067, 0, 1, 0, -0.3746067, 0, -0.9271838, -102, 3.5, -14)
 visible = false
-mesh = SubResource("BoxMesh_vh0i8")
+mesh = SubResource("BoxMesh_2argd")
 
-[node name="IngredientProxy_Shellfish01" type="MeshInstance3D" parent="Dressing" unique_id=755273749]
-transform = Transform3D(0.6819984, 0, 0.7313537, 0, 1, 0, -0.7313537, 0, 0.6819984, -82, 1.3, -112)
+[node name="SalvageProxy_SalvageTimber02" type="MeshInstance3D" parent="Dressing" unique_id=1213815271]
+transform = Transform3D(-0.93358046, 0, 0.35836792, 0, 1, 0, -0.35836792, 0, -0.93358046, 118, 3.5, -34)
 visible = false
 mesh = SubResource("BoxMesh_gckjm")
 
-[node name="IngredientProxy_Shellfish02" type="MeshInstance3D" parent="Dressing" unique_id=1310864292]
-transform = Transform3D(0.66913056, 0, 0.74314487, 0, 1, 0, -0.74314487, 0, 0.66913056, -34, 1.3, -136)
+[node name="SalvageProxy_SalvageCanvas01" type="MeshInstance3D" parent="Dressing" unique_id=1573685167]
+transform = Transform3D(-0.7986355, 0, 0.6018151, 0, 1, 0, -0.6018151, 0, -0.7986355, -138, 5.5, 71)
 visible = false
 mesh = SubResource("BoxMesh_bfmvj")
 
-[node name="IngredientProxy_Shellfish03" type="MeshInstance3D" parent="Dressing" unique_id=1494553302]
-transform = Transform3D(0.656059, 0, 0.75470954, 0, 1, 0, -0.75470954, 0, 0.656059, 18, 1.3, -124)
+[node name="SalvageProxy_SalvageCanvas02" type="MeshInstance3D" parent="Dressing" unique_id=1713213480]
+transform = Transform3D(-0.80901706, 0, 0.5877852, 0, 1, 0, -0.5877852, 0, -0.80901706, 96, 4.5, 102)
 visible = false
 mesh = SubResource("BoxMesh_iwbpp")
 
-[node name="IngredientProxy_Shellfish04" type="MeshInstance3D" parent="Dressing" unique_id=739641682]
-transform = Transform3D(0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, 0.64278764, 72, 1.3, -142)
-visible = false
-mesh = SubResource("BoxMesh_liu4p")
-
-[node name="IngredientProxy_Shellfish05" type="MeshInstance3D" parent="Dressing" unique_id=47965287]
-transform = Transform3D(0.62932044, 0, 0.7771459, 0, 1, 0, -0.7771459, 0, 0.62932044, 116, 1.3, -108)
+[node name="IngredientProxy_Shellfish01" type="MeshInstance3D" parent="Dressing" unique_id=629809486]
+transform = Transform3D(0.6819984, 0, 0.7313537, 0, 1, 0, -0.7313537, 0, 0.6819984, -82, 1.3, -112)
 visible = false
 mesh = SubResource("BoxMesh_0ia4c")
 
-[node name="IngredientProxy_Shellfish06" type="MeshInstance3D" parent="Dressing" unique_id=2035928808]
-transform = Transform3D(0.6156615, 0, 0.7880107, 0, 1, 0, -0.7880107, 0, 0.6156615, 148, 1.3, -76)
+[node name="IngredientProxy_Shellfish02" type="MeshInstance3D" parent="Dressing" unique_id=765469083]
+transform = Transform3D(0.66913056, 0, 0.74314487, 0, 1, 0, -0.74314487, 0, 0.66913056, -34, 1.3, -136)
 visible = false
 mesh = SubResource("BoxMesh_4po5b")
 
-[node name="CampfireProxy_CampShallowsArrival" type="Node3D" parent="Dressing" unique_id=813567210]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 4, 62)
-
-[node name="LogA" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsArrival" unique_id=193818476]
-transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0.3, 0)
+[node name="IngredientProxy_Shellfish03" type="MeshInstance3D" parent="Dressing" unique_id=284196494]
+transform = Transform3D(0.656059, 0, 0.75470954, 0, 1, 0, -0.75470954, 0, 0.656059, 18, 1.3, -124)
 visible = false
 mesh = SubResource("BoxMesh_a2u5b")
 
-[node name="LogB" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsArrival" unique_id=1930475994]
-transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0.3, 0)
+[node name="IngredientProxy_Shellfish04" type="MeshInstance3D" parent="Dressing" unique_id=562975321]
+transform = Transform3D(0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, 0.64278764, 72, 1.3, -142)
 visible = false
 mesh = SubResource("BoxMesh_7jk4m")
 
-[node name="EmberBed" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsArrival" unique_id=914254196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+[node name="IngredientProxy_Shellfish05" type="MeshInstance3D" parent="Dressing" unique_id=1976166861]
+transform = Transform3D(0.62932044, 0, 0.7771459, 0, 1, 0, -0.7771459, 0, 0.62932044, 116, 1.3, -108)
+visible = false
+mesh = SubResource("BoxMesh_ybxbs")
+
+[node name="IngredientProxy_Shellfish06" type="MeshInstance3D" parent="Dressing" unique_id=1509485154]
+transform = Transform3D(0.6156615, 0, 0.7880107, 0, 1, 0, -0.7880107, 0, 0.6156615, 148, 1.3, -76)
 visible = false
 mesh = SubResource("BoxMesh_i2gue")
 
-[node name="FireVisual" type="Node3D" parent="Dressing/CampfireProxy_CampShallowsArrival" unique_id=1420533158]
-transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 0.25, 0)
-metadata/visual_only = true
-metadata/gameplay_behavior = "SYSTEMS_owned"
-metadata/vfx_profile = "fire_smoke_heat"
-
-[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsArrival/FireVisual" unique_id=38113200]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
-cast_shadow = 0
-visibility_range_end = 90.0
-visibility_range_end_margin = 8.0
-mesh = SubResource("QuadMesh_peb7n")
-
-[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsArrival/FireVisual" unique_id=1345172713]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
-cast_shadow = 0
-visibility_range_end = 90.0
-visibility_range_end_margin = 8.0
-mesh = SubResource("QuadMesh_dll8i")
-
-[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsArrival/FireVisual" unique_id=2137573848]
-transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
-cast_shadow = 0
-visibility_range_end = 130.0
-visibility_range_end_margin = 12.0
-mesh = SubResource("QuadMesh_38wfe")
-
-[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsArrival/FireVisual" unique_id=1436882368]
-transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
-cast_shadow = 0
-visibility_range_end = 130.0
-visibility_range_end_margin = 12.0
-mesh = SubResource("QuadMesh_us2sy")
-
-[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsArrival/FireVisual" unique_id=1696355945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
-cast_shadow = 0
-visibility_range_end = 65.0
-visibility_range_end_margin = 6.0
-mesh = SubResource("QuadMesh_e0j84")
-
-[node name="FireLight" type="OmniLight3D" parent="Dressing/CampfireProxy_CampShallowsArrival/FireVisual" unique_id=1859015021]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-light_color = Color(1, 0.28, 0.045, 1)
-light_energy = 4.2
-light_volumetric_fog_energy = 1.45
-distance_fade_enabled = true
-distance_fade_begin = 36.0
-distance_fade_shadow = 28.0
-distance_fade_length = 18.0
-omni_range = 15.0
-
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/CampfireProxy_CampShallowsArrival/FireVisual" unique_id=315161905]
-aabb = AABB(-4, 0, -4, 8, 13, 8)
-
-[node name="CampfireProxy_CampShallowsKeffer" type="Node3D" parent="Dressing" unique_id=1175932437]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112, 5, 84)
-
-[node name="LogA" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsKeffer" unique_id=1478231915]
-transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0.3, 0)
-visible = false
-mesh = SubResource("BoxMesh_njmxo")
-
-[node name="LogB" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsKeffer" unique_id=848937885]
-transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0.3, 0)
-visible = false
-mesh = SubResource("BoxMesh_uty5j")
-
-[node name="EmberBed" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsKeffer" unique_id=1567572139]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
-visible = false
-mesh = SubResource("BoxMesh_wlphx")
-
-[node name="FireVisual" type="Node3D" parent="Dressing/CampfireProxy_CampShallowsKeffer" unique_id=1527938889]
-transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 0.25, 0)
-metadata/visual_only = true
-metadata/gameplay_behavior = "SYSTEMS_owned"
-metadata/vfx_profile = "fire_smoke_heat"
-
-[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsKeffer/FireVisual" unique_id=392756383]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
-cast_shadow = 0
-visibility_range_end = 90.0
-visibility_range_end_margin = 8.0
-mesh = SubResource("QuadMesh_3oxe3")
-
-[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsKeffer/FireVisual" unique_id=612256396]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
-cast_shadow = 0
-visibility_range_end = 90.0
-visibility_range_end_margin = 8.0
-mesh = SubResource("QuadMesh_lg0yk")
-
-[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsKeffer/FireVisual" unique_id=1940358868]
-transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
-cast_shadow = 0
-visibility_range_end = 130.0
-visibility_range_end_margin = 12.0
-mesh = SubResource("QuadMesh_hcbkg")
-
-[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsKeffer/FireVisual" unique_id=667756692]
-transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
-cast_shadow = 0
-visibility_range_end = 130.0
-visibility_range_end_margin = 12.0
-mesh = SubResource("QuadMesh_u74qs")
-
-[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/CampfireProxy_CampShallowsKeffer/FireVisual" unique_id=969446503]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
-cast_shadow = 0
-visibility_range_end = 65.0
-visibility_range_end_margin = 6.0
-mesh = SubResource("QuadMesh_tmj1b")
-
-[node name="FireLight" type="OmniLight3D" parent="Dressing/CampfireProxy_CampShallowsKeffer/FireVisual" unique_id=1418065992]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-light_color = Color(1, 0.28, 0.045, 1)
-light_energy = 4.2
-light_volumetric_fog_energy = 1.45
-distance_fade_enabled = true
-distance_fade_begin = 36.0
-distance_fade_shadow = 28.0
-distance_fade_length = 18.0
-omni_range = 15.0
-
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/CampfireProxy_CampShallowsKeffer/FireVisual" unique_id=2036232800]
-aabb = AABB(-4, 0, -4, 8, 13, 8)
-
-[node name="Keffer" type="Node3D" parent="Dressing" unique_id=1100637720]
+[node name="Keffer" type="Node3D" parent="Dressing" unique_id=1289013198]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 5, 68)
 metadata/is_merchant = false
 metadata/dialogue_lines = Array[String](["You're awake.", "No. Stay there. I can throw it.", "The shellfish are safe when the water pulls back.", "Two old Cairns open from this shore. I never went far inside.", "The tower is where you left it.", "You don't remember me.", "Good.", "Take it. Please."])
 metadata/handout_item_id = &"tidepool_shellfish"
 metadata/handout_cooldown_s = 120.0
 
-[node name="Body" type="MeshInstance3D" parent="Dressing/Keffer" unique_id=930188376]
+[node name="Body" type="MeshInstance3D" parent="Dressing/Keffer" unique_id=88489062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
 visible = false
-mesh = SubResource("BoxMesh_13uit")
+mesh = SubResource("BoxMesh_peb7n")
 
-[node name="Hood" type="MeshInstance3D" parent="Dressing/Keffer" unique_id=496518948]
+[node name="Hood" type="MeshInstance3D" parent="Dressing/Keffer" unique_id=450010257]
 transform = Transform3D(0.99026805, 0, 0.1391731, 0, 1, 0, -0.1391731, 0, 0.99026805, 0, 2.15, 0)
 visible = false
-mesh = SubResource("BoxMesh_sq56w")
+mesh = SubResource("BoxMesh_2sj83")
 
-[node name="Pack" type="MeshInstance3D" parent="Dressing/Keffer" unique_id=1013727481]
+[node name="Pack" type="MeshInstance3D" parent="Dressing/Keffer" unique_id=2137526447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.62)
 visible = false
-mesh = SubResource("BoxMesh_3mc80")
+mesh = SubResource("BoxMesh_dll8i")
 
-[node name="GameplaySockets" type="Node3D" parent="." unique_id=1282802279]
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=1435396308]
 
-[node name="OceanKillVolume" type="Marker3D" parent="GameplaySockets" unique_id=635238386]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -275)
+[node name="OceanKillVolume" type="Marker3D" parent="GameplaySockets" unique_id=1555881663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, -275)
 metadata/socket_type = &"ocean_kill_volume"
 metadata/socket_size_m = Vector3(1250, 24, 520)
 metadata/district_id = &"shallows"
 
-[node name="DistrictTrigger" type="Marker3D" parent="GameplaySockets" unique_id=83834026]
+[node name="OceanKillVolume" parent="GameplaySockets/OceanKillVolume" unique_id=1120485958 instance=ExtResource("4_0wf6i")]
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/kill_volume.tscn"
+
+[node name="CollisionShape3D" parent="GameplaySockets/OceanKillVolume/OceanKillVolume" index="0"]
+shape = SubResource("BoxShape3D_123i7")
+
+[node name="DistrictTrigger" type="Marker3D" parent="GameplaySockets" unique_id=161230818]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 105)
 metadata/socket_type = &"district_trigger"
 metadata/socket_size_m = Vector3(260, 30, 80)
 metadata/district_id = &"shallows"
-metadata/m9_missing_prefab = "res://scenes/prefabs/gameplay/district_trigger.tscn"
 
-[node name="HoldCarryable00" type="Marker3D" parent="GameplaySockets" unique_id=511211546]
+[node name="DistrictTrigger" parent="GameplaySockets/DistrictTrigger" unique_id=1516133928 instance=ExtResource("5_3ckoj")]
+district_id = &"shallows"
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/district_trigger.tscn"
+
+[node name="CollisionShape3D" parent="GameplaySockets/DistrictTrigger/DistrictTrigger" index="0"]
+shape = SubResource("BoxShape3D_38wfe")
+
+[node name="HoldCarryable00" type="Marker3D" parent="GameplaySockets" unique_id=682883880]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 4, 35)
 metadata/socket_type = &"carryable_object"
 metadata/spawn_id = &"hold_object_00"
 
-[node name="HoldCarryable01" type="Marker3D" parent="GameplaySockets" unique_id=47269922]
+[node name="HoldCarryable01" type="Marker3D" parent="GameplaySockets" unique_id=116868828]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 4, 35)
 metadata/socket_type = &"carryable_object"
 metadata/spawn_id = &"hold_object_01"
 
-[node name="HoldCarryable02" type="Marker3D" parent="GameplaySockets" unique_id=250497010]
+[node name="HoldCarryable02" type="Marker3D" parent="GameplaySockets" unique_id=1361473373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 35)
 metadata/socket_type = &"carryable_object"
 metadata/spawn_id = &"hold_object_02"
 
-[node name="HoldCarryable03" type="Marker3D" parent="GameplaySockets" unique_id=1724378938]
+[node name="HoldCarryable03" type="Marker3D" parent="GameplaySockets" unique_id=666850202]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 4, 35)
 metadata/socket_type = &"carryable_object"
 metadata/spawn_id = &"hold_object_03"
 
-[node name="CairnEntrance_ShallowsHoldStack" type="Marker3D" parent="GameplaySockets" unique_id=1910827127]
+[node name="CairnEntrance_ShallowsHoldStack" type="Marker3D" parent="GameplaySockets" unique_id=182409843]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 6, -12)
 metadata/socket_type = &"cairn_entrance"
 metadata/cairn_id = &"shallows_hold_stack"
 metadata/target_scene_path = "res://scenes/levels/cairns/cairn_01_hold_stack.tscn"
 metadata/district_id = &"shallows"
-metadata/m9_missing_prefab = "res://scenes/prefabs/gameplay/cairn_entrance.tscn"
 
-[node name="CairnEntrance_ShallowsCounterweight" type="Marker3D" parent="GameplaySockets" unique_id=1023448565]
+[node name="CairnEntrance" parent="GameplaySockets/CairnEntrance_ShallowsHoldStack" unique_id=2013035105 instance=ExtResource("6_mopih")]
+cairn_id = &"shallows_hold_stack"
+target_scene = ExtResource("7_bt7po")
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/cairn_entrance.tscn"
+
+[node name="CairnEntrance_ShallowsCounterweight" type="Marker3D" parent="GameplaySockets" unique_id=875129075]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162, 8, 116)
 metadata/socket_type = &"cairn_entrance"
 metadata/cairn_id = &"shallows_counterweight"
 metadata/target_scene_path = "res://scenes/levels/cairns/cairn_02_counterweight.tscn"
 metadata/district_id = &"shallows"
-metadata/m9_missing_prefab = "res://scenes/prefabs/gameplay/cairn_entrance.tscn"
 
-[node name="CrewFragment_CrewAadi" type="Marker3D" parent="GameplaySockets" unique_id=929776341]
+[node name="CairnEntrance" parent="GameplaySockets/CairnEntrance_ShallowsCounterweight" unique_id=578495172 instance=ExtResource("6_mopih")]
+cairn_id = &"shallows_counterweight"
+target_scene = ExtResource("8_kxrfm")
+metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/cairn_entrance.tscn"
+
+[node name="CrewFragment_CrewAadi" type="Marker3D" parent="GameplaySockets" unique_id=140355057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 4, -42)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_aadi"
@@ -2055,11 +1772,11 @@ metadata/memory_object = "split oar"
 metadata/memory_text = "Aadi counted every stroke. The sea stopped answering at dawn."
 metadata/district_id = &"shallows"
 
-[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewAadi" unique_id=37962589 instance=ExtResource("7_3ckoj")]
+[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewAadi" unique_id=958345266 instance=ExtResource("9_jxcdg")]
 fragment_id = &"crew_aadi"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
 
-[node name="CrewFragment_CrewBaran" type="Marker3D" parent="GameplaySockets" unique_id=194688910]
+[node name="CrewFragment_CrewBaran" type="Marker3D" parent="GameplaySockets" unique_id=1498881664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 3, -86)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_baran"
@@ -2067,11 +1784,11 @@ metadata/memory_object = "salt-stiff rope"
 metadata/memory_text = "Baran tied the bridge to a shore that no longer exists."
 metadata/district_id = &"shallows"
 
-[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewBaran" unique_id=1536240550 instance=ExtResource("7_3ckoj")]
+[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewBaran" unique_id=1174205463 instance=ExtResource("9_jxcdg")]
 fragment_id = &"crew_baran"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
 
-[node name="CrewFragment_CrewChaya" type="Marker3D" parent="GameplaySockets" unique_id=1542990184]
+[node name="CrewFragment_CrewChaya" type="Marker3D" parent="GameplaySockets" unique_id=1757793886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126, 6, 44)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_chaya"
@@ -2079,11 +1796,11 @@ metadata/memory_object = "copper cup"
 metadata/memory_text = "Chaya saved the last fresh water for someone who never came back."
 metadata/district_id = &"shallows"
 
-[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewChaya" unique_id=957235653 instance=ExtResource("7_3ckoj")]
+[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewChaya" unique_id=1040601352 instance=ExtResource("9_jxcdg")]
 fragment_id = &"crew_chaya"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
 
-[node name="CrewFragment_CrewDevan" type="Marker3D" parent="GameplaySockets" unique_id=581952882]
+[node name="CrewFragment_CrewDevan" type="Marker3D" parent="GameplaySockets" unique_id=781582726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 4, 92)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_devan"
@@ -2091,99 +1808,99 @@ metadata/memory_object = "bent nail"
 metadata/memory_text = "Devan built by torchlight while the water watched."
 metadata/district_id = &"shallows"
 
-[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewDevan" unique_id=1213444160 instance=ExtResource("7_3ckoj")]
+[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewDevan" unique_id=1262354412 instance=ExtResource("9_jxcdg")]
 fragment_id = &"crew_devan"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
 
-[node name="Salvage_SalvageTimber01" type="Marker3D" parent="GameplaySockets" unique_id=1134552617]
+[node name="Salvage_SalvageTimber01" type="Marker3D" parent="GameplaySockets" unique_id=182248985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102, 3, -14)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_timber_01"
 metadata/salvage_id = &"timber"
 metadata/district_id = &"shallows"
 
-[node name="Salvage_SalvageTimber02" type="Marker3D" parent="GameplaySockets" unique_id=360342025]
+[node name="Salvage_SalvageTimber02" type="Marker3D" parent="GameplaySockets" unique_id=1326109138]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 3, -34)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_timber_02"
 metadata/salvage_id = &"timber"
 metadata/district_id = &"shallows"
 
-[node name="Salvage_SalvageCanvas01" type="Marker3D" parent="GameplaySockets" unique_id=105124479]
+[node name="Salvage_SalvageCanvas01" type="Marker3D" parent="GameplaySockets" unique_id=927342555]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138, 5, 71)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_canvas_01"
 metadata/salvage_id = &"canvas"
 metadata/district_id = &"shallows"
 
-[node name="Salvage_SalvageCanvas02" type="Marker3D" parent="GameplaySockets" unique_id=1851707871]
+[node name="Salvage_SalvageCanvas02" type="Marker3D" parent="GameplaySockets" unique_id=1748039773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 4, 102)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_canvas_02"
 metadata/salvage_id = &"canvas"
 metadata/district_id = &"shallows"
 
-[node name="Ingredient_Shellfish01" type="Marker3D" parent="GameplaySockets" unique_id=1821551478]
+[node name="Ingredient_Shellfish01" type="Marker3D" parent="GameplaySockets" unique_id=1247361091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 1, -112)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"shellfish_01"
 metadata/ingredient_id = &"tidepool_shellfish"
 metadata/district_id = &"shallows"
 
-[node name="Ingredient_Shellfish02" type="Marker3D" parent="GameplaySockets" unique_id=817212833]
+[node name="Ingredient_Shellfish02" type="Marker3D" parent="GameplaySockets" unique_id=1406277304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 1, -136)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"shellfish_02"
 metadata/ingredient_id = &"tidepool_shellfish"
 metadata/district_id = &"shallows"
 
-[node name="Ingredient_Shellfish03" type="Marker3D" parent="GameplaySockets" unique_id=1630717306]
+[node name="Ingredient_Shellfish03" type="Marker3D" parent="GameplaySockets" unique_id=638612984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, -124)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"shellfish_03"
 metadata/ingredient_id = &"tidepool_shellfish"
 metadata/district_id = &"shallows"
 
-[node name="Ingredient_Shellfish04" type="Marker3D" parent="GameplaySockets" unique_id=2075584107]
+[node name="Ingredient_Shellfish04" type="Marker3D" parent="GameplaySockets" unique_id=1227646411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 1, -142)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"shellfish_04"
 metadata/ingredient_id = &"tidepool_shellfish"
 metadata/district_id = &"shallows"
 
-[node name="Ingredient_Shellfish05" type="Marker3D" parent="GameplaySockets" unique_id=1557151555]
+[node name="Ingredient_Shellfish05" type="Marker3D" parent="GameplaySockets" unique_id=319879230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116, 1, -108)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"shellfish_05"
 metadata/ingredient_id = &"tidepool_shellfish"
 metadata/district_id = &"shallows"
 
-[node name="Ingredient_Shellfish06" type="Marker3D" parent="GameplaySockets" unique_id=1324368002]
+[node name="Ingredient_Shellfish06" type="Marker3D" parent="GameplaySockets" unique_id=1891853076]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 1, -76)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"shellfish_06"
 metadata/ingredient_id = &"tidepool_shellfish"
 metadata/district_id = &"shallows"
 
-[node name="Campfire_CampShallowsArrival" type="Marker3D" parent="GameplaySockets" unique_id=290867054]
+[node name="Campfire_CampShallowsArrival" type="Marker3D" parent="GameplaySockets" unique_id=1572357888]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 4, 62)
 metadata/socket_type = &"campfire"
 metadata/checkpoint_id = &"camp_shallows_arrival"
 metadata/district_id = &"shallows"
 
-[node name="Campfire" parent="GameplaySockets/Campfire_CampShallowsArrival" unique_id=2119863989 instance=ExtResource("8_mopih")]
+[node name="Campfire" parent="GameplaySockets/Campfire_CampShallowsArrival" unique_id=1452123785 instance=ExtResource("10_yvgkf")]
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/campfire.tscn"
 
-[node name="Campfire_CampShallowsKeffer" type="Marker3D" parent="GameplaySockets" unique_id=979352920]
+[node name="Campfire_CampShallowsKeffer" type="Marker3D" parent="GameplaySockets" unique_id=1648219185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112, 5, 84)
 metadata/socket_type = &"campfire"
 metadata/checkpoint_id = &"camp_shallows_keffer"
 metadata/district_id = &"shallows"
 
-[node name="Campfire" parent="GameplaySockets/Campfire_CampShallowsKeffer" unique_id=849954314 instance=ExtResource("8_mopih")]
+[node name="Campfire" parent="GameplaySockets/Campfire_CampShallowsKeffer" unique_id=535070550 instance=ExtResource("10_yvgkf")]
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/campfire.tscn"
 
-[node name="KefferInteraction" type="Marker3D" parent="GameplaySockets" unique_id=2058855719]
+[node name="KefferInteraction" type="Marker3D" parent="GameplaySockets" unique_id=633444990]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 5, 68)
 metadata/socket_type = &"keffer_interaction"
 metadata/dialogue_lines = Array[String](["You're awake.", "No. Stay there. I can throw it.", "The shellfish are safe when the water pulls back.", "Two old Cairns open from this shore. I never went far inside.", "The tower is where you left it.", "You don't remember me.", "Good.", "Take it. Please."])
@@ -2191,109 +1908,107 @@ metadata/handout_item_id = &"tidepool_shellfish"
 metadata/handout_cooldown_s = 120.0
 metadata/is_merchant = false
 
-[node name="RouteMarkers" type="Node3D" parent="." unique_id=1300332885]
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1689282913]
 
-[node name="Arrival" type="Marker3D" parent="RouteMarkers" unique_id=1678701529]
+[node name="Arrival" type="Marker3D" parent="RouteMarkers" unique_id=505760029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -75)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"arrival"
 
-[node name="HoldTrial" type="Marker3D" parent="RouteMarkers" unique_id=1923063545]
+[node name="HoldTrial" type="Marker3D" parent="RouteMarkers" unique_id=1730954388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 5, 32)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"hold"
 
-[node name="ComponentPickup_Hull" parent="RouteMarkers/HoldTrial" unique_id=63258650 instance=ExtResource("9_bt7po")]
+[node name="ComponentPickup_Hull" parent="RouteMarkers/HoldTrial" unique_id=1299481825 instance=ExtResource("11_mvckf")]
 component_id = &"hull"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/component_pickup.tscn"
 
-[node name="KefferShelter" type="Marker3D" parent="RouteMarkers" unique_id=1120469694]
+[node name="KefferShelter" type="Marker3D" parent="RouteMarkers" unique_id=60109052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 5, 68)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"keffer"
 
-[node name="InlandExit" type="Marker3D" parent="RouteMarkers" unique_id=1905974606]
+[node name="InlandExit" type="Marker3D" parent="RouteMarkers" unique_id=194147037]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 155)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"inland"
 
-[node name="M8RenderBatches" type="Node3D" parent="." unique_id=1009232406]
+[node name="M8RenderBatches" type="Node3D" parent="." unique_id=1991328533]
 metadata/m8_material_batching = true
-metadata/m8_batch_count = 12
+metadata/m8_batch_count = 11
 
-[node name="GeometryBatch00_WetStoneGripSlick" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1235822908]
-multimesh = SubResource("MultiMesh_xraes")
+[node name="GeometryBatch00_WetStoneGripSlick" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=957107196]
+multimesh = SubResource("MultiMesh_us2sy")
 metadata/m8_batch_instance_count = 12
 metadata/m8_batch_shape = &"cylinder"
 metadata/m8_batch_material = "mat_wet_stone_grip_slick"
 
-[node name="GeometryBatch01_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=279000916]
-multimesh = SubResource("MultiMesh_vcryx")
+[node name="GeometryBatch01_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=75890907]
+multimesh = SubResource("MultiMesh_e0j84")
 metadata/m8_batch_instance_count = 7
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_clean_stone_grip_solid"
 
-[node name="GeometryBatch02_SetuWood" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1036312837]
-multimesh = SubResource("MultiMesh_e4tqm")
+[node name="GeometryBatch02_SetuWood" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=99557800]
+multimesh = SubResource("MultiMesh_uty5j")
 metadata/m8_batch_instance_count = 4
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_setu_wood"
 
-[node name="GeometryBatch03_SetuCanvas" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=71052507]
-multimesh = SubResource("MultiMesh_bk351")
+[node name="GeometryBatch03_SetuCanvas" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1802813200]
+multimesh = SubResource("MultiMesh_30oml")
 metadata/m8_batch_instance_count = 2
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_setu_canvas"
 
-[node name="GeometryBatch04_FireCrackedStoneGripCrumbling" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=568551959]
-multimesh = SubResource("MultiMesh_o0xc2")
+[node name="GeometryBatch04_FireCrackedStoneGripCrumbling" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=306193956]
+multimesh = SubResource("MultiMesh_w1ey1")
 metadata/m8_batch_instance_count = 2
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_fire_cracked_stone_grip_crumbling"
 
-[node name="GeometryBatch05_CharredTimberGripCrumbling" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=288132210]
-multimesh = SubResource("MultiMesh_7hegj")
-metadata/m8_batch_instance_count = 25
+[node name="GeometryBatch05_CharredTimberGripCrumbling" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1438712002]
+multimesh = SubResource("MultiMesh_jitna")
+metadata/m8_batch_instance_count = 21
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_charred_timber_grip_crumbling"
 
-[node name="GeometryBatch06_CharredTimberGripCrumbling" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1845046979]
-multimesh = SubResource("MultiMesh_4xf1s")
+[node name="GeometryBatch06_CharredTimberGripCrumbling" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1890164465]
+multimesh = SubResource("MultiMesh_h0b27")
 metadata/m8_batch_instance_count = 21
 metadata/m8_batch_shape = &"cylinder"
 metadata/m8_batch_material = "mat_charred_timber_grip_crumbling"
 
-[node name="GeometryBatch07_BoneCanvasGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1399993413]
-multimesh = SubResource("MultiMesh_ddpm2")
+[node name="GeometryBatch07_BoneCanvasGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=681332766]
+multimesh = SubResource("MultiMesh_dkov2")
 metadata/m8_batch_instance_count = 10
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_bone_canvas_grip_solid"
 
-[node name="GeometryBatch08_UnburntTimberGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=779712751]
-multimesh = SubResource("MultiMesh_jgxgx")
+[node name="GeometryBatch08_UnburntTimberGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=450093611]
+multimesh = SubResource("MultiMesh_6qgdc")
 metadata/m8_batch_instance_count = 2
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_unburnt_timber_grip_solid"
 
-[node name="GeometryBatch09_ShellfishGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=2109125927]
-multimesh = SubResource("MultiMesh_eov41")
+[node name="GeometryBatch09_ShellfishGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=500982521]
+multimesh = SubResource("MultiMesh_sq56w")
 metadata/m8_batch_instance_count = 6
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_shellfish_grip_solid"
 
-[node name="GeometryBatch10_EmberStoneGripHot" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1520266967]
-multimesh = SubResource("MultiMesh_t7wy6")
-metadata/m8_batch_instance_count = 2
-metadata/m8_batch_shape = &"box"
-metadata/m8_batch_material = "mat_ember_stone_grip_hot"
-
-[node name="GeometryBatch11_KefferClothGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=256847736]
-multimesh = SubResource("MultiMesh_khowf")
+[node name="GeometryBatch10_KefferClothGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=225475777]
+multimesh = SubResource("MultiMesh_5cqo3")
 metadata/m8_batch_instance_count = 2
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_keffer_cloth_grip_solid"
 
 [editable path="WorldGeometry/SetuBuildSite/Setu"]
+[editable path="GameplaySockets/OceanKillVolume/OceanKillVolume"]
+[editable path="GameplaySockets/DistrictTrigger/DistrictTrigger"]
+[editable path="GameplaySockets/CairnEntrance_ShallowsHoldStack/CairnEntrance"]
+[editable path="GameplaySockets/CairnEntrance_ShallowsCounterweight/CairnEntrance"]
 [editable path="GameplaySockets/CrewFragment_CrewAadi/FragmentPickup"]
 [editable path="GameplaySockets/CrewFragment_CrewBaran/FragmentPickup"]
 [editable path="GameplaySockets/CrewFragment_CrewChaya/FragmentPickup"]

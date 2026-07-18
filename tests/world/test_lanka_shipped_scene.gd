@@ -18,12 +18,13 @@ const PREFABS: Dictionary = {
 	"fire_grid": "res://scenes/prefabs/gameplay/fire_grid.tscn",
 	"fragment": "res://scenes/prefabs/gameplay/fragment_pickup.tscn",
 	"heat": "res://scenes/prefabs/gameplay/heat_volume.tscn",
+	"ocean_kill": "res://scenes/prefabs/gameplay/kill_volume.tscn",
 	"setu": "res://scenes/prefabs/gameplay/setu.tscn",
 	"water": "res://scenes/prefabs/gameplay/water_volume.tscn",
 }
 const EXPECTED: Dictionary = {
 	&"shallows": {"campfire": 2, "cairn": 2, "component": 1,
-		"district_trigger": 1, "fragment": 4, "setu": 1},
+		"district_trigger": 1, "fragment": 4, "ocean_kill": 1, "setu": 1},
 	&"terraces": {"campfire": 2, "cairn": 2, "district_trigger": 1, "fragment": 4},
 	&"ember_quarter": {"campfire": 2, "cairn": 2, "component": 1,
 		"district_trigger": 1, "fire_grid": 1, "fragment": 4, "heat": 3},
@@ -106,10 +107,10 @@ func test_real_lanka_contains_live_gameplay() -> void:
 	var terraces: Node = await _move_player_and_get(lanka, player, &"terraces")
 	_assert_district(terraces, &"terraces")
 	var ember: Node = await _move_player_and_get(lanka, player, &"ember_quarter")
-	var cistern: Node = await _wait_for_district(lanka, DistrictContract.district_path(&"cistern"))
 	_assert_district(ember, &"ember_quarter")
-	_assert_district(cistern, &"cistern")
 	_assert_ember(ember)
+	var cistern: Node = await _move_player_and_get(lanka, player, &"cistern")
+	_assert_district(cistern, &"cistern")
 	_assert_cistern(cistern)
 
 	var spine: Node = lanka.get_node_or_null("PersistentLandmarks/SpineDistrict")
@@ -127,6 +128,7 @@ func test_real_lanka_contains_live_gameplay() -> void:
 	assert_eq(int(_totals.get("campfire", 0)), 8, "all 8 campfires are live")
 	assert_eq(int(_totals.get("district_trigger", 0)), 6, "all 6 district triggers are live")
 	assert_eq(int(_totals.get("cairn", 0)), 8, "all 8 Cairn entrances are live")
+	assert_eq(int(_totals.get("ocean_kill", 0)), 1, "the shipped ocean kill volume is live")
 	assert_eq(int(_totals.get("fragment", 0)), 20, "all 20 fragment pickups are live")
 	assert_eq(_component_ids.size(), 4, "exactly four trial component ids ship")
 	for required_component: StringName in [&"hull", &"keel", &"mast", &"sail"]:
@@ -161,7 +163,10 @@ func _wait_for_district(lanka: Node3D, scene_path: String) -> Node:
 	for frame: int in 1200:
 		await get_tree().process_frame
 		for child: Node in lanka.get_node("StreamedDistricts").get_children():
-			if child.scene_file_path == scene_path:
+			if (
+				child.scene_file_path == scene_path
+				and bool(child.get_meta(&"district_streaming_ready", true))
+			):
 				return child
 	fail_test("real-player streaming timed out for %s" % scene_path)
 	return null
