@@ -106,7 +106,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** M2 provides scatter painting, terrain authoring, and scene-budget controls through an `EditorPlugin`. Godot requires plugin activation in SYSTEMS-owned `project.godot` before those editor controls can load.
 **Proposed API:** Add `res://addons/odyssey_world_tools/plugin.cfg` to `[editor_plugins] enabled=PackedStringArray(...)`. No autoloads, input actions, physics-layer changes, or runtime project settings are requested.
 **Blocking:** yes for editor UI use; headless validators remain usable
-**Status:** OPEN
+**Status:** DONE — enabled in `project.godot` alongside GUT.
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Expose and assign Nau's replaceable character visual scene on the SYSTEMS-owned player scene.
