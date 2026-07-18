@@ -287,7 +287,9 @@ func fall_damage_hearts(impact_speed: float) -> float:
 func face_toward(direction: Vector3, delta: float) -> void:
 	if direction.length_squared() < 0.0001:
 		return
-	var target_yaw: float = atan2(-direction.x, -direction.z)
+	# direction is world-space; the visual's yaw is local under a body that
+	# may itself be rotated by its spawn anchor.
+	var target_yaw: float = atan2(-direction.x, -direction.z) - global_rotation.y
 	_visual.rotation.y = lerp_angle(_visual.rotation.y, target_yaw, 1.0 - exp(-turn_speed * delta))
 
 

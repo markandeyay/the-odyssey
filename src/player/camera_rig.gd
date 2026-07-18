@@ -35,8 +35,9 @@ func _process(delta: float) -> void:
 
 
 ## Movement input is projected through this so "forward" means camera-forward.
+## Global yaw, not local: the player may spawn under a rotated anchor.
 func yaw_basis() -> Basis:
-	return Basis(Vector3.UP, rotation.y)
+	return Basis(Vector3.UP, global_rotation.y)
 
 
 func _apply_look(amount: Vector2) -> void:
