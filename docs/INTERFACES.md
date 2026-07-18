@@ -36,7 +36,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** The M2 player controller mounts the character mesh through an exported `PackedScene` per the character contract (ARCHITECTURE §16). Until this exists the player is a capsule, which works but cannot exercise animation or sockets.
 **Proposed API:** A `PackedScene` whose root contains: a `Skeleton3D` conforming to `SkeletonProfileHumanoid`; `BoneAttachment3D` sockets named `Socket_RightHand`, `Socket_LeftHand`, `Socket_Back`, `Socket_Hip`; named material slots; an `AnimationPlayer` with any subset of clips named `idle`, `walk`, `run`, `sprint`, `jump`, `fall`, `land`, `crouch_idle`, `crouch_walk` (missing clips are safely ignored; loops for idle/walk/run/sprint/crouch_*). Root motion off. A Mixamo base + Mixamo clips retargeted to the humanoid profile satisfies all of this.
 **Blocking:** no
-**Status:** OPEN
+**Status:** DONE — `assets/characters/nau/nau_visual.tscn` is on main: humanoid skeleton, the four sockets, hooded/masked head cover, animation library (subset clause covers sprint/crouch_idle naming).
 
 ### [2026-07-16] FROM: SYSTEMS TO: WORLD
 **Request:** Addendum to the Nau placeholder request above: the animation clip list now also includes `climb_idle` and `climb_move` (M3 climbing). Same rules — any subset is fine, missing clips are ignored.
@@ -50,14 +50,14 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** M6 wires all of that on the SYSTEMS side: a new `cairn_completed` id grants the heart piece (4 = container, 8 Cairns = exactly 2 containers) and requests the autosave; first `district_entered` per district autosaves; `trial_completed` autosaves. Duplicate emissions with the same id are safely ignored, but the id must be stable per Cairn/district/trial.
 **Proposed API:** Stable `StringName` ids, e.g. `&"cairn_shallows_1"`, `&"the_terraces"`, `&"the_hold"`.
 **Blocking:** no
-**Status:** OPEN
+**Status:** DONE — WORLD scenes and scripts emit nothing directly; every emission routes through SYSTEMS prefabs with stable unique ids (20 fragments, 8 Cairns, 6 districts, 4 components) verified in the shipped scenes.
 
 ### [2026-07-16] FROM: SYSTEMS TO: WORLD
 **Request:** To make level geometry burnable (M7): instance `scenes/prefabs/gameplay/fire_grid.tscn` exactly once per streamed level scene, and give each burnable prop a `Flammable` child node (script `res://src/world/fire/flammable.gd`), with the prop's body on physics layer `flammable` (11). Do not script fire behavior yourself.
 **Why:** Fire is cell-based and grid-owned. The `Flammable` component self-registers with the grid; exports: `fuel` (cell-seconds of burn), `size` (world-space burnable extents around the prop origin; rotation ignored), `mobile` (single following cell, for carryable props). Burning/charred grip overrides (`HOT`/`CRUMBLING`) happen automatically through the existing group seam in `Grip`. Updraft volumes vent automatically above burns of 6+ cells. Placing a campfire is M10 and will be its own prefab.
 **Proposed API:** As above. Ignition sources: `FireGrid.ignite_at(position)` from level scripting is allowed; everything else spreads on its own.
 **Blocking:** no
-**Status:** OPEN
+**Status:** DONE — one FireGrid instanced in the Ember Quarter (the district that burns, per the integration-gate expectation SYSTEMS verified), `Flammable` props on layer 11, ignite wiring via `ember_quarter_runtime.gd`.
 
 ### [2026-07-16] FROM: SYSTEMS TO: WORLD
 **Request:** Volume placement conventions for M8. Three prefabs in `scenes/prefabs/gameplay/`, all sized by overriding the instance's `CollisionShape3D` box: (1) `water_volume.tscn` — Cistern water only, the box top is the water surface; per-instance exports: `current` (Vector3 push for channels), `dry_time`. Never stretch it over the ocean. (2) `kill_volume.tscn` — the ocean. Ring the island; entering kills. Put your wave visuals on top, no behavior. (3) `heat_volume.tscn` — ambient heat; export `damage_per_second`; stack them vertically in the Ember Quarter (heat rises).
@@ -71,7 +71,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** Campfires are cooking stations AND save points, one prefab, two jobs. Density guidance: at least one real-flame campfire reachable near each district mouth so autosave pacing holds, but placement is yours.
 **Proposed API:** As above; no scripting needed on your side.
 **Blocking:** no
-**Status:** OPEN
+**Status:** DONE — 8 campfires placed (2 Shallows, 2 Terraces, 2 Ember, 1 Cistern, 1 Spine); the Cistern one is set to EMBERS, the rest default LIT.
 
 ### [2026-07-16] FROM: SYSTEMS TO: WORLD
 **Request:** Drowned placement (M11): instance `scenes/prefabs/gameplay/drowned.tscn` in The Dark ONLY — never on the surface, never anywhere else (ARCHITECTURE §10). Each instance leashes to its spawn position (`leash_radius` export, default 40m); size The Dark's rooms so leashes never reach an exit. They hunt light in the `burning` group with line-of-sight, so The Dark's geometry needs occluders to hide behind — sight is blocked by layer `world` geometry only. Tune `hunt_speed` (default 4.5, vs player run 5.0) per encounter if a chase must be escapable by sprinting.
@@ -85,7 +85,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** The fragment reader UI, save counting, and dedup are built. Interacting with the remains emits `fragment_found(fragment_id)` (first find counts; re-reads are free — the remains stay in the world, so returning to where he died is the journal). Content is text over geometry you already own: per def, `id` (stable, e.g. `&"frag_helmsman"`), `crew_name` ("Adaro, the helmsman"), `memento` ("a tin whistle, bent flat"), `lines` (one or two lines of what happened — keep it short).
 **Proposed API:** As above. Exactly 20 defs, 20 placements, ids stable across saves. Do not gate anything on fragments and do not emit `fragment_found` from anywhere else.
 **Blocking:** no
-**Status:** OPEN
+**Status:** DONE — 20 FragmentDef .tres files on main and 20 placed pickups with matching unique ids; registry verified by SYSTEMS (see the 2026-07-17 resolution entry).
 
 ### [2026-07-16] FROM: SYSTEMS TO: WORLD
 **Request:** Glider placement (M13, ARCHITECTURE §14), two parts. (1) The pickup: instance `scenes/prefabs/gameplay/item_pickup.tscn` exactly once, in the Ember Quarter partway through The Smolder, with `item_id = &"glider"` and `display_name = "Sailcloth"`. It is a unique key item; it routes to the reserved key area automatically. (2) Street vents: instance `scenes/prefabs/gameplay/updraft_vent.tscn` where the Ember Quarter's streets crack and vent; per-instance exports `radius` (default 2m) and `height` (default 12m) size the lift column, which rises from the node's origin — place the node at ground level. `height` is the ride's ceiling, so set it to the ledge you intend the player to reach.
@@ -190,7 +190,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** M14 rework per the human: taking the Figurehead is not the end; carrying it home is. The walk out of The Dark and across the island with full hands is the last beat of the build. Setu's interact prompt offers "Mount the Figurehead" while it is carried; mounting emits `component_acquired(&"figurehead")` exactly as before, so save wiring and mount visuals are unchanged. Vela's line file path is also unchanged (`assets/audio/vela/figurehead_line.ogg`); the line text is now authored: "Nau." — one word.
 **Proposed API:** As above. The carryable removes itself on load once the Figurehead is acquired. Note: like all carryables, its mid-carry position is not saved; a reload before mounting returns it to its authored spawn in The Dark.
 **Blocking:** no
-**Status:** OPEN
+**Status:** DONE — `figurehead_carryable.tscn` is instanced in The Dark on main; no `&"figurehead"` component pickup exists anywhere.
 
 ### [2026-07-17] FROM: SYSTEMS TO: WORLD
 **Request:** Delivery against your [2026-07-16] M5 prefab request: `scenes/prefabs/gameplay/district_trigger.tscn` now exists. Instance one per district mouth, set the exported `district_id: StringName` (use the stable ids, e.g. `&"the_shallows"`), and size it by overriding the instance's `CollisionShape3D` box like every other volume prefab. Nau crossing it emits `district_entered(district_id)`; GameState handles current-district tracking, the visited list, and the first-entry autosave, so duplicate entries are free and re-entry costs nothing. Also, the name mapping for prefabs from that request that already exist under different names: `ocean_kill_volume` → `kill_volume.tscn`, `carryable_object` → `carry_crate.tscn`, `fire_source` → `brand.tscn` (or `FireGrid.ignite_at(position)` from level scripting), `updraft_volume` → `updraft_vent.tscn`, `drowned_spawn` → `drowned.tscn` (the instance IS the spawn; it leashes to where you place it), `water_volume`/`heat_volume` as named; `water_current` is the `current` export on `water_volume.tscn`, not a separate prefab.
