@@ -7,29 +7,29 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbiwl"]
 size = Vector3(24, 20, 24)
 
-[node name="DistrictSegment04" type="Node3D" unique_id=271427597]
+[node name="DistrictSegment04" type="Node3D" unique_id=1196700125]
 
-[node name="DistrictTrigger" type="Marker3D" parent="." unique_id=1737350142]
+[node name="DistrictTrigger" type="Marker3D" parent="." unique_id=794309577]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 56, 54)
 metadata/socket_type = &"district_trigger"
 metadata/socket_size_m = Vector3(24, 20, 24)
 metadata/district_id = &"cistern"
 
-[node name="DistrictTrigger" parent="DistrictTrigger" unique_id=1191854184 instance=ExtResource("1_ex73o")]
+[node name="DistrictTrigger" parent="DistrictTrigger" unique_id=1920733756 instance=ExtResource("1_ex73o")]
 district_id = &"cistern"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/district_trigger.tscn"
 
 [node name="CollisionShape3D" parent="DistrictTrigger/DistrictTrigger" index="0"]
 shape = SubResource("BoxShape3D_hbiwl")
 
-[node name="CairnEntrance_CisternCurrentGate" type="Marker3D" parent="." unique_id=826351920]
+[node name="CairnEntrance_CisternCurrentGate" type="Marker3D" parent="." unique_id=753628028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, -10, 62)
 metadata/socket_type = &"cairn_entrance"
 metadata/cairn_id = &"cistern_current_gate"
 metadata/target_scene_path = "res://scenes/levels/cairns/cairn_07_current_gate.tscn"
 metadata/district_id = &"cistern"
 
-[node name="CairnEntrance" parent="CairnEntrance_CisternCurrentGate" unique_id=1327165017 instance=ExtResource("2_g63oh")]
+[node name="CairnEntrance" parent="CairnEntrance_CisternCurrentGate" unique_id=18972513 instance=ExtResource("2_g63oh")]
 cairn_id = &"cistern_current_gate"
 target_scene = ExtResource("3_yoygd")
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/cairn_entrance.tscn"

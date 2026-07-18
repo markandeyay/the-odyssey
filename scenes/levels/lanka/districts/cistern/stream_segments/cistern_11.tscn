@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_kvrcw"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_o4g5n"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihrsk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pws5y"]
 resource_name = "mat_wet_stone_grip_slick"
 render_priority = 0
 shader = ExtResource("1_kvrcw")
@@ -22,42 +22,42 @@ shader_parameter/surface_roughness = 0.62
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_sy1yl"]
-material = SubResource("ShaderMaterial_ihrsk")
+[sub_resource type="BoxMesh" id="BoxMesh_ihrsk"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(190, 4, 150)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6fvfy"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_sy1yl"]
 size = Vector3(190, 4, 150)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ksiux"]
-material = SubResource("ShaderMaterial_ihrsk")
+[sub_resource type="BoxMesh" id="BoxMesh_6fvfy"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(190, 64, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eq5mn"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ksiux"]
 size = Vector3(190, 64, 7)
 
-[node name="DistrictSegment11" type="Node3D" unique_id=1310978553]
+[node name="DistrictSegment11" type="Node3D" unique_id=1223292276]
 
-[node name="ReservoirFloor" type="StaticBody3D" parent="." unique_id=200374741]
+[node name="ReservoirFloor" type="StaticBody3D" parent="." unique_id=1824944401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="ReservoirFloor" unique_id=679858470]
+[node name="Mesh" type="MeshInstance3D" parent="ReservoirFloor" unique_id=1675568612]
 visible = false
-mesh = SubResource("BoxMesh_sy1yl")
+mesh = SubResource("BoxMesh_ihrsk")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="ReservoirFloor" unique_id=965393893]
-shape = SubResource("BoxShape3D_6fvfy")
+[node name="CollisionShape" type="CollisionShape3D" parent="ReservoirFloor" unique_id=1150590569]
+shape = SubResource("BoxShape3D_sy1yl")
 
-[node name="NorthWall" type="StaticBody3D" parent="." unique_id=127120755]
+[node name="NorthWall" type="StaticBody3D" parent="." unique_id=1439847004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 76)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="NorthWall" unique_id=3597571]
+[node name="Mesh" type="MeshInstance3D" parent="NorthWall" unique_id=1830756112]
 visible = false
-mesh = SubResource("BoxMesh_ksiux")
+mesh = SubResource("BoxMesh_6fvfy")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="NorthWall" unique_id=747713424]
-shape = SubResource("BoxShape3D_eq5mn")
+[node name="CollisionShape" type="CollisionShape3D" parent="NorthWall" unique_id=696603322]
+shape = SubResource("BoxShape3D_ksiux")

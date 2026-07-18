@@ -5,7 +5,7 @@
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_2hq58"]
 size = Vector3(190, 60, 150)
 
-[node name="CisternDistrict" type="Node3D" unique_id=891800156]
+[node name="CisternDistrict" type="Node3D" unique_id=1650647081]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 8, 80)
 metadata/district_id = &"cistern"
 metadata/budget_profile = "cistern"
@@ -15,25 +15,25 @@ metadata/stream_unload_radius_m = 350.0
 metadata/open_world_loaded = true
 metadata/district_streaming_ready = false
 
-[node name="WorldGeometry" type="Node3D" parent="." unique_id=852121652]
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=426691233]
 
-[node name="ReservoirOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=591555926]
+[node name="ReservoirOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=566404454]
 occluder = SubResource("BoxOccluder3D_2hq58")
 
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=1141621225]
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=318704340]
 aabb = AABB(-100, -32, -80, 200, 100, 160)
 
-[node name="Dressing" type="Node3D" parent="." unique_id=1454318385]
+[node name="Dressing" type="Node3D" parent="." unique_id=1179843048]
 
-[node name="GameplaySockets" type="Node3D" parent="." unique_id=1724850989]
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=710246751]
 
-[node name="RouteMarkers" type="Node3D" parent="." unique_id=873695098]
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=348508011]
 
-[node name="M8RenderBatches" type="Node3D" parent="." unique_id=165439016]
+[node name="M8RenderBatches" type="Node3D" parent="." unique_id=1165612247]
 metadata/m8_material_batching = true
 metadata/m8_batch_count = 8
 
-[node name="DistrictSegmentLoader" type="Node" parent="." unique_id=1329870349]
+[node name="DistrictSegmentLoader" type="Node" parent="." unique_id=1301708439]
 script = ExtResource("1_xp8mi")
 segment_paths = PackedStringArray("res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_00.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_01.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_02.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_03.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_04.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_05.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_06.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_07.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_08.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_09.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_10.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_11.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_12.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_13.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_14.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_15.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_16.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_17.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_18.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_19.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_20.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_21.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_22.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_23.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_24.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_25.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_26.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_27.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_28.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_29.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_30.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_31.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_32.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_33.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_34.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_35.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_36.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_37.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_38.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_39.tscn", "res://scenes/levels/lanka/districts/cistern/stream_segments/cistern_40.tscn")
 segment_parent_paths = Array[NodePath]([NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../GameplaySockets"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../WorldGeometry"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../Dressing"), NodePath("../RouteMarkers"), NodePath("../RouteMarkers"), NodePath("../M8RenderBatches"), NodePath("../M8RenderBatches"), NodePath("../M8RenderBatches"), NodePath("../M8RenderBatches")])

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_nua4k"]
 [ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="3_xgu4q"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8cyv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8vbo"]
 resource_name = "mat_charred_timber_grip_crumbling"
 render_priority = 0
 shader = ExtResource("1_v5hau")
@@ -23,28 +23,28 @@ shader_parameter/surface_roughness = 0.92
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_yycdg"]
-material = SubResource("ShaderMaterial_k8cyv")
+[sub_resource type="BoxMesh" id="BoxMesh_k8cyv"]
+material = SubResource("ShaderMaterial_a8vbo")
 size = Vector3(4.5, 18, 4.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dslos"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yycdg"]
 size = Vector3(4.5, 18, 4.5)
 
-[node name="DistrictSegment23" type="Node3D" unique_id=1692013847]
+[node name="DistrictSegment23" type="Node3D" unique_id=1609500503]
 
-[node name="FramePost00" type="StaticBody3D" parent="." unique_id=785793499]
+[node name="FramePost00" type="StaticBody3D" parent="." unique_id=1799355421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 9, -17.5)
 collision_layer = 1029
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="FramePost00" unique_id=82383960]
+[node name="Mesh" type="MeshInstance3D" parent="FramePost00" unique_id=1727684452]
 visible = false
-mesh = SubResource("BoxMesh_yycdg")
+mesh = SubResource("BoxMesh_k8cyv")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="FramePost00" unique_id=378970049]
-shape = SubResource("BoxShape3D_dslos")
+[node name="CollisionShape" type="CollisionShape3D" parent="FramePost00" unique_id=1794865653]
+shape = SubResource("BoxShape3D_yycdg")
 
-[node name="Flammable" type="Node" parent="FramePost00" unique_id=2011362253]
+[node name="Flammable" type="Node" parent="FramePost00" unique_id=697337790]
 script = ExtResource("3_xgu4q")
 fuel = 12.0
 size = Vector3(4.5, 18, 4.5)

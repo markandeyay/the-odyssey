@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_va0sn"]
 [ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="3_dqt70"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpoqa"]
 resource_name = "mat_fire_cracked_stone_grip_crumbling"
 render_priority = 0
 shader = ExtResource("1_ogkl5")
@@ -24,27 +24,27 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_ggfpn"]
-material = SubResource("ShaderMaterial_h3bn4")
+material = SubResource("ShaderMaterial_hpoqa")
 size = Vector3(11.333333, 2.5, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uo3wj"]
 size = Vector3(11.333333, 2.5, 15)
 
-[node name="DistrictSegment54" type="Node3D" unique_id=785160166]
+[node name="DistrictSegment54" type="Node3D" unique_id=1357051610]
 
-[node name="CollapsedRoof00" type="StaticBody3D" parent="." unique_id=1150655042]
+[node name="CollapsedRoof00" type="StaticBody3D" parent="." unique_id=186857370]
 transform = Transform3D(0.8890986, -0.16012943, 0.4287917, 0.26961404, 0.9402558, -0.2079117, -0.3698811, 0.30046225, 0.87915325, -13.292388, 13.903711, -2.4016638)
 collision_layer = 1029
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof00" unique_id=532638813]
+[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof00" unique_id=2059811780]
 visible = false
 mesh = SubResource("BoxMesh_ggfpn")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof00" unique_id=1263549147]
+[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof00" unique_id=214279265]
 shape = SubResource("BoxShape3D_uo3wj")
 
-[node name="Flammable" type="Node" parent="CollapsedRoof00" unique_id=1013560725]
+[node name="Flammable" type="Node" parent="CollapsedRoof00" unique_id=711949388]
 script = ExtResource("3_dqt70")
 fuel = 20.0
 size = Vector3(11.333333, 2.5, 15)

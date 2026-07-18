@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_espvx"]
 [ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="3_76ck3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpoqa"]
 resource_name = "mat_fire_cracked_stone_grip_crumbling"
 render_priority = 0
 shader = ExtResource("1_x8eip")
@@ -24,27 +24,27 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_n0iln"]
-material = SubResource("ShaderMaterial_h3bn4")
+material = SubResource("ShaderMaterial_hpoqa")
 size = Vector3(11.333333, 2.5, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fqm3b"]
 size = Vector3(11.333333, 2.5, 20)
 
-[node name="DistrictSegment82" type="Node3D" unique_id=686457603]
+[node name="DistrictSegment82" type="Node3D" unique_id=1019345635]
 
-[node name="CollapsedRoof11" type="StaticBody3D" parent="." unique_id=2008884532]
+[node name="CollapsedRoof11" type="StaticBody3D" parent="." unique_id=466446428]
 transform = Transform3D(0.6516817, 0.03909172, 0.7574845, 0.26495963, 0.92402405, -0.27563736, -0.71070904, 0.38033062, 0.59181184, 7.574845, 9.893626, 5.9181185)
 collision_layer = 1029
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof11" unique_id=570526393]
+[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof11" unique_id=222171703]
 visible = false
 mesh = SubResource("BoxMesh_n0iln")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof11" unique_id=345564219]
+[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof11" unique_id=299311393]
 shape = SubResource("BoxShape3D_fqm3b")
 
-[node name="Flammable" type="Node" parent="CollapsedRoof11" unique_id=455865177]
+[node name="Flammable" type="Node" parent="CollapsedRoof11" unique_id=1356434457]
 script = ExtResource("3_76ck3")
 fuel = 20.0
 size = Vector3(11.333333, 2.5, 20)

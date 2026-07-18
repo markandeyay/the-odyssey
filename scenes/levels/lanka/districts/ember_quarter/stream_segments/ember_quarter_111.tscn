@@ -30,14 +30,14 @@ size = Vector3(0.7, 0.5, 0.7)
 material = SubResource("ShaderMaterial_lqgfr")
 size = Vector3(0.7, 0.5, 0.7)
 
-[node name="DistrictSegment111" type="Node3D" unique_id=827499381]
+[node name="DistrictSegment111" type="Node3D" unique_id=1050919511]
 
-[node name="IngredientProxy_Charwood04" type="MeshInstance3D" parent="." unique_id=601267646]
+[node name="IngredientProxy_Charwood04" type="MeshInstance3D" parent="." unique_id=708020548]
 transform = Transform3D(-0.017452352, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, -0.017452352, 70, 2.3, 52)
 visible = false
 mesh = SubResource("BoxMesh_mi874")
 
-[node name="IngredientProxy_Charwood05" type="MeshInstance3D" parent="." unique_id=935124738]
+[node name="IngredientProxy_Charwood05" type="MeshInstance3D" parent="." unique_id=285425785]
 transform = Transform3D(-0.034899462, 0, 0.99939084, 0, 1, 0, -0.99939084, 0, -0.034899462, 136, 2.3, 56)
 visible = false
 mesh = SubResource("BoxMesh_sx1tt")

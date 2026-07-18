@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_635l1"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_uo2xp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcavg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3b1r"]
 resource_name = "mat_soot_stone_grip_slick"
 render_priority = 0
 shader = ExtResource("1_635l1")
@@ -23,21 +23,21 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_nirsf"]
-material = SubResource("ShaderMaterial_mcavg")
+material = SubResource("ShaderMaterial_i3b1r")
 size = Vector3(3, 3, 145)
 
 [sub_resource type="BoxMesh" id="BoxMesh_bvmqy"]
-material = SubResource("ShaderMaterial_mcavg")
+material = SubResource("ShaderMaterial_i3b1r")
 size = Vector3(3, 3, 145)
 
-[node name="DistrictSegment26" type="Node3D" unique_id=1710089549]
+[node name="DistrictSegment26" type="Node3D" unique_id=1839202433]
 
-[node name="CeilingRib06" type="MeshInstance3D" parent="." unique_id=295515621]
+[node name="CeilingRib06" type="MeshInstance3D" parent="." unique_id=541878055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 29, 0)
 visible = false
 mesh = SubResource("BoxMesh_nirsf")
 
-[node name="CeilingRib07" type="MeshInstance3D" parent="." unique_id=1536973033]
+[node name="CeilingRib07" type="MeshInstance3D" parent="." unique_id=307440846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 29, 0)
 visible = false
 mesh = SubResource("BoxMesh_bvmqy")

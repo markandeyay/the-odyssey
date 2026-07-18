@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/fragment_pickup.tscn" id="1_7g4em"]
 
-[node name="DistrictSegment12" type="Node3D" unique_id=2051724191]
+[node name="DistrictSegment12" type="Node3D" unique_id=1287096589]
 
-[node name="CrewFragment_CrewKavi" type="Marker3D" parent="." unique_id=702236409]
+[node name="CrewFragment_CrewKavi" type="Marker3D" parent="." unique_id=1966734981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 3, -82)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_kavi"
@@ -12,11 +12,11 @@ metadata/memory_object = "glass bead"
 metadata/memory_text = "Kavi promised the smoke would clear before nightfall."
 metadata/district_id = &"ember_quarter"
 
-[node name="FragmentPickup" parent="CrewFragment_CrewKavi" unique_id=2032210131 instance=ExtResource("1_7g4em")]
+[node name="FragmentPickup" parent="CrewFragment_CrewKavi" unique_id=1952799344 instance=ExtResource("1_7g4em")]
 fragment_id = &"crew_kavi"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
 
-[node name="CrewFragment_CrewLal" type="Marker3D" parent="." unique_id=75787012]
+[node name="CrewFragment_CrewLal" type="Marker3D" parent="." unique_id=417015795]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132, 6, 72)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_lal"
@@ -24,7 +24,7 @@ metadata/memory_object = "iron key"
 metadata/memory_text = "Lal locked the cistern and carried the key into the burn."
 metadata/district_id = &"ember_quarter"
 
-[node name="FragmentPickup" parent="CrewFragment_CrewLal" unique_id=307424516 instance=ExtResource("1_7g4em")]
+[node name="FragmentPickup" parent="CrewFragment_CrewLal" unique_id=479607397 instance=ExtResource("1_7g4em")]
 fragment_id = &"crew_lal"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
 

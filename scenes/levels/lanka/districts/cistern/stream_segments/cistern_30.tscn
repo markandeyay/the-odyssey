@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_wmpp1"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_gv1lv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqoj2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8khg"]
 resource_name = "mat_bone_canvas_grip_solid"
 render_priority = 0
 shader = ExtResource("1_wmpp1")
@@ -23,21 +23,21 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_l8lus"]
-material = SubResource("ShaderMaterial_tqoj2")
+material = SubResource("ShaderMaterial_s8khg")
 size = Vector3(1.4, 0.5, 0.6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gnyms"]
-material = SubResource("ShaderMaterial_tqoj2")
+material = SubResource("ShaderMaterial_s8khg")
 size = Vector3(1.4, 0.5, 0.6)
 
-[node name="DistrictSegment30" type="Node3D" unique_id=527229290]
+[node name="DistrictSegment30" type="Node3D" unique_id=914183960]
 
-[node name="FragmentProxy_CrewManu" type="MeshInstance3D" parent="." unique_id=597032788]
+[node name="FragmentProxy_CrewManu" type="MeshInstance3D" parent="." unique_id=366883861]
 transform = Transform3D(-0.988655, 0.14627372, 0.034136813, 0.13613184, 0.96862835, -0.2079117, -0.0634779, -0.20090584, -0.97755176, -68, -17.65, -42)
 visible = false
 mesh = SubResource("BoxMesh_l8lus")
 
-[node name="FragmentProxy_CrewNilan" type="MeshInstance3D" parent="." unique_id=1745117109]
+[node name="FragmentProxy_CrewNilan" type="MeshInstance3D" parent="." unique_id=244373249]
 transform = Transform3D(-0.8520797, 0.22154017, 0.4742153, 0.13613184, 0.96862835, -0.2079117, -0.50539917, -0.11260154, -0.85550725, 4, -18.65, 52)
 visible = false
 mesh = SubResource("BoxMesh_gnyms")

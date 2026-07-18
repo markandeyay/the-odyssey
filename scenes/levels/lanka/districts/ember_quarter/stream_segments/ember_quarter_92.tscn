@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_0bis3"]
 [ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="3_4ills"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpoqa"]
 resource_name = "mat_fire_cracked_stone_grip_crumbling"
 render_priority = 0
 shader = ExtResource("1_oqjop")
@@ -24,27 +24,27 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_p83kp"]
-material = SubResource("ShaderMaterial_h3bn4")
+material = SubResource("ShaderMaterial_hpoqa")
 size = Vector3(14, 2.5, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8op6s"]
 size = Vector3(14, 2.5, 15)
 
-[node name="DistrictSegment92" type="Node3D" unique_id=114294778]
+[node name="DistrictSegment92" type="Node3D" unique_id=164675685]
 
-[node name="CollapsedRoof01" type="StaticBody3D" parent="." unique_id=1977469366]
+[node name="CollapsedRoof01" type="StaticBody3D" parent="." unique_id=662911372]
 transform = Transform3D(0.48344296, 0.1527259, 0.86195, 0.2621467, 0.9142142, -0.309017, -0.8352018, 0.37534943, 0.40193385, -0.30357647, 9.412318, 14.707329)
 collision_layer = 1029
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof01" unique_id=970160950]
+[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof01" unique_id=399302490]
 visible = false
 mesh = SubResource("BoxMesh_p83kp")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof01" unique_id=1175928114]
+[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof01" unique_id=1434647611]
 shape = SubResource("BoxShape3D_8op6s")
 
-[node name="Flammable" type="Node" parent="CollapsedRoof01" unique_id=361546871]
+[node name="Flammable" type="Node" parent="CollapsedRoof01" unique_id=432950433]
 script = ExtResource("3_4ills")
 fuel = 20.0
 size = Vector3(14, 2.5, 15)

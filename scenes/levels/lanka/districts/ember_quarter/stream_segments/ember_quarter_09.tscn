@@ -5,20 +5,20 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_r7qyo"]
 size = Vector3(50, 35, 80)
 
-[node name="DistrictSegment09" type="Node3D" unique_id=921742739]
+[node name="DistrictSegment09" type="Node3D" unique_id=2145307586]
 
-[node name="CharwoodHabitat04" type="Marker3D" parent="." unique_id=1158802553]
+[node name="CharwoodHabitat04" type="Marker3D" parent="." unique_id=1320193983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 2, 56)
 metadata/socket_type = &"ingredient_habitat"
 metadata/spawn_id = &"charwood_habitat_04"
 
-[node name="DistrictTrigger" type="Marker3D" parent="." unique_id=1069636024]
+[node name="DistrictTrigger" type="Marker3D" parent="." unique_id=1878848908]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138, 8, -95)
 metadata/socket_type = &"district_trigger"
 metadata/socket_size_m = Vector3(50, 35, 80)
 metadata/district_id = &"ember_quarter"
 
-[node name="DistrictTrigger" parent="DistrictTrigger" unique_id=140944760 instance=ExtResource("1_xt8s6")]
+[node name="DistrictTrigger" parent="DistrictTrigger" unique_id=1126289326 instance=ExtResource("1_xt8s6")]
 district_id = &"ember_quarter"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/district_trigger.tscn"
 

@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/component_pickup.tscn" id="1_kq30c"]
 
-[node name="DistrictSegment36" type="Node3D" unique_id=321978817]
+[node name="DistrictSegment36" type="Node3D" unique_id=1955090307]
 
-[node name="CisternTrial" type="Marker3D" parent="." unique_id=1761076167]
+[node name="CisternTrial" type="Marker3D" parent="." unique_id=1893498940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 52)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"cistern_trial"
 
-[node name="ComponentPickup_Sail" parent="CisternTrial" unique_id=137346902 instance=ExtResource("1_kq30c")]
+[node name="ComponentPickup_Sail" parent="CisternTrial" unique_id=2024537579 instance=ExtResource("1_kq30c")]
 component_id = &"sail"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/component_pickup.tscn"
 

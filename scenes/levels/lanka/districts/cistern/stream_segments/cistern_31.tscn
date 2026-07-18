@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_gmnxf"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_1vcay"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqoj2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8khg"]
 resource_name = "mat_bone_canvas_grip_solid"
 render_priority = 0
 shader = ExtResource("1_gmnxf")
@@ -23,10 +23,10 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_xnp5i"]
-material = SubResource("ShaderMaterial_tqoj2")
+material = SubResource("ShaderMaterial_s8khg")
 size = Vector3(1.4, 0.5, 0.6)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgufk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omd6p"]
 resource_name = "mat_salvage_iron_grip_solid"
 render_priority = 0
 shader = ExtResource("1_gmnxf")
@@ -46,17 +46,17 @@ shader_parameter/surface_metallic = 0.7
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_4w06d"]
-material = SubResource("ShaderMaterial_cgufk")
+material = SubResource("ShaderMaterial_omd6p")
 size = Vector3(2.6, 0.8, 1.4)
 
-[node name="DistrictSegment31" type="Node3D" unique_id=339301956]
+[node name="DistrictSegment31" type="Node3D" unique_id=787558720]
 
-[node name="FragmentProxy_CrewOmar" type="MeshInstance3D" parent="." unique_id=735312634]
+[node name="FragmentProxy_CrewOmar" type="MeshInstance3D" parent="." unique_id=1777430328]
 transform = Transform3D(0.06347795, 0.20090583, 0.97755176, 0.13613184, 0.96862835, -0.2079117, -0.988655, 0.14627373, 0.034136858, 72, -11.65, -24)
 visible = false
 mesh = SubResource("BoxMesh_xnp5i")
 
-[node name="SalvageProxy_SalvageIron05" type="MeshInstance3D" parent="." unique_id=1247442721]
+[node name="SalvageProxy_SalvageIron05" type="MeshInstance3D" parent="." unique_id=1253947687]
 transform = Transform3D(-0.48480955, 0, 0.8746197, 0, 1, 0, -0.8746197, 0, -0.48480955, -72, -17.5, 26)
 visible = false
 mesh = SubResource("BoxMesh_4w06d")

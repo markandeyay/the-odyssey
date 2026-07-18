@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_mgyux"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_q05cu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcavg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3b1r"]
 resource_name = "mat_soot_stone_grip_slick"
 render_priority = 0
 shader = ExtResource("1_mgyux")
@@ -23,14 +23,14 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_tr15c"]
-material = SubResource("ShaderMaterial_mcavg")
+material = SubResource("ShaderMaterial_i3b1r")
 
 [sub_resource type="MultiMesh" id="MultiMesh_4e6m0"]
 transform_format = 1
 instance_count = 12
 mesh = SubResource("BoxMesh_tr15c")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqoj2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8khg"]
 resource_name = "mat_bone_canvas_grip_solid"
 render_priority = 0
 shader = ExtResource("1_mgyux")
@@ -50,22 +50,22 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_0npp5"]
-material = SubResource("ShaderMaterial_tqoj2")
+material = SubResource("ShaderMaterial_s8khg")
 
 [sub_resource type="MultiMesh" id="MultiMesh_ih20m"]
 transform_format = 1
 instance_count = 4
 mesh = SubResource("BoxMesh_0npp5")
 
-[node name="DistrictSegment39" type="Node3D" unique_id=625469356]
+[node name="DistrictSegment39" type="Node3D" unique_id=363722364]
 
-[node name="GeometryBatch04_SootStoneGripSlick" type="MultiMeshInstance3D" parent="." unique_id=1142899964]
+[node name="GeometryBatch04_SootStoneGripSlick" type="MultiMeshInstance3D" parent="." unique_id=42991350]
 multimesh = SubResource("MultiMesh_4e6m0")
 metadata/m8_batch_instance_count = 12
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_soot_stone_grip_slick"
 
-[node name="GeometryBatch05_BoneCanvasGripSolid" type="MultiMeshInstance3D" parent="." unique_id=563551283]
+[node name="GeometryBatch05_BoneCanvasGripSolid" type="MultiMeshInstance3D" parent="." unique_id=1367820787]
 multimesh = SubResource("MultiMesh_ih20m")
 metadata/m8_batch_instance_count = 4
 metadata/m8_batch_shape = &"box"

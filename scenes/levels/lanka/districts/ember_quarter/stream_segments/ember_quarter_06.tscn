@@ -8,28 +8,28 @@ size = Vector3(250, 20, 220)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yuhlw"]
 size = Vector3(250, 20, 220)
 
-[node name="DistrictSegment06" type="Node3D" unique_id=1891520455]
+[node name="DistrictSegment06" type="Node3D" unique_id=715401121]
 
-[node name="HeatLayer01" type="Marker3D" parent="." unique_id=881331467]
+[node name="HeatLayer01" type="Marker3D" parent="." unique_id=311259885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 28, 0)
 metadata/socket_type = &"heat_volume"
 metadata/socket_size_m = Vector3(250, 20, 220)
 metadata/strength = 1.55
 
-[node name="HeatVolume" parent="HeatLayer01" unique_id=1351387853 instance=ExtResource("1_ubl0l")]
+[node name="HeatVolume" parent="HeatLayer01" unique_id=212983373 instance=ExtResource("1_ubl0l")]
 damage_per_second = 1.55
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/heat_volume.tscn"
 
 [node name="CollisionShape3D" parent="HeatLayer01/HeatVolume" index="0"]
 shape = SubResource("BoxShape3D_ey10l")
 
-[node name="HeatLayer02" type="Marker3D" parent="." unique_id=1387617149]
+[node name="HeatLayer02" type="Marker3D" parent="." unique_id=534239078]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 50, 0)
 metadata/socket_type = &"heat_volume"
 metadata/socket_size_m = Vector3(250, 20, 220)
 metadata/strength = 2.1
 
-[node name="HeatVolume" parent="HeatLayer02" unique_id=899554415 instance=ExtResource("1_ubl0l")]
+[node name="HeatVolume" parent="HeatLayer02" unique_id=1745208755 instance=ExtResource("1_ubl0l")]
 damage_per_second = 2.1
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/heat_volume.tscn"
 

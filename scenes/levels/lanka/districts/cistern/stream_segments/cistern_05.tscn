@@ -4,21 +4,21 @@
 [ext_resource type="PackedScene" path="res://scenes/levels/cairns/cairn_08_flame_crossing.tscn" id="2_6q3ei"]
 [ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/fragment_pickup.tscn" id="3_wyr24"]
 
-[node name="DistrictSegment05" type="Node3D" unique_id=948209637]
+[node name="DistrictSegment05" type="Node3D" unique_id=588115574]
 
-[node name="CairnEntrance_CisternFlameCrossing" type="Marker3D" parent="." unique_id=1751403203]
+[node name="CairnEntrance_CisternFlameCrossing" type="Marker3D" parent="." unique_id=209307308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, -8, -61)
 metadata/socket_type = &"cairn_entrance"
 metadata/cairn_id = &"cistern_flame_crossing"
 metadata/target_scene_path = "res://scenes/levels/cairns/cairn_08_flame_crossing.tscn"
 metadata/district_id = &"cistern"
 
-[node name="CairnEntrance" parent="CairnEntrance_CisternFlameCrossing" unique_id=1275935032 instance=ExtResource("1_wqb7e")]
+[node name="CairnEntrance" parent="CairnEntrance_CisternFlameCrossing" unique_id=2084334168 instance=ExtResource("1_wqb7e")]
 cairn_id = &"cistern_flame_crossing"
 target_scene = ExtResource("2_6q3ei")
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/cairn_entrance.tscn"
 
-[node name="CrewFragment_CrewManu" type="Marker3D" parent="." unique_id=1449817792]
+[node name="CrewFragment_CrewManu" type="Marker3D" parent="." unique_id=1255543276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, -18, -42)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_manu"
@@ -26,7 +26,7 @@ metadata/memory_object = "oilskin lantern"
 metadata/memory_text = "Manu's lantern went dark while the water was still rising."
 metadata/district_id = &"cistern"
 
-[node name="FragmentPickup" parent="CrewFragment_CrewManu" unique_id=841083328 instance=ExtResource("3_wyr24")]
+[node name="FragmentPickup" parent="CrewFragment_CrewManu" unique_id=182690264 instance=ExtResource("3_wyr24")]
 fragment_id = &"crew_manu"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
 

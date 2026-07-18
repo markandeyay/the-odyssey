@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_qndpn"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_4uyo8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihrsk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pws5y"]
 resource_name = "mat_wet_stone_grip_slick"
 render_priority = 0
 shader = ExtResource("1_qndpn")
@@ -23,13 +23,13 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_koql1"]
-material = SubResource("ShaderMaterial_ihrsk")
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(7, 64, 150)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ek05"]
 size = Vector3(7, 64, 150)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxe7a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk7p5"]
 resource_name = "mat_clean_stone_grip_solid"
 render_priority = 0
 shader = ExtResource("1_qndpn")
@@ -49,7 +49,7 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tfkgx"]
-material = SubResource("ShaderMaterial_jxe7a")
+material = SubResource("ShaderMaterial_rk7p5")
 top_radius = 4.2
 bottom_radius = 4.536
 height = 56.0
@@ -60,28 +60,28 @@ rings = 3
 height = 56.0
 radius = 4.2
 
-[node name="DistrictSegment13" type="Node3D" unique_id=534962447]
+[node name="DistrictSegment13" type="Node3D" unique_id=1275647191]
 
-[node name="EastWall" type="StaticBody3D" parent="." unique_id=445663733]
+[node name="EastWall" type="StaticBody3D" parent="." unique_id=1843189510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 2, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="EastWall" unique_id=1617263949]
+[node name="Mesh" type="MeshInstance3D" parent="EastWall" unique_id=481763853]
 visible = false
 mesh = SubResource("BoxMesh_koql1")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="EastWall" unique_id=365261155]
+[node name="CollisionShape" type="CollisionShape3D" parent="EastWall" unique_id=827055939]
 shape = SubResource("BoxShape3D_8ek05")
 
-[node name="ReservoirColumn00" type="StaticBody3D" parent="." unique_id=1232289192]
+[node name="ReservoirColumn00" type="StaticBody3D" parent="." unique_id=1292234383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0, -46)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="ReservoirColumn00" unique_id=2115546313]
+[node name="Mesh" type="MeshInstance3D" parent="ReservoirColumn00" unique_id=1625594092]
 visible = false
 mesh = SubResource("CylinderMesh_tfkgx")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="ReservoirColumn00" unique_id=958976880]
+[node name="CollisionShape" type="CollisionShape3D" parent="ReservoirColumn00" unique_id=1883642996]
 shape = SubResource("CylinderShape3D_ial7x")

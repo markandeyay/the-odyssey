@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_75vgj"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_rxu6s"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihrsk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pws5y"]
 resource_name = "mat_wet_stone_grip_slick"
 render_priority = 0
 shader = ExtResource("1_75vgj")
@@ -23,41 +23,41 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_skf0m"]
-material = SubResource("ShaderMaterial_ihrsk")
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(170, 2, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v4aqx"]
 size = Vector3(170, 2, 8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0p0ph"]
-material = SubResource("ShaderMaterial_ihrsk")
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(170, 2, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgtke"]
 size = Vector3(170, 2, 8)
 
-[node name="DistrictSegment20" type="Node3D" unique_id=1337726371]
+[node name="DistrictSegment20" type="Node3D" unique_id=138807889]
 
-[node name="SlickWalkway01" type="StaticBody3D" parent="." unique_id=379567464]
+[node name="SlickWalkway01" type="StaticBody3D" parent="." unique_id=981759093]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="SlickWalkway01" unique_id=353348561]
+[node name="Mesh" type="MeshInstance3D" parent="SlickWalkway01" unique_id=1815978197]
 visible = false
 mesh = SubResource("BoxMesh_skf0m")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="SlickWalkway01" unique_id=980391389]
+[node name="CollisionShape" type="CollisionShape3D" parent="SlickWalkway01" unique_id=1205193172]
 shape = SubResource("BoxShape3D_v4aqx")
 
-[node name="SlickWalkway02" type="StaticBody3D" parent="." unique_id=676023915]
+[node name="SlickWalkway02" type="StaticBody3D" parent="." unique_id=1332810287]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 48)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="SlickWalkway02" unique_id=372726246]
+[node name="Mesh" type="MeshInstance3D" parent="SlickWalkway02" unique_id=1623020160]
 visible = false
 mesh = SubResource("BoxMesh_0p0ph")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="SlickWalkway02" unique_id=2130881703]
+[node name="CollisionShape" type="CollisionShape3D" parent="SlickWalkway02" unique_id=1082950460]
 shape = SubResource("BoxShape3D_dgtke")

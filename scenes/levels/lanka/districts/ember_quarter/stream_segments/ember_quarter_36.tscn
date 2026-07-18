@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_drxrf"]
 [ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="3_vfq3a"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8cyv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8vbo"]
 resource_name = "mat_charred_timber_grip_crumbling"
 render_priority = 0
 shader = ExtResource("1_86yby")
@@ -24,27 +24,27 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_8kpi3"]
-material = SubResource("ShaderMaterial_k8cyv")
+material = SubResource("ShaderMaterial_a8vbo")
 size = Vector3(4.5, 23, 4.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uq36j"]
 size = Vector3(4.5, 23, 4.5)
 
-[node name="DistrictSegment36" type="Node3D" unique_id=1586051871]
+[node name="DistrictSegment36" type="Node3D" unique_id=1146231058]
 
-[node name="FramePost01" type="StaticBody3D" parent="." unique_id=1239589551]
+[node name="FramePost01" type="StaticBody3D" parent="." unique_id=2084186540]
 transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, -21, 11.5, 20)
 collision_layer = 1029
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="FramePost01" unique_id=1089931029]
+[node name="Mesh" type="MeshInstance3D" parent="FramePost01" unique_id=529028811]
 visible = false
 mesh = SubResource("BoxMesh_8kpi3")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="FramePost01" unique_id=1834697201]
+[node name="CollisionShape" type="CollisionShape3D" parent="FramePost01" unique_id=1460727291]
 shape = SubResource("BoxShape3D_uq36j")
 
-[node name="Flammable" type="Node" parent="FramePost01" unique_id=1826274345]
+[node name="Flammable" type="Node" parent="FramePost01" unique_id=724101899]
 script = ExtResource("3_vfq3a")
 fuel = 12.0
 size = Vector3(4.5, 23, 4.5)

@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_katm7"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_s6tcw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgufk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omd6p"]
 resource_name = "mat_salvage_iron_grip_solid"
 render_priority = 0
 shader = ExtResource("1_katm7")
@@ -22,22 +22,22 @@ shader_parameter/surface_roughness = 0.5
 shader_parameter/surface_metallic = 0.7
 shader_parameter/emission_energy = 0.0
 
+[sub_resource type="BoxMesh" id="BoxMesh_cgufk"]
+material = SubResource("ShaderMaterial_omd6p")
+size = Vector3(2.6, 0.8, 1.4)
+
 [sub_resource type="BoxMesh" id="BoxMesh_4dgce"]
-material = SubResource("ShaderMaterial_cgufk")
+material = SubResource("ShaderMaterial_omd6p")
 size = Vector3(2.6, 0.8, 1.4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_iyrv3"]
-material = SubResource("ShaderMaterial_cgufk")
-size = Vector3(2.6, 0.8, 1.4)
+[node name="DistrictSegment107" type="Node3D" unique_id=1964188301]
 
-[node name="DistrictSegment107" type="Node3D" unique_id=1566512517]
-
-[node name="SalvageProxy_SalvageIron03" type="MeshInstance3D" parent="." unique_id=1256075192]
+[node name="SalvageProxy_SalvageIron03" type="MeshInstance3D" parent="." unique_id=1234310121]
 transform = Transform3D(-0.4539904, 0, 0.8910066, 0, 1, 0, -0.8910066, 0, -0.4539904, -92, 3.5, 54)
 visible = false
-mesh = SubResource("BoxMesh_4dgce")
+mesh = SubResource("BoxMesh_cgufk")
 
-[node name="SalvageProxy_SalvageIron04" type="MeshInstance3D" parent="." unique_id=1195229974]
+[node name="SalvageProxy_SalvageIron04" type="MeshInstance3D" parent="." unique_id=714725316]
 transform = Transform3D(-0.46947157, 0, 0.88294756, 0, 1, 0, -0.88294756, 0, -0.46947157, 74, 3.5, -54)
 visible = false
-mesh = SubResource("BoxMesh_iyrv3")
+mesh = SubResource("BoxMesh_4dgce")

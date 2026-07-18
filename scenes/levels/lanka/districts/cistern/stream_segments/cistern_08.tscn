@@ -1,15 +1,15 @@
 [gd_scene format=3]
 
-[node name="DistrictSegment08" type="Node3D" unique_id=225248962]
+[node name="DistrictSegment08" type="Node3D" unique_id=154997678]
 
-[node name="Salvage_SalvageCanvas04" type="Marker3D" parent="." unique_id=227531763]
+[node name="Salvage_SalvageCanvas04" type="Marker3D" parent="." unique_id=636063621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -12, 58)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_canvas_04"
 metadata/salvage_id = &"canvas"
 metadata/district_id = &"cistern"
 
-[node name="Ingredient_BlindFish01" type="Marker3D" parent="." unique_id=1147973891]
+[node name="Ingredient_BlindFish01" type="Marker3D" parent="." unique_id=539363940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, -18, 38)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"blind_fish_01"

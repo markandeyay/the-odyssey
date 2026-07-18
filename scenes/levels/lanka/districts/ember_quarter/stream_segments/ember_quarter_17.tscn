@@ -1,15 +1,15 @@
 [gd_scene format=3]
 
-[node name="DistrictSegment17" type="Node3D" unique_id=699210900]
+[node name="DistrictSegment17" type="Node3D" unique_id=983752375]
 
-[node name="Ingredient_Charwood04" type="Marker3D" parent="." unique_id=1865287877]
+[node name="Ingredient_Charwood04" type="Marker3D" parent="." unique_id=484235698]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 2, 52)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"charwood_04"
 metadata/ingredient_id = &"charwood_fruit"
 metadata/district_id = &"ember_quarter"
 
-[node name="Ingredient_Charwood05" type="Marker3D" parent="." unique_id=819046255]
+[node name="Ingredient_Charwood05" type="Marker3D" parent="." unique_id=1067130937]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 2, 56)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"charwood_05"

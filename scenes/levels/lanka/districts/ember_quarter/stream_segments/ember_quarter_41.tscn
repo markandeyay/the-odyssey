@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_vbkfj"]
 [ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="3_4a4pc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpoqa"]
 resource_name = "mat_fire_cracked_stone_grip_crumbling"
 render_priority = 0
 shader = ExtResource("1_422c2")
@@ -24,27 +24,27 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_5gvd5"]
-material = SubResource("ShaderMaterial_h3bn4")
+material = SubResource("ShaderMaterial_hpoqa")
 size = Vector3(14, 2.5, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_24q82"]
 size = Vector3(14, 2.5, 20)
 
-[node name="DistrictSegment41" type="Node3D" unique_id=204628729]
+[node name="DistrictSegment41" type="Node3D" unique_id=895915998]
 
-[node name="CollapsedRoof00" type="StaticBody3D" parent="." unique_id=1490867733]
+[node name="CollapsedRoof00" type="StaticBody3D" parent="." unique_id=158018978]
 transform = Transform3D(0.9473916, -0.23102364, 0.22153352, 0.2714498, 0.94665796, -0.17364818, -0.16959964, 0.22464807, 0.9595672, -15.478818, 10.586184, -7.2212768)
 collision_layer = 1029
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof00" unique_id=397704813]
+[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof00" unique_id=1214607736]
 visible = false
 mesh = SubResource("BoxMesh_5gvd5")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof00" unique_id=648981067]
+[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof00" unique_id=172835484]
 shape = SubResource("BoxShape3D_24q82")
 
-[node name="Flammable" type="Node" parent="CollapsedRoof00" unique_id=993309017]
+[node name="Flammable" type="Node" parent="CollapsedRoof00" unique_id=2111463588]
 script = ExtResource("3_4a4pc")
 fuel = 20.0
 size = Vector3(14, 2.5, 20)

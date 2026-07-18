@@ -20,16 +20,16 @@ size = Vector2(182, 142)
 subdivide_width = 32
 subdivide_depth = 24
 
-[node name="DistrictSegment29" type="Node3D" unique_id=1281002648]
+[node name="DistrictSegment29" type="Node3D" unique_id=959931881]
 
-[node name="ReservoirWaterScenery" type="MeshInstance3D" parent="." unique_id=228491625]
+[node name="ReservoirWaterScenery" type="MeshInstance3D" parent="." unique_id=204908053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_qs6am")
 metadata/scenery_only = true
 metadata/simulation = false
 
-[node name="EntranceShaftGodRay" type="SpotLight3D" parent="." unique_id=909719302]
+[node name="EntranceShaftGodRay" type="SpotLight3D" parent="." unique_id=1541509469]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 74, 61, 54)
 light_color = Color(0.82, 0.91, 0.84, 1)
 light_energy = 7.0

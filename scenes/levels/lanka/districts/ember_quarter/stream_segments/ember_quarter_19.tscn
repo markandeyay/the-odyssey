@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_yqkmi"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_ifsv8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcavg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3b1r"]
 resource_name = "mat_soot_stone_grip_slick"
 render_priority = 0
 shader = ExtResource("1_yqkmi")
@@ -22,42 +22,42 @@ shader_parameter/surface_roughness = 0.9
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_nb41r"]
-material = SubResource("ShaderMaterial_mcavg")
+[sub_resource type="BoxMesh" id="BoxMesh_mcavg"]
+material = SubResource("ShaderMaterial_i3b1r")
 size = Vector3(300, 2.4, 24)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vkr4l"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_nb41r"]
 size = Vector3(300, 2.4, 24)
 
-[sub_resource type="BoxMesh" id="BoxMesh_04cyt"]
-material = SubResource("ShaderMaterial_mcavg")
+[sub_resource type="BoxMesh" id="BoxMesh_vkr4l"]
+material = SubResource("ShaderMaterial_i3b1r")
 size = Vector3(300, 2.4, 24)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tok0r"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_04cyt"]
 size = Vector3(300, 2.4, 24)
 
-[node name="DistrictSegment19" type="Node3D" unique_id=1750865012]
+[node name="DistrictSegment19" type="Node3D" unique_id=297359233]
 
-[node name="EastWestStreet00" type="StaticBody3D" parent="." unique_id=352506001]
+[node name="EastWestStreet00" type="StaticBody3D" parent="." unique_id=1322095401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, -105)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="EastWestStreet00" unique_id=590522207]
+[node name="Mesh" type="MeshInstance3D" parent="EastWestStreet00" unique_id=625988962]
 visible = false
-mesh = SubResource("BoxMesh_nb41r")
+mesh = SubResource("BoxMesh_mcavg")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="EastWestStreet00" unique_id=795900884]
-shape = SubResource("BoxShape3D_vkr4l")
+[node name="CollisionShape" type="CollisionShape3D" parent="EastWestStreet00" unique_id=1824403709]
+shape = SubResource("BoxShape3D_nb41r")
 
-[node name="EastWestStreet01" type="StaticBody3D" parent="." unique_id=1240835119]
+[node name="EastWestStreet01" type="StaticBody3D" parent="." unique_id=1704947733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="EastWestStreet01" unique_id=1711960926]
+[node name="Mesh" type="MeshInstance3D" parent="EastWestStreet01" unique_id=95884534]
 visible = false
-mesh = SubResource("BoxMesh_04cyt")
+mesh = SubResource("BoxMesh_vkr4l")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="EastWestStreet01" unique_id=869379647]
-shape = SubResource("BoxShape3D_tok0r")
+[node name="CollisionShape" type="CollisionShape3D" parent="EastWestStreet01" unique_id=506929335]
+shape = SubResource("BoxShape3D_04cyt")

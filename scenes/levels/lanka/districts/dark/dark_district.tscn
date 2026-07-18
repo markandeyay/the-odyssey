@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/fragment_pickup.tscn" id="8_lf8pj"]
 [ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/figurehead_carryable.tscn" id="9_a4m65"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iiysq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pws5y"]
 resource_name = "mat_wet_stone_grip_slick"
 render_priority = 0
 shader = ExtResource("1_lhv2t")
@@ -29,11 +29,11 @@ shader_parameter/surface_roughness = 0.62
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_ffo5i"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_lhv2t"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(210, 4, 180)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0ux58"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ik26"]
 size = Vector3(210, 4, 180)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i3b1r"]
@@ -55,73 +55,73 @@ shader_parameter/surface_roughness = 0.9
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_7h1oo"]
+[sub_resource type="BoxMesh" id="BoxMesh_cr6cl"]
 material = SubResource("ShaderMaterial_i3b1r")
 size = Vector3(210, 5, 180)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bqbyh"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_nqfvv"]
 size = Vector3(210, 5, 180)
 
-[sub_resource type="BoxMesh" id="BoxMesh_lddkx"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_xftgh"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(6, 30, 180)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h5275"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_iw250"]
 size = Vector3(6, 30, 180)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ksuq3"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_b481c"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(6, 30, 180)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dhvub"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_lf8pj"]
 size = Vector3(6, 30, 180)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ldm1q"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_a4m65"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(210, 30, 6)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7m0j5"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ffo5i"]
 size = Vector3(210, 30, 6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_f8cu6"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_0ux58"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(210, 30, 6)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_etm0o"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7h1oo"]
 size = Vector3(210, 30, 6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_bg16r"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_bqbyh"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(6, 24, 88)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kap3x"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_lddkx"]
 size = Vector3(6, 24, 88)
 
-[sub_resource type="BoxMesh" id="BoxMesh_jj2k5"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_h5275"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(6, 24, 96)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lo6u2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ksuq3"]
 size = Vector3(6, 24, 96)
 
-[sub_resource type="BoxMesh" id="BoxMesh_oxhx3"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_dhvub"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(68, 24, 6)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_svrt1"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ldm1q"]
 size = Vector3(68, 24, 6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_mexev"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_7m0j5"]
+material = SubResource("ShaderMaterial_pws5y")
 size = Vector3(64, 24, 6)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bayep"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8cu6"]
 size = Vector3(64, 24, 6)
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_2y3ni"]
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_etm0o"]
 size = Vector3(190, 24, 160)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvyia"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk7p5"]
 resource_name = "mat_clean_stone_grip_solid"
 render_priority = 0
 shader = ExtResource("1_lhv2t")
@@ -140,35 +140,35 @@ shader_parameter/surface_roughness = 0.94
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_by33u"]
-material = SubResource("ShaderMaterial_jvyia")
+[sub_resource type="BoxMesh" id="BoxMesh_bg16r"]
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(22, 4, 12)
 
-[sub_resource type="BoxMesh" id="BoxMesh_3laco"]
-material = SubResource("ShaderMaterial_jvyia")
+[sub_resource type="BoxMesh" id="BoxMesh_kap3x"]
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(22, 4, 12)
 
-[sub_resource type="BoxMesh" id="BoxMesh_mgvsc"]
-material = SubResource("ShaderMaterial_jvyia")
+[sub_resource type="BoxMesh" id="BoxMesh_jj2k5"]
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(22, 4, 12)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ce87k"]
-material = SubResource("ShaderMaterial_jvyia")
+[sub_resource type="BoxMesh" id="BoxMesh_lo6u2"]
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(22, 4, 12)
 
-[sub_resource type="BoxMesh" id="BoxMesh_1kdjd"]
-material = SubResource("ShaderMaterial_jvyia")
+[sub_resource type="BoxMesh" id="BoxMesh_oxhx3"]
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(22, 4, 12)
 
-[sub_resource type="BoxMesh" id="BoxMesh_f7eih"]
-material = SubResource("ShaderMaterial_jvyia")
+[sub_resource type="BoxMesh" id="BoxMesh_svrt1"]
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(22, 4, 12)
 
-[sub_resource type="BoxMesh" id="BoxMesh_yvvgn"]
-material = SubResource("ShaderMaterial_jvyia")
+[sub_resource type="BoxMesh" id="BoxMesh_mexev"]
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(22, 4, 12)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lf8v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bayep"]
 resource_name = "mat_lanka_fire_visual_grip_hot"
 render_priority = 0
 shader = ExtResource("3_cr6cl")
@@ -176,11 +176,11 @@ shader_parameter/ember_color = null
 shader_parameter/flame_color = null
 shader_parameter/motion_offset = 0.0
 
-[sub_resource type="QuadMesh" id="QuadMesh_y1t1q"]
-material = SubResource("ShaderMaterial_4lf8v")
+[sub_resource type="QuadMesh" id="QuadMesh_2y3ni"]
+material = SubResource("ShaderMaterial_bayep")
 size = Vector2(2.7, 4.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yl0pr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_by33u"]
 resource_name = "mat_lanka_fire_visual_grip_hot"
 render_priority = 0
 shader = ExtResource("3_cr6cl")
@@ -188,44 +188,44 @@ shader_parameter/ember_color = null
 shader_parameter/flame_color = null
 shader_parameter/motion_offset = 1.7
 
-[sub_resource type="QuadMesh" id="QuadMesh_tojjv"]
-material = SubResource("ShaderMaterial_yl0pr")
+[sub_resource type="QuadMesh" id="QuadMesh_3laco"]
+material = SubResource("ShaderMaterial_by33u")
 size = Vector2(2.7, 4.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8f57o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mgvsc"]
 resource_name = "mat_lanka_smoke_visual_grip_solid"
 render_priority = 0
 shader = ExtResource("4_nqfvv")
 shader_parameter/smoke_color = null
 shader_parameter/motion_offset = 0.0
 
-[sub_resource type="QuadMesh" id="QuadMesh_y0j4q"]
-material = SubResource("ShaderMaterial_8f57o")
+[sub_resource type="QuadMesh" id="QuadMesh_ce87k"]
+material = SubResource("ShaderMaterial_mgvsc")
 size = Vector2(5.6, 8.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nawe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1kdjd"]
 resource_name = "mat_lanka_smoke_visual_grip_solid"
 render_priority = 0
 shader = ExtResource("4_nqfvv")
 shader_parameter/smoke_color = null
 shader_parameter/motion_offset = 0.43
 
-[sub_resource type="QuadMesh" id="QuadMesh_vldxs"]
-material = SubResource("ShaderMaterial_6nawe")
+[sub_resource type="QuadMesh" id="QuadMesh_f7eih"]
+material = SubResource("ShaderMaterial_1kdjd")
 size = Vector2(5.6, 8.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijcvl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvvgn"]
 resource_name = "mat_lanka_heat_haze_visual_grip_hot"
 render_priority = 0
 shader = ExtResource("5_xftgh")
 shader_parameter/distortion_strength = null
 shader_parameter/motion_offset = null
 
-[sub_resource type="QuadMesh" id="QuadMesh_3td2t"]
-material = SubResource("ShaderMaterial_ijcvl")
+[sub_resource type="QuadMesh" id="QuadMesh_4lf8v"]
+material = SubResource("ShaderMaterial_yvvgn")
 size = Vector2(5, 5.2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cocg0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8khg"]
 resource_name = "mat_bone_canvas_grip_solid"
 render_priority = 0
 shader = ExtResource("1_lhv2t")
@@ -244,259 +244,259 @@ shader_parameter/surface_roughness = 0.9
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_3afxv"]
-material = SubResource("ShaderMaterial_cocg0")
+[sub_resource type="BoxMesh" id="BoxMesh_y1t1q"]
+material = SubResource("ShaderMaterial_s8khg")
 size = Vector3(1.4, 0.5, 0.6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_b8eoj"]
-material = SubResource("ShaderMaterial_cocg0")
+[sub_resource type="BoxMesh" id="BoxMesh_yl0pr"]
+material = SubResource("ShaderMaterial_s8khg")
 size = Vector3(1.4, 0.5, 0.6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_dpaqb"]
-material = SubResource("ShaderMaterial_cocg0")
+[sub_resource type="BoxMesh" id="BoxMesh_tojjv"]
+material = SubResource("ShaderMaterial_s8khg")
 size = Vector3(2.6, 0.8, 1.4)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hqh0v"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8f57o"]
 size = Vector3(50, 20, 18)
 
-[sub_resource type="BoxMesh" id="BoxMesh_h3lk3"]
-material = SubResource("ShaderMaterial_iiysq")
+[sub_resource type="BoxMesh" id="BoxMesh_y0j4q"]
+material = SubResource("ShaderMaterial_pws5y")
 
-[sub_resource type="MultiMesh" id="MultiMesh_82s1b"]
+[sub_resource type="MultiMesh" id="MultiMesh_6nawe"]
 transform_format = 1
 instance_count = 9
-mesh = SubResource("BoxMesh_h3lk3")
+mesh = SubResource("BoxMesh_y0j4q")
 
-[sub_resource type="BoxMesh" id="BoxMesh_6bjwd"]
-material = SubResource("ShaderMaterial_jvyia")
+[sub_resource type="BoxMesh" id="BoxMesh_vldxs"]
+material = SubResource("ShaderMaterial_rk7p5")
 
-[sub_resource type="MultiMesh" id="MultiMesh_c1n62"]
+[sub_resource type="MultiMesh" id="MultiMesh_ijcvl"]
 transform_format = 1
 instance_count = 7
-mesh = SubResource("BoxMesh_6bjwd")
+mesh = SubResource("BoxMesh_vldxs")
 
-[sub_resource type="BoxMesh" id="BoxMesh_3ct7w"]
-material = SubResource("ShaderMaterial_cocg0")
+[sub_resource type="BoxMesh" id="BoxMesh_3td2t"]
+material = SubResource("ShaderMaterial_s8khg")
 
-[sub_resource type="MultiMesh" id="MultiMesh_3xp2a"]
+[sub_resource type="MultiMesh" id="MultiMesh_3afxv"]
 transform_format = 1
 instance_count = 3
-mesh = SubResource("BoxMesh_3ct7w")
+mesh = SubResource("BoxMesh_3td2t")
 
-[node name="DarkDistrict" type="Node3D" unique_id=122044835]
+[node name="DarkDistrict" type="Node3D" unique_id=681071997]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34, 430)
 metadata/district_id = &"dark"
 metadata/budget_profile = "dark"
 metadata/separate_streamed_area = true
 metadata/open_world_loaded = false
 
-[node name="WorldGeometry" type="Node3D" parent="." unique_id=576008483]
+[node name="WorldGeometry" type="Node3D" parent="." unique_id=318993474]
 
-[node name="DarkFloor" type="StaticBody3D" parent="WorldGeometry" unique_id=60144050]
+[node name="DarkFloor" type="StaticBody3D" parent="WorldGeometry" unique_id=622504166]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkFloor" unique_id=193758827]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkFloor" unique_id=1188449203]
 visible = false
-mesh = SubResource("BoxMesh_ffo5i")
+mesh = SubResource("BoxMesh_lhv2t")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkFloor" unique_id=393960247]
-shape = SubResource("BoxShape3D_0ux58")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkFloor" unique_id=264556507]
+shape = SubResource("BoxShape3D_7ik26")
 
-[node name="DarkCeiling" type="StaticBody3D" parent="WorldGeometry" unique_id=1629616354]
+[node name="DarkCeiling" type="StaticBody3D" parent="WorldGeometry" unique_id=596611976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkCeiling" unique_id=979316938]
-mesh = SubResource("BoxMesh_7h1oo")
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkCeiling" unique_id=338143000]
+mesh = SubResource("BoxMesh_cr6cl")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkCeiling" unique_id=881905742]
-shape = SubResource("BoxShape3D_bqbyh")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkCeiling" unique_id=781896481]
+shape = SubResource("BoxShape3D_nqfvv")
 
-[node name="DarkWall00" type="StaticBody3D" parent="WorldGeometry" unique_id=913990979]
+[node name="DarkWall00" type="StaticBody3D" parent="WorldGeometry" unique_id=1767027642]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 13, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall00" unique_id=1474412302]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall00" unique_id=1357013304]
 visible = false
-mesh = SubResource("BoxMesh_lddkx")
+mesh = SubResource("BoxMesh_xftgh")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall00" unique_id=210170310]
-shape = SubResource("BoxShape3D_h5275")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall00" unique_id=1081607823]
+shape = SubResource("BoxShape3D_iw250")
 
-[node name="DarkWall01" type="StaticBody3D" parent="WorldGeometry" unique_id=1792176652]
+[node name="DarkWall01" type="StaticBody3D" parent="WorldGeometry" unique_id=856786365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 13, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall01" unique_id=562195458]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall01" unique_id=1316222925]
 visible = false
-mesh = SubResource("BoxMesh_ksuq3")
+mesh = SubResource("BoxMesh_b481c")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall01" unique_id=1087737262]
-shape = SubResource("BoxShape3D_dhvub")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall01" unique_id=1630288741]
+shape = SubResource("BoxShape3D_lf8pj")
 
-[node name="DarkWall02" type="StaticBody3D" parent="WorldGeometry" unique_id=2039149133]
+[node name="DarkWall02" type="StaticBody3D" parent="WorldGeometry" unique_id=1732297170]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -90)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall02" unique_id=1592031526]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall02" unique_id=973678130]
 visible = false
-mesh = SubResource("BoxMesh_ldm1q")
+mesh = SubResource("BoxMesh_a4m65")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall02" unique_id=862580229]
-shape = SubResource("BoxShape3D_7m0j5")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall02" unique_id=1979817676]
+shape = SubResource("BoxShape3D_ffo5i")
 
-[node name="DarkWall03" type="StaticBody3D" parent="WorldGeometry" unique_id=690714362]
+[node name="DarkWall03" type="StaticBody3D" parent="WorldGeometry" unique_id=938276564]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 90)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall03" unique_id=253895186]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall03" unique_id=599690213]
 visible = false
-mesh = SubResource("BoxMesh_f8cu6")
+mesh = SubResource("BoxMesh_0ux58")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall03" unique_id=631263723]
-shape = SubResource("BoxShape3D_etm0o")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall03" unique_id=27648531]
+shape = SubResource("BoxShape3D_7h1oo")
 
-[node name="DarkWall04" type="StaticBody3D" parent="WorldGeometry" unique_id=856816886]
+[node name="DarkWall04" type="StaticBody3D" parent="WorldGeometry" unique_id=1556775042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 10, -42)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall04" unique_id=54045717]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall04" unique_id=1433479654]
 visible = false
-mesh = SubResource("BoxMesh_bg16r")
+mesh = SubResource("BoxMesh_bqbyh")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall04" unique_id=219714213]
-shape = SubResource("BoxShape3D_kap3x")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall04" unique_id=360520131]
+shape = SubResource("BoxShape3D_lddkx")
 
-[node name="DarkWall05" type="StaticBody3D" parent="WorldGeometry" unique_id=499996372]
+[node name="DarkWall05" type="StaticBody3D" parent="WorldGeometry" unique_id=1410211346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 10, 38)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall05" unique_id=451503654]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall05" unique_id=1330872681]
 visible = false
-mesh = SubResource("BoxMesh_jj2k5")
+mesh = SubResource("BoxMesh_h5275")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall05" unique_id=1832500253]
-shape = SubResource("BoxShape3D_lo6u2")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall05" unique_id=905685959]
+shape = SubResource("BoxShape3D_ksuq3")
 
-[node name="DarkWall06" type="StaticBody3D" parent="WorldGeometry" unique_id=915206358]
+[node name="DarkWall06" type="StaticBody3D" parent="WorldGeometry" unique_id=386979444]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 10, -18)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall06" unique_id=76323088]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall06" unique_id=430110609]
 visible = false
-mesh = SubResource("BoxMesh_oxhx3")
+mesh = SubResource("BoxMesh_dhvub")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall06" unique_id=432513107]
-shape = SubResource("BoxShape3D_svrt1")
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall06" unique_id=606366338]
+shape = SubResource("BoxShape3D_ldm1q")
 
-[node name="DarkWall07" type="StaticBody3D" parent="WorldGeometry" unique_id=1568673758]
+[node name="DarkWall07" type="StaticBody3D" parent="WorldGeometry" unique_id=441498496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 10, 26)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall07" unique_id=2107930109]
+[node name="Mesh" type="MeshInstance3D" parent="WorldGeometry/DarkWall07" unique_id=1836561110]
+visible = false
+mesh = SubResource("BoxMesh_7m0j5")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall07" unique_id=1585952351]
+shape = SubResource("BoxShape3D_f8cu6")
+
+[node name="DarkCoreOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=463258869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+occluder = SubResource("BoxOccluder3D_etm0o")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=1445012450]
+aabb = AABB(-108, -5, -93, 216, 38, 186)
+
+[node name="Dressing" type="Node3D" parent="." unique_id=1823768433]
+
+[node name="HidingAlcoveLintel00" type="MeshInstance3D" parent="Dressing" unique_id=1759802211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, -65)
+visible = false
+mesh = SubResource("BoxMesh_bg16r")
+
+[node name="HidingAlcoveLintel01" type="MeshInstance3D" parent="Dressing" unique_id=2052850129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 15, -44)
+visible = false
+mesh = SubResource("BoxMesh_kap3x")
+
+[node name="HidingAlcoveLintel02" type="MeshInstance3D" parent="Dressing" unique_id=834817157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 15, -23)
+visible = false
+mesh = SubResource("BoxMesh_jj2k5")
+
+[node name="HidingAlcoveLintel03" type="MeshInstance3D" parent="Dressing" unique_id=185647176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 15, -2)
+visible = false
+mesh = SubResource("BoxMesh_lo6u2")
+
+[node name="HidingAlcoveLintel04" type="MeshInstance3D" parent="Dressing" unique_id=1808634230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 15, 19)
+visible = false
+mesh = SubResource("BoxMesh_oxhx3")
+
+[node name="HidingAlcoveLintel05" type="MeshInstance3D" parent="Dressing" unique_id=1786075003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 15, 40)
+visible = false
+mesh = SubResource("BoxMesh_svrt1")
+
+[node name="HidingAlcoveLintel06" type="MeshInstance3D" parent="Dressing" unique_id=2008286269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, 61)
 visible = false
 mesh = SubResource("BoxMesh_mexev")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="WorldGeometry/DarkWall07" unique_id=1707584010]
-shape = SubResource("BoxShape3D_bayep")
-
-[node name="DarkCoreOccluder" type="OccluderInstance3D" parent="WorldGeometry" unique_id=1263533390]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
-occluder = SubResource("BoxOccluder3D_2y3ni")
-
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="WorldGeometry" unique_id=1243760389]
-aabb = AABB(-108, -5, -93, 216, 38, 186)
-
-[node name="Dressing" type="Node3D" parent="." unique_id=1494101183]
-
-[node name="HidingAlcoveLintel00" type="MeshInstance3D" parent="Dressing" unique_id=790712475]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, -65)
-visible = false
-mesh = SubResource("BoxMesh_by33u")
-
-[node name="HidingAlcoveLintel01" type="MeshInstance3D" parent="Dressing" unique_id=1973827574]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 15, -44)
-visible = false
-mesh = SubResource("BoxMesh_3laco")
-
-[node name="HidingAlcoveLintel02" type="MeshInstance3D" parent="Dressing" unique_id=1679072126]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 15, -23)
-visible = false
-mesh = SubResource("BoxMesh_mgvsc")
-
-[node name="HidingAlcoveLintel03" type="MeshInstance3D" parent="Dressing" unique_id=2071900506]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 15, -2)
-visible = false
-mesh = SubResource("BoxMesh_ce87k")
-
-[node name="HidingAlcoveLintel04" type="MeshInstance3D" parent="Dressing" unique_id=1540383979]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 15, 19)
-visible = false
-mesh = SubResource("BoxMesh_1kdjd")
-
-[node name="HidingAlcoveLintel05" type="MeshInstance3D" parent="Dressing" unique_id=562826453]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 15, 40)
-visible = false
-mesh = SubResource("BoxMesh_f7eih")
-
-[node name="HidingAlcoveLintel06" type="MeshInstance3D" parent="Dressing" unique_id=759444076]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 15, 61)
-visible = false
-mesh = SubResource("BoxMesh_yvvgn")
-
-[node name="CarriedLightStartVisual" type="Node3D" parent="Dressing" unique_id=272219388]
+[node name="CarriedLightStartVisual" type="Node3D" parent="Dressing" unique_id=1499228845]
 transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 2, -72)
 metadata/visual_only = true
 metadata/gameplay_behavior = "SYSTEMS_owned"
 metadata/vfx_profile = "fire_smoke_heat"
 
-[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=357245488]
+[node name="FlamePlane00" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=2074773398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 cast_shadow = 0
 visibility_range_end = 90.0
 visibility_range_end_margin = 8.0
-mesh = SubResource("QuadMesh_y1t1q")
+mesh = SubResource("QuadMesh_2y3ni")
 
-[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=720150953]
+[node name="FlamePlane01" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=464892473]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
 cast_shadow = 0
 visibility_range_end = 90.0
 visibility_range_end_margin = 8.0
-mesh = SubResource("QuadMesh_tojjv")
+mesh = SubResource("QuadMesh_3laco")
 
-[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=1140017264]
+[node name="SmokePlane00" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=384403486]
 transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
 cast_shadow = 0
 visibility_range_end = 130.0
 visibility_range_end_margin = 12.0
-mesh = SubResource("QuadMesh_y0j4q")
+mesh = SubResource("QuadMesh_ce87k")
 
-[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=1452780484]
+[node name="SmokePlane01" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=1553913116]
 transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
 cast_shadow = 0
 visibility_range_end = 130.0
 visibility_range_end_margin = 12.0
-mesh = SubResource("QuadMesh_vldxs")
+mesh = SubResource("QuadMesh_f7eih")
 
-[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=267391267]
+[node name="HeatHaze" type="MeshInstance3D" parent="Dressing/CarriedLightStartVisual" unique_id=1316820620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
 cast_shadow = 0
 visibility_range_end = 65.0
 visibility_range_end_margin = 6.0
-mesh = SubResource("QuadMesh_3td2t")
+mesh = SubResource("QuadMesh_4lf8v")
 
-[node name="FireLight" type="OmniLight3D" parent="Dressing/CarriedLightStartVisual" unique_id=2026563297]
+[node name="FireLight" type="OmniLight3D" parent="Dressing/CarriedLightStartVisual" unique_id=1841320591]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 light_color = Color(1, 0.28, 0.045, 1)
 light_energy = 4.2
@@ -507,99 +507,99 @@ distance_fade_shadow = 28.0
 distance_fade_length = 18.0
 omni_range = 15.0
 
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/CarriedLightStartVisual" unique_id=785504866]
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="Dressing/CarriedLightStartVisual" unique_id=23256821]
 aabb = AABB(-4, 0, -4, 8, 13, 8)
 
-[node name="FragmentProxy_CrewTarin" type="MeshInstance3D" parent="Dressing" unique_id=1084409387]
+[node name="FragmentProxy_CrewTarin" type="MeshInstance3D" parent="Dressing" unique_id=674564818]
 transform = Transform3D(0.94573736, -0.06456008, 0.3184537, 0.13613184, 0.96862835, -0.2079117, -0.2950405, 0.23998156, 0.9248567, -54, 1.35, 18)
 visible = false
-mesh = SubResource("BoxMesh_3afxv")
+mesh = SubResource("BoxMesh_y1t1q")
 
-[node name="FragmentProxy_CrewVasu" type="MeshInstance3D" parent="Dressing" unique_id=1264742707]
+[node name="FragmentProxy_CrewVasu" type="MeshInstance3D" parent="Dressing" unique_id=1908911934]
 transform = Transform3D(-0.69223875, 0.2431348, 0.6794785, 0.13613184, 0.96862835, -0.2079117, -0.7087127, -0.051425867, -0.70362043, 48, 1.35, 64)
 visible = false
-mesh = SubResource("BoxMesh_b8eoj")
+mesh = SubResource("BoxMesh_yl0pr")
 
-[node name="SalvageProxy_SalvageCanvas05" type="MeshInstance3D" parent="Dressing" unique_id=1609720366]
+[node name="SalvageProxy_SalvageCanvas05" type="MeshInstance3D" parent="Dressing" unique_id=1043712827]
 transform = Transform3D(-0.83867055, 0, 0.54463905, 0, 1, 0, -0.54463905, 0, -0.83867055, -78, 1.5, -56)
 visible = false
-mesh = SubResource("BoxMesh_dpaqb")
+mesh = SubResource("BoxMesh_tojjv")
 
-[node name="GameplaySockets" type="Node3D" parent="." unique_id=1601594450]
+[node name="GameplaySockets" type="Node3D" parent="." unique_id=1950551212]
 
-[node name="DrownedSpawn00" type="Marker3D" parent="GameplaySockets" unique_id=54418352]
+[node name="DrownedSpawn00" type="Marker3D" parent="GameplaySockets" unique_id=1835029081]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 0, -58)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_00"
 metadata/district_id = &"dark"
 
-[node name="Drowned" parent="GameplaySockets/DrownedSpawn00" unique_id=1189139520 instance=ExtResource("6_iw250")]
+[node name="Drowned" parent="GameplaySockets/DrownedSpawn00" unique_id=1198611111 instance=ExtResource("6_iw250")]
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/drowned.tscn"
 
-[node name="DrownedSpawn01" type="Marker3D" parent="GameplaySockets" unique_id=1022536704]
+[node name="DrownedSpawn01" type="Marker3D" parent="GameplaySockets" unique_id=111554700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, -48)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_01"
 metadata/district_id = &"dark"
 
-[node name="Drowned" parent="GameplaySockets/DrownedSpawn01" unique_id=862409703 instance=ExtResource("6_iw250")]
+[node name="Drowned" parent="GameplaySockets/DrownedSpawn01" unique_id=1901266250 instance=ExtResource("6_iw250")]
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/drowned.tscn"
 
-[node name="DrownedSpawn02" type="Marker3D" parent="GameplaySockets" unique_id=417846945]
+[node name="DrownedSpawn02" type="Marker3D" parent="GameplaySockets" unique_id=50910996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_02"
 metadata/district_id = &"dark"
 
-[node name="Drowned" parent="GameplaySockets/DrownedSpawn02" unique_id=1432342964 instance=ExtResource("6_iw250")]
+[node name="Drowned" parent="GameplaySockets/DrownedSpawn02" unique_id=2131989431 instance=ExtResource("6_iw250")]
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/drowned.tscn"
 
-[node name="DrownedSpawn03" type="Marker3D" parent="GameplaySockets" unique_id=320880885]
+[node name="DrownedSpawn03" type="Marker3D" parent="GameplaySockets" unique_id=2027086404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 46)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_03"
 metadata/district_id = &"dark"
 
-[node name="Drowned" parent="GameplaySockets/DrownedSpawn03" unique_id=659608151 instance=ExtResource("6_iw250")]
+[node name="Drowned" parent="GameplaySockets/DrownedSpawn03" unique_id=670210270 instance=ExtResource("6_iw250")]
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/drowned.tscn"
 
-[node name="DrownedSpawn04" type="Marker3D" parent="GameplaySockets" unique_id=1499605299]
+[node name="DrownedSpawn04" type="Marker3D" parent="GameplaySockets" unique_id=328756030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 0, 62)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_04"
 metadata/district_id = &"dark"
 
-[node name="Drowned" parent="GameplaySockets/DrownedSpawn04" unique_id=1698443214 instance=ExtResource("6_iw250")]
+[node name="Drowned" parent="GameplaySockets/DrownedSpawn04" unique_id=223110677 instance=ExtResource("6_iw250")]
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/drowned.tscn"
 
-[node name="DrownedSpawn05" type="Marker3D" parent="GameplaySockets" unique_id=1575514423]
+[node name="DrownedSpawn05" type="Marker3D" parent="GameplaySockets" unique_id=1127674744]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 74)
 metadata/socket_type = &"drowned_spawn"
 metadata/spawn_id = &"dark_drowned_05"
 metadata/district_id = &"dark"
 
-[node name="Drowned" parent="GameplaySockets/DrownedSpawn05" unique_id=970055954 instance=ExtResource("6_iw250")]
+[node name="Drowned" parent="GameplaySockets/DrownedSpawn05" unique_id=2112634202 instance=ExtResource("6_iw250")]
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/drowned.tscn"
 
-[node name="CarriedLightStart" type="Marker3D" parent="GameplaySockets" unique_id=1884833769]
+[node name="CarriedLightStart" type="Marker3D" parent="GameplaySockets" unique_id=213646785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -72)
 metadata/socket_type = &"fire_source"
 metadata/spawn_id = &"dark_carried_light"
 
-[node name="DistrictTrigger" type="Marker3D" parent="GameplaySockets" unique_id=642854428]
+[node name="DistrictTrigger" type="Marker3D" parent="GameplaySockets" unique_id=1476165651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -82)
 metadata/socket_type = &"district_trigger"
 metadata/socket_size_m = Vector3(50, 20, 18)
 metadata/district_id = &"dark"
 
-[node name="DistrictTrigger" parent="GameplaySockets/DistrictTrigger" unique_id=605759758 instance=ExtResource("7_b481c")]
+[node name="DistrictTrigger" parent="GameplaySockets/DistrictTrigger" unique_id=1154227049 instance=ExtResource("7_b481c")]
 district_id = &"dark"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/district_trigger.tscn"
 
 [node name="CollisionShape3D" parent="GameplaySockets/DistrictTrigger/DistrictTrigger" index="0"]
-shape = SubResource("BoxShape3D_hqh0v")
+shape = SubResource("BoxShape3D_8f57o")
 
-[node name="CrewFragment_CrewTarin" type="Marker3D" parent="GameplaySockets" unique_id=1363460363]
+[node name="CrewFragment_CrewTarin" type="Marker3D" parent="GameplaySockets" unique_id=582529343]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 1, 18)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_tarin"
@@ -607,11 +607,11 @@ metadata/memory_object = "rusted whistle"
 metadata/memory_text = "Tarin whistled in the dark. Something answered in his own voice."
 metadata/district_id = &"dark"
 
-[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewTarin" unique_id=48790928 instance=ExtResource("8_lf8pj")]
+[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewTarin" unique_id=1366461280 instance=ExtResource("8_lf8pj")]
 fragment_id = &"crew_tarin"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
 
-[node name="CrewFragment_CrewVasu" type="Marker3D" parent="GameplaySockets" unique_id=1901226448]
+[node name="CrewFragment_CrewVasu" type="Marker3D" parent="GameplaySockets" unique_id=1826654979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 1, 64)
 metadata/socket_type = &"crew_fragment"
 metadata/fragment_id = &"crew_vasu"
@@ -619,90 +619,95 @@ metadata/memory_object = "carved face"
 metadata/memory_text = "Vasu guarded the figurehead. He knew who had carved it."
 metadata/district_id = &"dark"
 
-[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewVasu" unique_id=101791066 instance=ExtResource("8_lf8pj")]
+[node name="FragmentPickup" parent="GameplaySockets/CrewFragment_CrewVasu" unique_id=1195756625 instance=ExtResource("8_lf8pj")]
 fragment_id = &"crew_vasu"
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/fragment_pickup.tscn"
 
-[node name="Salvage_SalvageCanvas05" type="Marker3D" parent="GameplaySockets" unique_id=512760138]
+[node name="Salvage_SalvageCanvas05" type="Marker3D" parent="GameplaySockets" unique_id=1848513144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 1, -56)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_canvas_05"
 metadata/salvage_id = &"canvas"
 metadata/district_id = &"dark"
 
-[node name="RouteMarkers" type="Node3D" parent="." unique_id=879327323]
+[node name="RouteMarkers" type="Node3D" parent="." unique_id=1594510936]
 
-[node name="HidingAlcove00" type="Marker3D" parent="RouteMarkers" unique_id=1014147865]
+[node name="HidingAlcove00" type="Marker3D" parent="RouteMarkers" unique_id=1992481170]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 7, -65)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_00"
 
-[node name="HidingAlcove01" type="Marker3D" parent="RouteMarkers" unique_id=991802815]
+[node name="HidingAlcove01" type="Marker3D" parent="RouteMarkers" unique_id=1474800064]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 7, -44)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_01"
 
-[node name="HidingAlcove02" type="Marker3D" parent="RouteMarkers" unique_id=1079638573]
+[node name="HidingAlcove02" type="Marker3D" parent="RouteMarkers" unique_id=536113916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 7, -23)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_02"
 
-[node name="HidingAlcove03" type="Marker3D" parent="RouteMarkers" unique_id=899651501]
+[node name="HidingAlcove03" type="Marker3D" parent="RouteMarkers" unique_id=1401713036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 7, -2)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_03"
 
-[node name="HidingAlcove04" type="Marker3D" parent="RouteMarkers" unique_id=769031566]
+[node name="HidingAlcove04" type="Marker3D" parent="RouteMarkers" unique_id=942895639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 7, 19)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_04"
 
-[node name="HidingAlcove05" type="Marker3D" parent="RouteMarkers" unique_id=1439957168]
+[node name="HidingAlcove05" type="Marker3D" parent="RouteMarkers" unique_id=1641835761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 7, 40)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_05"
 
-[node name="HidingAlcove06" type="Marker3D" parent="RouteMarkers" unique_id=1541858327]
+[node name="HidingAlcove06" type="Marker3D" parent="RouteMarkers" unique_id=312357400]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 7, 61)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"hide_06"
 
-[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1556210608]
+[node name="Entry" type="Marker3D" parent="RouteMarkers" unique_id=1082340127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -78)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"entry"
 
-[node name="Figurehead" type="Marker3D" parent="RouteMarkers" unique_id=1113196103]
+[node name="Exit" type="Marker3D" parent="RouteMarkers" unique_id=1846408400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -78)
+metadata/socket_type = &"route_anchor"
+metadata/route_id = &"exit"
+
+[node name="Figurehead" type="Marker3D" parent="RouteMarkers" unique_id=888782255]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 72)
 metadata/socket_type = &"route_anchor"
 metadata/route_id = &"figurehead"
 
-[node name="FigureheadCarryable" parent="RouteMarkers/Figurehead" unique_id=642569225 instance=ExtResource("9_a4m65")]
+[node name="FigureheadCarryable" parent="RouteMarkers/Figurehead" unique_id=359436824 instance=ExtResource("9_a4m65")]
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/figurehead_carryable.tscn"
 
-[node name="EmergencyHide" type="Marker3D" parent="RouteMarkers" unique_id=857893655]
+[node name="EmergencyHide" type="Marker3D" parent="RouteMarkers" unique_id=227019176]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88, 1, 70)
 metadata/socket_type = &"hiding_place"
 metadata/route_id = &"final_hide"
 
-[node name="M8RenderBatches" type="Node3D" parent="." unique_id=540278043]
+[node name="M8RenderBatches" type="Node3D" parent="." unique_id=1350131335]
 metadata/m8_material_batching = true
 metadata/m8_batch_count = 3
 
-[node name="GeometryBatch00_WetStoneGripSlick" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=780316816]
-multimesh = SubResource("MultiMesh_82s1b")
+[node name="GeometryBatch00_WetStoneGripSlick" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1336137351]
+multimesh = SubResource("MultiMesh_6nawe")
 metadata/m8_batch_instance_count = 9
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_wet_stone_grip_slick"
 
-[node name="GeometryBatch01_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1356035974]
-multimesh = SubResource("MultiMesh_c1n62")
+[node name="GeometryBatch01_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1282461839]
+multimesh = SubResource("MultiMesh_ijcvl")
 metadata/m8_batch_instance_count = 7
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_clean_stone_grip_solid"
 
-[node name="GeometryBatch02_BoneCanvasGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1838667592]
-multimesh = SubResource("MultiMesh_3xp2a")
+[node name="GeometryBatch02_BoneCanvasGripSolid" type="MultiMeshInstance3D" parent="M8RenderBatches" unique_id=1816580907]
+multimesh = SubResource("MultiMesh_3afxv")
 metadata/m8_batch_instance_count = 3
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_bone_canvas_grip_solid"

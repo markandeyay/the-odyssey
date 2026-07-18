@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_1w4ik"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_0qs8u"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dp246"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gckjm"]
 resource_name = "mat_unburnt_timber_grip_solid"
 render_priority = 0
 shader = ExtResource("1_1w4ik")
@@ -22,22 +22,22 @@ shader_parameter/surface_roughness = 0.86
 shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
+[sub_resource type="BoxMesh" id="BoxMesh_dp246"]
+material = SubResource("ShaderMaterial_gckjm")
+size = Vector3(2.6, 0.8, 1.4)
+
 [sub_resource type="BoxMesh" id="BoxMesh_jxvmw"]
-material = SubResource("ShaderMaterial_dp246")
+material = SubResource("ShaderMaterial_gckjm")
 size = Vector3(2.6, 0.8, 1.4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_qo2li"]
-material = SubResource("ShaderMaterial_dp246")
-size = Vector3(2.6, 0.8, 1.4)
+[node name="DistrictSegment108" type="Node3D" unique_id=606438843]
 
-[node name="DistrictSegment108" type="Node3D" unique_id=1610490523]
-
-[node name="SalvageProxy_SalvageTimber04" type="MeshInstance3D" parent="." unique_id=115521741]
+[node name="SalvageProxy_SalvageTimber04" type="MeshInstance3D" parent="." unique_id=1930943979]
 transform = Transform3D(-0.9455186, 0, 0.3255681, 0, 1, 0, -0.3255681, 0, -0.9455186, -42, 3.5, -96)
 visible = false
-mesh = SubResource("BoxMesh_jxvmw")
+mesh = SubResource("BoxMesh_dp246")
 
-[node name="SalvageProxy_SalvageTimber05" type="MeshInstance3D" parent="." unique_id=164496126]
+[node name="SalvageProxy_SalvageTimber05" type="MeshInstance3D" parent="." unique_id=2005863930]
 transform = Transform3D(-0.9510565, 0, 0.30901703, 0, 1, 0, -0.30901703, 0, -0.9510565, 124, 3.5, 96)
 visible = false
-mesh = SubResource("BoxMesh_qo2li")
+mesh = SubResource("BoxMesh_jxvmw")

@@ -30,9 +30,9 @@ transform_format = 1
 instance_count = 5
 mesh = SubResource("BoxMesh_mr6cb")
 
-[node name="DistrictSegment118" type="Node3D" unique_id=1667783269]
+[node name="DistrictSegment118" type="Node3D" unique_id=1415849498]
 
-[node name="GeometryBatch08_CharwoodFruitGripSolid" type="MultiMeshInstance3D" parent="." unique_id=649998707]
+[node name="GeometryBatch08_CharwoodFruitGripSolid" type="MultiMeshInstance3D" parent="." unique_id=1750454789]
 multimesh = SubResource("MultiMesh_yjxm5")
 metadata/m8_batch_instance_count = 5
 metadata/m8_batch_shape = &"box"

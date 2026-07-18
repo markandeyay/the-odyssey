@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_a6dns"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_618dc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgufk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omd6p"]
 resource_name = "mat_salvage_iron_grip_solid"
 render_priority = 0
 shader = ExtResource("1_a6dns")
@@ -23,7 +23,7 @@ shader_parameter/surface_metallic = 0.7
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_yhvea"]
-material = SubResource("ShaderMaterial_cgufk")
+material = SubResource("ShaderMaterial_omd6p")
 
 [sub_resource type="MultiMesh" id="MultiMesh_my21n"]
 transform_format = 1
@@ -57,15 +57,15 @@ transform_format = 1
 instance_count = 4
 mesh = SubResource("BoxMesh_lfffr")
 
-[node name="DistrictSegment40" type="Node3D" unique_id=78315641]
+[node name="DistrictSegment40" type="Node3D" unique_id=55883440]
 
-[node name="GeometryBatch06_SalvageIronGripSolid" type="MultiMeshInstance3D" parent="." unique_id=1032322330]
+[node name="GeometryBatch06_SalvageIronGripSolid" type="MultiMeshInstance3D" parent="." unique_id=1891814395]
 multimesh = SubResource("MultiMesh_my21n")
 metadata/m8_batch_instance_count = 2
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_salvage_iron_grip_solid"
 
-[node name="GeometryBatch07_BlindFishGripSolid" type="MultiMeshInstance3D" parent="." unique_id=271630462]
+[node name="GeometryBatch07_BlindFishGripSolid" type="MultiMeshInstance3D" parent="." unique_id=1053675392]
 multimesh = SubResource("MultiMesh_3mui2")
 metadata/m8_batch_instance_count = 4
 metadata/m8_batch_shape = &"box"

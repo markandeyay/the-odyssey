@@ -1,15 +1,15 @@
 [gd_scene format=3]
 
-[node name="DistrictSegment15" type="Node3D" unique_id=609866766]
+[node name="DistrictSegment15" type="Node3D" unique_id=1550018206]
 
-[node name="Salvage_SalvageCanvas03" type="Marker3D" parent="." unique_id=1663728713]
+[node name="Salvage_SalvageCanvas03" type="Marker3D" parent="." unique_id=1048073244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 4, 66)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_canvas_03"
 metadata/salvage_id = &"canvas"
 metadata/district_id = &"ember_quarter"
 
-[node name="Ingredient_Charwood01" type="Marker3D" parent="." unique_id=1484868641]
+[node name="Ingredient_Charwood01" type="Marker3D" parent="." unique_id=273848979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 2, -68)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"charwood_01"

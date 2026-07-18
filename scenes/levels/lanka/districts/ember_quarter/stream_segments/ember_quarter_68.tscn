@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_7g3cw"]
 [ext_resource type="Script" path="res://src/world/fire/flammable.gd" id="3_luf5i"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpoqa"]
 resource_name = "mat_fire_cracked_stone_grip_crumbling"
 render_priority = 0
 shader = ExtResource("1_gdxtd")
@@ -24,27 +24,27 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_tvgt5"]
-material = SubResource("ShaderMaterial_h3bn4")
+material = SubResource("ShaderMaterial_hpoqa")
 size = Vector3(14, 2.5, 17.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ovc6v"]
 size = Vector3(14, 2.5, 17.5)
 
-[node name="DistrictSegment68" type="Node3D" unique_id=1218228159]
+[node name="DistrictSegment68" type="Node3D" unique_id=1752607354]
 
-[node name="CollapsedRoof10" type="StaticBody3D" parent="." unique_id=54301283]
+[node name="CollapsedRoof10" type="StaticBody3D" parent="." unique_id=325021803]
 transform = Transform3D(0.7890054, -0.067861825, 0.6106269, 0.26744974, 0.9327081, -0.2419219, -0.55311936, 0.3541897, 0.75406134, -5.342985, 12.016816, -6.598037)
 collision_layer = 1029
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof10" unique_id=924779115]
+[node name="Mesh" type="MeshInstance3D" parent="CollapsedRoof10" unique_id=1137478725]
 visible = false
 mesh = SubResource("BoxMesh_tvgt5")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof10" unique_id=526198787]
+[node name="CollisionShape" type="CollisionShape3D" parent="CollapsedRoof10" unique_id=1893779374]
 shape = SubResource("BoxShape3D_ovc6v")
 
-[node name="Flammable" type="Node" parent="CollapsedRoof10" unique_id=758871072]
+[node name="Flammable" type="Node" parent="CollapsedRoof10" unique_id=1899345725]
 script = ExtResource("3_luf5i")
 fuel = 20.0
 size = Vector3(14, 2.5, 17.5)

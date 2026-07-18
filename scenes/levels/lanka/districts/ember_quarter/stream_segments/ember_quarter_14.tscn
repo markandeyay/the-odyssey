@@ -1,15 +1,15 @@
 [gd_scene format=3]
 
-[node name="DistrictSegment14" type="Node3D" unique_id=1947988122]
+[node name="DistrictSegment14" type="Node3D" unique_id=604343162]
 
-[node name="Salvage_SalvageTimber04" type="Marker3D" parent="." unique_id=638778718]
+[node name="Salvage_SalvageTimber04" type="Marker3D" parent="." unique_id=1191883881]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 3, -96)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_timber_04"
 metadata/salvage_id = &"timber"
 metadata/district_id = &"ember_quarter"
 
-[node name="Salvage_SalvageTimber05" type="Marker3D" parent="." unique_id=1953377343]
+[node name="Salvage_SalvageTimber05" type="Marker3D" parent="." unique_id=11115716]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124, 3, 96)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_timber_05"

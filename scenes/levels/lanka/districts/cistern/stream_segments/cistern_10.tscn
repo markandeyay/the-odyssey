@@ -2,22 +2,22 @@
 
 [ext_resource type="PackedScene" path="res://scenes/prefabs/gameplay/campfire.tscn" id="1_6j3v5"]
 
-[node name="DistrictSegment10" type="Node3D" unique_id=1980119845]
+[node name="DistrictSegment10" type="Node3D" unique_id=932582824]
 
-[node name="Ingredient_BlindFish04" type="Marker3D" parent="." unique_id=13791134]
+[node name="Ingredient_BlindFish04" type="Marker3D" parent="." unique_id=672632770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, -18, -32)
 metadata/socket_type = &"ingredient_pickup"
 metadata/placement_id = &"blind_fish_04"
 metadata/ingredient_id = &"blind_fish"
 metadata/district_id = &"cistern"
 
-[node name="Campfire_CampCisternLanding" type="Marker3D" parent="." unique_id=937314961]
+[node name="Campfire_CampCisternLanding" type="Marker3D" parent="." unique_id=395317399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 58, 54)
 metadata/socket_type = &"campfire"
 metadata/checkpoint_id = &"camp_cistern_landing"
 metadata/district_id = &"cistern"
 
-[node name="Campfire" parent="Campfire_CampCisternLanding" unique_id=1412716361 instance=ExtResource("1_6j3v5")]
+[node name="Campfire" parent="Campfire_CampCisternLanding" unique_id=47157216 instance=ExtResource("1_6j3v5")]
 initial_flame = 1
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/campfire.tscn"
 

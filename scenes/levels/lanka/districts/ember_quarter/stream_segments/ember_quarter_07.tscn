@@ -1,13 +1,13 @@
 [gd_scene format=3]
 
-[node name="DistrictSegment07" type="Node3D" unique_id=429355061]
+[node name="DistrictSegment07" type="Node3D" unique_id=1864095006]
 
-[node name="CharwoodHabitat00" type="Marker3D" parent="." unique_id=1825983029]
+[node name="CharwoodHabitat00" type="Marker3D" parent="." unique_id=1639603480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 2, -68)
 metadata/socket_type = &"ingredient_habitat"
 metadata/spawn_id = &"charwood_habitat_00"
 
-[node name="CharwoodHabitat01" type="Marker3D" parent="." unique_id=238854985]
+[node name="CharwoodHabitat01" type="Marker3D" parent="." unique_id=1577638383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 2, -68)
 metadata/socket_type = &"ingredient_habitat"
 metadata/spawn_id = &"charwood_habitat_01"

@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_smoke.gdshader" id="4_5cm3g"]
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_heat_haze.gdshader" id="5_d02p1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1jph"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hg7wr"]
 resource_name = "mat_ember_stone_grip_hot"
 render_priority = 0
 shader = ExtResource("1_77xyw")
@@ -26,7 +26,7 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 2.6
 
 [sub_resource type="BoxMesh" id="BoxMesh_i20g5"]
-material = SubResource("ShaderMaterial_w1jph")
+material = SubResource("ShaderMaterial_hg7wr")
 size = Vector3(24, 0.35, 2.4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cjbib"]
@@ -86,55 +86,55 @@ shader_parameter/motion_offset = null
 material = SubResource("ShaderMaterial_nhhna")
 size = Vector2(5, 5.2)
 
-[node name="DistrictSegment99" type="Node3D" unique_id=1222864289]
+[node name="DistrictSegment99" type="Node3D" unique_id=1466768071]
 
-[node name="EmberCrack01" type="MeshInstance3D" parent="." unique_id=971367749]
+[node name="EmberCrack01" type="MeshInstance3D" parent="." unique_id=1651559125]
 transform = Transform3D(0.9563048, 0, 0.2923717, 0, 1, 0, -0.2923717, 0, 0.9563048, -79, 0.25, 23.341782)
 visible = false
 mesh = SubResource("BoxMesh_i20g5")
 
-[node name="EmberFireVisual01" type="Node3D" parent="." unique_id=2046761922]
+[node name="EmberFireVisual01" type="Node3D" parent="." unique_id=1022262665]
 transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -79, 0.25, 23.341782)
 metadata/visual_only = true
 metadata/gameplay_behavior = "SYSTEMS_owned"
 metadata/vfx_profile = "fire_smoke_heat"
 
-[node name="FlamePlane00" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=426221813]
+[node name="FlamePlane00" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=1729426216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 cast_shadow = 0
 visibility_range_end = 90.0
 visibility_range_end_margin = 8.0
 mesh = SubResource("QuadMesh_eosdu")
 
-[node name="FlamePlane01" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=1245390868]
+[node name="FlamePlane01" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=1956675764]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.1, 0)
 cast_shadow = 0
 visibility_range_end = 90.0
 visibility_range_end_margin = 8.0
 mesh = SubResource("QuadMesh_muhd2")
 
-[node name="SmokePlane00" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=99552391]
+[node name="SmokePlane00" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=1210367288]
 transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 0, 5, 0)
 cast_shadow = 0
 visibility_range_end = 130.0
 visibility_range_end_margin = 12.0
 mesh = SubResource("QuadMesh_3curj")
 
-[node name="SmokePlane01" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=1272581850]
+[node name="SmokePlane01" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=874764075]
 transform = Transform3D(-0.40673658, 0, 0.9135455, 0, 1, 0, -0.9135455, 0, -0.40673658, 0, 6.6, 0)
 cast_shadow = 0
 visibility_range_end = 130.0
 visibility_range_end_margin = 12.0
 mesh = SubResource("QuadMesh_gssnx")
 
-[node name="HeatHaze" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=1315847852]
+[node name="HeatHaze" type="MeshInstance3D" parent="EmberFireVisual01" unique_id=1038052973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
 cast_shadow = 0
 visibility_range_end = 65.0
 visibility_range_end_margin = 6.0
 mesh = SubResource("QuadMesh_ti6vh")
 
-[node name="FireLight" type="OmniLight3D" parent="EmberFireVisual01" unique_id=2116059003]
+[node name="FireLight" type="OmniLight3D" parent="EmberFireVisual01" unique_id=158122539]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 light_color = Color(1, 0.28, 0.045, 1)
 light_energy = 4.2
@@ -145,5 +145,5 @@ distance_fade_shadow = 28.0
 distance_fade_length = 18.0
 omni_range = 15.0
 
-[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="EmberFireVisual01" unique_id=1733443765]
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="EmberFireVisual01" unique_id=661578247]
 aabb = AABB(-4, 0, -4, 8, 13, 8)

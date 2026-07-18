@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_2ib6f"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_r2vkl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihrsk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pws5y"]
 resource_name = "mat_wet_stone_grip_slick"
 render_priority = 0
 shader = ExtResource("1_2ib6f")
@@ -23,14 +23,14 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_ho644"]
-material = SubResource("ShaderMaterial_ihrsk")
+material = SubResource("ShaderMaterial_pws5y")
 
 [sub_resource type="MultiMesh" id="MultiMesh_sh0ei"]
 transform_format = 1
 instance_count = 8
 mesh = SubResource("BoxMesh_ho644")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxe7a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk7p5"]
 resource_name = "mat_clean_stone_grip_solid"
 render_priority = 0
 shader = ExtResource("1_2ib6f")
@@ -50,7 +50,7 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4vju8"]
-material = SubResource("ShaderMaterial_jxe7a")
+material = SubResource("ShaderMaterial_rk7p5")
 bottom_radius = 0.54
 height = 1.0
 radial_segments = 16
@@ -61,15 +61,15 @@ transform_format = 1
 instance_count = 12
 mesh = SubResource("CylinderMesh_4vju8")
 
-[node name="DistrictSegment37" type="Node3D" unique_id=1223530073]
+[node name="DistrictSegment37" type="Node3D" unique_id=1414955315]
 
-[node name="GeometryBatch00_WetStoneGripSlick" type="MultiMeshInstance3D" parent="." unique_id=1783932407]
+[node name="GeometryBatch00_WetStoneGripSlick" type="MultiMeshInstance3D" parent="." unique_id=173629481]
 multimesh = SubResource("MultiMesh_sh0ei")
 metadata/m8_batch_instance_count = 8
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_wet_stone_grip_slick"
 
-[node name="GeometryBatch01_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="." unique_id=437619038]
+[node name="GeometryBatch01_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="." unique_id=392836783]
 multimesh = SubResource("MultiMesh_m37j7")
 metadata/m8_batch_instance_count = 12
 metadata/m8_batch_shape = &"cylinder"

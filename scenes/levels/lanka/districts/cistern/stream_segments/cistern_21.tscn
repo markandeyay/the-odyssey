@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_h6tyx"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_3u5ak"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxe7a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk7p5"]
 resource_name = "mat_clean_stone_grip_solid"
 render_priority = 0
 shader = ExtResource("1_h6tyx")
@@ -23,27 +23,27 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_7pkj3"]
-material = SubResource("ShaderMaterial_jxe7a")
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(20, 92, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ls8gg"]
 size = Vector3(20, 92, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_680ah"]
-material = SubResource("ShaderMaterial_jxe7a")
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(2.2, 7, 2.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sq746"]
 size = Vector3(2.2, 7, 2.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a6ssa"]
-material = SubResource("ShaderMaterial_jxe7a")
+material = SubResource("ShaderMaterial_rk7p5")
 size = Vector3(2.2, 7, 2.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mem2m"]
 size = Vector3(2.2, 7, 2.2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpoqa"]
 resource_name = "mat_fire_cracked_stone_grip_crumbling"
 render_priority = 0
 shader = ExtResource("1_h6tyx")
@@ -63,61 +63,61 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_ta6me"]
-material = SubResource("ShaderMaterial_h3bn4")
+material = SubResource("ShaderMaterial_hpoqa")
 size = Vector3(8.6, 2, 2.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n7qc5"]
 size = Vector3(8.6, 2, 2.2)
 
-[node name="DistrictSegment21" type="Node3D" unique_id=1577304662]
+[node name="DistrictSegment21" type="Node3D" unique_id=1622781555]
 
-[node name="EntranceShaft" type="StaticBody3D" parent="." unique_id=292487609]
+[node name="EntranceShaft" type="StaticBody3D" parent="." unique_id=886019031]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 20, 54)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="EntranceShaft" unique_id=1636009639]
+[node name="Mesh" type="MeshInstance3D" parent="EntranceShaft" unique_id=498500180]
 visible = false
 mesh = SubResource("BoxMesh_7pkj3")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="EntranceShaft" unique_id=643912565]
+[node name="CollisionShape" type="CollisionShape3D" parent="EntranceShaft" unique_id=1750166963]
 shape = SubResource("BoxShape3D_ls8gg")
 
-[node name="CairnDoor_CisternCurrentGate" type="Node3D" parent="." unique_id=728730285]
+[node name="CairnDoor_CisternCurrentGate" type="Node3D" parent="." unique_id=78980643]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, -10, 62)
 
-[node name="LeftPillar" type="StaticBody3D" parent="CairnDoor_CisternCurrentGate" unique_id=1147699963]
+[node name="LeftPillar" type="StaticBody3D" parent="CairnDoor_CisternCurrentGate" unique_id=1528764743]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_CisternCurrentGate/LeftPillar" unique_id=1978140134]
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_CisternCurrentGate/LeftPillar" unique_id=805063185]
 visible = false
 mesh = SubResource("BoxMesh_680ah")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_CisternCurrentGate/LeftPillar" unique_id=1705183673]
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_CisternCurrentGate/LeftPillar" unique_id=423431837]
 shape = SubResource("BoxShape3D_sq746")
 
-[node name="RightPillar" type="StaticBody3D" parent="CairnDoor_CisternCurrentGate" unique_id=1418439170]
+[node name="RightPillar" type="StaticBody3D" parent="CairnDoor_CisternCurrentGate" unique_id=931170307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 3.5, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_CisternCurrentGate/RightPillar" unique_id=897723977]
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_CisternCurrentGate/RightPillar" unique_id=1030636073]
 visible = false
 mesh = SubResource("BoxMesh_a6ssa")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_CisternCurrentGate/RightPillar" unique_id=1619159563]
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_CisternCurrentGate/RightPillar" unique_id=630234978]
 shape = SubResource("BoxShape3D_mem2m")
 
-[node name="Lintel" type="StaticBody3D" parent="CairnDoor_CisternCurrentGate" unique_id=1082023423]
+[node name="Lintel" type="StaticBody3D" parent="CairnDoor_CisternCurrentGate" unique_id=867507998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2, 0)
 collision_layer = 5
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_CisternCurrentGate/Lintel" unique_id=1241297073]
+[node name="Mesh" type="MeshInstance3D" parent="CairnDoor_CisternCurrentGate/Lintel" unique_id=255308360]
 visible = false
 mesh = SubResource("BoxMesh_ta6me")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_CisternCurrentGate/Lintel" unique_id=38829601]
+[node name="CollisionShape" type="CollisionShape3D" parent="CairnDoor_CisternCurrentGate/Lintel" unique_id=424797508]
 shape = SubResource("BoxShape3D_n7qc5")

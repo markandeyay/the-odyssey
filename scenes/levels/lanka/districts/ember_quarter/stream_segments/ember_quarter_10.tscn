@@ -4,28 +4,28 @@
 [ext_resource type="PackedScene" path="res://scenes/levels/cairns/cairn_05_fuel_line.tscn" id="2_lx2io"]
 [ext_resource type="PackedScene" path="res://scenes/levels/cairns/cairn_06_updraft_crossing.tscn" id="3_q4p8t"]
 
-[node name="DistrictSegment10" type="Node3D" unique_id=1623144423]
+[node name="DistrictSegment10" type="Node3D" unique_id=1952145021]
 
-[node name="CairnEntrance_EmberFuelLine" type="Marker3D" parent="." unique_id=241642422]
+[node name="CairnEntrance_EmberFuelLine" type="Marker3D" parent="." unique_id=1380309327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 2, 112)
 metadata/socket_type = &"cairn_entrance"
 metadata/cairn_id = &"ember_fuel_line"
 metadata/target_scene_path = "res://scenes/levels/cairns/cairn_05_fuel_line.tscn"
 metadata/district_id = &"ember_quarter"
 
-[node name="CairnEntrance" parent="CairnEntrance_EmberFuelLine" unique_id=1051827101 instance=ExtResource("1_2bjyr")]
+[node name="CairnEntrance" parent="CairnEntrance_EmberFuelLine" unique_id=1390686822 instance=ExtResource("1_2bjyr")]
 cairn_id = &"ember_fuel_line"
 target_scene = ExtResource("2_lx2io")
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/cairn_entrance.tscn"
 
-[node name="CairnEntrance_EmberUpdraftCrossing" type="Marker3D" parent="." unique_id=300808389]
+[node name="CairnEntrance_EmberUpdraftCrossing" type="Marker3D" parent="." unique_id=733425928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146, 3, -108)
 metadata/socket_type = &"cairn_entrance"
 metadata/cairn_id = &"ember_updraft_crossing"
 metadata/target_scene_path = "res://scenes/levels/cairns/cairn_06_updraft_crossing.tscn"
 metadata/district_id = &"ember_quarter"
 
-[node name="CairnEntrance" parent="CairnEntrance_EmberUpdraftCrossing" unique_id=866812651 instance=ExtResource("1_2bjyr")]
+[node name="CairnEntrance" parent="CairnEntrance_EmberUpdraftCrossing" unique_id=487841821 instance=ExtResource("1_2bjyr")]
 cairn_id = &"ember_updraft_crossing"
 target_scene = ExtResource("3_q4p8t")
 metadata/m9_prefab_path = "res://scenes/prefabs/gameplay/cairn_entrance.tscn"

@@ -1,15 +1,15 @@
 [gd_scene format=3]
 
-[node name="DistrictSegment13" type="Node3D" unique_id=946507556]
+[node name="DistrictSegment13" type="Node3D" unique_id=1466636165]
 
-[node name="Salvage_SalvageIron03" type="Marker3D" parent="." unique_id=1364455816]
+[node name="Salvage_SalvageIron03" type="Marker3D" parent="." unique_id=1109567665]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 3, 54)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_iron_03"
 metadata/salvage_id = &"iron"
 metadata/district_id = &"ember_quarter"
 
-[node name="Salvage_SalvageIron04" type="Marker3D" parent="." unique_id=707591588]
+[node name="Salvage_SalvageIron04" type="Marker3D" parent="." unique_id=39834897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 3, -54)
 metadata/socket_type = &"salvage_pickup"
 metadata/placement_id = &"salvage_iron_04"

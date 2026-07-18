@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/odyssey_world_tools/shaders/lanka_stylized_surface.gdshader" id="1_vfsmu"]
 [ext_resource type="Texture2D" path="res://assets/materials/library/ambient_cg/rock064/rock064_albedo.png" id="2_5xmjv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxe7a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk7p5"]
 resource_name = "mat_clean_stone_grip_solid"
 render_priority = 0
 shader = ExtResource("1_vfsmu")
@@ -23,14 +23,14 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_bxwqx"]
-material = SubResource("ShaderMaterial_jxe7a")
+material = SubResource("ShaderMaterial_rk7p5")
 
 [sub_resource type="MultiMesh" id="MultiMesh_u7tgb"]
 transform_format = 1
 instance_count = 5
 mesh = SubResource("BoxMesh_bxwqx")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3bn4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpoqa"]
 resource_name = "mat_fire_cracked_stone_grip_crumbling"
 render_priority = 0
 shader = ExtResource("1_vfsmu")
@@ -50,22 +50,22 @@ shader_parameter/surface_metallic = 0.0
 shader_parameter/emission_energy = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_50gha"]
-material = SubResource("ShaderMaterial_h3bn4")
+material = SubResource("ShaderMaterial_hpoqa")
 
 [sub_resource type="MultiMesh" id="MultiMesh_d1eli"]
 transform_format = 1
 instance_count = 2
 mesh = SubResource("BoxMesh_50gha")
 
-[node name="DistrictSegment38" type="Node3D" unique_id=1796557176]
+[node name="DistrictSegment38" type="Node3D" unique_id=497606087]
 
-[node name="GeometryBatch02_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="." unique_id=1034577165]
+[node name="GeometryBatch02_CleanStoneGripSolid" type="MultiMeshInstance3D" parent="." unique_id=1617120202]
 multimesh = SubResource("MultiMesh_u7tgb")
 metadata/m8_batch_instance_count = 5
 metadata/m8_batch_shape = &"box"
 metadata/m8_batch_material = "mat_clean_stone_grip_solid"
 
-[node name="GeometryBatch03_FireCrackedStoneGripCrumbling" type="MultiMeshInstance3D" parent="." unique_id=1419781126]
+[node name="GeometryBatch03_FireCrackedStoneGripCrumbling" type="MultiMeshInstance3D" parent="." unique_id=693099344]
 multimesh = SubResource("MultiMesh_d1eli")
 metadata/m8_batch_instance_count = 2
 metadata/m8_batch_shape = &"box"
