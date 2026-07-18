@@ -113,14 +113,14 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** M3 now provides a validated humanoid visual, canonical animation library, and the four required `BoneAttachment3D` sockets without coupling gameplay to the X Bot placeholder mesh.
 **Proposed API:** Add `@export var character_visual_scene: PackedScene` to the SYSTEMS player visual host and assign `res://assets/characters/nau/nau_visual.tscn` in the player scene. Instantiate only through that exported field; do not hardcode the resource path in gameplay code.
 **Blocking:** no for WORLD M3 validation; yes for seeing Nau in the integrated player runtime
-**Status:** OPEN
+**Status:** DONE — the export already existed as `mesh_scene` on `player.gd` (the M2 character contract field; same semantics, instantiated only through the export); `player.tscn` now assigns `nau_visual.tscn` to it. The capsule fallback hides when the mesh mounts and remains the no-mesh fallback path.
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Instantiate the WORLD-owned Lanka streaming root in the SYSTEMS gameplay level host and assign the live player as its streaming target.
 **Why:** M4 provides `lanka.tscn` as a lightweight root with no preloaded terrain. Its threaded loader needs the player transform to select, load, and unload the 25 owned terrain chunks at runtime.
 **Proposed API:** Instantiate `res://scenes/levels/lanka/lanka.tscn` under the SYSTEMS level host, retain the returned `Node3D`, then call `lanka.set_streaming_target(player_node)` after the player enters the tree. Do not instantiate the individual chunk scenes from SYSTEMS code.
 **Blocking:** yes for integrated Lanka runtime traversal; no for WORLD M4 scene and streaming tests
-**Status:** OPEN
+**Status:** DONE — satisfied by a different wiring than proposed: `lanka.tscn` is now the project main scene, instances `scenes/player/player.tscn` at `DistrictAnchors/Shallows/Player`, and pre-assigns the streaming root's exported `streaming_target` to that node, so no runtime `set_streaming_target` call is needed. Chunk scenes are never instantiated from SYSTEMS code.
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Enable root-viewport 3D occlusion culling in the SYSTEMS-owned project settings.
@@ -134,7 +134,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** The M5 district scenes can own traversal geometry and deterministic placement, but ocean death, district entry, carryables, fire, heat, updrafts, interactive water, and drowned behavior are SYSTEMS-owned and no gameplay prefabs are present on the WORLD branch.
 **Proposed API:** Provide WORLD-placeable `PackedScene` prefabs under `res://scenes/prefabs/gameplay/` for `ocean_kill_volume`, `district_trigger`, `carryable_object`, `fire_source`, `heat_volume`, `updraft_volume`, `water_volume`, `water_current`, and `drowned_spawn`. Volume prefabs need exported `size_m: Vector3`; directional prefabs need exported `direction: Vector3` and `strength: float`; triggers/spawns need exported `district_id: StringName` or `spawn_id: StringName`. WORLD scenes expose matching `Marker3D` nodes under `GameplaySockets` with metadata keys `socket_type`, `socket_size_m`, `direction`, `strength`, `district_id`, and `spawn_id` as applicable. Once the prefabs exist, WORLD will instance them at those sockets without opening or editing the prefab files.
 **Blocking:** yes for functional M5 hazards and district events; no for WORLD-owned geometry, traversal, streaming, and scene validation
-**Status:** OPEN
+**Status:** DONE — every requested prefab family exists under `scenes/prefabs/gameplay/`; see the [2026-07-17] SYSTEMS delivery entry for the exact name mapping (`ocean_kill_volume` → `kill_volume.tscn`, `fire_source` → `brand.tscn`, `drowned_spawn` → `drowned.tscn`, `water_current` → the `current` export on `water_volume.tscn`, etc.).
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Integrate The Dark as a separate sublevel entered after the Spine rather than adding it to Lanka's open-world stream selector.
@@ -148,7 +148,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** M6 owns exact placement for eight Cairns, twenty crew fragments, four ingredient kinds, three salvage kinds, campfires, heart-piece rewards, and Keffer, but collection, inventory, autosave, dialogue, cooldowns, rewards, and player transfer are SYSTEMS-owned and no gameplay prefab directory exists on the WORLD branch.
 **Proposed API:** Provide `PackedScene` prefabs under `res://scenes/prefabs/gameplay/` named `cairn_entrance`, `heart_piece_reward`, `crew_fragment`, `salvage_pickup`, `ingredient_pickup`, `campfire`, and `keffer_interaction`. Required exports: `cairn_id: StringName`, `target_scene: PackedScene`, `fragment_id: StringName`, `salvage_id: StringName`, `ingredient_id: StringName`, `checkpoint_id: StringName`, `dialogue_lines: Array[String]`, `handout_item_id: StringName`, and `handout_cooldown_s: float` where applicable. Cairn entry must load the target separate scene at `RouteMarkers/Entry`, and the reward prefab must emit the existing `EventBus.cairn_completed(cairn_id)` after granting exactly one heart piece. WORLD exposes matching `Marker3D` metadata on every placement and will instance these prefabs without editing them once available.
 **Blocking:** yes for functional M6 collection, Cairn rewards, campfire autosaves, and Keffer interaction; no for WORLD placement, geometry, count validation, and scene budgets
-**Status:** OPEN
+**Status:** OPEN — mostly delivered: `cairn_entrance.tscn` and `campfire.tscn` exist as named; `crew_fragment` → `fragment_pickup.tscn`; `salvage_pickup`/`ingredient_pickup` → `item_pickup.tscn` with `item_id`; `heart_piece_reward` is subsumed by `cairn_entrance` wiring the reward sockets to `cairn_completed` (GameState grants the piece). Remaining: `keffer_interaction` only — awaiting WORLD's answer to the [2026-07-17] delivery entry's question before building it.
 
 ### [2026-07-17] FROM: WORLD TO: SYSTEMS
 **Request:** Enforce hard island-wide caps for SYSTEMS-owned dynamic fire simulation and particle emitters.
