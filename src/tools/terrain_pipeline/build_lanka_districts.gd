@@ -15,9 +15,11 @@ const PREFAB_PATHS: Dictionary = {
 	&"campfire": "res://scenes/prefabs/gameplay/campfire.tscn",
 	&"cairn_entrance": "res://scenes/prefabs/gameplay/cairn_entrance.tscn",
 	&"crew_fragment": "res://scenes/prefabs/gameplay/fragment_pickup.tscn",
+	&"dark_entrance": "res://scenes/prefabs/gameplay/dark_entrance.tscn",
 	&"district_trigger": "res://scenes/prefabs/gameplay/district_trigger.tscn",
 	&"drowned_spawn": "res://scenes/prefabs/gameplay/drowned.tscn",
 	&"heat_volume": "res://scenes/prefabs/gameplay/heat_volume.tscn",
+	&"keffer_interaction": "res://scenes/prefabs/gameplay/keffer_interaction.tscn",
 	&"ocean_kill_volume": "res://scenes/prefabs/gameplay/kill_volume.tscn",
 	&"water_current": "res://scenes/prefabs/gameplay/water_volume.tscn",
 	&"water_volume": "res://scenes/prefabs/gameplay/water_volume.tscn",
@@ -421,6 +423,13 @@ func _build_spine() -> Error:
 	_builder.add_static_cylinder(geometry, "SummitCrown", Vector3(0.0, 264.0, 0.0), 13.0, 24.0, _materials[&"clean_stone"], true, Vector3.ZERO, 20)
 	_builder.add_static_box(geometry, "SummitPlatform", Vector3(0.0, 252.0, 0.0), Vector3(58.0, 4.0, 58.0), _materials[&"clean_stone"], true)
 	_builder.add_marker(sockets, "DistrictTrigger", Vector3(0.0, 3.0, -52.0), &"district_trigger", {&"socket_size_m": Vector3(80.0, 30.0, 45.0), &"district_id": &"spine"})
+	# The doorway into The Dark, at the tower's ground-level mouth on the
+	# approach from the base. Always open: nothing emits trial_completed in
+	# production yet, so a required_trial_id here would stay inert forever.
+	_builder.add_marker(
+		sockets, "DarkEntrance", Vector3(0.0, 2.0, -30.0), &"dark_entrance",
+		{&"socket_size_m": Vector3(10.0, 8.0, 8.0), &"target_scene_path": str(DistrictContract.DARK_PATH)}
+	)
 	_builder.add_marker(routes, "SpineBase", Vector3(0.0, 2.0, -42.0), &"route_anchor", {&"route_id": &"spine_base"})
 	_builder.add_marker(routes, "Summit", Vector3(0.0, 256.0, 0.0), &"route_anchor", {&"route_id": &"summit"})
 	_builder.add_box_occluder(geometry, "SpineOccluder", Vector3(0.0, 126.0, 0.0), Vector3(34.0, 252.0, 34.0))
@@ -471,6 +480,9 @@ func _build_dark() -> Error:
 	_builder.add_fire_visual(dressing, "CarriedLightStartVisual", Vector3(0.0, 2.0, -72.0), 0.62)
 	_builder.add_marker(sockets, "DistrictTrigger", Vector3(0.0, 4.0, -82.0), &"district_trigger", {&"socket_size_m": Vector3(50.0, 20.0, 18.0), &"district_id": &"dark"})
 	_builder.add_marker(routes, "Entry", Vector3(0.0, 1.0, -78.0), &"route_anchor", {&"route_id": &"entry"})
+	# The way out: beside the Entry at the mouth, far enough that arriving
+	# Nau does not stand inside the exit touch volume the prefab wires here.
+	_builder.add_marker(routes, "Exit", Vector3(4.0, 1.0, -78.0), &"route_anchor", {&"route_id": &"exit"})
 	_builder.add_marker(routes, "Figurehead", Vector3(0.0, 2.0, 72.0), &"route_anchor", {&"route_id": &"figurehead"})
 	_builder.add_marker(routes, "EmergencyHide", Vector3(-88.0, 1.0, 70.0), &"hiding_place", {&"route_id": &"final_hide"})
 	_builder.add_box_occluder(geometry, "DarkCoreOccluder", Vector3(0.0, 12.0, 0.0), Vector3(190.0, 24.0, 160.0))
@@ -508,12 +520,32 @@ func _add_m9_gameplay(root: Node3D, district_id: StringName) -> void:
 				_set_required_property(instance, &"target_scene", load(target_path) as PackedScene)
 			&"crew_fragment":
 				_set_required_property(instance, &"fragment_id", socket.get_meta(&"fragment_id", &""))
+			&"dark_entrance":
+				var dark_scene_path: String = str(socket.get_meta(&"target_scene_path", ""))
+				_set_required_property(instance, &"target_scene", load(dark_scene_path) as PackedScene)
+				_set_optional_property(
+					instance, &"required_trial_id",
+					StringName(str(socket.get_meta(&"required_trial_id", &"")))
+				)
+				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
 			&"district_trigger":
 				_set_required_property(instance, &"district_id", socket.get_meta(&"district_id", &""))
 				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
 			&"heat_volume":
 				_set_required_property(instance, &"damage_per_second", float(socket.get_meta(&"strength", 1.0)))
 				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
+			&"keffer_interaction":
+				var dialogue_lines: Array[String] = []
+				dialogue_lines.assign(socket.get_meta(&"dialogue_lines", []) as Array)
+				_set_optional_property(instance, &"dialogue_lines", dialogue_lines)
+				_set_optional_property(
+					instance, &"handout_item_id",
+					StringName(str(socket.get_meta(&"handout_item_id", &"")))
+				)
+				_set_optional_property(
+					instance, &"handout_cooldown_s",
+					float(socket.get_meta(&"handout_cooldown_s", 120.0))
+				)
 			&"ocean_kill_volume":
 				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
 			&"water_current":

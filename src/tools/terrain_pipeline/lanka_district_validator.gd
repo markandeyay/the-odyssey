@@ -8,7 +8,7 @@ const KNOWN_SOCKET_TYPES: PackedStringArray = [
 	"water_douse_target", "drowned_spawn", "ingredient_habitat", "route_anchor",
 	"hiding_place",
 	"cairn_entrance", "crew_fragment", "salvage_pickup", "ingredient_pickup",
-	"campfire", "heart_piece_reward", "keffer_interaction",
+	"campfire", "heart_piece_reward", "keffer_interaction", "dark_entrance",
 ]
 
 
@@ -140,6 +140,7 @@ func _validate_spine(root: Node3D, path: String, issues: Array[String]) -> void:
 	var summit: Marker3D = _find_name(root, "Summit") as Marker3D
 	if summit == null or root.position.y + summit.position.y < 320.0:
 		issues.append("%s: summit does not reach the Spine sightline contract" % path)
+	_expect_socket_count(root, &"dark_entrance", 1, path, issues)
 
 
 func _validate_dark(root: Node3D, path: String, issues: Array[String]) -> void:
@@ -148,6 +149,8 @@ func _validate_dark(root: Node3D, path: String, issues: Array[String]) -> void:
 	_expect_socket_count(root, &"drowned_spawn", 6, path, issues)
 	if _count_socket_type(root, &"hiding_place") < 8:
 		issues.append("%s: The Dark lacks required hiding coverage" % path)
+	if _find_name(root, "Exit") == null:
+		issues.append("%s: The Dark lacks an authored RouteMarkers/Exit" % path)
 	if DistrictContract.desired_open_world_paths(root.position).has(path):
 		issues.append("%s: The Dark leaked into open-world district selection" % path)
 
