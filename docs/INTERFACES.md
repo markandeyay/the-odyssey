@@ -127,7 +127,7 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** M4 authors `OccluderInstance3D` coverage for the west, east, and north cliff bands and the persistent Spine, but Godot leaves root-viewport occlusion culling disabled by default.
 **Proposed API:** Set `rendering/occlusion_culling/use_occlusion_culling=true` in `project.godot`. Retain Godot's default BVH quality and ray count until an integrated 1080p profile justifies tuning them.
 **Blocking:** yes for M4 occluders to affect integrated runtime performance; no for distance LOD and chunk streaming
-**Status:** OPEN
+**Status:** DONE — set in `project.godot`; BVH quality and ray count left at Godot defaults per the request.
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Provide the gameplay prefabs required to replace WORLD-authored M5 district placement sockets.
