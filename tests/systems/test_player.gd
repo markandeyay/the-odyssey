@@ -33,9 +33,22 @@ func test_physics_layers() -> void:
 	assert_eq(player.collision_mask, 13, "player collides with world|climbable|carryable")
 
 
-func test_fallback_capsule_visible_without_mesh() -> void:
+func test_nau_visual_ships_mounted() -> void:
 	var player: Player = _make_player()
-	assert_null(player.mesh_scene, "no mesh ships yet; WORLD delivers the placeholder")
+	assert_not_null(player.mesh_scene, "the player scene assigns WORLD's Nau visual")
+	assert_eq(
+		player.mesh_scene.resource_path,
+		"res://assets/characters/nau/nau_visual.tscn",
+		"the character contract path (ARCHITECTURE §16)"
+	)
+	var capsule: MeshInstance3D = player.get_node("Visual/FallbackCapsule") as MeshInstance3D
+	assert_false(capsule.visible, "capsule fallback hides once the mesh is mounted")
+
+
+func test_fallback_capsule_visible_without_mesh() -> void:
+	var player: Player = PLAYER_SCENE.instantiate()
+	player.mesh_scene = null
+	add_child_autofree(player)
 	var capsule: MeshInstance3D = player.get_node("Visual/FallbackCapsule") as MeshInstance3D
 	assert_true(capsule.visible, "capsule fallback shows when no mesh is mounted")
 

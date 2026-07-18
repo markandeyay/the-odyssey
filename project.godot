@@ -26,7 +26,7 @@ AudioDirector="*res://src/autoload/audio_director.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/gut/plugin.cfg", "res://addons/odyssey_world_tools/plugin.cfg")
 
 [input]
 
@@ -201,3 +201,4 @@ hotbar_next={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+occlusion_culling/use_occlusion_culling=true

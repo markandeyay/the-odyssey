@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://src/ui/hud.gd" id="1_hud"]
 [ext_resource type="Script" path="res://src/ui/hearts_display.gd" id="2_hearts"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/hotbar.tscn" id="6_hotbar"]
 [ext_resource type="PackedScene" path="res://scenes/ui/storage_panel.tscn" id="7_storage"]
 [ext_resource type="Script" path="res://src/ui/ending_sequence.gd" id="8_ending"]
+[ext_resource type="Script" path="res://src/ui/dialogue_box.gd" id="9_dialogue"]
 
 [node name="GameHUD" type="Control"]
 anchors_preset = 15
@@ -75,6 +76,17 @@ offset_right = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_reader")
+
+[node name="DialogueBox" type="PanelContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.66
+anchor_right = 0.5
+anchor_bottom = 0.66
+offset_left = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_dialogue")
 
 [node name="StoragePanel" parent="." instance=ExtResource("7_storage")]
 

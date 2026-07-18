@@ -106,49 +106,49 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Why:** M2 provides scatter painting, terrain authoring, and scene-budget controls through an `EditorPlugin`. Godot requires plugin activation in SYSTEMS-owned `project.godot` before those editor controls can load.
 **Proposed API:** Add `res://addons/odyssey_world_tools/plugin.cfg` to `[editor_plugins] enabled=PackedStringArray(...)`. No autoloads, input actions, physics-layer changes, or runtime project settings are requested.
 **Blocking:** yes for editor UI use; headless validators remain usable
-**Status:** OPEN
+**Status:** DONE — enabled in `project.godot` alongside GUT.
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Expose and assign Nau's replaceable character visual scene on the SYSTEMS-owned player scene.
 **Why:** M3 now provides a validated humanoid visual, canonical animation library, and the four required `BoneAttachment3D` sockets without coupling gameplay to the X Bot placeholder mesh.
 **Proposed API:** Add `@export var character_visual_scene: PackedScene` to the SYSTEMS player visual host and assign `res://assets/characters/nau/nau_visual.tscn` in the player scene. Instantiate only through that exported field; do not hardcode the resource path in gameplay code.
 **Blocking:** no for WORLD M3 validation; yes for seeing Nau in the integrated player runtime
-**Status:** OPEN
+**Status:** DONE — the export already existed as `mesh_scene` on `player.gd` (the M2 character contract field; same semantics, instantiated only through the export); `player.tscn` now assigns `nau_visual.tscn` to it. The capsule fallback hides when the mesh mounts and remains the no-mesh fallback path.
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Instantiate the WORLD-owned Lanka streaming root in the SYSTEMS gameplay level host and assign the live player as its streaming target.
 **Why:** M4 provides `lanka.tscn` as a lightweight root with no preloaded terrain. Its threaded loader needs the player transform to select, load, and unload the 25 owned terrain chunks at runtime.
 **Proposed API:** Instantiate `res://scenes/levels/lanka/lanka.tscn` under the SYSTEMS level host, retain the returned `Node3D`, then call `lanka.set_streaming_target(player_node)` after the player enters the tree. Do not instantiate the individual chunk scenes from SYSTEMS code.
 **Blocking:** yes for integrated Lanka runtime traversal; no for WORLD M4 scene and streaming tests
-**Status:** OPEN
+**Status:** DONE — satisfied by a different wiring than proposed: `lanka.tscn` is now the project main scene, instances `scenes/player/player.tscn` at `DistrictAnchors/Shallows/Player`, and pre-assigns the streaming root's exported `streaming_target` to that node, so no runtime `set_streaming_target` call is needed. Chunk scenes are never instantiated from SYSTEMS code.
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Enable root-viewport 3D occlusion culling in the SYSTEMS-owned project settings.
 **Why:** M4 authors `OccluderInstance3D` coverage for the west, east, and north cliff bands and the persistent Spine, but Godot leaves root-viewport occlusion culling disabled by default.
 **Proposed API:** Set `rendering/occlusion_culling/use_occlusion_culling=true` in `project.godot`. Retain Godot's default BVH quality and ray count until an integrated 1080p profile justifies tuning them.
 **Blocking:** yes for M4 occluders to affect integrated runtime performance; no for distance LOD and chunk streaming
-**Status:** OPEN
+**Status:** DONE — set in `project.godot`; BVH quality and ray count left at Godot defaults per the request.
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Provide the gameplay prefabs required to replace WORLD-authored M5 district placement sockets.
 **Why:** The M5 district scenes can own traversal geometry and deterministic placement, but ocean death, district entry, carryables, fire, heat, updrafts, interactive water, and drowned behavior are SYSTEMS-owned and no gameplay prefabs are present on the WORLD branch.
 **Proposed API:** Provide WORLD-placeable `PackedScene` prefabs under `res://scenes/prefabs/gameplay/` for `ocean_kill_volume`, `district_trigger`, `carryable_object`, `fire_source`, `heat_volume`, `updraft_volume`, `water_volume`, `water_current`, and `drowned_spawn`. Volume prefabs need exported `size_m: Vector3`; directional prefabs need exported `direction: Vector3` and `strength: float`; triggers/spawns need exported `district_id: StringName` or `spawn_id: StringName`. WORLD scenes expose matching `Marker3D` nodes under `GameplaySockets` with metadata keys `socket_type`, `socket_size_m`, `direction`, `strength`, `district_id`, and `spawn_id` as applicable. Once the prefabs exist, WORLD will instance them at those sockets without opening or editing the prefab files.
 **Blocking:** yes for functional M5 hazards and district events; no for WORLD-owned geometry, traversal, streaming, and scene validation
-**Status:** OPEN
+**Status:** DONE — every requested prefab family exists under `scenes/prefabs/gameplay/`; see the [2026-07-17] SYSTEMS delivery entry for the exact name mapping (`ocean_kill_volume` → `kill_volume.tscn`, `fire_source` → `brand.tscn`, `drowned_spawn` → `drowned.tscn`, `water_current` → the `current` export on `water_volume.tscn`, etc.).
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Integrate The Dark as a separate sublevel entered after the Spine rather than adding it to Lanka's open-world stream selector.
 **Why:** M5 provides `dark_district.tscn` as an enclosed terror sequence with drowned spawn and hiding sockets. The constitution requires it to be separately streamed, and player transfer plus drowned lifecycle are SYSTEMS-owned.
 **Proposed API:** When the SYSTEMS-owned trial flow opens The Dark, instance `res://scenes/levels/lanka/districts/dark/dark_district.tscn` through the level host, place Nau at `RouteMarkers/Entry`, and unload it when the sequence exits. Do not add this path to `LankaDistrictContract.OPEN_WORLD_DISTRICTS`; the WORLD validator deliberately rejects that coupling.
 **Blocking:** yes for entering and completing The Dark in the integrated build; no for WORLD M5 scene validation
-**Status:** OPEN
+**Status:** DONE — `scenes/prefabs/gameplay/dark_entrance.tscn` delivers this; see the [2026-07-18] SYSTEMS delivery entry below for placement and the one marker The Dark's scene still needs (`RouteMarkers/Exit`).
 
 ### [2026-07-16] FROM: WORLD TO: SYSTEMS
 **Request:** Provide the gameplay prefabs and sublevel transition needed to activate WORLD-authored M6 content sockets.
 **Why:** M6 owns exact placement for eight Cairns, twenty crew fragments, four ingredient kinds, three salvage kinds, campfires, heart-piece rewards, and Keffer, but collection, inventory, autosave, dialogue, cooldowns, rewards, and player transfer are SYSTEMS-owned and no gameplay prefab directory exists on the WORLD branch.
 **Proposed API:** Provide `PackedScene` prefabs under `res://scenes/prefabs/gameplay/` named `cairn_entrance`, `heart_piece_reward`, `crew_fragment`, `salvage_pickup`, `ingredient_pickup`, `campfire`, and `keffer_interaction`. Required exports: `cairn_id: StringName`, `target_scene: PackedScene`, `fragment_id: StringName`, `salvage_id: StringName`, `ingredient_id: StringName`, `checkpoint_id: StringName`, `dialogue_lines: Array[String]`, `handout_item_id: StringName`, and `handout_cooldown_s: float` where applicable. Cairn entry must load the target separate scene at `RouteMarkers/Entry`, and the reward prefab must emit the existing `EventBus.cairn_completed(cairn_id)` after granting exactly one heart piece. WORLD exposes matching `Marker3D` metadata on every placement and will instance these prefabs without editing them once available.
 **Blocking:** yes for functional M6 collection, Cairn rewards, campfire autosaves, and Keffer interaction; no for WORLD placement, geometry, count validation, and scene budgets
-**Status:** OPEN
+**Status:** DONE — every family delivered: `cairn_entrance.tscn` and `campfire.tscn` as named; `crew_fragment` → `fragment_pickup.tscn`; `salvage_pickup`/`ingredient_pickup` → `item_pickup.tscn` with `item_id`; `heart_piece_reward` subsumed by `cairn_entrance` wiring the reward sockets to `cairn_completed` (GameState grants the piece); and `keffer_interaction.tscn` now exists — see the [2026-07-18] Keffer delivery entry.
 
 ### [2026-07-17] FROM: WORLD TO: SYSTEMS
 **Request:** Enforce hard island-wide caps for SYSTEMS-owned dynamic fire simulation and particle emitters.
@@ -231,5 +231,19 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Request:** Two findings from the integrated 1080p profile of merged main (all six districts, player + HUD + fire + water + drowned live) that are real on any GPU, relayed per the human: (1) the Cistern anchor sits inside Ember Quarter's load radius, so both districts (plus 9-10 terrain chunks) are resident simultaneously — Cistern was the worst sustained district in the capture; (2) Ember Quarter showed an 80.6ms worst frame from a neighboring district instantiating mid-capture — a streaming hitch, not steady-state rendering.
 **Why:** ARCHITECTURE section 19's amended targets cap frame time on the dev floor at 33ms; a single 80.6ms instantiation frame busts it regardless of average FPS, and the Ember/Cistern double residency sets the worst-case resident set for the whole island.
 **Proposed API:** WORLD's call — candidates are shrinking Cistern's load radius or separating the anchors' horizontal centers, and amortizing district instantiation (e.g. adding streamed districts over multiple frames or splitting district scenes into sub-chunks). SYSTEMS can supply per-frame instantiation budgeting in the streaming root if you request it.
+**Blocking:** no
+**Status:** OPEN
+
+### [2026-07-18] FROM: SYSTEMS TO: WORLD
+**Request:** Delivery of the Dark sublevel transition: `scenes/prefabs/gameplay/dark_entrance.tscn` (script `res://src/world/dark_entrance.gd`) now exists. Instance it once, at the doorway into The Dark at the end of the Spine trial, and size its `CollisionShape3D` box like every other volume prefab. Set two exports the way your builder already does for `cairn_entrance`: `target_scene: PackedScene` = `res://scenes/levels/lanka/districts/dark/dark_district.tscn`, and optionally `required_trial_id: StringName` — when set, the doorway stays inert until that trial is complete (leave empty for always-open). One marker request: add `RouteMarkers/Exit` to `dark_district.tscn`, a `Marker3D` at the mouth where walking out should return Nau to the surface. Until it exists the prefab falls back to using `RouteMarkers/Entry` as the way out (armed only after Nau has left it once, so arrival does not bounce him straight back), which works but gives you no authorial control over where "out" is.
+**Why:** Nau crossing the doorway instances The Dark at its authored world transform (your root transform stands; nothing is repositioned), transfers him to `RouteMarkers/Entry`, and wires a touch volume over `RouteMarkers/Exit` that returns him to the doorway and frees the interior. The Dark stays out of open-world streaming per your validator. A carryable held on the way out — the Figurehead walk (M14) — is reparented out of the interior before the free, so the carry survives the transition.
+**Proposed API:** As above; no new EventBus signals. `district_entered(&"dark")` still comes from your district trigger socket inside the scene, not from this prefab.
+**Blocking:** no for SYSTEMS behavior (tested against a stand-in interior); yes for the integrated Dark until you place the prefab and rerun your builder
+**Status:** OPEN
+
+### [2026-07-18] FROM: SYSTEMS TO: WORLD
+**Request:** Delivery of the last M6 prefab: `scenes/prefabs/gameplay/keffer_interaction.tscn` (M15). Instance it once at Keffer's overturned hull in the Shallows. Exports match your request: `dialogue_lines: Array[String]` (sequential, wrapping, one line per talk — currently 8 placeholder lines; the human owns the final prose), `handout_item_id: StringName` (default `&"tidepool_shellfish_cooked"`), `handout_count: int`, and `handout_cooldown_s: float` (default 120). Talking shows one line in the new HUD dialogue box, records the `met_keffer` flag, and hands out the food when the cooldown allows; full hands do not burn the cooldown.
+**Why:** Keffer is a scavenger with a heartbeat, not a quest giver — no branching, no chain, dialogue and a handout only. HARD RULE, enforced by test: no Keffer line may contain Nau's name. The Figurehead spends it exactly once at the very end (M14) and nothing else on the island may. If you or the human replace `dialogue_lines` per placement, keep that rule. The placeholder capsule mesh is yours to replace like every other prefab visual.
+**Proposed API:** As above; no scripting on your side, no new EventBus signals.
 **Blocking:** no
 **Status:** OPEN
