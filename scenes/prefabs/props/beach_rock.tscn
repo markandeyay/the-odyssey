@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Material" path="res://assets/materials/library/poly_haven/aerial_rocks_04/mat_aerial_rocks_04_grip_solid.tres" id="1_rock"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rock"]
+material = ExtResource("1_rock")
+radius = 0.65
+height = 1.1
+radial_segments = 12
+rings = 6
+
+[node name="BeachRock" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_rock")

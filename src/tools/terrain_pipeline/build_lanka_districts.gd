@@ -5,7 +5,10 @@ const DistrictContract: Script = preload("res://scenes/levels/lanka/lanka_distri
 const ContentContract: Script = preload("res://scenes/levels/lanka/lanka_content_contract.gd")
 const EmberRuntimeScript: Script = preload("res://scenes/levels/lanka/districts/ember_quarter/ember_quarter_runtime.gd")
 const DistrictSegmentLoaderScript: Script = preload("res://scenes/levels/lanka/district_segment_loader.gd")
+const ScatterScript: Script = preload("res://addons/odyssey_world_tools/scatter_3d.gd")
 const FLAMMABLE_SCRIPT_PATH: String = "res://src/world/fire/flammable.gd"
+const BEACH_ROCK_PATH: String = "res://scenes/prefabs/props/beach_rock.tscn"
+const DRIFTWOOD_PATH: String = "res://scenes/prefabs/props/driftwood_piece.tscn"
 const SEGMENT_BATCH_SIZE: int = 2
 const SEGMENT_CONTAINER_NAMES: Array[String] = [
 	"GameplaySockets", "WorldGeometry", "Dressing", "RouteMarkers", "M8RenderBatches",
@@ -14,13 +17,16 @@ const SEGMENT_CONTAINER_NAMES: Array[String] = [
 const PREFAB_PATHS: Dictionary = {
 	&"campfire": "res://scenes/prefabs/gameplay/campfire.tscn",
 	&"cairn_entrance": "res://scenes/prefabs/gameplay/cairn_entrance.tscn",
+	&"carryable_object": "res://scenes/prefabs/gameplay/carry_crate.tscn",
 	&"crew_fragment": "res://scenes/prefabs/gameplay/fragment_pickup.tscn",
 	&"dark_entrance": "res://scenes/prefabs/gameplay/dark_entrance.tscn",
 	&"district_trigger": "res://scenes/prefabs/gameplay/district_trigger.tscn",
 	&"drowned_spawn": "res://scenes/prefabs/gameplay/drowned.tscn",
 	&"heat_volume": "res://scenes/prefabs/gameplay/heat_volume.tscn",
+	&"ingredient_pickup": "res://scenes/prefabs/gameplay/item_pickup.tscn",
 	&"keffer_interaction": "res://scenes/prefabs/gameplay/keffer_interaction.tscn",
 	&"ocean_kill_volume": "res://scenes/prefabs/gameplay/kill_volume.tscn",
+	&"salvage_pickup": "res://scenes/prefabs/gameplay/item_pickup.tscn",
 	&"water_current": "res://scenes/prefabs/gameplay/water_volume.tscn",
 	&"water_volume": "res://scenes/prefabs/gameplay/water_volume.tscn",
 }
@@ -94,12 +100,20 @@ func _build_shallows() -> Error:
 			Vector3(0.0, 0.0, sin(float(index)) * 4.0),
 			18
 		)
+		if index < 7:
+			_builder.add_visual_box(
+				dressing, "SetuBrokenCap%02d" % index,
+				stump_position + Vector3(2.2, 7.0 - float(index) * 0.25, -1.0),
+				Vector3(7.5, 1.6, 5.0), _materials[&"cracked_stone"],
+				Vector3(9.0 + float(index % 3) * 5.0, float(index * 31), 13.0)
+			)
 	_builder.add_visibility_notifier(
 		geometry, AABB(Vector3(-20.0, -12.0, -375.0), Vector3(40.0, 35.0, 320.0))
 	)
-	_add_wrecked_hull(dressing, "ArrivalWreck", Vector3(-92.0, 5.0, 22.0), -18.0, 1.0)
-	_add_wrecked_hull(dressing, "EasternWreck", Vector3(125.0, 3.0, -38.0), 22.0, 0.78)
-	_add_wrecked_hull(dressing, "KefferOverturnedHull", Vector3(-135.0, 8.0, 68.0), 8.0, 0.9)
+	_add_wrecked_hull(dressing, "ArrivalWreck", Vector3(-92.0, 23.8, 22.0), -18.0, 1.0)
+	_add_wrecked_hull(dressing, "EasternWreck", Vector3(125.0, 8.8, -38.0), 22.0, 0.78)
+	_add_wrecked_hull(dressing, "KefferOverturnedHull", Vector3(-135.0, 41.8, 68.0), 8.0, 0.9, 158.0)
+	_add_wrecked_hull(dressing, "TideLineWreck", Vector3(58.0, -2.4, -118.0), -34.0, 0.62)
 	for debris_index: int in 18:
 		var angle: float = float(debris_index) * 1.71
 		var debris_position: Vector3 = Vector3(
@@ -115,9 +129,12 @@ func _build_shallows() -> Error:
 			_materials[&"charred_timber"],
 			Vector3(float((debris_index * 13) % 28), angle * 28.0, float((debris_index * 7) % 18))
 		)
+	_add_shallows_beach_scatter(dressing)
+	_add_shallows_tidepools(dressing)
+	_add_shallows_ground_patches(dressing)
 	var build_site: Node3D = Node3D.new()
 	build_site.name = "SetuBuildSite"
-	build_site.position = Vector3(105.0, 4.0, 78.0)
+	build_site.position = Vector3(105.0, 36.2, 78.0)
 	geometry.add_child(build_site)
 	_builder.add_static_box(build_site, "SlipwayLeft", Vector3(-14.0, 0.0, 0.0), Vector3(4.0, 2.0, 52.0), _materials[&"clean_stone"], true)
 	_builder.add_static_box(build_site, "SlipwayRight", Vector3(14.0, 0.0, 0.0), Vector3(4.0, 2.0, 52.0), _materials[&"clean_stone"], true)
@@ -133,12 +150,12 @@ func _build_shallows() -> Error:
 	for carry_index: int in 4:
 		_builder.add_marker(
 			sockets, "HoldCarryable%02d" % carry_index,
-			Vector3(-48.0 + float(carry_index) * 25.0, 4.0, 35.0), &"carryable_object",
+			Vector3(-48.0 + float(carry_index) * 25.0, 1.4, 35.0), &"carryable_object",
 			{&"spawn_id": StringName("hold_object_%02d" % carry_index)}
 		)
 	_builder.add_marker(routes, "Arrival", Vector3(0.0, 3.0, -75.0), &"route_anchor", {&"route_id": &"arrival"})
-	_builder.add_marker(routes, "HoldTrial", Vector3(45.0, 5.0, 32.0), &"route_anchor", {&"route_id": &"hold"})
-	_builder.add_marker(routes, "KefferShelter", Vector3(-135.0, 5.0, 68.0), &"route_anchor", {&"route_id": &"keffer"})
+	_builder.add_marker(routes, "HoldTrial", Vector3(45.0, 1.6, 32.0), &"route_anchor", {&"route_id": &"hold"})
+	_builder.add_marker(routes, "KefferShelter", Vector3(-131.0, 38.7, 88.0), &"route_anchor", {&"route_id": &"keffer"})
 	_builder.add_marker(routes, "InlandExit", Vector3(0.0, 10.0, 155.0), &"route_anchor", {&"route_id": &"inland"})
 	_builder.add_box_occluder(dressing, "KefferHullOccluder", Vector3(-135.0, 8.0, 68.0), Vector3(54.0, 15.0, 22.0))
 	_add_m6_content(root, &"shallows")
@@ -534,6 +551,8 @@ func _add_m9_gameplay(root: Node3D, district_id: StringName) -> void:
 			&"heat_volume":
 				_set_required_property(instance, &"damage_per_second", float(socket.get_meta(&"strength", 1.0)))
 				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
+			&"ingredient_pickup":
+				_set_required_property(instance, &"item_id", socket.get_meta(&"ingredient_id", &""))
 			&"keffer_interaction":
 				var dialogue_lines: Array[String] = []
 				dialogue_lines.assign(socket.get_meta(&"dialogue_lines", []) as Array)
@@ -546,8 +565,13 @@ func _add_m9_gameplay(root: Node3D, district_id: StringName) -> void:
 					instance, &"handout_cooldown_s",
 					float(socket.get_meta(&"handout_cooldown_s", 120.0))
 				)
+				var placeholder_visual: MeshInstance3D = _find_mesh_instance(instance)
+				if placeholder_visual != null:
+					placeholder_visual.visible = false
 			&"ocean_kill_volume":
 				_resize_volume(instance, socket.get_meta(&"socket_size_m", Vector3.ONE) as Vector3)
+			&"salvage_pickup":
+				_set_required_property(instance, &"item_id", socket.get_meta(&"salvage_id", &""))
 			&"water_current":
 				var direction: Vector3 = socket.get_meta(&"direction", Vector3.ZERO) as Vector3
 				var strength: float = float(socket.get_meta(&"strength", 0.0))
@@ -695,8 +719,10 @@ func _make_materials() -> Dictionary:
 		&"ashroot": _builder.make_stylized_material("mat_ashroot_grip_solid", Color(0.24, 0.27, 0.21), 0.95, 0.0, 0.0, 0.16, 0.18),
 		&"charwood_fruit": _builder.make_stylized_material("mat_charwood_fruit_grip_solid", Color(0.34, 0.075, 0.012), 0.76, 0.0, 0.0, 0.18, 0.05, 0.65),
 		&"blind_fish": _builder.make_stylized_material("mat_blind_fish_grip_solid", Color(0.43, 0.50, 0.48), 0.64, 0.0, 0.28, 0.0, 0.03),
-		&"keffer_cloth": _builder.make_stylized_material("mat_keffer_cloth_grip_solid", Color(0.13, 0.14, 0.13), 0.94, 0.0, 0.0, 0.30, 0.14),
+		&"keffer_cloth": _builder.make_stylized_material("mat_keffer_cloth_grip_solid", Color(0.24, 0.22, 0.18), 0.94, 0.0, 0.0, 0.16, 0.08),
 		&"cistern_water": _builder.make_water_scenery_material("mat_cistern_water_scenery_grip_slick", 0.22),
+		&"tidepool_water": _builder.make_water_scenery_material("mat_tidepool_water_grip_slick", 0.06),
+		&"wet_sand": _builder.make_stylized_material("mat_shallows_wet_sand_grip_slick", Color(0.11, 0.15, 0.135), 0.64, 0.0, 0.82, 0.04, 0.10),
 	}
 
 
@@ -776,7 +802,7 @@ func _add_m6_content(root: Node3D, district_id: StringName) -> void:
 func _add_keffer(dressing: Node3D, sockets: Node3D) -> void:
 	var keffer: Node3D = Node3D.new()
 	keffer.name = "Keffer"
-	keffer.position = Vector3(-135.0, 5.0, 68.0)
+	keffer.position = Vector3(-131.0, 38.7, 88.0)
 	keffer.set_meta(&"is_merchant", false)
 	keffer.set_meta(&"dialogue_lines", ContentContract.KEFFER_DIALOGUE)
 	keffer.set_meta(&"handout_item_id", &"tidepool_shellfish")
@@ -789,6 +815,169 @@ func _add_keffer(dressing: Node3D, sockets: Node3D) -> void:
 		sockets, "KefferInteraction", keffer.position, &"keffer_interaction",
 		{&"dialogue_lines": ContentContract.KEFFER_DIALOGUE, &"handout_item_id": &"tidepool_shellfish", &"handout_cooldown_s": 120.0, &"is_merchant": false}
 	)
+
+
+func _add_shallows_beach_scatter(dressing: Node3D) -> void:
+	var random: RandomNumberGenerator = RandomNumberGenerator.new()
+	random.seed = 24011984
+	var rock_transforms: Array[Transform3D] = []
+	var driftwood_transforms: Array[Transform3D] = []
+	for _attempt: int in 180:
+		if rock_transforms.size() >= 46:
+			break
+		var x: float = random.randf_range(-95.0, 95.0)
+		var z: float = random.randf_range(-142.0, 78.0)
+		if (absf(x) < 24.0 and z > -92.0) or Vector2(x + 135.0, z - 68.0).length() < 34.0:
+			continue
+		var scale_value: float = random.randf_range(0.65, 2.4)
+		var scale: Vector3 = Vector3(
+			scale_value * random.randf_range(0.75, 1.35),
+			scale_value * random.randf_range(0.45, 0.95),
+			scale_value * random.randf_range(0.75, 1.45)
+		)
+		var basis: Basis = Basis.from_euler(Vector3(
+			random.randf_range(-0.18, 0.18), random.randf_range(0.0, TAU),
+			random.randf_range(-0.14, 0.14)
+		)).scaled(scale)
+		rock_transforms.append(Transform3D(basis, Vector3(x, _shallows_surface_y(z), z)))
+	for _attempt: int in 160:
+		if driftwood_transforms.size() >= 34:
+			break
+		var x: float = random.randf_range(-92.0, 92.0)
+		var z: float = random.randf_range(-150.0, 68.0)
+		if absf(x) < 20.0 and z > -88.0:
+			continue
+		var scale: Vector3 = Vector3(
+			random.randf_range(0.7, 1.45), random.randf_range(0.75, 1.2),
+			random.randf_range(0.75, 1.85)
+		)
+		var basis: Basis = Basis.from_euler(Vector3(
+			random.randf_range(-0.12, 0.12), random.randf_range(0.0, TAU),
+			random.randf_range(-0.16, 0.16)
+		)).scaled(scale)
+		driftwood_transforms.append(Transform3D(
+			basis, Vector3(x, _shallows_surface_y(z) + 0.18, z)
+		))
+	_add_scatter_group(
+		dressing, "BeachRockScatter", BEACH_ROCK_PATH, rock_transforms,
+		Vector2(360.0, 220.0), 0.58, 24011984
+	)
+	_add_scatter_group(
+		dressing, "DriftwoodScatter", DRIFTWOOD_PATH, driftwood_transforms,
+		Vector2(344.0, 218.0), 0.45, 24011985
+	)
+
+
+func _add_scatter_group(
+	parent: Node3D,
+	node_name: String,
+	source_path: String,
+	transforms: Array[Transform3D],
+	bounds: Vector2,
+	density: float,
+	seed: int
+) -> void:
+	var packed: PackedScene = load(source_path) as PackedScene
+	assert(packed != null, "Missing WORLD scatter prop: %s" % source_path)
+	var source: Node = packed.instantiate()
+	var mesh_instance: MeshInstance3D = _find_mesh_instance(source)
+	assert(mesh_instance != null and mesh_instance.mesh != null)
+	var material: Material = mesh_instance.material_override
+	if material == null and mesh_instance.mesh.get_surface_count() > 0:
+		material = mesh_instance.get_active_material(0)
+	var scatter: Node3D = ScatterScript.new() as Node3D
+	scatter.name = node_name
+	var prop_scenes: Array[PackedScene] = [packed]
+	scatter.set(&"prop_scenes", prop_scenes)
+	scatter.set(&"seed", seed)
+	scatter.set(&"bounds_size_m", bounds)
+	scatter.set(&"density_per_100m2", density)
+	parent.add_child(scatter)
+	scatter.call("restore_generated_state", {
+		"paint_stroke_index": 0,
+		"groups": [{
+			"name": node_name + "Instances",
+			"mesh": mesh_instance.mesh,
+			"material": material,
+			"source_path": source_path,
+			"transforms": transforms,
+		}],
+	})
+	source.free()
+
+
+func _add_shallows_tidepools(dressing: Node3D) -> void:
+	var pools: Array[Dictionary] = [
+		{"p": Vector3(-82.0, -4.52, -112.0), "s": Vector2(10.0, 6.0), "r": 12.0},
+		{"p": Vector3(-34.0, -4.52, -136.0), "s": Vector2(13.0, 7.5), "r": -18.0},
+		{"p": Vector3(18.0, -4.42, -124.0), "s": Vector2(9.0, 6.5), "r": 7.0},
+		{"p": Vector3(72.0, -4.32, -142.0), "s": Vector2(14.0, 8.0), "r": 23.0},
+		{"p": Vector3(116.0, -3.82, -108.0), "s": Vector2(9.0, 6.0), "r": -11.0},
+		{"p": Vector3(148.0, -2.92, -76.0), "s": Vector2(8.0, 5.0), "r": 31.0},
+	]
+	for pool_index: int in pools.size():
+		var pool: Dictionary = pools[pool_index]
+		var mesh_instance: MeshInstance3D = MeshInstance3D.new()
+		mesh_instance.name = "Tidepool%02d" % pool_index
+		mesh_instance.position = pool["p"] as Vector3
+		mesh_instance.rotation_degrees.y = float(pool["r"])
+		var size: Vector2 = pool["s"] as Vector2
+		mesh_instance.scale = Vector3(size.x, 1.0, size.y)
+		var mesh: CylinderMesh = CylinderMesh.new()
+		mesh.top_radius = 1.0
+		mesh.bottom_radius = 1.0
+		mesh.height = 0.08
+		mesh.radial_segments = 28
+		mesh.rings = 1
+		mesh.material = _materials[&"tidepool_water"]
+		mesh_instance.mesh = mesh
+		mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		dressing.add_child(mesh_instance)
+
+
+func _add_shallows_ground_patches(dressing: Node3D) -> void:
+	var patches: Array[Dictionary] = [
+		{"p": Vector3(-62.0, 0.0, -78.0), "s": Vector2(34.0, 18.0), "r": 14.0},
+		{"p": Vector3(-18.0, 0.0, -102.0), "s": Vector2(28.0, 15.0), "r": -9.0},
+		{"p": Vector3(34.0, 0.0, -92.0), "s": Vector2(38.0, 16.0), "r": 22.0},
+		{"p": Vector3(76.0, 0.0, -66.0), "s": Vector2(26.0, 14.0), "r": -18.0},
+		{"p": Vector3(-74.0, 0.0, -26.0), "s": Vector2(28.0, 13.0), "r": 30.0},
+		{"p": Vector3(58.0, 0.0, -24.0), "s": Vector2(33.0, 12.0), "r": 4.0},
+	]
+	for patch_index: int in patches.size():
+		var patch: Dictionary = patches[patch_index]
+		var position: Vector3 = patch["p"] as Vector3
+		position.y = _shallows_surface_y(position.z) + 0.035
+		var mesh_instance: MeshInstance3D = MeshInstance3D.new()
+		mesh_instance.name = "WetSandPatch%02d" % patch_index
+		mesh_instance.position = position
+		mesh_instance.rotation_degrees.y = float(patch["r"])
+		var size: Vector2 = patch["s"] as Vector2
+		mesh_instance.scale = Vector3(size.x, 1.0, size.y)
+		var mesh: CylinderMesh = CylinderMesh.new()
+		mesh.top_radius = 1.0
+		mesh.bottom_radius = 1.0
+		mesh.height = 0.04
+		mesh.radial_segments = 32
+		mesh.rings = 1
+		mesh.material = _materials[&"wet_sand"]
+		mesh_instance.mesh = mesh
+		mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		dressing.add_child(mesh_instance)
+
+
+func _shallows_surface_y(local_z: float) -> float:
+	return clampf(0.72 + (local_z + 140.0) * 0.011, 0.65, 3.1)
+
+
+func _find_mesh_instance(node: Node) -> MeshInstance3D:
+	if node is MeshInstance3D:
+		return node as MeshInstance3D
+	for child: Node in node.get_children():
+		var found: MeshInstance3D = _find_mesh_instance(child)
+		if found != null:
+			return found
+	return null
 
 
 func _make_open_world_root(district_id: StringName) -> Node3D:
@@ -814,11 +1003,19 @@ func _make_root(district_id: StringName, position: Vector3, budget_profile: Stri
 	return root
 
 
-func _add_wrecked_hull(parent: Node3D, node_name: String, position: Vector3, yaw_degrees: float, scale_value: float) -> void:
+func _add_wrecked_hull(
+	parent: Node3D,
+	node_name: String,
+	position: Vector3,
+	yaw_degrees: float,
+	scale_value: float,
+	roll_degrees: float = 0.0
+) -> void:
 	var hull: Node3D = Node3D.new()
 	hull.name = node_name
 	hull.position = position
 	hull.rotation_degrees.y = yaw_degrees
+	hull.rotation_degrees.z = roll_degrees
 	hull.scale = Vector3.ONE * scale_value
 	parent.add_child(hull)
 	_builder.add_static_box(hull, "Keel", Vector3(0.0, 0.0, 0.0), Vector3(5.0, 5.0, 58.0), _materials[&"charred_timber"], true, Vector3(0.0, 0.0, 8.0))
@@ -828,6 +1025,23 @@ func _add_wrecked_hull(parent: Node3D, node_name: String, position: Vector3, yaw
 			1.5, 36.0 - absf(float(rib) - 3.0) * 3.0, _materials[&"charred_timber"], true,
 			Vector3(0.0, 0.0, 78.0 + (float(rib % 2) * 7.0)), 10
 		)
+	for plank: int in 6:
+		var plank_z: float = -24.0 + float(plank) * 9.5
+		var curve: float = absf(float(plank) - 2.5) * 0.38
+		_builder.add_visual_box(
+			hull, "PortPlank%02d" % plank, Vector3(-4.2 + curve, 2.2 + curve, plank_z),
+			Vector3(1.15, 1.05, 11.0), _materials[&"charred_timber"],
+			Vector3(-4.0, 0.0, -9.0 + float(plank % 3) * 4.0)
+		)
+		_builder.add_visual_box(
+			hull, "StarboardPlank%02d" % plank, Vector3(4.2 - curve, 2.2 + curve, plank_z),
+			Vector3(1.15, 1.05, 11.0), _materials[&"charred_timber"],
+			Vector3(4.0, 0.0, 9.0 - float(plank % 3) * 4.0)
+		)
+	_builder.add_visual_box(
+		hull, "BrokenBow", Vector3(0.0, 5.2, -29.0), Vector3(4.5, 11.0, 2.0),
+		_materials[&"unburnt_timber"], Vector3(18.0, 0.0, 5.0)
+	)
 	_builder.add_visual_box(hull, "TornCanvas", Vector3(4.0, 8.0, -5.0), Vector3(1.0, 17.0, 29.0), _materials[&"bone_canvas"], Vector3(0.0, 0.0, 14.0))
 
 

@@ -3,8 +3,8 @@ extends RefCounted
 const CAIRN_ROOT: String = "res://scenes/levels/cairns"
 
 const CAIRNS: Array[Dictionary] = [
-	{"id": &"shallows_hold_stack", "district_id": &"shallows", "mechanic": &"carry_stack", "path": CAIRN_ROOT + "/cairn_01_hold_stack.tscn", "position": Vector3(148.0, 6.0, -12.0)},
-	{"id": &"shallows_counterweight", "district_id": &"shallows", "mechanic": &"carry_counterweight", "path": CAIRN_ROOT + "/cairn_02_counterweight.tscn", "position": Vector3(-162.0, 8.0, 116.0)},
+	{"id": &"shallows_hold_stack", "district_id": &"shallows", "mechanic": &"carry_stack", "path": CAIRN_ROOT + "/cairn_01_hold_stack.tscn", "position": Vector3(148.0, 12.6, -12.0)},
+	{"id": &"shallows_counterweight", "district_id": &"shallows", "mechanic": &"carry_counterweight", "path": CAIRN_ROOT + "/cairn_02_counterweight.tscn", "position": Vector3(-162.0, 45.2, 116.0)},
 	{"id": &"terraces_grip_route", "district_id": &"terraces", "mechanic": &"grip_route", "path": CAIRN_ROOT + "/cairn_03_grip_route.tscn", "position": Vector3(-116.0, -2.0, -103.0)},
 	{"id": &"terraces_crumble_timing", "district_id": &"terraces", "mechanic": &"crumbling_timing", "path": CAIRN_ROOT + "/cairn_04_crumble_timing.tscn", "position": Vector3(128.0, 13.0, 104.0)},
 	{"id": &"ember_fuel_line", "district_id": &"ember_quarter", "mechanic": &"fire_fuel", "path": CAIRN_ROOT + "/cairn_05_fuel_line.tscn", "position": Vector3(-132.0, 2.0, 112.0)},
@@ -14,10 +14,10 @@ const CAIRNS: Array[Dictionary] = [
 ]
 
 const CREW_FRAGMENTS: Array[Dictionary] = [
-	{"id": &"crew_aadi", "district_id": &"shallows", "position": Vector3(-72.0, 4.0, -42.0), "object": "split oar", "text": "Aadi counted every stroke. The sea stopped answering at dawn."},
-	{"id": &"crew_baran", "district_id": &"shallows", "position": Vector3(88.0, 3.0, -86.0), "object": "salt-stiff rope", "text": "Baran tied the bridge to a shore that no longer exists."},
-	{"id": &"crew_chaya", "district_id": &"shallows", "position": Vector3(-126.0, 6.0, 44.0), "object": "copper cup", "text": "Chaya saved the last fresh water for someone who never came back."},
-	{"id": &"crew_devan", "district_id": &"shallows", "position": Vector3(138.0, 4.0, 92.0), "object": "bent nail", "text": "Devan built by torchlight while the water watched."},
+	{"id": &"crew_aadi", "district_id": &"shallows", "position": Vector3(-72.0, 4.2, -42.0), "object": "split oar", "text": "Aadi counted every stroke. The sea stopped answering at dawn."},
+	{"id": &"crew_baran", "district_id": &"shallows", "position": Vector3(88.0, -1.6, -86.0), "object": "salt-stiff rope", "text": "Baran tied the bridge to a shore that no longer exists."},
+	{"id": &"crew_chaya", "district_id": &"shallows", "position": Vector3(-126.0, 27.3, 44.0), "object": "copper cup", "text": "Chaya saved the last fresh water for someone who never came back."},
+	{"id": &"crew_devan", "district_id": &"shallows", "position": Vector3(138.0, 38.8, 92.0), "object": "bent nail", "text": "Devan built by torchlight while the water watched."},
 	{"id": &"crew_esha", "district_id": &"terraces", "position": Vector3(-132.0, -4.0, 82.0), "object": "seed pouch", "text": "Esha carried seeds across the sea. Lanka gave her only ash."},
 	{"id": &"crew_faris", "district_id": &"terraces", "position": Vector3(-42.0, 4.0, -106.0), "object": "stone hook", "text": "Faris climbed first and marked every hold for those behind him."},
 	{"id": &"crew_giri", "district_id": &"terraces", "position": Vector3(52.0, 11.0, 94.0), "object": "broken sandal", "text": "Giri joked about the height until the wall moved beneath his hands."},
@@ -37,10 +37,10 @@ const CREW_FRAGMENTS: Array[Dictionary] = [
 ]
 
 const SALVAGE: Array[Dictionary] = [
-	{"id": &"salvage_timber_01", "district_id": &"shallows", "salvage_id": &"timber", "position": Vector3(-102.0, 3.0, -14.0)},
-	{"id": &"salvage_timber_02", "district_id": &"shallows", "salvage_id": &"timber", "position": Vector3(118.0, 3.0, -34.0)},
-	{"id": &"salvage_canvas_01", "district_id": &"shallows", "salvage_id": &"canvas", "position": Vector3(-138.0, 5.0, 71.0)},
-	{"id": &"salvage_canvas_02", "district_id": &"shallows", "salvage_id": &"canvas", "position": Vector3(96.0, 4.0, 102.0)},
+	{"id": &"salvage_timber_01", "district_id": &"shallows", "salvage_id": &"timber", "position": Vector3(-102.0, 11.8, -14.0)},
+	{"id": &"salvage_timber_02", "district_id": &"shallows", "salvage_id": &"timber", "position": Vector3(118.0, 7.6, -34.0)},
+	{"id": &"salvage_canvas_01", "district_id": &"shallows", "salvage_id": &"canvas", "position": Vector3(-138.0, 34.0, 71.0)},
+	{"id": &"salvage_canvas_02", "district_id": &"shallows", "salvage_id": &"canvas", "position": Vector3(96.0, 40.4, 102.0)},
 	{"id": &"salvage_iron_01", "district_id": &"terraces", "salvage_id": &"iron", "position": Vector3(-108.0, -3.0, -75.0)},
 	{"id": &"salvage_iron_02", "district_id": &"terraces", "salvage_id": &"iron", "position": Vector3(32.0, 8.0, 84.0)},
 	{"id": &"salvage_timber_03", "district_id": &"terraces", "salvage_id": &"timber", "position": Vector3(116.0, 14.0, -94.0)},
@@ -58,12 +58,12 @@ const SALVAGE: Array[Dictionary] = [
 ]
 
 const INGREDIENTS: Array[Dictionary] = [
-	{"id": &"shellfish_01", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(-82.0, 1.0, -112.0)},
-	{"id": &"shellfish_02", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(-34.0, 1.0, -136.0)},
-	{"id": &"shellfish_03", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(18.0, 1.0, -124.0)},
-	{"id": &"shellfish_04", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(72.0, 1.0, -142.0)},
-	{"id": &"shellfish_05", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(116.0, 1.0, -108.0)},
-	{"id": &"shellfish_06", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(148.0, 1.0, -76.0)},
+	{"id": &"shellfish_01", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(-82.0, -4.5, -112.0)},
+	{"id": &"shellfish_02", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(-34.0, -4.5, -136.0)},
+	{"id": &"shellfish_03", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(18.0, -4.4, -124.0)},
+	{"id": &"shellfish_04", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(72.0, -4.3, -142.0)},
+	{"id": &"shellfish_05", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(116.0, -3.8, -108.0)},
+	{"id": &"shellfish_06", "district_id": &"shallows", "ingredient_id": &"tidepool_shellfish", "position": Vector3(148.0, -2.9, -76.0)},
 	{"id": &"ashroot_01", "district_id": &"terraces", "ingredient_id": &"ashroot", "position": Vector3(-118.0, -5.0, -82.0)},
 	{"id": &"ashroot_02", "district_id": &"terraces", "ingredient_id": &"ashroot", "position": Vector3(-72.0, 0.0, -49.0)},
 	{"id": &"ashroot_03", "district_id": &"terraces", "ingredient_id": &"ashroot", "position": Vector3(-26.0, 5.0, -16.0)},
@@ -82,8 +82,8 @@ const INGREDIENTS: Array[Dictionary] = [
 ]
 
 const CAMPFIRES: Array[Dictionary] = [
-	{"id": &"camp_shallows_arrival", "district_id": &"shallows", "position": Vector3(-38.0, 4.0, 62.0)},
-	{"id": &"camp_shallows_keffer", "district_id": &"shallows", "position": Vector3(-112.0, 5.0, 84.0)},
+	{"id": &"camp_shallows_arrival", "district_id": &"shallows", "position": Vector3(-38.0, 1.6, 62.0)},
+	{"id": &"camp_shallows_keffer", "district_id": &"shallows", "position": Vector3(-112.0, 38.3, 84.0)},
 	{"id": &"camp_terraces_lower", "district_id": &"terraces", "position": Vector3(-112.0, -3.0, 12.0)},
 	{"id": &"camp_terraces_upper", "district_id": &"terraces", "position": Vector3(118.0, 15.0, 16.0)},
 	{"id": &"camp_ember_west", "district_id": &"ember_quarter", "position": Vector3(-128.0, 3.0, -18.0)},

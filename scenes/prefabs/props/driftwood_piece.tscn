@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Material_driftwood"]
+resource_name = "mat_driftwood_grip_solid"
+albedo_color = Color(0.16, 0.105, 0.062, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_driftwood"]
+material = SubResource("Material_driftwood")
+size = Vector3(0.55, 0.38, 5.5)
+
+[node name="DriftwoodPiece" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_driftwood")
