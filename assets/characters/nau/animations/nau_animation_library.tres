@@ -5782,10 +5782,13 @@ tracks/52/keys = PackedFloat32Array(0, 1, 0.058631092, -0.00013176116, -0.013369
 _data = {
 &"carry_idle": SubResource("Animation_xah6c"),
 &"carry_walk": SubResource("Animation_m8f82"),
+&"climb_idle": SubResource("Animation_mretp"),
 &"climb_left": SubResource("Animation_ekgsq"),
+&"climb_move": SubResource("Animation_gbpnl"),
 &"climb_right": SubResource("Animation_4l1xh"),
 &"climb_up": SubResource("Animation_gbpnl"),
 &"crouch": SubResource("Animation_hlfat"),
+&"crouch_idle": SubResource("Animation_hlfat"),
 &"crouch_walk": SubResource("Animation_u8aqu"),
 &"death": SubResource("Animation_4d8px"),
 &"fall": SubResource("Animation_j8apd"),
@@ -5796,5 +5799,8 @@ _data = {
 &"ledge_grab": SubResource("Animation_mretp"),
 &"mantle": SubResource("Animation_2m4qa"),
 &"run": SubResource("Animation_qsa4o"),
+&"sprint": SubResource("Animation_qsa4o"),
+&"swim_idle": SubResource("Animation_7cebe"),
+&"swim_move": SubResource("Animation_7cebe"),
 &"walk": SubResource("Animation_2sefo")
 }
