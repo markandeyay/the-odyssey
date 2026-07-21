@@ -22,6 +22,10 @@ func bind_to(mesh_root: Node) -> void:
 		return
 	_anim_player = players[0] as AnimationPlayer
 	_anim_player.animation_finished.connect(_on_animation_finished)
+	# Play idle on mount so the mesh never sits in bind pose (T-pose) before the
+	# first physics tick — e.g. while a level streamer holds physics off during spawn.
+	_locomotion = &"idle"
+	_play(_locomotion)
 
 
 func set_locomotion(state: StringName) -> void:
