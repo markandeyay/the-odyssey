@@ -23,6 +23,7 @@ SaveSystem="*res://src/autoload/save_system.gd"
 Inventory="*res://src/autoload/inventory.gd"
 ElementSystem="*res://src/autoload/element_system.gd"
 AudioDirector="*res://src/autoload/audio_director.gd"
+FrameCapture="*res://src/autoload/frame_capture.gd"
 
 [editor_plugins]
 
