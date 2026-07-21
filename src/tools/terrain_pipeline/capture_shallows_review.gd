@@ -28,6 +28,7 @@ const VIEWS: Array[Dictionary] = [
 
 var _camera: Camera3D
 var _player_camera: Camera3D
+var _capture_root: String = CAPTURE_ROOT
 
 
 func _initialize() -> void:
@@ -59,8 +60,12 @@ func _capture() -> void:
 	root.add_child(_camera)
 	_camera.current = true
 
-	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(CAPTURE_ROOT))
 	var requested: PackedStringArray = OS.get_cmdline_user_args()
+	for argument: String in requested.duplicate():
+		if argument.begins_with("pass="):
+			_capture_root = CAPTURE_ROOT.path_join(argument.trim_prefix("pass="))
+			requested.remove_at(requested.find(argument))
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(_capture_root))
 	for view: Dictionary in VIEWS:
 		if not requested.is_empty() and not requested.has(str(view["id"])):
 			continue
@@ -92,7 +97,7 @@ func _capture() -> void:
 			player.set_physics_process(false)
 		await _save(str(view["id"]))
 		if bool(view.get("interact", false)):
-			var dialogue: Node = root.get_first_node_in_group(&"dialogue_box")
+			var dialogue: Node = get_first_node_in_group(&"dialogue_box")
 			if dialogue != null and dialogue.has_method("close"):
 				dialogue.call("close")
 		_camera.current = true
@@ -101,13 +106,13 @@ func _capture() -> void:
 		print("KEFFER: met_keffer flag set — dialogue fired in-game")
 	else:
 		print("KEFFER: met_keffer flag NOT set")
-	print("Saved Shallows review captures to %s" % CAPTURE_ROOT)
+	print("Saved Shallows review captures to %s" % _capture_root)
 	quit(0)
 
 
 func _save(view_id: String) -> void:
 	var image: Image = root.get_texture().get_image()
-	var save_error: Error = image.save_png(CAPTURE_ROOT + "/%s.png" % view_id)
+	var save_error: Error = image.save_png(_capture_root + "/%s.png" % view_id)
 	if save_error != OK:
 		_fail("Unable to save %s: %s" % [view_id, error_string(save_error)])
 
