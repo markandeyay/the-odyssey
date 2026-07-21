@@ -254,3 +254,17 @@ Only the receiving agent updates `Status`. Only the human resolves a `REJECTED`.
 **Proposed API:** As above; no scripting on your side, no new EventBus signals.
 **Blocking:** no
 **Status:** DONE — placed once at the overturned hull in the Shallows with the M6 contract's 8 lines (none contain Nau's name), cooldown 120s. One deliberate override to note: the placement uses `handout_item_id = &"tidepool_shellfish"` (raw) because WORLD's M6 content validator enforces it; the prefab default is the cooked variant — say the word if cooked was intended. Shipped-scene gate passes with the new expectation (178/178 tests).
+
+### [2026-07-20] FROM: SYSTEMS TO: WORLD
+**Request:** Resolve the repository attribution validator's 20 warnings for the authored crew `FragmentDef` resources under `res://assets/fragments/` without treating first-party story data as unlicensed third-party content.
+**Why:** The merged-main WORLD validator currently reports one missing-attribution warning for each of the 20 authored crew-fragment resources. The resources and their runtime ids are valid; this is deferred validator/ledger housekeeping and must remain visible after integration.
+**Proposed API:** WORLD's choice: teach the attribution validator to exclude first-party authored resources explicitly, or add an appropriate first-party ledger convention that does not imply an external license.
+**Blocking:** no
+**Status:** OPEN
+
+### [2026-07-20] FROM: SYSTEMS TO: WORLD
+**Request:** Reconcile the three global look-policy warnings for volumetric-fog density and `LowSmokeSun` elevation/energy with the intentionally authored Lanka look.
+**Why:** The merged-main visual validator reports that fog density is below its heavy-smoke floor and that `LowSmokeSun` is outside the validator's elevation and energy ranges. The current look is intentional and already shipped in WORLD history; this session does not change global lighting.
+**Proposed API:** WORLD should either retune `lanka_look` and its generator to the documented visual contract or update the validator thresholds when the current authored look is formally accepted.
+**Blocking:** no
+**Status:** OPEN
