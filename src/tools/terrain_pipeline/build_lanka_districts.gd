@@ -3,12 +3,34 @@ extends SceneTree
 const BuilderScript: Script = preload("res://src/tools/terrain_pipeline/district_scene_builder.gd")
 const DistrictContract: Script = preload("res://scenes/levels/lanka/lanka_district_contract.gd")
 const ContentContract: Script = preload("res://scenes/levels/lanka/lanka_content_contract.gd")
+const LankaHeightGenerator: Script = preload("res://src/tools/terrain_pipeline/lanka_height_generator.gd")
 const EmberRuntimeScript: Script = preload("res://scenes/levels/lanka/districts/ember_quarter/ember_quarter_runtime.gd")
 const DistrictSegmentLoaderScript: Script = preload("res://scenes/levels/lanka/district_segment_loader.gd")
 const ScatterScript: Script = preload("res://addons/odyssey_world_tools/scatter_3d.gd")
 const FLAMMABLE_SCRIPT_PATH: String = "res://src/world/fire/flammable.gd"
-const BEACH_ROCK_PATH: String = "res://scenes/prefabs/props/beach_rock.tscn"
-const DRIFTWOOD_PATH: String = "res://scenes/prefabs/props/driftwood_piece.tscn"
+const PROTOTYPE_TEXTURE_PATH: String = "res://assets/third_party/kenney/prototype_textures/light_texture_04.png"
+const KENNEY_NATURE_ROOT: String = "res://assets/third_party/kenney/nature_kit/models/"
+const KENNEY_PIRATE_ROOT: String = "res://assets/third_party/kenney/pirate_kit/models/"
+const QUATERNIUS_MEGA_ROOT: String = "res://assets/third_party/quaternius/stylized_nature_megakit/gltf/"
+const QUATERNIUS_ULTIMATE_ROOT: String = "res://assets/third_party/quaternius/ultimate_nature_pack/models/"
+const KENNEY_ROCK_PATHS: Array[String] = [
+	KENNEY_NATURE_ROOT + "rock_largeA.glb",
+	KENNEY_NATURE_ROOT + "rock_largeB.glb",
+	KENNEY_NATURE_ROOT + "rock_largeC.glb",
+]
+const QUATERNIUS_ROCK_PATHS: Array[String] = [
+	QUATERNIUS_MEGA_ROOT + "Rock_Medium_1.gltf",
+	QUATERNIUS_MEGA_ROOT + "Rock_Medium_2.gltf",
+	QUATERNIUS_MEGA_ROOT + "Rock_Medium_3.gltf",
+]
+const QUATERNIUS_PEBBLE_PATHS: Array[String] = [
+	QUATERNIUS_MEGA_ROOT + "Pebble_Round_1.gltf",
+]
+const QUATERNIUS_CLIFF_PATHS: Array[String] = [
+	QUATERNIUS_ULTIMATE_ROOT + "Rock_1.fbx",
+	QUATERNIUS_ULTIMATE_ROOT + "Rock_3.fbx",
+	QUATERNIUS_ULTIMATE_ROOT + "Rock_5.fbx",
+]
 const SEGMENT_BATCH_SIZE: int = 2
 const SEGMENT_CONTAINER_NAMES: Array[String] = [
 	"GameplaySockets", "WorldGeometry", "Dressing", "RouteMarkers", "M8RenderBatches",
@@ -37,11 +59,13 @@ const FIGUREHEAD_PATH: String = "res://scenes/prefabs/gameplay/figurehead_carrya
 const SETU_PATH: String = "res://scenes/prefabs/gameplay/setu.tscn"
 
 var _builder: RefCounted
+var _height_generator: RefCounted
 var _materials: Dictionary = {}
 
 
 func _initialize() -> void:
 	_builder = BuilderScript.new() as RefCounted
+	_height_generator = LankaHeightGenerator.new() as RefCounted
 	_materials = _make_materials()
 	var requested: PackedStringArray = OS.get_cmdline_user_args()
 	if requested.is_empty():
@@ -110,10 +134,10 @@ func _build_shallows() -> Error:
 	_builder.add_visibility_notifier(
 		geometry, AABB(Vector3(-20.0, -12.0, -375.0), Vector3(40.0, 35.0, 320.0))
 	)
-	_add_wrecked_hull(dressing, "ArrivalWreck", Vector3(-92.0, 23.8, 22.0), -18.0, 1.0)
-	_add_wrecked_hull(dressing, "EasternWreck", Vector3(125.0, 8.8, -38.0), 22.0, 0.78)
+	_add_model_prop(dressing, "ArrivalWreck", KENNEY_PIRATE_ROOT + "ship-wreck.glb", Vector3(-92.0, 23.8, 22.0), Vector3(0.0, -18.0, -7.0), Vector3.ONE * 3.4)
+	_add_model_prop(dressing, "EasternWreck", KENNEY_PIRATE_ROOT + "ship-wreck.glb", Vector3(125.0, 8.8, -38.0), Vector3(0.0, 202.0, 5.0), Vector3.ONE * 2.55)
 	_add_wrecked_hull(dressing, "KefferOverturnedHull", Vector3(-135.0, 41.8, 68.0), 8.0, 0.9, 158.0)
-	_add_wrecked_hull(dressing, "TideLineWreck", Vector3(58.0, -2.4, -118.0), -34.0, 0.62)
+	_add_model_prop(dressing, "TideLineWreck", KENNEY_PIRATE_ROOT + "ship-wreck.glb", Vector3(58.0, -2.4, -118.0), Vector3(0.0, -34.0, 9.0), Vector3.ONE * 1.8)
 	for debris_index: int in 18:
 		var angle: float = float(debris_index) * 1.71
 		var debris_position: Vector3 = Vector3(
@@ -130,6 +154,8 @@ func _build_shallows() -> Error:
 			Vector3(float((debris_index * 13) % 28), angle * 28.0, float((debris_index * 7) % 18))
 		)
 	_add_shallows_beach_scatter(dressing)
+	_add_shallows_model_dressing(dressing)
+	_add_shallows_sand_field(dressing)
 	_add_shallows_tidepools(dressing)
 	_add_shallows_ground_patches(dressing)
 	var build_site: Node3D = Node3D.new()
@@ -723,7 +749,24 @@ func _make_materials() -> Dictionary:
 		&"cistern_water": _builder.make_water_scenery_material("mat_cistern_water_scenery_grip_slick", 0.22),
 		&"tidepool_water": _builder.make_water_scenery_material("mat_tidepool_water_grip_slick", 0.06),
 		&"wet_sand": _builder.make_stylized_material("mat_shallows_wet_sand_grip_slick", Color(0.11, 0.15, 0.135), 0.64, 0.0, 0.82, 0.04, 0.10),
+		&"dry_sand": _make_textured_sand_material(
+			"mat_shallows_dry_sand_grip_solid", Color(0.36, 0.32, 0.23), 0.96
+		),
 	}
+
+
+func _make_textured_sand_material(
+	resource_name: String, tint: Color, roughness: float
+) -> StandardMaterial3D:
+	var material: StandardMaterial3D = StandardMaterial3D.new()
+	material.resource_name = resource_name
+	material.albedo_color = tint
+	material.albedo_texture = load(PROTOTYPE_TEXTURE_PATH) as Texture2D
+	material.roughness = roughness
+	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+	material.vertex_color_use_as_albedo = true
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
+	return material
 
 
 func _add_m6_content(root: Node3D, district_id: StringName) -> void:
@@ -820,52 +863,377 @@ func _add_keffer(dressing: Node3D, sockets: Node3D) -> void:
 func _add_shallows_beach_scatter(dressing: Node3D) -> void:
 	var random: RandomNumberGenerator = RandomNumberGenerator.new()
 	random.seed = 24011984
-	var rock_transforms: Array[Transform3D] = []
+	var kenney_rock_transforms: Array[Transform3D] = []
+	var quaternius_rock_transforms: Array[Transform3D] = []
+	var pebble_transforms: Array[Transform3D] = []
+	var grass_transforms: Array[Transform3D] = []
+	var leaf_grass_transforms: Array[Transform3D] = []
 	var driftwood_transforms: Array[Transform3D] = []
-	for _attempt: int in 180:
-		if rock_transforms.size() >= 46:
+	var cliff_transforms: Array[Transform3D] = []
+	for _attempt: int in 700:
+		if kenney_rock_transforms.size() >= 110:
 			break
-		var x: float = random.randf_range(-95.0, 95.0)
-		var z: float = random.randf_range(-142.0, 78.0)
-		if (absf(x) < 24.0 and z > -92.0) or Vector2(x + 135.0, z - 68.0).length() < 34.0:
+		var x: float = random.randf_range(-155.0, 155.0)
+		var z: float = random.randf_range(-145.0, 92.0)
+		if not _is_open_shallows_dressing(x, z):
 			continue
-		var scale_value: float = random.randf_range(0.65, 2.4)
+		var scale_value: float = random.randf_range(1.2, 4.8)
 		var scale: Vector3 = Vector3(
 			scale_value * random.randf_range(0.75, 1.35),
 			scale_value * random.randf_range(0.45, 0.95),
 			scale_value * random.randf_range(0.75, 1.45)
 		)
-		var basis: Basis = Basis.from_euler(Vector3(
-			random.randf_range(-0.18, 0.18), random.randf_range(0.0, TAU),
-			random.randf_range(-0.14, 0.14)
-		)).scaled(scale)
-		rock_transforms.append(Transform3D(basis, Vector3(x, _shallows_surface_y(z), z)))
-	for _attempt: int in 160:
-		if driftwood_transforms.size() >= 34:
+		kenney_rock_transforms.append(_make_shallows_transform(random, x, z, scale, 0.18))
+	for _attempt: int in 500:
+		if quaternius_rock_transforms.size() >= 64:
 			break
-		var x: float = random.randf_range(-92.0, 92.0)
-		var z: float = random.randf_range(-150.0, 68.0)
-		if absf(x) < 20.0 and z > -88.0:
+		var x: float = random.randf_range(-160.0, 160.0)
+		var z: float = random.randf_range(-150.0, 88.0)
+		if not _is_open_shallows_dressing(x, z):
+			continue
+		var scale_value: float = random.randf_range(0.45, 1.35)
+		var scale: Vector3 = Vector3(
+			scale_value * random.randf_range(0.8, 1.35),
+			scale_value * random.randf_range(0.55, 1.0),
+			scale_value * random.randf_range(0.8, 1.35)
+		)
+		quaternius_rock_transforms.append(_make_shallows_transform(random, x, z, scale, 0.15))
+	for _attempt: int in 900:
+		if pebble_transforms.size() >= 180:
+			break
+		var x: float = random.randf_range(-165.0, 165.0)
+		var z: float = random.randf_range(-152.0, 72.0)
+		if not _is_open_shallows_dressing(x, z):
+			continue
+		var scale_value: float = random.randf_range(0.22, 0.72)
+		pebble_transforms.append(_make_shallows_transform(
+			random, x, z, Vector3(scale_value, scale_value * 0.7, scale_value), 0.1
+		))
+	for _attempt: int in 1200:
+		if grass_transforms.size() >= 280:
+			break
+		var x: float = random.randf_range(-155.0, 155.0)
+		var z: float = random.randf_range(-120.0, 105.0)
+		if not _is_open_shallows_dressing(x, z):
+			continue
+		var local_y: float = _shallows_surface_y_at(x, z)
+		if local_y < -1.4 or local_y > 20.0:
+			continue
+		var scale_value: float = random.randf_range(0.45, 1.25)
+		grass_transforms.append(_make_shallows_transform(
+			random, x, z, Vector3(scale_value, random.randf_range(0.7, 1.4), scale_value), 0.02
+		))
+	for _attempt: int in 500:
+		if leaf_grass_transforms.size() >= 95:
+			break
+		var x: float = random.randf_range(-150.0, 150.0)
+		var z: float = random.randf_range(-105.0, 90.0)
+		if not _is_open_shallows_dressing(x, z):
+			continue
+		var scale_value: float = random.randf_range(2.2, 4.2)
+		leaf_grass_transforms.append(_make_shallows_transform(
+			random, x, z, Vector3.ONE * scale_value, 0.02
+		))
+	for _attempt: int in 400:
+		if driftwood_transforms.size() >= 62:
+			break
+		var x: float = random.randf_range(-150.0, 150.0)
+		var z: float = random.randf_range(-148.0, 72.0)
+		if not _is_open_shallows_dressing(x, z):
 			continue
 		var scale: Vector3 = Vector3(
-			random.randf_range(0.7, 1.45), random.randf_range(0.75, 1.2),
-			random.randf_range(0.75, 1.85)
+			random.randf_range(2.8, 6.5), random.randf_range(1.3, 2.4),
+			random.randf_range(1.4, 3.2)
 		)
-		var basis: Basis = Basis.from_euler(Vector3(
-			random.randf_range(-0.12, 0.12), random.randf_range(0.0, TAU),
-			random.randf_range(-0.16, 0.16)
-		)).scaled(scale)
-		driftwood_transforms.append(Transform3D(
-			basis, Vector3(x, _shallows_surface_y(z) + 0.18, z)
-		))
-	_add_scatter_group(
-		dressing, "BeachRockScatter", BEACH_ROCK_PATH, rock_transforms,
-		Vector2(360.0, 220.0), 0.58, 24011984
+		driftwood_transforms.append(_make_shallows_transform(random, x, z, scale, 0.14))
+	for cliff_index: int in 34:
+		var side: float = -1.0 if cliff_index % 2 == 0 else 1.0
+		var x: float = side * random.randf_range(142.0, 178.0)
+		var z: float = random.randf_range(-112.0, 92.0)
+		var scale_value: float = random.randf_range(1150.0, 2600.0)
+		var scale: Vector3 = Vector3(
+			scale_value * random.randf_range(0.8, 1.6),
+			scale_value * random.randf_range(0.7, 1.45),
+			scale_value * random.randf_range(0.8, 1.5)
+		)
+		cliff_transforms.append(_make_shallows_transform(random, x, z, scale, 0.22))
+	_add_scatter_variants(
+		dressing, "KenneyBeachRocks", KENNEY_ROCK_PATHS, kenney_rock_transforms, 24011984
+	)
+	_add_scatter_variants(
+		dressing, "QuaterniusBeachRocks", QUATERNIUS_ROCK_PATHS,
+		quaternius_rock_transforms, 24011985
+	)
+	_add_scatter_variants(
+		dressing, "QuaterniusPebbles", QUATERNIUS_PEBBLE_PATHS, pebble_transforms, 24011986
+	)
+	_add_scatter_variants(
+		dressing, "QuaterniusWispyGrass",
+		[QUATERNIUS_MEGA_ROOT + "Grass_Wispy_Short.gltf"],
+		grass_transforms, 24011987
 	)
 	_add_scatter_group(
-		dressing, "DriftwoodScatter", DRIFTWOOD_PATH, driftwood_transforms,
-		Vector2(344.0, 218.0), 0.45, 24011985
+		dressing, "KenneyLeafGrass", KENNEY_NATURE_ROOT + "grass_leafsLarge.glb",
+		leaf_grass_transforms, Vector2(360.0, 275.0), 1.0, 24011988
 	)
+	_add_scatter_group(
+		dressing, "KenneyDriftwood", KENNEY_NATURE_ROOT + "log_large.glb",
+		driftwood_transforms, Vector2(360.0, 275.0), 0.8, 24011989
+	)
+	_add_scatter_variants(
+		dressing, "QuaterniusCliffRocks", QUATERNIUS_CLIFF_PATHS, cliff_transforms, 24011990
+	)
+
+
+func _add_scatter_variants(
+	parent: Node3D,
+	node_name: String,
+	source_paths: Array[String],
+	transforms: Array[Transform3D],
+	seed: int
+) -> void:
+	for source_index: int in source_paths.size():
+		var variant_transforms: Array[Transform3D] = []
+		for transform_index: int in range(source_index, transforms.size(), source_paths.size()):
+			variant_transforms.append(transforms[transform_index])
+		_add_scatter_group(
+			parent, "%s%02d" % [node_name, source_index], source_paths[source_index],
+			variant_transforms, Vector2(360.0, 275.0), 1.0, seed + source_index
+		)
+
+
+func _make_shallows_transform(
+	random: RandomNumberGenerator,
+	local_x: float,
+	local_z: float,
+	scale: Vector3,
+	tilt: float
+) -> Transform3D:
+	var basis: Basis = Basis.from_euler(Vector3(
+		random.randf_range(-tilt, tilt), random.randf_range(0.0, TAU),
+		random.randf_range(-tilt, tilt)
+	)).scaled(scale)
+	return Transform3D(basis, Vector3(local_x, _shallows_surface_y_at(local_x, local_z), local_z))
+
+
+func _is_open_shallows_dressing(local_x: float, local_z: float) -> bool:
+	if absf(local_x) < 15.0 and local_z > -96.0:
+		return false
+	if Vector2(local_x + 135.0, local_z - 68.0).length() < 31.0:
+		return false
+	if Vector2(local_x - 105.0, local_z - 78.0).length() < 28.0:
+		return false
+	return true
+
+
+func _add_shallows_model_dressing(dressing: Node3D) -> void:
+	var model_batches: Dictionary = {}
+	var palms: Array[Vector2] = [
+		Vector2(-142.0, -58.0), Vector2(-124.0, -34.0), Vector2(-151.0, 4.0),
+		Vector2(-118.0, 26.0), Vector2(145.0, -62.0), Vector2(126.0, -28.0),
+		Vector2(152.0, 8.0), Vector2(154.0, -34.0), Vector2(-92.0, 48.0),
+		Vector2(92.0, 54.0),
+	]
+	for palm_index: int in palms.size():
+		var point: Vector2 = palms[palm_index]
+		var palm_path: String = KENNEY_NATURE_ROOT + "tree_palmDetailedTall.glb"
+		_queue_model_prop(
+			model_batches, "CoastalPalm", palm_path,
+			Vector3(point.x, _shallows_surface_y_at(point.x, point.y), point.y),
+			Vector3(0.0, float((palm_index * 47) % 360), 0.0),
+			Vector3.ONE * (6.2 + float(palm_index % 4) * 0.7)
+		)
+	var canoes: Array[Dictionary] = [
+		{"p": Vector2(-118.0, -122.0), "r": -18.0},
+		{"p": Vector2(-70.0, -137.0), "r": 22.0},
+		{"p": Vector2(12.0, -143.0), "r": -7.0},
+		{"p": Vector2(104.0, -126.0), "r": 31.0},
+		{"p": Vector2(142.0, -92.0), "r": -28.0},
+	]
+	for canoe_index: int in canoes.size():
+		var canoe: Dictionary = canoes[canoe_index]
+		var point: Vector2 = canoe["p"] as Vector2
+		_queue_model_prop(
+			model_batches, "StrandedCanoe", KENNEY_NATURE_ROOT + "canoe.glb",
+			Vector3(point.x, _shallows_surface_y_at(point.x, point.y) + 0.08, point.y),
+			Vector3(0.0, float(canoe["r"]), float(canoe_index % 2) * 5.0 - 2.0),
+			Vector3.ONE * 3.2
+		)
+	var cargo_points: Array[Vector2] = [
+		Vector2(74.0, 45.0), Vector2(82.0, 51.0), Vector2(91.0, 43.0),
+		Vector2(118.0, 48.0), Vector2(128.0, 58.0), Vector2(84.0, 92.0),
+		Vector2(96.0, 104.0), Vector2(119.0, 98.0), Vector2(-106.0, 48.0),
+		Vector2(-118.0, 55.0), Vector2(-92.0, 64.0),
+	]
+	for cargo_index: int in cargo_points.size():
+		var point: Vector2 = cargo_points[cargo_index]
+		var cargo_path: String = KENNEY_PIRATE_ROOT + (
+			"barrel.glb" if cargo_index % 3 == 0 else (
+				"crate-bottles.glb" if cargo_index % 4 == 0 else "crate.glb"
+			)
+		)
+		_queue_model_prop(
+			model_batches, "SalvageCargo", cargo_path,
+			Vector3(point.x, _shallows_surface_y_at(point.x, point.y), point.y),
+			Vector3(0.0, float((cargo_index * 67) % 360), 0.0),
+			Vector3.ONE * (1.5 + float(cargo_index % 3) * 0.25)
+		)
+	var sand_clusters: Array[Vector2] = [
+		Vector2(-150.0, -104.0), Vector2(-106.0, -89.0), Vector2(-58.0, -116.0),
+		Vector2(-21.0, -132.0), Vector2(33.0, -119.0), Vector2(78.0, -102.0),
+		Vector2(124.0, -82.0), Vector2(-136.0, -22.0), Vector2(139.0, -18.0),
+	]
+	for cluster_index: int in sand_clusters.size():
+		var point: Vector2 = sand_clusters[cluster_index]
+		var cluster_path: String = KENNEY_PIRATE_ROOT + "rocks-sand-%s.glb" % ["a", "b", "c"][cluster_index % 3]
+		_queue_model_prop(
+			model_batches, "SandRockCluster", cluster_path,
+			Vector3(point.x, _shallows_surface_y_at(point.x, point.y), point.y),
+			Vector3(0.0, float((cluster_index * 41) % 360), 0.0),
+			Vector3.ONE * (1.25 + float(cluster_index % 3) * 0.3)
+		)
+	var plant_points: Array[Vector2] = [
+		Vector2(-132.0, -6.0), Vector2(-104.0, 12.0), Vector2(-74.0, -18.0),
+		Vector2(-52.0, 34.0), Vector2(-24.0, -4.0), Vector2(34.0, -12.0),
+		Vector2(58.0, 28.0), Vector2(88.0, -8.0), Vector2(116.0, 18.0),
+		Vector2(142.0, 44.0), Vector2(-146.0, 72.0), Vector2(148.0, 78.0),
+	]
+	for plant_index: int in plant_points.size():
+		var point: Vector2 = plant_points[plant_index]
+		var plant_path: String = QUATERNIUS_MEGA_ROOT + (
+			"Plant_1.gltf" if plant_index % 2 == 0 else "Plant_7.gltf"
+		)
+		_queue_model_prop(
+			model_batches, "CoastalPlant", plant_path,
+			Vector3(point.x, _shallows_surface_y_at(point.x, point.y), point.y),
+			Vector3(0.0, float((plant_index * 79) % 360), 0.0),
+			Vector3.ONE * (0.75 + float(plant_index % 3) * 0.18)
+		)
+	var deadwood_points: Array[Vector2] = [
+		Vector2(-156.0, 86.0), Vector2(-82.0, 104.0), Vector2(-76.0, 82.0),
+		Vector2(68.0, 88.0), Vector2(112.0, 78.0), Vector2(156.0, 92.0),
+	]
+	for deadwood_index: int in deadwood_points.size():
+		var point: Vector2 = deadwood_points[deadwood_index]
+		_queue_model_prop(
+			model_batches, "StormDeadwood",
+			QUATERNIUS_MEGA_ROOT + "DeadTree_1.gltf",
+			Vector3(point.x, _shallows_surface_y_at(point.x, point.y), point.y),
+			Vector3(0.0, float((deadwood_index * 53) % 360), 0.0),
+			Vector3.ONE * (0.75 + float(deadwood_index % 2) * 0.2)
+		)
+	var camp_positions: Array[Vector3] = [
+		Vector3(-38.0, 1.6, 62.0), Vector3(-112.0, 38.3, 84.0),
+	]
+	for camp_index: int in camp_positions.size():
+		_queue_model_prop(
+			model_batches, "CampfireStoneRing",
+			KENNEY_NATURE_ROOT + "campfire_stones.glb", camp_positions[camp_index],
+			Vector3.ZERO, Vector3.ONE * 2.1
+		)
+	_add_model_batches(dressing, model_batches)
+
+
+func _add_model_prop(
+	parent: Node3D,
+	node_name: String,
+	source_path: String,
+	position: Vector3,
+	rotation_degrees: Vector3,
+	scale: Vector3
+) -> Node3D:
+	var mesh_instance: MeshInstance3D = MeshInstance3D.new()
+	mesh_instance.name = node_name
+	mesh_instance.mesh = _make_merged_model_mesh(source_path)
+	mesh_instance.position = position
+	mesh_instance.rotation_degrees = rotation_degrees
+	mesh_instance.scale = scale
+	parent.add_child(mesh_instance)
+	return mesh_instance
+
+
+func _queue_model_prop(
+	batches: Dictionary,
+	batch_name: String,
+	source_path: String,
+	position: Vector3,
+	rotation_degrees: Vector3,
+	scale: Vector3
+) -> void:
+	if not batches.has(source_path):
+		batches[source_path] = {"name": batch_name, "transforms": [] as Array[Transform3D]}
+	var entry: Dictionary = batches[source_path] as Dictionary
+	var transforms: Array[Transform3D] = entry["transforms"] as Array[Transform3D]
+	var rotation_radians: Vector3 = Vector3(
+		deg_to_rad(rotation_degrees.x), deg_to_rad(rotation_degrees.y),
+		deg_to_rad(rotation_degrees.z)
+	)
+	transforms.append(Transform3D(Basis.from_euler(rotation_radians).scaled(scale), position))
+
+
+func _add_model_batches(parent: Node3D, batches: Dictionary) -> void:
+	var batch_index: int = 0
+	for source_value: Variant in batches:
+		var source_path: String = str(source_value)
+		var entry: Dictionary = batches[source_value] as Dictionary
+		var transforms: Array[Transform3D] = entry["transforms"] as Array[Transform3D]
+		var multi_mesh: MultiMesh = MultiMesh.new()
+		multi_mesh.transform_format = MultiMesh.TRANSFORM_3D
+		multi_mesh.mesh = _make_merged_model_mesh(source_path)
+		multi_mesh.instance_count = transforms.size()
+		for transform_index: int in transforms.size():
+			multi_mesh.set_instance_transform(transform_index, transforms[transform_index])
+		var batch: MultiMeshInstance3D = MultiMeshInstance3D.new()
+		batch.name = "%s%02d" % [str(entry["name"]), batch_index]
+		batch.multimesh = multi_mesh
+		parent.add_child(batch)
+		batch_index += 1
+
+
+func _make_merged_model_mesh(source_path: String) -> ArrayMesh:
+	var packed: PackedScene = load(source_path) as PackedScene
+	assert(packed != null, "Missing Shallows model: %s" % source_path)
+	var instance: Node3D = packed.instantiate() as Node3D
+	assert(instance != null, "Shallows model root must be Node3D: %s" % source_path)
+	var surface_groups: Array[Dictionary] = []
+	_collect_model_surfaces(instance, Transform3D.IDENTITY, surface_groups)
+	instance.free()
+	var merged: ArrayMesh = ArrayMesh.new()
+	for group: Dictionary in surface_groups:
+		var surface_tool: SurfaceTool = group["surface_tool"] as SurfaceTool
+		surface_tool.index()
+		surface_tool.commit(merged)
+	return merged
+
+
+func _collect_model_surfaces(
+	node: Node, parent_transform: Transform3D, surface_groups: Array[Dictionary]
+) -> void:
+	var accumulated_transform: Transform3D = parent_transform
+	if node is Node3D:
+		accumulated_transform *= (node as Node3D).transform
+	if node is MeshInstance3D:
+		var mesh_instance: MeshInstance3D = node as MeshInstance3D
+		if mesh_instance.mesh != null:
+			for surface_index: int in mesh_instance.mesh.get_surface_count():
+				var material: Material = mesh_instance.get_active_material(surface_index)
+				var surface_tool: SurfaceTool = _surface_tool_for_material(surface_groups, material)
+				surface_tool.append_from(mesh_instance.mesh, surface_index, accumulated_transform)
+	for child: Node in node.get_children():
+		_collect_model_surfaces(child, accumulated_transform, surface_groups)
+
+
+func _surface_tool_for_material(
+	surface_groups: Array[Dictionary], material: Material
+) -> SurfaceTool:
+	for group: Dictionary in surface_groups:
+		if group["material"] == material:
+			return group["surface_tool"] as SurfaceTool
+	var surface_tool: SurfaceTool = SurfaceTool.new()
+	surface_tool.begin(Mesh.PRIMITIVE_TRIANGLES)
+	surface_tool.set_material(material)
+	surface_groups.append({"material": material, "surface_tool": surface_tool})
+	return surface_tool
 
 
 func _add_scatter_group(
@@ -935,6 +1303,48 @@ func _add_shallows_tidepools(dressing: Node3D) -> void:
 		dressing.add_child(mesh_instance)
 
 
+func _add_shallows_sand_field(dressing: Node3D) -> void:
+	var surface_tool: SurfaceTool = SurfaceTool.new()
+	surface_tool.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var columns: int = 48
+	var rows: int = 36
+	for z_index: int in rows:
+		var z0: float = lerpf(-170.0, 105.0, float(z_index) / float(rows))
+		var z1: float = lerpf(-170.0, 105.0, float(z_index + 1) / float(rows))
+		for x_index: int in columns:
+			var x0: float = lerpf(-180.0, 180.0, float(x_index) / float(columns))
+			var x1: float = lerpf(-180.0, 180.0, float(x_index + 1) / float(columns))
+			_add_sand_vertex(surface_tool, x0, z0)
+			_add_sand_vertex(surface_tool, x1, z0)
+			_add_sand_vertex(surface_tool, x0, z1)
+			_add_sand_vertex(surface_tool, x1, z0)
+			_add_sand_vertex(surface_tool, x1, z1)
+			_add_sand_vertex(surface_tool, x0, z1)
+	surface_tool.generate_normals()
+	surface_tool.index()
+	var mesh_instance: MeshInstance3D = MeshInstance3D.new()
+	mesh_instance.name = "TexturedSandField"
+	mesh_instance.mesh = surface_tool.commit()
+	mesh_instance.material_override = _materials[&"dry_sand"]
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	dressing.add_child(mesh_instance)
+
+
+func _add_sand_vertex(
+	surface_tool: SurfaceTool, local_x: float, local_z: float
+) -> void:
+	var world_z: float = local_z - 410.0
+	var terrain_height: float = float(_height_generator.call("sample_height", local_x, world_z))
+	var horizontal_fade: float = 1.0 - smoothstep(142.0, 180.0, absf(local_x))
+	var shore_fade: float = smoothstep(-170.0, -145.0, local_z)
+	var inland_fade: float = 1.0 - smoothstep(5.0, 18.0, terrain_height)
+	var macro: float = 0.82 + sin(local_x * 0.071 + local_z * 0.053) * 0.12
+	var alpha: float = horizontal_fade * shore_fade * inland_fade * macro
+	surface_tool.set_color(Color(1.0, 1.0, 1.0, alpha))
+	surface_tool.set_uv(Vector2(local_x, local_z) * 0.12)
+	surface_tool.add_vertex(Vector3(local_x, terrain_height - 2.55, local_z))
+
+
 func _add_shallows_ground_patches(dressing: Node3D) -> void:
 	var patches: Array[Dictionary] = [
 		{"p": Vector3(-62.0, 0.0, -78.0), "s": Vector2(34.0, 18.0), "r": 14.0},
@@ -947,7 +1357,7 @@ func _add_shallows_ground_patches(dressing: Node3D) -> void:
 	for patch_index: int in patches.size():
 		var patch: Dictionary = patches[patch_index]
 		var position: Vector3 = patch["p"] as Vector3
-		position.y = _shallows_surface_y(position.z) + 0.035
+		position.y = _shallows_surface_y_at(position.x, position.z) + 0.035
 		var mesh_instance: MeshInstance3D = MeshInstance3D.new()
 		mesh_instance.name = "WetSandPatch%02d" % patch_index
 		mesh_instance.position = position
@@ -966,8 +1376,8 @@ func _add_shallows_ground_patches(dressing: Node3D) -> void:
 		dressing.add_child(mesh_instance)
 
 
-func _shallows_surface_y(local_z: float) -> float:
-	return clampf(0.72 + (local_z + 140.0) * 0.011, 0.65, 3.1)
+func _shallows_surface_y_at(local_x: float, local_z: float) -> float:
+	return float(_height_generator.call("sample_height", local_x, local_z - 410.0)) - 3.0
 
 
 func _find_mesh_instance(node: Node) -> MeshInstance3D:
