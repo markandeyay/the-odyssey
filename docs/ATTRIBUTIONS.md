@@ -109,3 +109,78 @@ use them.
 | Godot material | Embedded named materials: `mat_nau_body`, `mat_nau_cloth`, `mat_nau_hood`, and `mat_nau_mask`. |
 | Lanka usage | Replaceable Nau visual for all player traversal on Lanka. |
 <!-- /asset:mixamo:nau_m3_visual -->
+
+<!-- asset:kenney:prototype_textures -->
+### Prototype Textures
+
+| Field | Value |
+|---|---|
+| Provider ID | `kenney:prototype_textures` |
+| Source | [Kenney asset page](https://kenney.nl/assets/prototype-textures) |
+| Author | Kenney |
+| License | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Date pulled | 2026-07-20 |
+| Repository path | `res://assets/third_party/kenney/prototype_textures/` |
+| Godot material | Used by generated Shallows terrain-variation materials. |
+| Lanka usage | Subtle scale-readable texture detail on Shallows sand and tideline patches. |
+<!-- /asset:kenney:prototype_textures -->
+
+<!-- asset:kenney:nature_kit -->
+### Nature Kit
+
+| Field | Value |
+|---|---|
+| Provider ID | `kenney:nature_kit` |
+| Source | [Kenney asset page](https://kenney.nl/assets/nature-kit) |
+| Author | Kenney |
+| License | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Date pulled | 2026-07-20 |
+| Repository path | `res://assets/third_party/kenney/nature_kit/` |
+| Godot material | Materials embedded in selected GLB source models. |
+| Lanka usage | Shallows beach rocks, coastal plants, palms, logs, canoe, and campfire dressing. |
+<!-- /asset:kenney:nature_kit -->
+
+<!-- asset:kenney:pirate_kit -->
+### Pirate Kit
+
+| Field | Value |
+|---|---|
+| Provider ID | `kenney:pirate_kit` |
+| Source | [Kenney asset page](https://kenney.nl/assets/pirate-kit) |
+| Author | Kenney |
+| License | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Date pulled | 2026-07-20 |
+| Repository path | `res://assets/third_party/kenney/pirate_kit/` |
+| Godot material | Materials embedded in selected GLB source models. |
+| Lanka usage | Shallows wreck, mast, crates, barrels, paddles, sand patches, and rock clusters. |
+<!-- /asset:kenney:pirate_kit -->
+
+<!-- asset:quaternius:stylized_nature_megakit_standard -->
+### Stylized Nature MegaKit Standard
+
+| Field | Value |
+|---|---|
+| Provider ID | `quaternius:stylized_nature_megakit_standard` |
+| Source | [Quaternius asset page](https://quaternius.com/packs/stylizednaturemegakit.html) and [official itch.io download](https://quaternius.itch.io/stylized-nature-megakit) |
+| Author | Quaternius |
+| License | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Date pulled | 2026-07-20 |
+| Repository path | `res://assets/third_party/quaternius/stylized_nature_megakit/` |
+| Godot material | Materials and textures referenced by selected glTF source models. |
+| Lanka usage | Shallows medium rocks, pebbles, wispy grass, coastal plants, and deadwood accents. |
+<!-- /asset:quaternius:stylized_nature_megakit_standard -->
+
+<!-- asset:quaternius:ultimate_nature_pack -->
+### Ultimate Nature Pack
+
+| Field | Value |
+|---|---|
+| Provider ID | `quaternius:ultimate_nature_pack` |
+| Source | [Quaternius asset page](https://quaternius.com/packs/ultimatenature.html) and [official itch.io download](https://quaternius.itch.io/150-lowpoly-nature-models) |
+| Author | Quaternius |
+| License | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Date pulled | 2026-07-20 |
+| Repository path | `res://assets/third_party/quaternius/ultimate_nature_pack/` |
+| Godot material | Materials embedded in selected FBX source models. |
+| Lanka usage | Scaled and rotated rock formations used to form Shallows coastal outcrops and cliff clusters. |
+<!-- /asset:quaternius:ultimate_nature_pack -->
