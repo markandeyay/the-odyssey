@@ -3,12 +3,14 @@ extends SceneTree
 const BuilderScript: Script = preload("res://src/tools/terrain_pipeline/district_scene_builder.gd")
 const DistrictContract: Script = preload("res://scenes/levels/lanka/lanka_district_contract.gd")
 const ContentContract: Script = preload("res://scenes/levels/lanka/lanka_content_contract.gd")
+const LankaHeightGenerator: Script = preload("res://src/tools/terrain_pipeline/lanka_height_generator.gd")
 const EmberRuntimeScript: Script = preload("res://scenes/levels/lanka/districts/ember_quarter/ember_quarter_runtime.gd")
 const DistrictSegmentLoaderScript: Script = preload("res://scenes/levels/lanka/district_segment_loader.gd")
 const ScatterScript: Script = preload("res://addons/odyssey_world_tools/scatter_3d.gd")
 const FLAMMABLE_SCRIPT_PATH: String = "res://src/world/fire/flammable.gd"
 const BEACH_ROCK_PATH: String = "res://scenes/prefabs/props/beach_rock.tscn"
 const DRIFTWOOD_PATH: String = "res://scenes/prefabs/props/driftwood_piece.tscn"
+const PROTOTYPE_TEXTURE_PATH: String = "res://assets/third_party/kenney/prototype_textures/light_texture_04.png"
 const SEGMENT_BATCH_SIZE: int = 2
 const SEGMENT_CONTAINER_NAMES: Array[String] = [
 	"GameplaySockets", "WorldGeometry", "Dressing", "RouteMarkers", "M8RenderBatches",
@@ -130,6 +132,7 @@ func _build_shallows() -> Error:
 			Vector3(float((debris_index * 13) % 28), angle * 28.0, float((debris_index * 7) % 18))
 		)
 	_add_shallows_beach_scatter(dressing)
+	_add_shallows_sand_field(dressing)
 	_add_shallows_tidepools(dressing)
 	_add_shallows_ground_patches(dressing)
 	var build_site: Node3D = Node3D.new()
@@ -723,7 +726,24 @@ func _make_materials() -> Dictionary:
 		&"cistern_water": _builder.make_water_scenery_material("mat_cistern_water_scenery_grip_slick", 0.22),
 		&"tidepool_water": _builder.make_water_scenery_material("mat_tidepool_water_grip_slick", 0.06),
 		&"wet_sand": _builder.make_stylized_material("mat_shallows_wet_sand_grip_slick", Color(0.11, 0.15, 0.135), 0.64, 0.0, 0.82, 0.04, 0.10),
+		&"dry_sand": _make_textured_sand_material(
+			"mat_shallows_dry_sand_grip_solid", Color(0.36, 0.32, 0.23), 0.96
+		),
 	}
+
+
+func _make_textured_sand_material(
+	resource_name: String, tint: Color, roughness: float
+) -> StandardMaterial3D:
+	var material: StandardMaterial3D = StandardMaterial3D.new()
+	material.resource_name = resource_name
+	material.albedo_color = tint
+	material.albedo_texture = load(PROTOTYPE_TEXTURE_PATH) as Texture2D
+	material.roughness = roughness
+	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+	material.vertex_color_use_as_albedo = true
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
+	return material
 
 
 func _add_m6_content(root: Node3D, district_id: StringName) -> void:
@@ -933,6 +953,49 @@ func _add_shallows_tidepools(dressing: Node3D) -> void:
 		mesh_instance.mesh = mesh
 		mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		dressing.add_child(mesh_instance)
+
+
+func _add_shallows_sand_field(dressing: Node3D) -> void:
+	var height_generator: RefCounted = LankaHeightGenerator.new() as RefCounted
+	var surface_tool: SurfaceTool = SurfaceTool.new()
+	surface_tool.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var columns: int = 48
+	var rows: int = 36
+	for z_index: int in rows:
+		var z0: float = lerpf(-170.0, 105.0, float(z_index) / float(rows))
+		var z1: float = lerpf(-170.0, 105.0, float(z_index + 1) / float(rows))
+		for x_index: int in columns:
+			var x0: float = lerpf(-180.0, 180.0, float(x_index) / float(columns))
+			var x1: float = lerpf(-180.0, 180.0, float(x_index + 1) / float(columns))
+			_add_sand_vertex(surface_tool, height_generator, x0, z0)
+			_add_sand_vertex(surface_tool, height_generator, x1, z0)
+			_add_sand_vertex(surface_tool, height_generator, x0, z1)
+			_add_sand_vertex(surface_tool, height_generator, x1, z0)
+			_add_sand_vertex(surface_tool, height_generator, x1, z1)
+			_add_sand_vertex(surface_tool, height_generator, x0, z1)
+	surface_tool.generate_normals()
+	surface_tool.index()
+	var mesh_instance: MeshInstance3D = MeshInstance3D.new()
+	mesh_instance.name = "TexturedSandField"
+	mesh_instance.mesh = surface_tool.commit()
+	mesh_instance.material_override = _materials[&"dry_sand"]
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	dressing.add_child(mesh_instance)
+
+
+func _add_sand_vertex(
+	surface_tool: SurfaceTool, height_generator: RefCounted, local_x: float, local_z: float
+) -> void:
+	var world_z: float = local_z - 410.0
+	var terrain_height: float = float(height_generator.call("sample_height", local_x, world_z))
+	var horizontal_fade: float = 1.0 - smoothstep(142.0, 180.0, absf(local_x))
+	var shore_fade: float = smoothstep(-170.0, -145.0, local_z)
+	var inland_fade: float = 1.0 - smoothstep(5.0, 18.0, terrain_height)
+	var macro: float = 0.82 + sin(local_x * 0.071 + local_z * 0.053) * 0.12
+	var alpha: float = horizontal_fade * shore_fade * inland_fade * macro
+	surface_tool.set_color(Color(1.0, 1.0, 1.0, alpha))
+	surface_tool.set_uv(Vector2(local_x, local_z) * 0.12)
+	surface_tool.add_vertex(Vector3(local_x, terrain_height - 2.55, local_z))
 
 
 func _add_shallows_ground_patches(dressing: Node3D) -> void:
